@@ -151,6 +151,29 @@
 
     
     
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#一-前言">一、前言</a></li>
+<li><a href="#二-编译环境配置">二、编译环境配置</a>
+<ul>
+<li><a href="#1-启用-wsl">1、启用 WSL</a></li>
+<li><a href="#2-安装-ubuntu-应用">2、安装 Ubuntu 应用</a></li>
+<li><a href="#3-初始化-ubuntu">3、初始化 Ubuntu</a></li>
+<li><a href="#4-克隆-ardupilot-代码库到本地">4、克隆 Ardupilot 代码库到本地</a></li>
+<li><a href="#5-进行环境设置">5、进行环境设置</a></li>
+<li><a href="#6-进行编译">6、进行编译</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
 
     
     
@@ -321,6 +344,25 @@ git submodule update --recursive
   </article>
         </div>
         
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-09-08 20:36:46 \x2b0800 CST',
+    title: 'ArduSub 飞控固件编译环境准备',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'luozongtong123.github.io',
+    owner: 'luozongtong123',
+    admin: ['luozongtong123'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
       </div>
     </main>
