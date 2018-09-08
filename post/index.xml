@@ -21,6 +21,17 @@
     </item>
     
     <item>
+      <title>ArduSub 飞控固件编译环境准备</title>
+      <link>http://localhost:1313/post/build-environment-for-ardusub/</link>
+      <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/build-environment-for-ardusub/</guid>
+      <description>&lt;p&gt;Pixhawk1（px4_v2） 飞控使用了两片单片机。Pixhawk 其实是 PX4FMU 与 PX4IO 两块板子的组合，其中PX4FMU 使用的单片机是 &lt;a href=&#34;http://www.st.com/web/en/catalog/mmc/FM141/SC1169/SS1577/LN1789&#34;&gt;STM32F427&lt;/a&gt; ，PX4IO 使用的单片机是 STM32F100。PX4FMU  负责复杂的浮点运算，PX4IO 负责将 PX4FMU 计算得到的控制量输出为 PWM 或 其他信号。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>This is a hidden post.</title>
       <link>http://localhost:1313/post/hidden-post/</link>
       <pubDate>Thu, 08 Mar 2018 17:40:19 +0800</pubDate>

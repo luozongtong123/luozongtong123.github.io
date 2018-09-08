@@ -17,6 +17,13 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/post/build-environment-for-ardusub/</loc>
+    <lastmod>2018-09-08T20:36:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/post/hidden-post/</loc>
     <lastmod>2018-03-08T22:01:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
