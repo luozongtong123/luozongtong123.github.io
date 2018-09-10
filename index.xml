@@ -23,12 +23,10 @@
     <item>
       <title>About</title>
       <link>http://localhost:1313/about/</link>
-      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      <pubDate>Wed, 28 Jan 2015 14:42:00 +0800</pubDate>
       
       <guid>http://localhost:1313/about/</guid>
-      <description>Hugo is a static site engine written in Go.
-It makes use of a variety of open source projects including:
- Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+      <description>Name 我叫啥不重要好伐！ I Am 大二 大三在读本科生 研二在读，超级爱折腾。 Why Here 寒假放假太早，没啥事，闲的慌，索性 买个域名 搭了个博客。希望将这个地方当作</description>
     </item>
     
     <item>
@@ -49,6 +47,17 @@ It makes use of a variety of open source projects including:
       
       <guid>http://localhost:1313/post/hidden-post/</guid>
       <description>&lt;p&gt;This post is hidden from the home page.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Phicomm K2 刷 LEDE </title>
+      <link>http://localhost:1313/post/lede-phicomm-k2/</link>
+      <pubDate>Sun, 04 Feb 2018 04:06:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/lede-phicomm-k2/</guid>
+      <description>&lt;p&gt;最近买了个斐讯的路由器，总结一下刷机过程。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

@@ -31,6 +31,13 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/post/lede-phicomm-k2/</loc>
+    <lastmod>2018-09-10T20:44:48+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/post/english-preview/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -109,6 +116,20 @@
   <url>
     <loc>http://localhost:1313/categories/english/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/lede/</loc>
+    <lastmod>2018-09-10T20:44:48+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/phicomm-k2/</loc>
+    <lastmod>2018-09-10T20:44:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
