@@ -2,138 +2,174 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on luo Space - Coding and thinking.</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://luozongtong123.github.io/tags/</link>
     <description>Recent content in Tags on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 31 Aug 2017 15:43:48 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 08 Sep 2018 20:36:46 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luozongtong123.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>ArduSub</title>
+      <link>https://luozongtong123.github.io/tags/ardusub/</link>
+      <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/tags/ardusub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>English</title>
-      <link>http://localhost:1313/tags/english/</link>
+      <link>https://luozongtong123.github.io/tags/english/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/english/</guid>
+      <guid>https://luozongtong123.github.io/tags/english/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LEDE</title>
-      <link>http://localhost:1313/tags/lede/</link>
+      <link>https://luozongtong123.github.io/tags/lede/</link>
       <pubDate>Sun, 04 Feb 2018 04:06:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/lede/</guid>
+      <guid>https://luozongtong123.github.io/tags/lede/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Phicomm K2</title>
-      <link>http://localhost:1313/tags/phicomm-k2/</link>
+      <link>https://luozongtong123.github.io/tags/phicomm-k2/</link>
       <pubDate>Sun, 04 Feb 2018 04:06:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/phicomm-k2/</guid>
+      <guid>https://luozongtong123.github.io/tags/phicomm-k2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Preview</title>
-      <link>http://localhost:1313/tags/preview/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
+      <link>https://luozongtong123.github.io/tags/preview/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/preview/</guid>
+      <guid>https://luozongtong123.github.io/tags/preview/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shortcodes</title>
-      <link>http://localhost:1313/tags/shortcodes/</link>
+      <link>https://luozongtong123.github.io/tags/shortcodes/</link>
       <pubDate>Tue, 30 Aug 2016 16:01:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/shortcodes/</guid>
+      <guid>https://luozongtong123.github.io/tags/shortcodes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Syntax Highlighting</title>
-      <link>http://localhost:1313/tags/syntax-highlighting/</link>
+      <link>https://luozongtong123.github.io/tags/syntax-highlighting/</link>
       <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/syntax-highlighting/</guid>
+      <guid>https://luozongtong123.github.io/tags/syntax-highlighting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tag-1</title>
-      <link>http://localhost:1313/tags/tag-1/</link>
+      <link>https://luozongtong123.github.io/tags/tag-1/</link>
       <pubDate>Wed, 30 Aug 2017 01:37:56 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/tag-1/</guid>
+      <guid>https://luozongtong123.github.io/tags/tag-1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tag-2</title>
-      <link>http://localhost:1313/tags/tag-2/</link>
+      <link>https://luozongtong123.github.io/tags/tag-2/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/tag-2/</guid>
+      <guid>https://luozongtong123.github.io/tags/tag-2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tag-3</title>
-      <link>http://localhost:1313/tags/tag-3/</link>
+      <link>https://luozongtong123.github.io/tags/tag-3/</link>
       <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/tag-3/</guid>
+      <guid>https://luozongtong123.github.io/tags/tag-3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tag-4</title>
-      <link>http://localhost:1313/tags/tag-4/</link>
+      <link>https://luozongtong123.github.io/tags/tag-4/</link>
       <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/tag-4/</guid>
+      <guid>https://luozongtong123.github.io/tags/tag-4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tag-5</title>
-      <link>http://localhost:1313/tags/tag-5/</link>
+      <link>https://luozongtong123.github.io/tags/tag-5/</link>
       <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/tag-5/</guid>
+      <guid>https://luozongtong123.github.io/tags/tag-5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Theme preview</title>
-      <link>http://localhost:1313/tags/theme-preview/</link>
+      <link>https://luozongtong123.github.io/tags/theme-preview/</link>
       <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/theme-preview/</guid>
+      <guid>https://luozongtong123.github.io/tags/theme-preview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WSL</title>
+      <link>https://luozongtong123.github.io/tags/wsl/</link>
+      <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/tags/wsl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xsens MTi-300</title>
+      <link>https://luozongtong123.github.io/tags/xsens-mti-300/</link>
+      <pubDate>Sat, 16 Dec 2017 06:51:58 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/tags/xsens-mti-300/</guid>
       <description></description>
     </item>
     
     <item>
       <title>中文</title>
-      <link>http://localhost:1313/tags/%E4%B8%AD%E6%96%87/</link>
+      <link>https://luozongtong123.github.io/tags/%E4%B8%AD%E6%96%87/</link>
       <pubDate>Wed, 30 Aug 2017 01:37:56 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/%E4%B8%AD%E6%96%87/</guid>
+      <guid>https://luozongtong123.github.io/tags/%E4%B8%AD%E6%96%87/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>惯导</title>
+      <link>https://luozongtong123.github.io/tags/%E6%83%AF%E5%AF%BC/</link>
+      <pubDate>Sat, 16 Dec 2017 06:51:58 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/tags/%E6%83%AF%E5%AF%BC/</guid>
       <description></description>
     </item>
     
     <item>
       <title>日本語</title>
-      <link>http://localhost:1313/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+      <link>https://luozongtong123.github.io/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
       <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+      <guid>https://luozongtong123.github.io/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
       <description></description>
     </item>
     

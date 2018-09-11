@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Xsens MTi-300 AHRS 的使用 - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="今天实验室来交流的泰国老师给我讲解了一下 Xsens MTi-300 AHRS 的使用，现在稍稍总结一下。
+
+" />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.48" />
+
+
+<link rel="canonical" href="https://luozongtong123.github.io/post/using-of-xsens-mti-300-ahrs/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Xsens MTi-300 AHRS 的使用" />
+<meta property="og:description" content="今天实验室来交流的泰国老师给我讲解了一下 Xsens MTi-300 AHRS 的使用，现在稍稍总结一下。
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luozongtong123.github.io/post/using-of-xsens-mti-300-ahrs/" /><meta property="article:published_time" content="2017-12-16T06:51:58&#43;08:00"/>
+<meta property="article:modified_time" content="2018-09-10T21:41:58&#43;08:00"/>
+<meta itemprop="name" content="Xsens MTi-300 AHRS 的使用">
+<meta itemprop="description" content="今天实验室来交流的泰国老师给我讲解了一下 Xsens MTi-300 AHRS 的使用，现在稍稍总结一下。
+
+">
+
+
+<meta itemprop="datePublished" content="2017-12-16T06:51:58&#43;08:00" />
+<meta itemprop="dateModified" content="2017-12-16T06:51:58&#43;08:00" />
+<meta itemprop="wordCount" content="1548">
+
+
+
+<meta itemprop="keywords" content="Xsens MTi-300,惯导," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Xsens MTi-300 AHRS 的使用"/>
+<meta name="twitter:description" content="今天实验室来交流的泰国老师给我讲解了一下 Xsens MTi-300 AHRS 的使用，现在稍稍总结一下。
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Xsens MTi-300 AHRS 的使用</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-12-16 </span>
+        
+        <span class="more-meta"> 约 1548 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#一-型号分类">一、型号分类</a></li>
+<li><a href="#二-相关软件">二、相关软件</a>
+<ul>
+<li><a href="#1-mt-manager">1、MT Manager</a></li>
+<li><a href="#2-magnetic-field-mapper">2、Magnetic Field Mapper</a></li>
+<li><a href="#3-firmware-updater">3、Firmware Updater</a></li>
+</ul></li>
+<li><a href="#三-滤波配置">三、滤波配置</a></li>
+<li><a href="#四-校准惯导">四、校准惯导</a>
+<ul>
+<li><a href="#更改-滤波设置">更改<strong>滤波设置</strong>：</a></li>
+<li><a href="#误差估算"><strong>误差估算</strong>：</a></li>
+<li><a href="#当前位置-设定"><strong>当前位置</strong>设定：</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>今天实验室来交流的泰国老师给我讲解了一下 Xsens MTi-300 AHRS 的使用，现在稍稍总结一下。</p>
+
+<p></p>
+
+<h2 id="一-型号分类">一、型号分类</h2>
+
+<p>根据官方选型手册，Xsens MTi  系列传感器共有三个系列：</p>
+
+<p>1.MTi 1-series</p>
+
+<ul>
+<li>MTi-1 IMU</li>
+<li>MTi-2 VRU</li>
+<li>MTi-3 AHRS</li>
+</ul>
+
+<p>2.MTi 10-series</p>
+
+<ul>
+<li>MTi-10 IMU</li>
+<li>MTi-20 VRU</li>
+<li>MTi-30 AHRS</li>
+</ul>
+
+<p>3.MTi 100-series</p>
+
+<ul>
+<li>MTi-100 IMU</li>
+<li>MTi-200 VRU</li>
+<li>MTi-300 AHRS</li>
+<li>MTi-G-710 GNSS/INS</li>
+</ul>
+
+<p>其性能随着数字的增多而提高，MTi 100-series系列性能最高。其中1开头的传感器仅仅包含惯性测量单元（Inertial measurement unit  &ndash; <strong>IMU</strong>），提供三轴加速度数据，并不包含三轴姿态角的解算；2开头的传感器在1开头的基础上增加三轴姿态角的解算，称为垂直参考单元（Vertical Reference Unit &ndash; <strong>VRU</strong>），之所以称为垂直参考单元是因为提供的偏航角是相对的并不是绝对的；3开头的传感器在2开头的传感器中增加磁力计，组成航向参考系统（Heading Reference System &ndash; <strong>AHRS</strong>）。</p>
+
+<p>我们目前使用的型号是 <strong>MTi-300 AHRS</strong>。</p>
+
+<h2 id="二-相关软件">二、相关软件</h2>
+
+<h3 id="1-mt-manager">1、MT Manager</h3>
+
+<p>该软件提供传感器的设置、数据的可视化及记录等功能；</p>
+
+<h3 id="2-magnetic-field-mapper">2、Magnetic Field Mapper</h3>
+
+<p>该软件提供3开头的传感器的周围磁场的测算，并可以把测算的结果写入到传感器里进而提高传感器的准确度；</p>
+
+<h3 id="3-firmware-updater">3、Firmware Updater</h3>
+
+<p>该软件可以给传感器估计升级。</p>
+
+<p>要注意，各种相关的软件最好使用最新版，因为新版更新会提供更好的性能以及修复Bug等。</p>
+
+<p>要<strong>尤为注意</strong>的是要保持传感器固件的版本保持最新，因为固件中包含地球磁场的数据，地区磁场数据每年都在变化，所以若想要获得最佳的效果最好使用最新的地球磁场数据。</p>
+
+<h2 id="三-滤波配置">三、滤波配置</h2>
+
+<p>官方为 MTi-300 AHRS 系列传感器提供了五种滤波配置，包括：general、high_mag_dep、dynamic、low_mag_dep、vru_general。</p>
+
+<p>其中 vru_general 相当于去掉了磁力计的作用，偏航角变成相对的（取上电时的位置为0），同样其结果不受周围磁场的影响。而 high_mag_dep 则是在计算偏航角时相对惯性测量单元的数据更加依赖磁场的测量数据。</p>
+
+<p>总得来说，在决定使用何种配置时需要考虑周围磁场的情况，若周围磁场不是特别强并且不会发生变化时可以选择较为依赖磁力计的配置文件，否则则需要使用 vru_general 配置。</p>
+
+<p>原文参考：</p>
+
+<p>The <strong>general</strong> filter profile is the default setting. It assumes moderate dynamics and a homogenous
+magnetic field. External magnetic distortions are considered relatively short (up to ~20 seconds).
+Typical applications include camera tracking (e.g. TV camera’s), remotely operated robotic arms on
+ROV’s etc</p>
+
+<p>The <strong>high_mag_dep</strong> filter profile assumes homogenous magnetic field and an excellent Magnetic Field
+Mapping. This filter profile heavily relies on the magnetometer for heading. Dynamics of the motion arerelatively slow. Typical applications are navigation of ROV’s or the control of small unmanned
+helicopters.</p>
+
+<p>The <strong>dynamic</strong> filter profile assumes jerky motions. However, the assumption is also made that there is no GNSS available and/or that the velocity is not very high. In these conditions a 100-series MTi may be a better choice. The dynamic filter profile uses the magnetometer for stabilization of the heading,and assumes very short magnetic distortions. Typical applications are where the MTi is mounted on persons or hand-held (e.g. HMD, sports attributes etc.).</p>
+
+<p>The <strong>low_mag_dep</strong> filter profile assumes that the dynamics is relatively low and that there are long-
+lasting external magnetic distortions. Also use this filter profile when it is difficult to do a very good
+Magnetic Field Mapping (MFM). The use of the low_mag_dep filter profile can be useful to limit drift in
+heading whilst not being in a homogenous magnetic field. Typical applications are large vessels and
+unmanned ground vehicles in buildings.</p>
+
+<p>The <strong>vru_general</strong> filter profile assumes moderate dynamics in a field where the magnetic field cannot
+be trusted at all and benefits from the Active Heading Stabilization feature. It is also possible to use
+this filter profile in situations where an alternative source of yaw is available. Yaw from the VRU is
+unreferenced; note however, that because of the working principle of the VRU, the drift in yaw will be
+much lower than when gyroscope signals would be integrated. Typical applications are stabilized
+antenna platforms mounted on cars of ships and pipeline inspection tools. This filter profile is the onlyone available for the MTi-20 VRU.</p>
+
+<p>Every application is different and although example applications are listed above, results may vary
+from setup to setup. It is recommended to reprocess recorded data with different filter profiles in MT
+Manager to determine the best results in your specific application.</p>
+
+<h2 id="四-校准惯导">四、校准惯导</h2>
+
+<h3 id="更改-滤波设置">更改<strong>滤波设置</strong>：</h3>
+
+<p>使用 <strong>USB</strong> 线将传感器与电脑相连后，打开 MT Manager 软件，搜索到设备后，打开 MT Setting 界面，选择 Device Setings 选项卡，在 Filter Setting中选择滤波配置，右上角 Write To MT 后便可生效。</p>
+
+<h3 id="误差估算"><strong>误差估算</strong>：</h3>
+
+<p>当传感器偏航角数据发生明显漂移时需要进行这一操作。在 Gyro Bias Estimate 中可以看到有一个输入框和按钮。输入框设置误差估算的时间，应该保证其大小不小于 6 秒，在点击按钮时要确认在点击按钮后在误差估算的时间内传感器要<strong>保持静止</strong>。</p>
+
+<h3 id="当前位置-设定"><strong>当前位置</strong>设定：</h3>
+
+<p>由于传感器需要根据当前位置确定所处地球磁场的数据，所以需要提供准确的经纬度数据。在 Position 中填入当前的经纬度，条件允许时同时可以提供海拔数据。</p>
+
+<p>其他需要 <strong>注意</strong>的地方：当选择使用 vru_general 滤波配置时<strong>要</strong>勾选 Active Heading Stabilization（AHS），同时保证在不使用 vru_general 滤波配置时<strong>不要</strong>勾选 AHS。</p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://luozongtong123.github.io/about/" rel="noopener" target="_blank">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-09-10</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC 署名 4.0 国际</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/xsens-mti-300/">Xsens MTi-300</a>
+          
+          <a href="/tags/%E6%83%AF%E5%AF%BC/">惯导</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/lede-phicomm-k2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Phicomm K2 刷 LEDE </span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/english-preview/">
+            <span class="next-text nav-default">[English] Creating a New Theme</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2017-12-16 06:51:58 \x2b0800 CST',
+    title: 'Xsens MTi-300 AHRS 的使用',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'luozongtong123.github.io',
+    owner: 'luozongtong123',
+    admin: ['luozongtong123'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:luozongtong123@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/luozongtong123" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.zhihu.com/people/luozongtong123" class="iconfont icon-zhihu" title="zhihu"></a>
+  <a href="https://luozongtong123.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="https://luozongtong123.github.io/about/" rel="noopener" target="_blank">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+  <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+  <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+<script>  
+  var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+  timeago().render(document.querySelectorAll('.timeago'), languageCode);
+  timeago.cancel();  
+</script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
