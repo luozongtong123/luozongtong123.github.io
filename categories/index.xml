@@ -6,79 +6,35 @@
     <description>Recent content in Categories on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Sat, 08 Sep 2018 20:36:46 +0800</lastBuildDate>
     
 	<atom:link href="https://luozongtong123.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Category-2</title>
-      <link>https://luozongtong123.github.io/categories/category-2/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
+      <title>ArduSub</title>
+      <link>https://luozongtong123.github.io/categories/ardusub/</link>
+      <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/categories/category-2/</guid>
+      <guid>https://luozongtong123.github.io/categories/ardusub/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Category-3</title>
-      <link>https://luozongtong123.github.io/categories/category-3/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
+      <title>Hugo</title>
+      <link>https://luozongtong123.github.io/categories/hugo/</link>
+      <pubDate>Mon, 17 Sep 2018 22:11:40 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/categories/category-3/</guid>
+      <guid>https://luozongtong123.github.io/categories/hugo/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>English</title>
-      <link>https://luozongtong123.github.io/categories/english/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      <title>路由器</title>
+      <link>https://luozongtong123.github.io/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/</link>
+      <pubDate>Sun, 04 Feb 2018 04:06:48 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/categories/english/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Shortcodes</title>
-      <link>https://luozongtong123.github.io/categories/shortcodes/</link>
-      <pubDate>Tue, 30 Aug 2016 16:01:23 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/categories/shortcodes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Syntax Highlighting</title>
-      <link>https://luozongtong123.github.io/categories/syntax-highlighting/</link>
-      <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/categories/syntax-highlighting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Theme preview</title>
-      <link>https://luozongtong123.github.io/categories/theme-preview/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/categories/theme-preview/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>中文</title>
-      <link>https://luozongtong123.github.io/categories/%E4%B8%AD%E6%96%87/</link>
-      <pubDate>Wed, 30 Aug 2017 01:37:56 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/categories/%E4%B8%AD%E6%96%87/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>日本語</title>
-      <link>https://luozongtong123.github.io/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
-      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+      <guid>https://luozongtong123.github.io/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/</guid>
       <description></description>
     </item>
     

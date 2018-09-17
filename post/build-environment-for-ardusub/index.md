@@ -1,8 +1,7 @@
-Pixhawk1（px4_v2） 飞控使用了两片单片机。Pixhawk 其实是 PX4FMU 与 PX4IO 两块板子的组合，其中PX4FMU 使用的单片机是 [STM32F427](http://www.st.com/web/en/catalog/mmc/FM141/SC1169/SS1577/LN1789) ，PX4IO 使用的单片机是 STM32F100。PX4FMU  负责复杂的浮点运算，PX4IO 负责将 PX4FMU 计算得到的控制量输出为 PWM 或 其他信号。
+ArduSub 官方的程序无法直接给电机发送指令，这个功能需要自己实现。为了实现这个功能首先需要搭建 Pixhawk 的编译环境。
+下面将简要介绍一下环境的搭建步骤。
 
 <!--more-->
-
-# 
 
 ## 一、前言
 
@@ -156,7 +155,6 @@ git submodule update --recursive
 ```
 
 下载程序需要用到 QGroundControl。
-
 
 
 

@@ -6,26 +6,17 @@
     <description>Recent content in Tags on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 08 Sep 2018 20:36:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 17 Sep 2018 22:11:40 +0800</lastBuildDate>
     
 	<atom:link href="https://luozongtong123.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>ArduSub</title>
-      <link>https://luozongtong123.github.io/tags/ardusub/</link>
-      <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
+      <title>Even theme</title>
+      <link>https://luozongtong123.github.io/tags/even-theme/</link>
+      <pubDate>Mon, 17 Sep 2018 22:11:40 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/tags/ardusub/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>English</title>
-      <link>https://luozongtong123.github.io/tags/english/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/tags/english/</guid>
+      <guid>https://luozongtong123.github.io/tags/even-theme/</guid>
       <description></description>
     </item>
     
@@ -48,83 +39,20 @@
     </item>
     
     <item>
-      <title>Preview</title>
-      <link>https://luozongtong123.github.io/tags/preview/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      <title>Pixhawk</title>
+      <link>https://luozongtong123.github.io/tags/pixhawk/</link>
+      <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/tags/preview/</guid>
+      <guid>https://luozongtong123.github.io/tags/pixhawk/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Shortcodes</title>
-      <link>https://luozongtong123.github.io/tags/shortcodes/</link>
-      <pubDate>Tue, 30 Aug 2016 16:01:23 +0800</pubDate>
+      <title>Ubuntu</title>
+      <link>https://luozongtong123.github.io/tags/ubuntu/</link>
+      <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/tags/shortcodes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Syntax Highlighting</title>
-      <link>https://luozongtong123.github.io/tags/syntax-highlighting/</link>
-      <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/tags/syntax-highlighting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tag-1</title>
-      <link>https://luozongtong123.github.io/tags/tag-1/</link>
-      <pubDate>Wed, 30 Aug 2017 01:37:56 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/tags/tag-1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tag-2</title>
-      <link>https://luozongtong123.github.io/tags/tag-2/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/tags/tag-2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tag-3</title>
-      <link>https://luozongtong123.github.io/tags/tag-3/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/tags/tag-3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tag-4</title>
-      <link>https://luozongtong123.github.io/tags/tag-4/</link>
-      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/tags/tag-4/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tag-5</title>
-      <link>https://luozongtong123.github.io/tags/tag-5/</link>
-      <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/tags/tag-5/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Theme preview</title>
-      <link>https://luozongtong123.github.io/tags/theme-preview/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/tags/theme-preview/</guid>
+      <guid>https://luozongtong123.github.io/tags/ubuntu/</guid>
       <description></description>
     </item>
     
@@ -147,29 +75,11 @@
     </item>
     
     <item>
-      <title>中文</title>
-      <link>https://luozongtong123.github.io/tags/%E4%B8%AD%E6%96%87/</link>
-      <pubDate>Wed, 30 Aug 2017 01:37:56 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/tags/%E4%B8%AD%E6%96%87/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>惯导</title>
       <link>https://luozongtong123.github.io/tags/%E6%83%AF%E5%AF%BC/</link>
       <pubDate>Sat, 16 Dec 2017 06:51:58 +0800</pubDate>
       
       <guid>https://luozongtong123.github.io/tags/%E6%83%AF%E5%AF%BC/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>日本語</title>
-      <link>https://luozongtong123.github.io/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
-      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
-      
-      <guid>https://luozongtong123.github.io/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
       <description></description>
     </item>
     
