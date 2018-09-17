@@ -6,7 +6,7 @@
 
 ## 1.标题
 
-![header](img/even-preview/header.jpg)
+![header](/img/even-preview/header.jpg)
 
 ``` markdown
 # H1
