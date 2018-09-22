@@ -48,7 +48,7 @@
 
 水密接插件使用 8 芯的[水密接插件](https://item.taobao.com/item.htm?spm=a1z09.2.0.0.49ab2e8dbytuPm&id=570101069120&_u=n1krgas16f03)，该接插件的单芯额定电流为5A，接插件的芯线定义（从母头方向看）如下图所示：
 
-<img src=".\img\make-a-rov\waterproof_plug.jpg" width="30%" height="30%">
+<img src="/img/make-a-rov/waterproof_plug.jpg" width="30%" height="30%">
 
 * 线号 1：1#电池充电，正极；
 * 线号 2：2#电池充电，正极；
