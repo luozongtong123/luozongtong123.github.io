@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Theme preview</title>
+      <title>hugo 博客系统 even 主题预览</title>
       <link>https://luozongtong123.github.io/post/even-preview/</link>
       <pubDate>Mon, 17 Sep 2018 22:11:40 +0800</pubDate>
       
@@ -35,6 +35,16 @@
     </item>
     
     <item>
+      <title>制作一个 ROV  </title>
+      <link>https://luozongtong123.github.io/post/make-a-rov/</link>
+      <pubDate>Tue, 28 Aug 2018 09:30:26 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/make-a-rov/</guid>
+      <description>&lt;p&gt;一步一步做自己的 ROV。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Phicomm K2 刷 LEDE </title>
       <link>https://luozongtong123.github.io/post/lede-phicomm-k2/</link>
       <pubDate>Sun, 04 Feb 2018 04:06:48 +0800</pubDate>
@@ -54,6 +64,36 @@
       <description>&lt;p&gt;今天实验室来交流的泰国老师给我讲解了一下 Xsens MTi-300 AHRS 的使用，现在稍稍总结一下。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo luocman 主题的文章书写规范</title>
+      <link>https://luozongtong123.github.io/post/how-to-write/</link>
+      <pubDate>Sat, 28 Feb 2015 13:51:42 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/how-to-write/</guid>
+      <description>&lt;p&gt;将一些 Hexo luocman 主题的文章的书写规范和技巧总结一下。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>简单的 Git 入门</title>
+      <link>https://luozongtong123.github.io/post/something-about-git/</link>
+      <pubDate>Fri, 13 Feb 2015 22:31:00 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/something-about-git/</guid>
+      <description>&lt;p&gt;在使用 Hexo 作为博客程序的过程中使用了 Git 这个分布式版本控制系统。现在已经初步入门了。之前一直都没有深入去研究，但是今天上午突然想要把所有的东西都同步到某网盘上以免本地数据出现差错导致博客从头再来。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo world ！—— Hexo 博客搭建教程</title>
+      <link>https://luozongtong123.github.io/post/hexo-world--how-to-build-hexo-blog/</link>
+      <pubDate>Tue, 27 Jan 2015 21:11:00 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/hexo-world--how-to-build-hexo-blog/</guid>
+      <description>&lt;p&gt;博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去。
+&lt;/p&gt;</description>
     </item>
     
   </channel>
