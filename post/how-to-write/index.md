@@ -189,7 +189,7 @@ tags:
 
 示例：
 
-![我的头像](/img/how-to-write/head.jpg)
+![我的头像](/img/how-to-write/avatar.jpg)
 
 ### 10. 表格
 

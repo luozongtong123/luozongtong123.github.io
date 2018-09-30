@@ -55,8 +55,7 @@ Enter same passphrase again:<再次输入加密串>
 
  **注意** ：输入密码的时候没有*字样的，你直接输入就可以了。
 
-最后看到这样的界面，就成功设置ssh key了：
-![SSH Key](http://7u2qla.com1.z0.glb.clouddn.com/hello-worldssh-key.png)
+~~最后看到这样的界面，就成功设置ssh key了：~~ 
 
 #### 添加SSH Key到GitHub
 
@@ -66,7 +65,6 @@ Enter same passphrase again:<再次输入加密串>
 * 登陆github系统。点击右上角的 Account Settings—->SSH Public keys —-> add another public keys
 * 把你本地生成的密钥复制到里面（key文本框中）， 点击 add key 就ok了
 
-![SSH Key set](http://7u2qla.com1.z0.glb.clouddn.com/hello-worldSSH-Key-set.jpg)
 
 #### 测试
 

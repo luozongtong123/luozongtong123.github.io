@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>RT-Thread 学习（一） - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。 " />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.43" />
+
+
+<link rel="canonical" href="https://luozongtong123.github.io/post/rt-thread-learning01/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="RT-Thread 学习（一）" />
+<meta property="og:description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luozongtong123.github.io/post/rt-thread-learning01/" />
+
+
+
+<meta property="article:published_time" content="2018-09-29T09:37:14&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-09-29T09:37:14&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="RT-Thread 学习（一）">
+<meta itemprop="description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
+">
+
+
+<meta itemprop="datePublished" content="2018-09-29T09:37:14&#43;08:00" />
+<meta itemprop="dateModified" content="2018-09-29T09:37:14&#43;08:00" />
+<meta itemprop="wordCount" content="1925">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="RT-Thread 学习（一）"/>
+<meta name="twitter:description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">RT-Thread 学习（一）</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-29 </span>
+        
+        <span class="more-meta"> 约 1925 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#裸机与多线程">裸机与多线程</a>
+<ul>
+<li><a href="#裸机系统">裸机系统</a></li>
+<li><a href="#多线程系统">多线程系统</a></li>
+</ul></li>
+<li><a href="#线程与线程的切换">线程与线程的切换</a>
+<ul>
+<li><a href="#线程的创建">线程的创建</a>
+<ul>
+<li><a href="#定义线程栈">定义线程栈</a></li>
+<li><a href="#定义线程函数">定义线程函数</a></li>
+<li><a href="#定义线程控制块">定义线程控制块</a></li>
+<li><a href="#线程创建函数的实现">线程创建函数的实现</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
+</p>
+
+<p>电子版的书和工程源文件以及参考资料下载链接如下：</p>
+
+<p>链接: <a href="https://pan.baidu.com/s/1VxToy8wi6Lg5ozhrNqgXRA">点击直达</a>  提取码: mqrb</p>
+
+<h1 id="裸机与多线程">裸机与多线程</h1>
+
+<p>最开始学习单片机的时候大家都是直接跑裸机不使用操作系统，裸机的优势是不需要学习操作系统的知识，当实现一个简单的程序时裸机简单快捷。当系统的 Flash 和 ROM 资源紧张时，裸机可以节省一部分资源。</p>
+
+<h2 id="裸机系统">裸机系统</h2>
+
+<p>裸机程序分为轮询系统和加入中断的前后台系统。轮询系统就是程序在主函数中有一个死循环不断执行某些任务。轮询系统只能被动有延时地处理外界对系统的影响无法主动实时地对外界变化多处反应。为了提供系统的响应实时性，引入了中断机制。</p>
+
+<p>回顾一下中断机制：CPU 在执行每一条指令后会确认刚才执行指令期间是否有中断请求过来，如果有中断请求则 CPU 会中断当前程序的执行，保存程序的现场（一些寄存器压栈 push），然后跳转到对应的中断服务函数并执行中断服务函数，中断服务函数执行完毕后出栈，恢复程序的执行。</p>
+
+<p>引入了中断机制的轮询系统称为前后台系统，其中中断执行的过程为前台，主函数中的轮询为后台。前后台系统确保了外部事件不会丢失并能够得到及时的响应。在大多数中小型系统中前后台系统应用的得当的话可以得到堪比加入了操作系统的效果。</p>
+
+<p>相比于前后台系统，多线程系统对外部事件的响应也是在中断中完成的，但是事件的处理是在线程中完成的。在多线程系统中，线程跟中断一样，也具有优先级，优先级高的线程会被优先执行。当一个紧急的事件在中断被标记之后，如果事件对应的线程的优先级足够高，就会立马得到响应。相比前后台系统，多线程系统的实时性又被提高了。</p>
+
+<h2 id="多线程系统">多线程系统</h2>
+
+<p>在多线程系统中，我们根据不同的功能将程序分为多个小的独立的无限循环的任务，这个任务称为线程。每个线程独立、互不干扰、且拥有自己的优先级，线程由实时操作系统进行调度的管理。加入操作系统后我们就不需要精心设计程序流，只需要设计好各个进行的逻辑和不同进程间的通信即可，对大型系统而言，加入了操作系统会使系统的可维护性更好。</p>
+
+<p>关于上不上操作系统从来就不是一个确定的问题，这需要根据实际的需求来决定。如果只是一个简单的系统，强行加入操作系统只会增加开发和维护的难度。</p>
+
+<h1 id="线程与线程的切换">线程与线程的切换</h1>
+
+<p>前面讲到，在裸机系统中，系统的主体就是 main 函数里面顺序执行的无限循环，这个无限循环里面 CPU 按照顺序完成各种事情。在多线程系统中，我们根据功能的不同，把整个系统分割成一个个独立的且无法返回的函数，这个函数我们称为线程。</p>
+
+<h2 id="线程的创建">线程的创建</h2>
+
+<h3 id="定义线程栈">定义线程栈</h3>
+
+<p>在裸机系统中，自动局部变量是存储在栈上的，栈的管理是由 C 语言编译器来完成的，栈的初始化一般是在启动文件中或者是在链接命中指定，然后由 C 语言的 <code>_main</code>来完成初始化的操作。逻辑系统中，整个程序只有一个栈，多个函数调用的过程中就对这个栈进行压栈和出栈操作。对于有 RTOS 的系统来言，我们要实现线程间的隔离就需要为每个线程创建独立的栈，在该线程内的函数调用只需要对线程自己的栈进行操作。</p>
+
+<p>这个由进程使用的栈一般是一个预先定义的一个全局数组或者一段动态分配的内存。</p>
+
+<pre><code class="language-c">/* 设置字节对齐 */
+ALIGN(RT_ALIGN_SIZE) (2)
+/* 定义线程栈 */
+rt_uint8_t rt_flag1_thread_stack[512];
+rt_uint8_t rt_flag2_thread_stack[512];
+</code></pre>
+
+<p><code>rt_uint8_t</code>是在 <code>rtdef.h</code> 中定义的类型，其他会用到的数据类型详见<a href="/src/rt-thread-learning01/rtdef.h">这里</a>。</p>
+
+<h3 id="定义线程函数">定义线程函数</h3>
+
+<pre><code class="language-c">/* 软件延时 */
+void delay (uint32_t count)
+{
+    for(; count!=0; count--);
+}
+
+/* 线程1 */
+void flag1_thread_entry( void *p_arg )
+{
+    for( ;; )
+    {
+        flag1 = 1;
+        delay( 100 );       
+        flag1 = 0;
+        delay( 100 );
+        
+        /* 线程切换，这里是手动切换 */      
+        rt_schedule();
+    }
+}
+
+/* 线程2 */
+void flag2_thread_entry( void *p_arg )
+{
+    for( ;; )
+    {
+        flag2 = 1;
+        delay( 100 );       
+        flag2 = 0;
+        delay( 100 );
+        
+        /* 线程切换，这里是手动切换 */
+        rt_schedule();
+    }
+}
+
+</code></pre>
+
+<p>如前文所述，线程是一个独立的、无限循环且不能返回的函数。</p>
+
+<h3 id="定义线程控制块">定义线程控制块</h3>
+
+<p>线程控制块是一个线程的标识，线程调度器通过现称快隋朝块识别调度线程，线程控制块的定义如下：</p>
+
+<pre><code class="language-c">struct rt_thread
+{
+    void        *sp;              /* 线程栈指针 */
+    void        *entry;           /* 线程入口地址 */
+    void        *parameter;       /* 线程形参 */    
+    void        *stack_addr;      /* 线程起始地址 */
+    rt_uint32_t stack_size;       /* 线程栈大小，单位为字节 */
+    
+    rt_list_t   tlist;            /* 线程链表节点 */
+};
+typedef struct rt_thread *rt_thread_t;
+</code></pre>
+
+<p>在 RT-Thread 中，都会给新声明的数据结构重新定义一个指针。往后如果要定义线程控制块变量就使用  <code>struct rt_thread xxx</code> 的形式，定义线程控制块指针就使用 <code>rt_thread_t xxx</code> 的形式。</p>
+
+<h3 id="线程创建函数的实现">线程创建函数的实现</h3>
+
+<p>创建线程就是根据给出的参数如线程的名称、线程栈的大小等完成线程栈的初始化和线程控制块的初始化。线程的创建由函数 <code>rt_thread_init()</code> 来实现，该函数在 <code>thread.c</code> 中定义在 <code>rthread.h</code></p>
+
+<p>中声明。该函数的实现如下：</p>
+
+<pre><code class="language-c">rt_err_t rt_thread_init(struct rt_thread *thread,        // 线程控制块
+                        void (*entry)(void *parameter),  // 线程函数名即线程入口
+                        void             *parameter,     // 线程形参
+                        void             *stack_start,   // 线程栈起始地址
+                        rt_uint32_t       stack_size)    // 线程栈大小
+{
+    rt_list_init(&amp;(thread-&gt;tlist));
+    
+    thread-&gt;entry = (void *)entry;
+    thread-&gt;parameter = parameter;
+
+    thread-&gt;stack_addr = stack_start;
+    thread-&gt;stack_size = stack_size;
+    
+    /* 初始化线程栈，并返回线程栈指针 */
+    thread-&gt;sp = (void *)rt_hw_stack_init( thread-&gt;entry, 
+                                           thread-&gt;parameter,
+                                           (void *)((char *)thread-&gt;stack_addr + thread-&gt;stack_size - 4) );
+    
+    return RT_EOK;
+}
+</code></pre>
+
+<p>线程的创建需要用到链表的相关操作，相关内容在另一篇文章里描述。跳转到[链表操作]()</p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://luozongtong123.github.io/about/" rel="noopener" target="_blank" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-09-29</span>
+  </p>
+  <p class="copyright-item">
+      <span class="item-title">原始文档</span>
+      <span class="item-content"><a class="link-to-markdown" href="https://luozongtong123.github.io/post/rt-thread-learning01/index.md" target="_blank">Markdown 文件</a></span>
+    </p>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC 署名 4.0 国际</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/even-preview/">
+            <span class="next-text nav-default">hugo 博客系统 even 主题预览</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-09-29 09:37:14 \x2b0800 CST',
+    title: 'RT-Thread 学习（一）',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'luozongtong123.github.io',
+    owner: 'luozongtong123',
+    admin: ['luozongtong123'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:luozongtong123@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/luozongtong123" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.zhihu.com/people/luozongtong123" class="iconfont icon-zhihu" title="zhihu"></a>
+  <a href="https://luozongtong123.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="https://luozongtong123.github.io/about/" rel="noopener" target="_blank" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
