@@ -59,7 +59,7 @@
 
 <meta property="article:published_time" content="2018-09-29T09:37:14&#43;08:00"/>
 
-<meta property="article:modified_time" content="2018-09-29T09:37:14&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-02T22:00:14&#43;08:00"/>
 
 
 
@@ -78,7 +78,7 @@
 
 <meta itemprop="datePublished" content="2018-09-29T09:37:14&#43;08:00" />
 <meta itemprop="dateModified" content="2018-09-29T09:37:14&#43;08:00" />
-<meta itemprop="wordCount" content="1925">
+<meta itemprop="wordCount" content="3123">
 
 
 
@@ -154,8 +154,8 @@
       <div class="post-meta">
         <span class="post-time"> 2018-09-29 </span>
         
-        <span class="more-meta"> 约 1925 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span class="more-meta"> 约 3123 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -304,9 +304,7 @@ typedef struct rt_thread *rt_thread_t;
 
 <h3 id="线程创建函数的实现">线程创建函数的实现</h3>
 
-<p>创建线程就是根据给出的参数如线程的名称、线程栈的大小等完成线程栈的初始化和线程控制块的初始化。线程的创建由函数 <code>rt_thread_init()</code> 来实现，该函数在 <code>thread.c</code> 中定义在 <code>rthread.h</code></p>
-
-<p>中声明。该函数的实现如下：</p>
+<p>创建线程就是根据给出的参数如线程的名称、线程栈的大小等完成线程栈的初始化和线程控制块的初始化。线程的创建由函数 <code>rt_thread_init()</code> 来实现，该函数在 <code>thread.c</code> 中定义在 <code>rthread.h</code> 中声明。该函数的实现如下：</p>
 
 <pre><code class="language-c">rt_err_t rt_thread_init(struct rt_thread *thread,        // 线程控制块
                         void (*entry)(void *parameter),  // 线程函数名即线程入口
@@ -314,7 +312,7 @@ typedef struct rt_thread *rt_thread_t;
                         void             *stack_start,   // 线程栈起始地址
                         rt_uint32_t       stack_size)    // 线程栈大小
 {
-    rt_list_init(&amp;(thread-&gt;tlist));
+    rt_list_init(&amp;(thread-&gt;tlist));                      // (1)
     
     thread-&gt;entry = (void *)entry;
     thread-&gt;parameter = parameter;
@@ -331,7 +329,181 @@ typedef struct rt_thread *rt_thread_t;
 }
 </code></pre>
 
-<p>线程的创建需要用到链表的相关操作，相关内容在另一篇文章里描述。跳转到[链表操作]()</p>
+<p>标号为 (1) 的代码对线程控制块的线程链表节点 <code>tlist</code> 进行初始化，链表节点可以插入到不同的链表，线程调度器通过链表调度线程。<code>tlist</code> 的数据原型是 <code>rt_list_t</code> 。</p>
+
+<p>双向链表节点数据类型定义如下：</p>
+
+<pre><code class="language-c">struct rt_list_node
+{
+  struct rt_list_node *next;   /* 指向后一个节点 */
+  struct rt_list_node *prev;   /* 指向前一个节点 */
+};
+typedef struct rt_list_node rt_list_t;
+</code></pre>
+
+<p>节点中包含两个数据第一个是指向下一个节点的指针，第二个是指向上一个节点的指针。</p>
+
+<p>关于这个节点的作用书中在此处没有说明，他的作用是在后面讲的，我们把这部分拿到前面来。前面讲到我们可以把 <code>tlist</code> 这个线程控制块的成员插入到不同的链表中，例如就绪列表等。线程调度器再根据列表中的节点切换不同的线程，那么问题来了，我们如何利用这个节点找到线程控制块呢？ RT-Thread 中有一个宏可以通过 <code>tlist</code> 来找到线程控制块的起始地址，这个宏是 <code>rt_list_entry()</code> ，其定义如下：</p>
+
+<pre><code class="language-c">/* 已知一个结构体里面的成员的地址，反推出该结构体的首地址 */
+#define rt_container_of(ptr, type, member)
+    ((type *)((char *)(ptr) - (unsigned long)(&amp;((type *)0)-&gt;member)))
+
+#define rt_list_entry(node, type, member)
+    rt_container_of(node, type, member)
+</code></pre>
+
+<p><code>rt_list_entry()</code> 调用了 <code>rt_container_of()</code> 宏，这个宏可以已知结构体中的成员找到结构体的首地址。上述代码中， <code>prt</code> 是指向结构体成员的地址， <code>type</code> 是结构体的类型， <code>member</code> 是结构体成员的名字。我们来看一下这个宏函数。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/rt-thread-learning01/rt_container_of.jpg" alt="rt_container_of() 宏的实现" />
+    
+    
+    <figcaption>
+        <h4>rt_container_of() 宏的实现</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>如上图左半边图所示，我们已知 <code>prt</code> 要求 <code>f_struct_prt</code> ，显然只要知道深色部分标注为<strong>偏移</strong>的大小即可。那么如何才能求出偏移量的大小呢，这需要借助于 <strong>0 地址</strong>。</p>
+
+<ol>
+<li><p>首先，将 0 地址强制转换为 <code>type</code> 类型的结构体： <code>((type *)0)</code>，</p></li>
+
+<li><p>然后，获取到这个结构体的成员 <code>member</code> 的地址： <code>(&amp;((type *)0)-&gt;member))</code>，</p></li>
+
+<li><p>最后，因为这个结构体的起始地址是 0 ，所以只要将这个成员的地址强制转换成无符号长整型数就是我们要求的偏移： <code>(unsigned long)(&amp;((type *)0)-&gt;member))</code>。</p></li>
+</ol>
+
+<p>再回到 <code>(char *)(ptr)</code> ，这里将指针强制转换为 <code>char</code> 的目的是为了在后面加减偏移量时以一个字节为单位。最后的最后，再将减去偏移量的地址强制转换为结构体类型的指针。至于 <code>rt_list_entry()</code> ，则可以非常容易的理解为，已知节点地址 <code>node</code> 、线程控制块结构体类型 <code>type</code> 、节点名称（tlist） <code>member</code> ，求线程控制块的地址。</p>
+
+<p>讲完了节点的作用下面我们来看一下节点双向列表的一些操作。</p>
+
+<p>由上面给出的节点的定义可知，由节点构成的链表可以表示成下图：</p>
+
+
+<figure class="center">
+    
+        <img src="/img/rt-thread-learning01/list_of_rt_list_t.jpg" alt="rt_list_t列表" />
+    
+    
+    <figcaption>
+        <h4>rt_list_t列表</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>链表的操作包括初始化链表节点、在双向链表表头前面插入一个节点、在双向链表表头后面插入一个节点、从双向链表中删除一个节点。相关函数的实现在 <code>rtservice.h</code> 。</p>
+
+<p><strong>初始化链表节点</strong></p>
+
+<p>rt_list_t 类型的节点的初始化，就是将节点里面的 next 和 prev 这两个节点指针指向节点本身。代码实现如下：</p>
+
+<pre><code class="language-c">rt_inline void rt_list_init(rt_list_t *l)
+{
+    l-&gt;next = l-&gt;prev = l;
+}
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/rt-thread-learning01/list_op_1.jpg" alt="初始化链表节点" />
+    
+    
+    <figcaption>
+        <h4>初始化链表节点</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p><strong>在双向链表表头后面插入一个节点</strong></p>
+
+<pre><code class="language-c">/* 在双向链表头部插入一个节点 */
+rt_inline void rt_list_insert_after(rt_list_t *l, rt_list_t *n)
+{
+    l-&gt;next-&gt;prev = n; /* 第1步 */
+    n-&gt;next = l-&gt;next; /* 第2步 */
+    
+    l-&gt;next = n; /* 第3步 */
+    n-&gt;prev = l; /* 第4步 */
+}
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/rt-thread-learning01/list_op_2.jpg" alt="在双向链表表头后面插入一个节点" />
+    
+    
+    <figcaption>
+        <h4>在双向链表表头后面插入一个节点</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p><strong>在双向链表表头前面插入一个节点</strong></p>
+
+<pre><code class="language-c">rt_inline void rt_list_insert_before(rt_list_t *l, rt_list_t *n)
+{
+    l-&gt;prev-&gt;next = n; /* 第1步 */
+    n-&gt;prev = l-&gt;prev; /* 第2步 */
+    
+    l-&gt;prev = n; /* 第3步 */
+    n-&gt;next = l; /* 第4步 */
+}
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/rt-thread-learning01/list_op_3.jpg" alt="在双向链表表头前面插入一个节点" />
+    
+    
+    <figcaption>
+        <h4>在双向链表表头前面插入一个节点</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p><strong>从双向链表删除一个节点</strong></p>
+
+<pre><code class="language-c">rt_inline void rt_list_remove(rt_list_t *n)
+{
+    n-&gt;next-&gt;prev = n-&gt;prev; /* 第1步 */
+    n-&gt;prev-&gt;next = n-&gt;next; /* 第2步 */
+    
+    n-&gt;next = n-&gt;prev = n; /* 第3步 */
+}
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/rt-thread-learning01/list_op_4.jpg" alt="从双向链表删除一个节点" />
+    
+    
+    <figcaption>
+        <h4>从双向链表删除一个节点</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p><strong>注：文中所有图片均来自《RT-Thread 内核实现与应用开发实战指南》。</strong></p>
     </div>
 
     
@@ -342,7 +514,7 @@ typedef struct rt_thread *rt_thread_t;
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-09-29</span>
+    <span class="item-content">2018-10-02</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>

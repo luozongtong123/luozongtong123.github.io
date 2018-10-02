@@ -122,9 +122,7 @@ typedef struct rt_thread *rt_thread_t;
 
 ### 线程创建函数的实现
 
-创建线程就是根据给出的参数如线程的名称、线程栈的大小等完成线程栈的初始化和线程控制块的初始化。线程的创建由函数 `rt_thread_init()` 来实现，该函数在 `thread.c` 中定义在 `rthread.h`
-
-中声明。该函数的实现如下：
+创建线程就是根据给出的参数如线程的名称、线程栈的大小等完成线程栈的初始化和线程控制块的初始化。线程的创建由函数 `rt_thread_init()` 来实现，该函数在 `thread.c` 中定义在 `rthread.h` 中声明。该函数的实现如下：
 
 ```c
 rt_err_t rt_thread_init(struct rt_thread *thread,        // 线程控制块
@@ -133,7 +131,7 @@ rt_err_t rt_thread_init(struct rt_thread *thread,        // 线程控制块
                         void             *stack_start,   // 线程栈起始地址
                         rt_uint32_t       stack_size)    // 线程栈大小
 {
-	rt_list_init(&(thread->tlist));
+	rt_list_init(&(thread->tlist));                      // (1)
 	
 	thread->entry = (void *)entry;
 	thread->parameter = parameter;
@@ -150,6 +148,125 @@ rt_err_t rt_thread_init(struct rt_thread *thread,        // 线程控制块
 }
 ```
 
-线程的创建需要用到链表的相关操作，相关内容在另一篇文章里描述。跳转到[链表操作]()   
+标号为 (1) 的代码对线程控制块的线程链表节点 `tlist` 进行初始化，链表节点可以插入到不同的链表，线程调度器通过链表调度线程。`tlist` 的数据原型是 `rt_list_t` 。   
+
+双向链表节点数据类型定义如下：
+
+```c
+struct rt_list_node
+{
+  struct rt_list_node *next;   /* 指向后一个节点 */
+  struct rt_list_node *prev;   /* 指向前一个节点 */
+};
+typedef struct rt_list_node rt_list_t;
+```
+
+节点中包含两个数据第一个是指向下一个节点的指针，第二个是指向上一个节点的指针。   
+
+关于这个节点的作用书中在此处没有说明，他的作用是在后面讲的，我们把这部分拿到前面来。前面讲到我们可以把 `tlist` 这个线程控制块的成员插入到不同的链表中，例如就绪列表等。线程调度器再根据列表中的节点切换不同的线程，那么问题来了，我们如何利用这个节点找到线程控制块呢？ RT-Thread 中有一个宏可以通过 `tlist` 来找到线程控制块的起始地址，这个宏是 `rt_list_entry()` ，其定义如下：
+
+```c
+/* 已知一个结构体里面的成员的地址，反推出该结构体的首地址 */
+#define rt_container_of(ptr, type, member)
+    ((type *)((char *)(ptr) - (unsigned long)(&((type *)0)->member)))
+
+#define rt_list_entry(node, type, member)
+    rt_container_of(node, type, member)
+```
+
+`rt_list_entry()` 调用了 `rt_container_of()` 宏，这个宏可以已知结构体中的成员找到结构体的首地址。上述代码中， `prt` 是指向结构体成员的地址， `type` 是结构体的类型， `member` 是结构体成员的名字。我们来看一下这个宏函数。
+
+{{% figure class="center" src="/img/rt-thread-learning01/rt_container_of.jpg" alt="rt_container_of() 宏的实现" title="rt_container_of() 宏的实现" %}}
+
+如上图左半边图所示，我们已知 `prt` 要求 `f_struct_prt` ，显然只要知道深色部分标注为**偏移**的大小即可。那么如何才能求出偏移量的大小呢，这需要借助于 **0 地址**。
+
+1. 首先，将 0 地址强制转换为 `type` 类型的结构体： `((type *)0)`，
+
+2. 然后，获取到这个结构体的成员 `member` 的地址： `(&((type *)0)->member))`，
+3. 最后，因为这个结构体的起始地址是 0 ，所以只要将这个成员的地址强制转换成无符号长整型数就是我们要求的偏移： `(unsigned long)(&((type *)0)->member))`。   
+
+再回到 `(char *)(ptr)` ，这里将指针强制转换为 `char` 的目的是为了在后面加减偏移量时以一个字节为单位。最后的最后，再将减去偏移量的地址强制转换为结构体类型的指针。至于 `rt_list_entry()` ，则可以非常容易的理解为，已知节点地址 `node` 、线程控制块结构体类型 `type` 、节点名称（tlist） `member` ，求线程控制块的地址。      
+
+讲完了节点的作用下面我们来看一下节点双向列表的一些操作。   
+
+由上面给出的节点的定义可知，由节点构成的链表可以表示成下图：
+
+{{% figure class="center" src="/img/rt-thread-learning01/list_of_rt_list_t.jpg" alt="rt_list_t列表" title="rt_list_t列表" %}}
+
+链表的操作包括初始化链表节点、在双向链表表头前面插入一个节点、在双向链表表头后面插入一个节点、从双向链表中删除一个节点。相关函数的实现在 ` rtservice.h` 。   
+
+**初始化链表节点**   
+
+rt_list_t 类型的节点的初始化，就是将节点里面的 next 和 prev 这两个节点指针指向节点本身。代码实现如下：
+
+```c
+rt_inline void rt_list_init(rt_list_t *l)
+{
+    l->next = l->prev = l;
+}
+```
+
+{{% figure class="center" src="/img/rt-thread-learning01/list_op_1.jpg" alt="初始化链表节点" title="初始化链表节点" %}}   
 
 
+
+**在双向链表表头后面插入一个节点**    
+
+
+
+```c
+/* 在双向链表头部插入一个节点 */
+rt_inline void rt_list_insert_after(rt_list_t *l, rt_list_t *n)
+{
+    l->next->prev = n; /* 第1步 */
+    n->next = l->next; /* 第2步 */
+    
+    l->next = n; /* 第3步 */
+    n->prev = l; /* 第4步 */
+}
+```
+
+
+
+{{% figure class="center" src="/img/rt-thread-learning01/list_op_2.jpg" alt="在双向链表表头后面插入一个节点" title="在双向链表表头后面插入一个节点" %}}   
+
+
+
+**在双向链表表头前面插入一个节点**   
+
+
+
+```c
+rt_inline void rt_list_insert_before(rt_list_t *l, rt_list_t *n)
+{
+    l->prev->next = n; /* 第1步 */
+    n->prev = l->prev; /* 第2步 */
+    
+    l->prev = n; /* 第3步 */
+    n->next = l; /* 第4步 */
+}
+```
+
+{{% figure class="center" src="/img/rt-thread-learning01/list_op_3.jpg" alt="在双向链表表头前面插入一个节点" title="在双向链表表头前面插入一个节点" %}}      
+
+
+
+**从双向链表删除一个节点**   
+
+```c
+rt_inline void rt_list_remove(rt_list_t *n)
+{
+    n->next->prev = n->prev; /* 第1步 */
+    n->prev->next = n->next; /* 第2步 */
+    
+    n->next = n->prev = n; /* 第3步 */
+}
+```
+
+{{% figure class="center" src="/img/rt-thread-learning01/list_op_4.jpg" alt="从双向链表删除一个节点" title="从双向链表删除一个节点" %}}      
+
+
+
+
+
+**注：文中所有图片均来自《RT-Thread 内核实现与应用开发实战指南》。**
