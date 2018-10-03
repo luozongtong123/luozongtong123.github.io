@@ -33,13 +33,11 @@
 
 
 
-# 线程与线程的切换
+# 线程与线程的创建
 
 前面讲到，在裸机系统中，系统的主体就是 main 函数里面顺序执行的无限循环，这个无限循环里面 CPU 按照顺序完成各种事情。在多线程系统中，我们根据功能的不同，把整个系统分割成一个个独立的且无法返回的函数，这个函数我们称为线程。
 
-## 线程的创建
-
-### 定义线程栈
+## 定义线程栈
 
 在裸机系统中，自动局部变量是存储在栈上的，栈的管理是由 C 语言编译器来完成的，栈的初始化一般是在启动文件中或者是在链接命中指定，然后由 C 语言的 `_main`来完成初始化的操作。逻辑系统中，整个程序只有一个栈，多个函数调用的过程中就对这个栈进行压栈和出栈操作。对于有 RTOS 的系统来言，我们要实现线程间的隔离就需要为每个线程创建独立的栈，在该线程内的函数调用只需要对线程自己的栈进行操作。   
 
@@ -55,7 +53,7 @@ rt_uint8_t rt_flag2_thread_stack[512];
 
 `rt_uint8_t `是在 `rtdef.h` 中定义的类型，其他会用到的数据类型详见[这里](/src/rt-thread-learning01/rtdef.h)。   
 
-### 定义线程函数
+## 定义线程函数
 
 ```c
 /* 软件延时 */
@@ -98,7 +96,7 @@ void flag2_thread_entry( void *p_arg )
 
 如前文所述，线程是一个独立的、无限循环且不能返回的函数。
 
-### 定义线程控制块
+## 定义线程控制块
 
 线程控制块是一个线程的标识，线程调度器通过现称快隋朝块识别调度线程，线程控制块的定义如下：
 
@@ -120,7 +118,7 @@ typedef struct rt_thread *rt_thread_t;
 
 
 
-### 线程创建函数的实现
+## 线程创建函数的实现 {#section-rt_thread_init}
 
 创建线程就是根据给出的参数如线程的名称、线程栈的大小等完成线程栈的初始化和线程控制块的初始化。线程的创建由函数 `rt_thread_init()` 来实现，该函数在 `thread.c` 中定义在 `rthread.h` 中声明。该函数的实现如下：
 
@@ -133,11 +131,11 @@ rt_err_t rt_thread_init(struct rt_thread *thread,        // 线程控制块
 {
 	rt_list_init(&(thread->tlist));                      // (1)
 	
-	thread->entry = (void *)entry;
-	thread->parameter = parameter;
+	thread->entry = (void *)entry;    // 将线程入口保存到线程控制块的 entry成员中
+	thread->parameter = parameter;    // 将线程入口形参保存到线程控制块的 parameter 成员中
 
-	thread->stack_addr = stack_start;
-	thread->stack_size = stack_size;
+	thread->stack_addr = stack_start; // 将线程栈起始地址保存到线程控制块的 stack_start 成员中
+	thread->stack_size = stack_size;  // 将线程栈起大小保存到线程控制块的 stack_size成员中
 	
 	/* 初始化线程栈，并返回线程栈指针 */
 	thread->sp = (void *)rt_hw_stack_init( thread->entry, 
@@ -148,7 +146,9 @@ rt_err_t rt_thread_init(struct rt_thread *thread,        // 线程控制块
 }
 ```
 
-标号为 (1) 的代码对线程控制块的线程链表节点 `tlist` 进行初始化，链表节点可以插入到不同的链表，线程调度器通过链表调度线程。`tlist` 的数据原型是 `rt_list_t` 。   
+标号为 (1) 的代码对线程控制块的线程链表节点 `tlist` 进行初始化，链表节点可以插入到不同的链表，线程调度器通过链表调度线程。`tlist` 的数据原型是 `rt_list_t` 。      
+
+> **此处有个问题，线程控制块链表节点初始化的目的是什么？**
 
 双向链表节点数据类型定义如下：
 
@@ -210,19 +210,25 @@ rt_inline void rt_list_init(rt_list_t *l)
 
 
 
-**在双向链表表头后面插入一个节点**    
+### 在双向链表表头后面插入一个节点    
 
+> 此处的表头的表述是否有问题，因为从双向链表的结构来看，双向链表没有所谓的表头？   
+>
+> 是否应该说 向双向链表的 `l` 节点后插入 `n` ？   
 
+插入节点一共需要四步操作，即图示四个红色箭头的操作，将这四步操作转换为代码则是下面的代码中四步。仔细观察这四步操作，不难发现，如果要保证代码完成我们想要的操作，代码执行的前后顺序是有要求的。即：第三步对 `l->next` 的赋值操作要在第一步和第二部对其引用之后。只要保证这个前后关系满足要求即可。   
+
+代码中采用这种顺序实现起来更加 ~~优雅~~ 并不。
 
 ```c
 /* 在双向链表头部插入一个节点 */
 rt_inline void rt_list_insert_after(rt_list_t *l, rt_list_t *n)
 {
-    l->next->prev = n; /* 第1步 */
-    n->next = l->next; /* 第2步 */
+    l->next->prev = n;   /* 第1步 */
+    n->next = l->next;   /* 第2步 */
     
-    l->next = n; /* 第3步 */
-    n->prev = l; /* 第4步 */
+    l->next = n;         /* 第3步 */
+    n->prev = l;         /* 第4步 */
 }
 ```
 
@@ -232,18 +238,18 @@ rt_inline void rt_list_insert_after(rt_list_t *l, rt_list_t *n)
 
 
 
-**在双向链表表头前面插入一个节点**   
+### 在双向链表表头前面插入一个节点   
 
-
+不难理解只需要将后插操作代码中的的 `prev` 和 `next` 调换一下就可以完成前插操作。
 
 ```c
 rt_inline void rt_list_insert_before(rt_list_t *l, rt_list_t *n)
 {
-    l->prev->next = n; /* 第1步 */
-    n->prev = l->prev; /* 第2步 */
+    l->prev->next = n;   /* 第1步 */
+    n->prev = l->prev;   /* 第2步 */
     
-    l->prev = n; /* 第3步 */
-    n->next = l; /* 第4步 */
+    l->prev = n;         /* 第3步 */
+    n->next = l;         /* 第4步 */
 }
 ```
 
@@ -251,21 +257,168 @@ rt_inline void rt_list_insert_before(rt_list_t *l, rt_list_t *n)
 
 
 
-**从双向链表删除一个节点**   
+### 从双向链表删除一个节点   
+
+删除操作较插入操作要简单一些，只需要注意第三步在前两步之后即可。
 
 ```c
 rt_inline void rt_list_remove(rt_list_t *n)
 {
-    n->next->prev = n->prev; /* 第1步 */
-    n->prev->next = n->next; /* 第2步 */
+    n->next->prev = n->prev;  /* 第1步 */
+    n->prev->next = n->next;  /* 第2步 */
     
-    n->next = n->prev = n; /* 第3步 */
+    n->next = n->prev = n;    /* 第3步 */
 }
 ```
 
 {{% figure class="center" src="/img/rt-thread-learning01/list_op_4.jpg" alt="从双向链表删除一个节点" title="从双向链表删除一个节点" %}}      
 
+### rt_hw_stack_init()函数   
 
+[rt_thread_init() 函数](#section-rt_thread_init) 中还用到了 `rt_hw_stack_init()` 函数 ，该函数对线程栈进行初始化，其代码实现如下：
+
+```c
+/* 线程栈初始化 */
+rt_uint8_t *rt_hw_stack_init(void       *tentry,      // 线程入口
+                             void       *parameter,   // 线程形参
+                             rt_uint8_t *stack_addr)  // 线程栈顶地址
+{
+	
+	
+	struct stack_frame *stack_frame;                  // (1)
+	rt_uint8_t         *stk;
+	unsigned long       i;
+	
+	
+	/* 获取栈顶指针 rt_hw_stack_init 在调用的时候，传给stack_addr的是(栈顶指针)*/
+	stk  = stack_addr + sizeof(rt_uint32_t);
+	
+	/* 让stk指针向下8字节对齐 */
+	stk  = (rt_uint8_t *)RT_ALIGN_DOWN((rt_uint32_t)stk, 8);
+	
+	/* stk指针继续向下移动sizeof(struct stack_frame)个偏移 */
+	stk -= sizeof(struct stack_frame);
+	
+	/* 将stk指针强制转化为stack_frame类型后存到stack_frame */
+	stack_frame = (struct stack_frame *)stk;
+	
+	/* 以stack_frame为起始地址，将栈空间里面的 sizeof(struct stack_frame) 个内存初始化为0xdeadbeef */
+	for (i = 0; i < sizeof(struct stack_frame) / sizeof(rt_uint32_t); i ++)
+	{
+			((rt_uint32_t *)stack_frame)[i] = 0xdeadbeef;
+	}
+	
+	/* 初始化异常发生时自动保存的寄存器 */
+	stack_frame->exception_stack_frame.r0  = (unsigned long)parameter; /* r0 : argument */
+	stack_frame->exception_stack_frame.r1  = 0;                        /* r1 */
+	stack_frame->exception_stack_frame.r2  = 0;                        /* r2 */
+	stack_frame->exception_stack_frame.r3  = 0;                        /* r3 */
+	stack_frame->exception_stack_frame.r12 = 0;                        /* r12 */
+	stack_frame->exception_stack_frame.lr  = 0;                        /* lr */
+	stack_frame->exception_stack_frame.pc  = (unsigned long)tentry;    /* entry point, pc */
+	stack_frame->exception_stack_frame.psr = 0x01000000L;              /* PSR */
+	
+	/* 返回线程栈指针 */
+	return stk;
+}
+```
+
+代码 `(1)` 处定义了一个 `struct stack_frame` 类型的结构体指针 `stack_frame`，该结构体类型在 `cpuport.c` 中定义，具体代码如下：   
+
+```c
+struct exception_stack_frame
+{
+    /* 异常发生时自动保存的寄存器 */
+	rt_uint32_t r0;
+    rt_uint32_t r1;
+    rt_uint32_t r2;
+    rt_uint32_t r3;
+    rt_uint32_t r12;
+    rt_uint32_t lr;
+    rt_uint32_t pc;
+    rt_uint32_t psr;
+};
+
+struct stack_frame
+{
+    /* r4 ~ r11 register 异常发生时需手动保存的寄存器 */
+    rt_uint32_t r4;
+    rt_uint32_t r5;
+    rt_uint32_t r6;
+    rt_uint32_t r7;
+    rt_uint32_t r8;
+    rt_uint32_t r9;
+    rt_uint32_t r10;
+    rt_uint32_t r11;
+
+    struct exception_stack_frame exception_stack_frame;
+};
+```
+
+为了看懂栈的初始化过程，我们首先要明确一个问题：栈是从高地址向低地址生长的，在线程初始化时传进初始化函数的参数是栈的起始地址，即**栈尾地址**，栈的初始化首先需要根据栈尾地址和栈的大小确定**栈首地址**。计算栈首地址在线程初始化函数中调用栈初始化函数时计算并传给了栈初始化函数。线程控制块中的**栈顶地址**是当前栈的位置。
+
+> **有一点不明白的是调用栈初始化函数时减掉了 4，在栈初始化函数中又加了回去，不明白这样处理的意义。**   
+
+接着来看栈初始化函数，得到栈顶地址后，首先进行了向下 8 字节对齐。8 字节对齐的目的是为了后续实现浮点数的运算支持。向下是指当不满足 8 字节对齐时向下移动栈顶指针使其满足对齐要求，例如如果对齐前栈顶地址是 33 ，则对齐后的栈顶地址为 32，即空出一个 33 地址的位置不用。
+
+{{% figure class="center" src="/img/rt-thread-learning01/stk-stack.jpg" alt="完成栈地址字节对齐后的栈空间" title="完成栈地址字节对齐后的栈空间" %}}      
+
+完成栈地址对齐后，接下来要**对首次线程切换时用到的栈中的数据进行初始化**。将栈地址向下移动 `sizeof(struct stack_frame)` 个地址，将 `stk` 指针强制转化为 `stack_frame` 类型后存到指针变量
+`stack_frame` 中，这个时候 `stack_frame` 在线程栈里面的指向具体见下图：
+
+{{% figure class="center" src="/img/rt-thread-learning01/stack_frame-stack.jpg" alt="stack_frame 的栈空间" title="stack_frame 的栈空间" %}}    
+
+接下来以 `stack_frame` 为起始地址，将栈空间里面的 `sizeof(struct stack_frame)` 个内存初始化为  `0xdeadbeef ` 。将内存初始化为 `0xdeadbeef ` 的原因是，这个数字是一个在嵌入式领域常用的魔力数，只是用来标识未使用的内存。接下来，设置线程初次运行时加载到 CPU 寄存器的环境参数。从栈顶开始，初始化的顺序固定，首先是异常发生时自动保存的 8 个寄存器，即 xPSR、R15、R14、R12、R3、R2、R1和 R0。其中 xPSR 寄存器的位 24 必须是 1，R15 PC 指针必须存的是线程的入口地址，R0 必须是线程形参，剩下的 R14、R12、R3、R2、 R1我们初始化为 0。完成初始化的栈空间如下图所示：
+
+{{% figure class="center" src="/img/rt-thread-learning01/inited-stack.jpg" alt="初始化完成后的栈空间" title="初始化完成后的栈空间" %}}    
+
+最后栈初始化函数返回线程栈顶指针 `stk` ，线程初始化函数返回线程创建成功的错误码。关于错误码，其定义如下：
+
+```c
+/* RT-Thread 错误码重定义 */
+#define RT_EOK                          0               /**< There is no error */
+#define RT_ERROR                        1               /**< A generic error happens */
+#define RT_ETIMEOUT                     2               /**< Timed out */
+#define RT_EFULL                        3               /**< The resource is full */
+#define RT_EEMPTY                       4               /**< The resource is empty */
+#define RT_ENOMEM                       5               /**< No memory */
+#define RT_ENOSYS                       6               /**< No system */
+#define RT_EBUSY                        7               /**< Busy */
+#define RT_EIO                          8               /**< IO error */
+#define RT_EINTR                        9               /**< Interrupted system call */
+#define RT_EINVAL                       10              /**< Invalid argument */
+
+```
+
+最后，回顾一下主函数中，调用线程初始化函数进行线程初始化的代码：
+
+```c
+int main(void)
+{	
+	/* 硬件初始化 */
+	/* 将硬件相关的初始化放在这里，如果是软件仿真则没有相关初始化代码 */	
+
+	/* 初始化线程 */
+	rt_thread_init( &rt_flag1_thread,                 /* 线程控制块 */
+	                flag1_thread_entry,               /* 线程入口地址 */
+	                RT_NULL,                          /* 线程形参 */
+	                &rt_flag1_thread_stack[0],        /* 线程栈起始地址 */
+	                sizeof(rt_flag1_thread_stack) );  /* 线程栈大小，单位为字节 */
+
+	
+	/* 初始化线程 */
+	rt_thread_init( &rt_flag2_thread,                 /* 线程控制块 */
+	                flag2_thread_entry,               /* 线程入口地址 */
+	                RT_NULL,                          /* 线程形参 */
+	                &rt_flag2_thread_stack[0],        /* 线程栈起始地址 */
+	                sizeof(rt_flag2_thread_stack) );  /* 线程栈大小，单位为字节 */
+
+}
+```
+
+
+
+# 实现就绪列表
 
 
 
