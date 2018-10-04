@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Excel on luo Space - Coding and thinking.</title>
+    <link>https://luozongtong123.github.io/tags/excel/</link>
+    <description>Recent content in Excel on luo Space - Coding and thinking.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 06 Apr 2015 09:58:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://luozongtong123.github.io/tags/excel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>利用 Python 解决问题了一个小问题</title>
+      <link>https://luozongtong123.github.io/post/python-in-life/</link>
+      <pubDate>Mon, 06 Apr 2015 09:58:26 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/python-in-life/</guid>
+      <description>前几天接了一个活，需要把 Excel 表格中的数据做成可以在微信内置浏览器中访问并且体验要好。我的选择是利用 Hexo 和 coding 搭一个博客用来展示。 Update: 今天发现，对 Excel 的</description>
+    </item>
+    
+  </channel>
+</rss>

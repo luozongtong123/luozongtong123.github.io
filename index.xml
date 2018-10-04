@@ -12,7 +12,16 @@
     
     
     <item>
-      <title>About</title>
+      <title>项目</title>
+      <link>https://luozongtong123.github.io/project/</link>
+      <pubDate>Wed, 28 Jan 2015 14:42:00 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/project/</guid>
+      <description>列一下参与的项目。 Name ivory-towers</description>
+    </item>
+    
+    <item>
+      <title>关于</title>
       <link>https://luozongtong123.github.io/about/</link>
       <pubDate>Wed, 28 Jan 2015 14:42:00 +0800</pubDate>
       
@@ -86,12 +95,85 @@
     </item>
     
     <item>
+      <title>2015年总结</title>
+      <link>https://luozongtong123.github.io/post/my2015/</link>
+      <pubDate>Sun, 03 Jan 2016 21:40:21 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/my2015/</guid>
+      <description>&lt;p&gt;2015年就这么悄悄过去了，看到别人都写了总结，想想也该来总结一下了。原来的域名过期了，偶然看到万网的域名4块一年索性就买了，想来也是一个新的开始。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>二十八天的实习生活开始了</title>
+      <link>https://luozongtong123.github.io/post/yukun-first-two-day/</link>
+      <pubDate>Sun, 20 Sep 2015 07:33:00 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/yukun-first-two-day/</guid>
+      <description>&lt;p&gt;两年前，我羡慕大三学长到育鲲轮实习，现在我就在育鲲轮上，和着育鲲摇晃的节奏，写下这些文字。&lt;br /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>生活就是这样，走着走着，人就散了</title>
+      <link>https://luozongtong123.github.io/post/relationship/</link>
+      <pubDate>Sat, 30 May 2015 17:36:47 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/relationship/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;当我沉默着的时候，我觉得充实；我将开口，同时觉得空虚。&lt;br /&gt;
+&lt;cite&gt;&amp;ndash; 鲁迅 &lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于社团生活的一些总结</title>
+      <link>https://luozongtong123.github.io/post/something-about-association/</link>
+      <pubDate>Sun, 17 May 2015 12:54:53 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/something-about-association/</guid>
+      <description>&lt;p&gt;当天中午激动的没睡着觉，心想官微啊这么高大上的组织竟然选择了我，我是有多么了不起，说不定马上我就能登上人生巅峰了。。。&lt;br /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>利用 Python 解决问题了一个小问题</title>
+      <link>https://luozongtong123.github.io/post/python-in-life/</link>
+      <pubDate>Mon, 06 Apr 2015 09:58:26 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/python-in-life/</guid>
+      <description>前几天接了一个活，需要把 Excel 表格中的数据做成可以在微信内置浏览器中访问并且体验要好。我的选择是利用 Hexo 和 coding 搭一个博客用来展示。 Update: 今天发现，对 Excel 的</description>
+    </item>
+    
+    <item>
+      <title>使用 cloud9 重建 Hexo 博客写作环境</title>
+      <link>https://luozongtong123.github.io/post/rebuilt-envirenment/</link>
+      <pubDate>Sat, 14 Mar 2015 16:33:52 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/rebuilt-envirenment/</guid>
+      <description>&lt;p&gt;在 cloud9 上写博客。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Hexo luocman 主题的文章书写规范</title>
       <link>https://luozongtong123.github.io/post/how-to-write/</link>
       <pubDate>Sat, 28 Feb 2015 13:51:42 +0800</pubDate>
       
       <guid>https://luozongtong123.github.io/post/how-to-write/</guid>
       <description>&lt;p&gt;将一些 Hexo luocman 主题的文章的书写规范和技巧总结一下。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搜索引擎使用技巧</title>
+      <link>https://luozongtong123.github.io/post/search-engine-skills/</link>
+      <pubDate>Fri, 27 Feb 2015 20:55:21 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/search-engine-skills/</guid>
+      <description>&lt;p&gt;将一些搜索引擎的使用技巧总结一下，备忘。
 &lt;/p&gt;</description>
     </item>
     
