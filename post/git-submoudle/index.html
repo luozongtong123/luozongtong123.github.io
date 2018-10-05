@@ -17,7 +17,9 @@
 
 
 <meta name="author" content="luo" />
-  <meta name="description" content="使用 Git 的 Submoudle 来管理 hugo 静态博客非常方便。 " />
+  <meta name="description" content="使用 Git 的 Submoudle 来管理 hugo 静态博客非常方便。
+
+" />
 
   <meta name="keywords" content="coding, thinking" />
 
@@ -51,6 +53,7 @@
 
 <meta property="og:title" content="Git Submoudle" />
 <meta property="og:description" content="使用 Git 的 Submoudle 来管理 hugo 静态博客非常方便。
+
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luozongtong123.github.io/post/git-submoudle/" />
@@ -73,12 +76,13 @@
 
 <meta itemprop="name" content="Git Submoudle">
 <meta itemprop="description" content="使用 Git 的 Submoudle 来管理 hugo 静态博客非常方便。
+
 ">
 
 
 <meta itemprop="datePublished" content="2018-10-05T10:02:56&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-05T10:02:56&#43;08:00" />
-<meta itemprop="wordCount" content="18">
+<meta itemprop="wordCount" content="114">
 
 
 
@@ -86,6 +90,7 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git Submoudle"/>
 <meta name="twitter:description" content="使用 Git 的 Submoudle 来管理 hugo 静态博客非常方便。
+
 "/>
 
 <!--[if lte IE 9]>
@@ -154,7 +159,7 @@
       <div class="post-meta">
         <span class="post-time"> 2018-10-05 </span>
         
-        <span class="more-meta"> 约 18 字 </span>
+        <span class="more-meta"> 约 114 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -175,8 +180,38 @@
 
     
     <div class="post-content">
-      <p>使用 Git 的 Submoudle 来管理 hugo 静态博客非常方便。
-</p>
+      <p>使用 Git 的 Submoudle 来管理 hugo 静态博客非常方便。</p>
+
+<p></p>
+
+<p>首先，初始化一个空的版本库，</p>
+
+<pre><code># cmd
+# deploy.bat
+@echo off 
+echo &quot;print status of Git repo...&quot; 
+git status 
+cd public 
+echo &quot;print status of Git Submodle...&quot; 
+git status 
+echo &quot;add all files...&quot; 
+git add . 
+echo &quot;commit files...&quot; 
+git commit -m &quot;update blog&quot; 
+echo &quot;push Submodle to Github...&quot; 
+git push 
+echo &quot;back to repo...&quot; 
+cd .. 
+echo &quot;print status of Git repo...&quot; 
+git status 
+echo &quot;add all files...&quot; 
+git add . 
+echo &quot;commit files...&quot; 
+git commit -m &quot;update blog&quot; 
+echo &quot;push repo to Github...&quot; 
+git push 
+
+</code></pre>
     </div>
 
     
