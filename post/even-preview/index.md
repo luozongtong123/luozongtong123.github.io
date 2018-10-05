@@ -67,6 +67,11 @@
 *注意：你可以通过 `{#section-id}` 方式自定义段落锚点*
 
 参考资料 <sup>[[1]](#ref01)</sup><sup>[[2]](#ref02)</sup>
+
+## 参考资料
+
+1. <a id="ref01">[Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)</a>
+2. <a id="ref02">[Markdown 语法手册](https://www.zybuluo.com/EncyKe/note/120103)</a>
 ```
 
 ## 3. 列表
