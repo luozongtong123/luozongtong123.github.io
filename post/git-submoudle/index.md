@@ -9,35 +9,35 @@
 ::deploy.bat 
 @echo off 
 hugo 
-echo 
+echo. 
 echo print status of Git repo... 
 git status 
 cd public 
-echo 
+echo. 
 echo print status of Git Submodle... 
 git status 
-echo 
+echo. 
 echo add all files... 
 git add . 
-echo 
+echo. 
 echo commit files... 
 git commit -m "update blog" 
-echo 
+echo. 
 echo push Submodle to Github... 
 git push 
-echo 
+echo. 
 echo back to repo... 
 cd .. 
-echo 
+echo. 
 echo print status of Git repo... 
 git status 
-echo 
+echo. 
 echo add all files... 
 git add . 
-echo 
+echo. 
 echo commit files... 
 git commit -m "update blog" 
-echo 
+echo. 
 echo push repo to Github... 
 git push 
 
