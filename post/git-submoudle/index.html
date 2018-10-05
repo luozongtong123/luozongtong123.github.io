@@ -82,7 +82,7 @@
 
 <meta itemprop="datePublished" content="2018-10-05T10:02:56&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-05T10:02:56&#43;08:00" />
-<meta itemprop="wordCount" content="132">
+<meta itemprop="wordCount" content="187">
 
 
 
@@ -159,7 +159,7 @@
       <div class="post-meta">
         <span class="post-time"> 2018-10-05 </span>
         
-        <span class="more-meta"> 约 132 字 </span>
+        <span class="more-meta"> 约 187 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -222,6 +222,11 @@ echo.
 echo push repo to Github... 
 git push 
 
+</code></pre>
+
+<p>hugo 生成的文件是 LF 换行符，git 添加文件的时候会显示将 LF 替换为 CRLF 的警告，使用如下命令可以关闭这个警告。</p>
+
+<pre><code class="language-bash">git config --global core.safecrlf false
 </code></pre>
     </div>
 

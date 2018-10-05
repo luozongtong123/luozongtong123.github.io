@@ -43,4 +43,10 @@ git push
 
 ```
 
+hugo 生成的文件是 LF 换行符，git 添加文件的时候会显示将 LF 替换为 CRLF 的警告，使用如下命令可以关闭这个警告。
+
+```bash
+git config --global core.safecrlf false
+```
+
 
