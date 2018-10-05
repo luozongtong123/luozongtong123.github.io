@@ -6,10 +6,20 @@
     <description>Recent content in Posts on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 29 Sep 2018 09:37:14 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Oct 2018 10:02:56 +0800</lastBuildDate>
     
 	<atom:link href="https://luozongtong123.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git Submoudle</title>
+      <link>https://luozongtong123.github.io/post/git-submoudle/</link>
+      <pubDate>Fri, 05 Oct 2018 10:02:56 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/git-submoudle/</guid>
+      <description>&lt;p&gt;使用 Git 的 Submoudle 来管理 hugo 静态博客非常方便。
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>RT-Thread 学习（一）</title>
