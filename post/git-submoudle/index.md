@@ -2,32 +2,43 @@
 
 <!--more-->
 
-首先，初始化一个空的版本库，
+首先，在 Github 上创建两个用于存放博客内容的版本库。 
 
 ```
-# cmd
-# deploy.bat
+::cmd 
+::deploy.bat 
 @echo off 
-echo "print status of Git repo..." 
+hugo 
+echo 
+echo print status of Git repo... 
 git status 
 cd public 
-echo "print status of Git Submodle..." 
+echo 
+echo print status of Git Submodle... 
 git status 
-echo "add all files..." 
+echo 
+echo add all files... 
 git add . 
-echo "commit files..." 
+echo 
+echo commit files... 
 git commit -m "update blog" 
-echo "push Submodle to Github..." 
+echo 
+echo push Submodle to Github... 
 git push 
-echo "back to repo..." 
+echo 
+echo back to repo... 
 cd .. 
-echo "print status of Git repo..." 
+echo 
+echo print status of Git repo... 
 git status 
-echo "add all files..." 
+echo 
+echo add all files... 
 git add . 
-echo "commit files..." 
+echo 
+echo commit files... 
 git commit -m "update blog" 
-echo "push repo to Github..." 
+echo 
+echo push repo to Github... 
 git push 
 
 ```
