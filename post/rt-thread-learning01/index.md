@@ -195,7 +195,7 @@ typedef struct rt_list_node rt_list_t;
 
 链表的操作包括初始化链表节点、在双向链表表头前面插入一个节点、在双向链表表头后面插入一个节点、从双向链表中删除一个节点。相关函数的实现在 ` rtservice.h` 。   
 
-**初始化链表节点**   
+**初始化链表节点**     
 
 rt_list_t 类型的节点的初始化，就是将节点里面的 next 和 prev 这两个节点指针指向节点本身。代码实现如下：
 
@@ -210,7 +210,7 @@ rt_inline void rt_list_init(rt_list_t *l)
 
 
 
-### 在双向链表表头后面插入一个节点    
+**在双向链表表头后面插入一个节点**      
 
 > 此处的表头的表述是否有问题，因为从双向链表的结构来看，双向链表没有所谓的表头？   
 >
@@ -238,7 +238,7 @@ rt_inline void rt_list_insert_after(rt_list_t *l, rt_list_t *n)
 
 
 
-### 在双向链表表头前面插入一个节点   
+**在双向链表表头前面插入一个节点**     
 
 不难理解只需要将后插操作代码中的的 `prev` 和 `next` 调换一下就可以完成前插操作。
 
@@ -257,7 +257,7 @@ rt_inline void rt_list_insert_before(rt_list_t *l, rt_list_t *n)
 
 
 
-### 从双向链表删除一个节点   
+**从双向链表删除一个节点**     
 
 删除操作较插入操作要简单一些，只需要注意第三步在前两步之后即可。
 
@@ -273,7 +273,7 @@ rt_inline void rt_list_remove(rt_list_t *n)
 
 {{% figure class="center" src="/img/rt-thread-learning01/list_op_4.jpg" alt="从双向链表删除一个节点" title="从双向链表删除一个节点" %}}      
 
-### rt_hw_stack_init()函数   
+**rt_hw_stack_init()函数**     
 
 [rt_thread_init() 函数](#section-rt_thread_init) 中还用到了 `rt_hw_stack_init()` 函数 ，该函数对线程栈进行初始化，其代码实现如下：
 
@@ -419,6 +419,211 @@ int main(void)
 
 
 # 实现就绪列表
+
+**定义就绪列表**   
+
+线程创建完成之后，我们需要把线程添加到就序列表，表示线程已经就绪，系统随时可以调度。就绪列表在 ` scheduler.c` 中定义，其定义如下：
+
+```c
+rt_list_t rt_thread_priority_table[RT_THREAD_PRIORITY_MAX]; 
+```
+
+就绪列表实际上就是一个 rt_list_t 类型的数组，数组的大小由决定最大线程优先级的宏 `RT_THREAD_PRIORITY_MAX` 决定 ，`RT_THREAD_PRIORITY_MAX` 在 rtconfig.h 中默认定义为 32。数组的下标对应了线程的优先级，同一优先级的线程统一插入到就绪列表的同一条链表中。一个空的就绪列表图下图：
+
+{{% figure class="center" src="/img/rt-thread-learning01/priority_table.jpg" alt="一个空的就序列表" title="一个空的就序列表" %}}    
+
+
+
+**将线程插入到就绪列表**   
+
+线程控制块中有一个类型为 `rt_list_t` 的成员 `tlist` ，将线程插入到就绪列表就是利用之前实现的链表操作函数将 `tlist` 插入到就序列表里面。具体实现代码如下：
+
+```c
+/* 初始化线程 */
+rt_thread_init( &rt_flag1_thread,                 /* 线程控制块 */
+	            flag1_thread_entry,               /* 线程入口地址 */
+	            RT_NULL,                          /* 线程形参 */
+	            &rt_flag1_thread_stack[0],        /* 线程栈起始地址 */
+	            sizeof(rt_flag1_thread_stack) );  /* 线程栈大小，单位为字节 */
+/* 将线程插入到就绪列表 */
+rt_list_insert_before( &(rt_thread_priority_table[0]),&(rt_flag1_thread.tlist) );
+	
+/* 初始化线程 */
+rt_thread_init( &rt_flag2_thread,                 /* 线程控制块 */
+	            flag2_thread_entry,               /* 线程入口地址 */
+	            RT_NULL,                          /* 线程形参 */
+	            &rt_flag2_thread_stack[0],        /* 线程栈起始地址 */
+	            sizeof(rt_flag2_thread_stack) );  /* 线程栈大小，单位为字节 */
+/* 将线程插入到就绪列表 */
+rt_list_insert_before( &(rt_thread_priority_table[1]),&(rt_flag2_thread.tlist) );
+```
+
+就绪列表的下标就是线程的优先级，目前还没有实现优先级，有关优先级的内容后面会讲到。目前，只是将 flag1 的线程插入到下标为 0 的链表，将 falsg2 的线程插入到下标为 1 的链表。具体的示意图如下：
+
+{{% figure class="center" src="/img/rt-thread-learning01/priority_table_insert.jpg" alt="插入线程的就序列表" title="插入线程的就序列表" %}}    
+
+
+
+# 实现调度器
+
+线程调度器是实时操作的核心，其主要功能就是从就序列表中找到优先级最高的线程并切换到这个线程。从代码上来看，线程调度器是由一些全局变量和一些可以实现线程切换的函数组成。线程调度器的代码在 `scheduler.c` 文件中实现。   
+
+
+
+**调度器初始化函数**   
+
+调度器在使用前需要初始化，具体代码如下：
+
+```c
+/* 初始化系统调度器 */
+void rt_system_scheduler_init(void)
+{	
+	register rt_base_t offset;	  // register 修饰变量，防止被编译器优化
+	
+	/* 线程就绪列表初始化 */
+	for (offset = 0; offset < RT_THREAD_PRIORITY_MAX; offset ++)
+	{
+			rt_list_init(&rt_thread_priority_table[offset]);
+	}
+	
+	/* 初始化当前线程控制块指针 */
+	rt_current_thread = RT_NULL;  //(1)
+	
+	/* 初始化线程休眠列表，当线程创建好没有启动之前会被放入到这个列表 */
+	rt_list_init(&rt_thread_defunct);
+}
+```
+
+(1)处代码，初始化当前线程控制块指针为空。`rt_current_thread` 是在 `scheduler.c` 中定义的一个 `struct rt_thread` 类型的全局指针，用于指向当前正在运行的线程的线程控制块。
+
+
+
+**启动调度器**  
+
+调度器启动由函数 `rt_system_scheduler_start()` 来完成，具体实现如下：
+
+```c
+/* 启动系统调度器 */
+void rt_system_scheduler_start(void)
+{
+	register struct rt_thread *to_thread;
+	
+
+	/* 手动指定第一个运行的线程 */
+	to_thread = rt_list_entry(rt_thread_priority_table[0].next,
+							  struct rt_thread,
+							  tlist);
+	rt_current_thread = to_thread;
+														
+	/* 切换到第一个线程，该函数在context_rvds.S中实现，在rthw.h声明，
+       用于实现第一次任务切换。当一个汇编函数在C文件中调用的时候，
+       如果有形参，则执行的时候会将形参传人到CPU寄存器r0。*/
+	rt_hw_context_switch_to((rt_uint32_t)&to_thread->sp);
+}
+```
+
+ `rt_list_entry()` 宏前面提到过，作用就是找出线程控制块的起始地址。  
+
+
+
+## 第一次线程切换
+
+**rt_hw_context_switch_to() 函数**    
+
+这个函数在 `context_rvds.S` 中实现，用于进行第一次线程切换。   
+
+需要注意的是，当一个汇编函数在 C 语言中被调用时，如果只有一个形参，这个形参会被传入 R0 寄存器，如果有第二个形参，第二形参会被传入 R1 寄存器。  
+
+该函数的实现如下：
+
+```assembly
+;*************************************************************************
+;                                 全局变量
+;*************************************************************************
+    IMPORT rt_thread_switch_interrupt_flag
+    IMPORT rt_interrupt_from_thread
+    IMPORT rt_interrupt_to_thread
+		
+;*************************************************************************
+;                                 常量
+;*************************************************************************
+;-------------------------------------------------------------------------
+;有关内核外设寄存器定义可参考官方文档：STM32F10xxx Cortex-M3 programming manual
+;系统控制块外设SCB地址范围：0xE000ED00-0xE000ED3F
+;-------------------------------------------------------------------------
+SCB_VTOR        EQU     0xE000ED08     ; 向量表偏移寄存器
+NVIC_INT_CTRL   EQU     0xE000ED04     ; 中断控制状态寄存器
+NVIC_SYSPRI2    EQU     0xE000ED20     ; 系统优先级寄存器(2)
+NVIC_PENDSV_PRI EQU     0x00FF0000     ; PendSV 优先级值 (lowest)
+NVIC_PENDSVSET  EQU     0x10000000     ; 触发PendSV exception的值
+	
+;*************************************************************************
+;                              代码产生指令
+;*************************************************************************
+
+    AREA |.text|, CODE, READONLY, ALIGN=2
+    THUMB
+    REQUIRE8
+    PRESERVE8
+		
+
+;/*
+; *-----------------------------------------------------------------------
+; * 函数原型：void rt_hw_context_switch_to(rt_uint32 to);
+; * r0 --> to
+; * 该函数用于开启第一次线程切换
+; *-----------------------------------------------------------------------
+; */
+		
+rt_hw_context_switch_to    PROC
+    
+	; 导出rt_hw_context_switch_to，让其具有全局属性，可以在C文件调用
+	EXPORT rt_hw_context_switch_to
+		
+    ; 设置rt_interrupt_to_thread的值
+    LDR     r1, =rt_interrupt_to_thread             ;将rt_interrupt_to_thread的地址加载到r1
+    STR     r0, [r1]                                ;将r0的值存储到rt_interrupt_to_thread
+
+    ; 设置rt_interrupt_from_thread的值为0，表示启动第一次线程切换
+    LDR     r1, =rt_interrupt_from_thread           ;将rt_interrupt_from_thread的地址加载到r1
+    MOV     r0, #0x0                                ;配置r0等于0
+    STR     r0, [r1]                                ;将r0的值存储到rt_interrupt_from_thread
+
+    ; 设置中断标志位rt_thread_switch_interrupt_flag的值为1
+    LDR     r1, =rt_thread_switch_interrupt_flag    ;将rt_thread_switch_interrupt_flag的地址加载到r1
+    MOV     r0, #1                                  ;配置r0等于1
+    STR     r0, [r1]                                ;将r0的值存储到rt_thread_switch_interrupt_flag
+
+    ; 设置 PendSV 异常的优先级
+    LDR     r0, =NVIC_SYSPRI2
+    LDR     r1, =NVIC_PENDSV_PRI
+    LDR.W   r2, [r0,#0x00]       ; 读
+    ORR     r1,r1,r2             ; 改
+    STR     r1, [r0]             ; 写
+
+    ; 触发 PendSV 异常 (产生上下文切换)
+    LDR     r0, =NVIC_INT_CTRL
+    LDR     r1, =NVIC_PENDSVSET
+    STR     r1, [r0]
+
+    ; 开中断
+    CPSIE   F
+    CPSIE   I
+
+    ; 永远不会到达这里
+    ENDP
+
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
