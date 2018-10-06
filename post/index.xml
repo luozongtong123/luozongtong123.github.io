@@ -77,6 +77,26 @@
     </item>
     
     <item>
+      <title>SeaDrone 硬件构成</title>
+      <link>https://luozongtong123.github.io/post/seadrone-hardware/</link>
+      <pubDate>Fri, 29 Dec 2017 11:03:22 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/seadrone-hardware/</guid>
+      <description>&lt;p&gt;ROV 因为固件升级出错需要拆机恢复固件，趁此机会把硬件结构摸了一下。&lt;br /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SeaDrone 拆装注意事项</title>
+      <link>https://luozongtong123.github.io/post/seadrone-disassemble-reassemble/</link>
+      <pubDate>Tue, 26 Dec 2017 18:35:27 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/seadrone-disassemble-reassemble/</guid>
+      <description>&lt;p&gt;参考 YouTube 上 SeaDrone 官方的推进器更换视频，总结了一下 SeaDrone 拆卸注意事项。&lt;br /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Xsens MTi-300 AHRS 的使用</title>
       <link>https://luozongtong123.github.io/post/using-of-xsens-mti-300-ahrs/</link>
       <pubDate>Sat, 16 Dec 2017 06:51:58 +0800</pubDate>
@@ -85,6 +105,16 @@
       <description>&lt;p&gt;今天实验室来交流的泰国老师给我讲解了一下 Xsens MTi-300 AHRS 的使用，现在稍稍总结一下。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>研究生生涯</title>
+      <link>https://luozongtong123.github.io/post/postgraduate/</link>
+      <pubDate>Thu, 17 Aug 2017 17:05:37 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/postgraduate/</guid>
+      <description>&lt;p&gt;记录一下研究生生涯。
+&lt;/p&gt;</description>
     </item>
     
     <item>
