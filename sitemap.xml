@@ -17,6 +17,13 @@
   </url>
   
   <url>
+    <loc>https://luozongtong123.github.io/pages/_test/</loc>
+    <lastmod>2018-10-07T11:10:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://luozongtong123.github.io/post/git-submodule/</loc>
     <lastmod>2018-10-05T10:02:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -164,28 +171,7 @@
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/blog/</loc>
-    <lastmod>2018-10-05T10:02:56+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://luozongtong123.github.io/categories/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://luozongtong123.github.io/tags/cloud9/</loc>
-    <lastmod>2015-03-14T16:33:52+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://luozongtong123.github.io/tags/even-theme/</loc>
-    <lastmod>2018-09-22T14:40:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -212,13 +198,6 @@
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/hugo/</loc>
-    <lastmod>2018-09-22T14:40:40+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://luozongtong123.github.io/tags/lede/</loc>
     <lastmod>2018-09-13T21:50:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -226,8 +205,8 @@
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/luocman/</loc>
-    <lastmod>2018-09-22T11:08:26+08:00</lastmod>
+    <loc>https://luozongtong123.github.io/pages/</loc>
+    <lastmod>2018-10-07T11:10:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -303,13 +282,6 @@
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/tips/</loc>
-    <lastmod>2015-02-27T20:55:21+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://luozongtong123.github.io/tags/ubuntu/</loc>
     <lastmod>2018-09-13T21:31:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -331,8 +303,50 @@
   </url>
   
   <url>
+    <loc>https://luozongtong123.github.io/tags/blog/</loc>
+    <lastmod>2018-10-05T10:02:56+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luozongtong123.github.io/tags/cloud9/</loc>
+    <lastmod>2015-03-14T16:33:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luozongtong123.github.io/tags/even-theme/</loc>
+    <lastmod>2018-09-22T14:40:40+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luozongtong123.github.io/tags/hugo/</loc>
+    <lastmod>2018-09-22T14:40:40+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://luozongtong123.github.io/</loc>
     <lastmod>2018-09-13T21:28:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luozongtong123.github.io/tags/luocman/</loc>
+    <lastmod>2018-09-22T11:08:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luozongtong123.github.io/tags/tips/</loc>
+    <lastmod>2015-02-27T20:55:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
