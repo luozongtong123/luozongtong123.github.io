@@ -6,10 +6,32 @@
     <description>Recent content in Posts on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 05 Oct 2018 10:02:56 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 10 Oct 2018 22:20:04 +0800</lastBuildDate>
     
 	<atom:link href="https://luozongtong123.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>不蒜子域名更新</title>
+      <link>https://luozongtong123.github.io/post/busuanzi-domain/</link>
+      <pubDate>Wed, 10 Oct 2018 22:20:04 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/busuanzi-domain/</guid>
+      <description>&lt;p&gt;前天发现不蒜子网页访问计数一直是正在加载状态，没法正常工作。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>葡萄牙签证 国际学术会议</title>
+      <link>https://luozongtong123.github.io/post/portugal-visa-cultural/</link>
+      <pubDate>Wed, 10 Oct 2018 20:00:47 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/portugal-visa-cultural/</guid>
+      <description>&lt;p&gt;前天刚到签证中心递交签证材料，过程比较坎坷，但总算是把材料交上去了，今天把相关经验总结一下。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>使用 Git 子模块管理 hugo 博客</title>
