@@ -21,8 +21,6 @@ Pixhawk1（px4_v2） 飞控使用了两片单片机。Pixhawk 其实是 PX4FMU �
 
 ![enable-WSL](/img/build-environment-for-ArduSub/enable-wsl.jpg)
 
-
-
 ### 2、安装 Ubuntu 应用
 
 ~~如果为了省时省力可以直接安装 [Ubuntu 16.04 LTS](https://www.microsoft.com/store/productId/9PJN388HP8C9) ，现在是2018 年下半年了，为了使用新版本的程序我选择 Ubuntu 18.04 LTS 。安装时可以直接点击上面链接也可以打开 Microsoft Store 搜索 Ubuntu 选择合适的版本下载即可。~~
