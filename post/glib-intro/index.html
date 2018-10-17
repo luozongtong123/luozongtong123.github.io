@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>不蒜子域名更新 - luo Space - Coding and thinking.</title>
+  <title>Glib 简介 - luo Space - Coding and thinking.</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,8 +17,7 @@
 
 
 <meta name="author" content="luo" />
-  <meta name="description" content="前天发现不蒜子网页访问计数一直是正在加载状态，没法正常工作。
-
+  <meta name="description" content="最近在翻 《C 程序设计新思维（第2版）》这本书的时候，看到了 Glib 这么一个现代化的 C 语言第三方库， 一时惊为天人，想着这不就是我一直想要的 C 语言的跨平台的库了吗。所以就花了一些时间研究了一下。
 " />
 
   <meta name="keywords" content="coding, thinking" />
@@ -31,7 +30,7 @@
 <meta name="generator" content="Hugo 0.49" />
 
 
-<link rel="canonical" href="https://luozongtong123.github.io/post/busuanzi-domain/" />
+<link rel="canonical" href="https://luozongtong123.github.io/post/glib-intro/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,31 +50,31 @@
 
 
 
-<meta property="og:title" content="不蒜子域名更新" />
-<meta property="og:description" content="前天发现不蒜子网页访问计数一直是正在加载状态，没法正常工作。
-
+<meta property="og:title" content="Glib 简介" />
+<meta property="og:description" content="最近在翻 《C 程序设计新思维（第2版）》这本书的时候，看到了 Glib 这么一个现代化的 C 语言第三方库，
+一时惊为天人，想着这不就是我一直想要的 C 语言的跨平台的库了吗。所以就花了一些时间研究了一下。
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luozongtong123.github.io/post/busuanzi-domain/" /><meta property="article:published_time" content="2018-10-10T22:20:04&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-10T22:20:04&#43;08:00"/>
+<meta property="og:url" content="https://luozongtong123.github.io/post/glib-intro/" /><meta property="article:published_time" content="2018-10-17T22:06:31&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-17T22:06:31&#43;08:00"/>
 
-<meta itemprop="name" content="不蒜子域名更新">
-<meta itemprop="description" content="前天发现不蒜子网页访问计数一直是正在加载状态，没法正常工作。
-
+<meta itemprop="name" content="Glib 简介">
+<meta itemprop="description" content="最近在翻 《C 程序设计新思维（第2版）》这本书的时候，看到了 Glib 这么一个现代化的 C 语言第三方库，
+一时惊为天人，想着这不就是我一直想要的 C 语言的跨平台的库了吗。所以就花了一些时间研究了一下。
 ">
 
 
-<meta itemprop="datePublished" content="2018-10-10T22:20:04&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-10T22:20:04&#43;08:00" />
-<meta itemprop="wordCount" content="110">
+<meta itemprop="datePublished" content="2018-10-17T22:06:31&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-17T22:06:31&#43;08:00" />
+<meta itemprop="wordCount" content="703">
 
 
 
-<meta itemprop="keywords" content="不蒜子," />
+<meta itemprop="keywords" content="msys2," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="不蒜子域名更新"/>
-<meta name="twitter:description" content="前天发现不蒜子网页访问计数一直是正在加载状态，没法正常工作。
-
+<meta name="twitter:title" content="Glib 简介"/>
+<meta name="twitter:description" content="最近在翻 《C 程序设计新思维（第2版）》这本书的时候，看到了 Glib 这么一个现代化的 C 语言第三方库，
+一时惊为天人，想着这不就是我一直想要的 C 语言的跨平台的库了吗。所以就花了一些时间研究了一下。
 "/>
 
 <!--[if lte IE 9]>
@@ -139,57 +138,60 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">不蒜子域名更新</h1>
+      <h1 class="post-title">Glib 简介</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-10-10 </span>
-        
-        <span class="more-meta"> 约 110 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span class="post-time"> 2018-10-17 </span>
+        <div class="post-category">
+            
+              <a href="/categories/glib/"> Glib </a>
+            
+          </div>
+        <span class="more-meta"> 约 703 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
 
     
     
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  
-  <div class="post-toc-content">
-    
-  </div>
-</div>
 
     
     
 
     
     <div class="post-content">
-      <p>前天发现不蒜子网页访问计数一直是正在加载状态，没法正常工作。</p>
+      <p>最近在翻 《C 程序设计新思维（第2版）》这本书的时候，看到了 Glib 这么一个现代化的 C 语言第三方库，
+一时惊为天人，想着这不就是我一直想要的 C 语言的跨平台的库了吗。所以就花了一些时间研究了一下。<br />
+</p>
 
-<p></p>
+<h1 id="简介">简介</h1>
 
+<p>Glib 是一个在 Linux 平台下应用非常广泛的 C 语言函数库。Glib 库具有很好的可移植性和实用性。 Glib 是
+Gtk+ 的基础库，最早是 Gtk+ 的一部分。Glib 可以在多个平台下使用，比如 Linux、Unix、Windows等。
+GLib 由基础类型、核心应用支持、实用功能、数据类型和对象系统五个部分组成。其中核心应用支持包括线程、线程池、
+同步队列、内存管理、 socket 等的支持。实用工具包括字符串函数、数据校验、定时器、测试框架等功能。Glib 功能
+非常丰富，可以称的上 C 语言的 Boost 库了。</p>
 
-<figure class="center">
-    
-        <img src="/img/busuanzi-domain/busuanzi.png" alt="不蒜子" />
-    
-    
-    <figcaption>
-        <h4>不蒜子</h4>
-        
-    </figcaption>
-    
-</figure>
+<h1 id="依赖">依赖</h1>
 
+<p>Glib 的依赖很少。其中一个是 <a href="http://www.gnu.org/software/libiconv/">GNU libiconv library</a>，这个库是用来
+转换文字编码用的，如果你的系统提供 <code>iconv()</code> 函数的话，那么这个库则不是必须的。另一个库是 <a href="http://www.gnu.org/software/gettext">GNU gettext package</a>，如果你的系统提供 <code>gettext()</code> 这个函数的话，那么这个库也不是必须的。
+除了以上两个库以外还要求系统提供多线程的实现。基本上任何一个现代操作系统都会提供多线程的实现。Glib 支
+持 <code>POSIX threads</code> 和 <code>win32 threads</code>。</p>
 
-<p>本站的访问量计数用的是<a href="https://busuanzi.ibruce.info//" rel="noopener" target="_blank">不蒜子</a>。</p>
+<h1 id="安装">安装</h1>
 
-<p>even 主题启用不蒜子很简单，只需要在博客配置文件里启用即可。</p>
+<p>Linux 上的安装就不必多讲了，直接上包管理器就好了。对于 Windows 而言有多种选择，最方便的方法是
+用 <a href="https://www.msys2.org/">msys2</a>，直接在 MINGW64 或 MINGW32 环境中安装 Glib 库和 pkg-config 即可。
+如果不想安装 msys2，也可以自己使用 Visual Studio 编译库，具体编译的方法就不多说了，Google 一下即可。
+如果既不想自己编译有不想安装 msys2 ，那么我这有一个比较好的方法。
+首先，你需要一个 gcc 编译器，推荐使用 scoop 安装。然后到 msys2 清华镜像源上下载编译好的 Glib 库，直达连接如下 <a href="https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64/mingw-w64-x86_64-libffi-3.2.1-4-any.pkg.tar.xz">Glib binary</a>。
+将压缩包解压到合适的位置即可。</p>
 
-<p>加载不蒜子脚本的语句在 <code>layouts/partials/head.html</code> 文件中。</p>
+<h1 id="使用">使用</h1>
 
-<p>只需要将文件中的 <code>dn-lbstatics.qbox.me</code> 替换为 <code>busuanzi.ibruce.info</code> 即可修复。</p>
+<p>//:TODO</p>
     </div>
 
     
@@ -200,11 +202,11 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-10-10</span>
+    <span class="item-content">2018-10-17</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>
-      <span class="item-content"><a class="link-to-markdown" href="https://luozongtong123.github.io/post/busuanzi-domain/index.md" target="_blank">Markdown 文件</a></span>
+      <span class="item-content"><a class="link-to-markdown" href="https://luozongtong123.github.io/post/glib-intro/index.md" target="_blank">Markdown 文件</a></span>
     </p>
   <p class="copyright-item">
     <span class="item-title">许可协议</span>
@@ -218,21 +220,16 @@
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/%E4%B8%8D%E8%92%9C%E5%AD%90/">不蒜子</a>
+          <a href="/tags/msys2/">msys2</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/glib-intro/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Glib 简介</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/portugal-visa-cultural/">
-            <span class="next-text nav-default">葡萄牙签证 国际学术会议</span>
+          <a class="next" href="/post/busuanzi-domain/">
+            <span class="next-text nav-default">不蒜子域名更新</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -248,8 +245,8 @@
     <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
-    id: '2018-10-10 22:20:04 \x2b0800 CST',
-    title: '不蒜子域名更新',
+    id: '2018-10-17 22:06:31 \x2b0800 CST',
+    title: 'Glib 简介',
     clientID: '773448aaf0a387786d40',
     clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
     repo: 'luozongtong123.github.io',

@@ -17,6 +17,13 @@
   </url>
   
   <url>
+    <loc>https://luozongtong123.github.io/post/glib-intro/</loc>
+    <lastmod>2018-10-17T22:06:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://luozongtong123.github.io/post/busuanzi-domain/</loc>
     <lastmod>2018-10-10T22:20:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -205,6 +212,13 @@
   </url>
   
   <url>
+    <loc>https://luozongtong123.github.io/categories/glib/</loc>
+    <lastmod>2018-10-17T22:06:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://luozongtong123.github.io/tags/hexo/</loc>
     <lastmod>2015-03-14T16:33:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -241,7 +255,7 @@
   
   <url>
     <loc>https://luozongtong123.github.io/post/</loc>
-    <lastmod>2018-10-10T22:20:04+08:00</lastmod>
+    <lastmod>2018-10-17T22:06:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -354,6 +368,13 @@
   <url>
     <loc>https://luozongtong123.github.io/tags/luocman/</loc>
     <lastmod>2018-09-22T11:08:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luozongtong123.github.io/tags/msys2/</loc>
+    <lastmod>2018-10-17T22:06:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
