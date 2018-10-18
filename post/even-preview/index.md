@@ -6,7 +6,7 @@
 
 ## 1.标题
 
-![header](/img/even-preview/header.jpg)
+{{% figure class="center" src="/img/even-preview/header.jpg" alt="header" title="header" %}}  
 
 ``` markdown
 # H1
@@ -21,7 +21,7 @@
 
 使用单引号 `*` 或者单下划线 `_` 标记 *斜体强调* 或者 _斜体强调_
 
-使用两个引号 `**` 或者两个下划线 `__` 标记 **加粗强调** 或者 __加粗强调__
+使用两个星号 `**` 或者两个下划线 `__` 标记 **加粗强调** 或者 __加粗强调__
 
 引号和下划线可叠加使用 → **只是加粗 _斜体并加粗_**
 
@@ -46,7 +46,7 @@
 ``` markdown
 使用单引号 `*` 或者单下划线 `_` 标记 *斜体强调* 或者 _斜体强调_
 
-使用两个引号 `**` 或者两个下划线 `__` 标记 **加粗强调** 或者 __加粗强调__
+使用两个星号 `**` 或者两个下划线 `__` 标记 **加粗强调** 或者 __加粗强调__
 
 引号和下划线可叠加使用 → **只是加粗 _斜体并加粗_**
 
@@ -195,17 +195,30 @@ if (document.getElementById('my-player') !== null) {
 
 ## 7. 图片 {#section-07}
 
-不带标题的图片，如下图??
+不带标题的图片，如下图：
 
-![hugo even showcase](https://raw.githubusercontent.com/olOwOlo/hugo-theme-even/master/images/showcase.png "showcase.png")
+![Villeneuve-les-Avignon](/img/even-preview/Villeneuve-les-Avignon.jpg)
 
-带标题的图片，如下图??
+带标题的图片，如下图：
 
-{{% figure class="center" src="https://raw.githubusercontent.com/olOwOlo/hugo-theme-even/master/images/showcase.png" alt="hugo even showcase" title="showcase.png" %}}
+{{% figure class="center" src="/img/even-preview/Villeneuve-les-Avignon.jpg" alt="Villeneuve-les-Avignon" title="Villeneuve-les-Avignon" %}}
+
+``` markdown
+不带标题的图片，如下图：
+
+![Villeneuve-les-Avignon](/img/even-preview/Villeneuve-les-Avignon.jpg)
+
+带标题的图片，如下图：
+
+`{{% figure class="center" src="/img/even-preview/Villeneuve-les-Avignon.jpg" alt="Villeneuve-les-Avignon" title="Villeneuve-les-Avignon" %}}`
+
+```
+
+图片来源：[Google Art](https://artsandculture.google.com/asset/CwH_vASwInhfQw?avm=3)
 
 ## 8. 表格
 
-使用 `Markdown` 画的表格，如下表 
+使用 `Markdown` 画的表格，如下表  
 
 | Tables        | Are           | Cool  |
 | :------------ |:-------------:| -----:|
@@ -639,10 +652,8 @@ Note over A,B: Note over both A and B
     Note over A,B: Note over both A and B
     ```
 
-
 ## 参考资料
 
 1. <a id="ref01">[Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)</a>
 2. <a id="ref02">[Markdown 语法手册](https://www.zybuluo.com/EncyKe/note/120103)</a>
-
 

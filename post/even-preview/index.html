@@ -25,7 +25,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.49" />
+<meta name="generator" content="Hugo 0.49.2" />
 
 
 <link rel="canonical" href="https://luozongtong123.github.io/post/even-preview/" />
@@ -60,11 +60,11 @@
 
 <meta itemprop="datePublished" content="2018-09-17T22:11:40&#43;08:00" />
 <meta itemprop="dateModified" content="2018-09-17T22:11:40&#43;08:00" />
-<meta itemprop="wordCount" content="2314">
+<meta itemprop="wordCount" content="2352">
 
 
 
-<meta itemprop="keywords" content="even theme,blog,hugo," />
+<meta itemprop="keywords" content="even theme,hugo," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="hugo 博客系统 even 主题预览"/>
 <meta name="twitter:description" content="even theme preview"/>
@@ -96,6 +96,8 @@
         <li class="mobile-menu-item">归档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
       </a><a href="/project/">
         <li class="mobile-menu-item">项目</li>
       </a><a href="/about/">
@@ -116,6 +118,8 @@
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
         <a class="menu-item-link" href="/project/">项目</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/about/">关于</a>
@@ -134,8 +138,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-09-17 </span>
-        
-        <span class="more-meta"> 约 2314 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/blog/"> Blog </a>
+            
+          </div>
+        <span class="more-meta"> 约 2352 字 </span>
         <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -206,7 +214,19 @@
 
 <h2 id="1-标题">1.标题</h2>
 
-<p><img src="/img/even-preview/header.jpg" alt="header" /></p>
+
+<figure class="center">
+    
+        <img src="/img/even-preview/header.jpg" alt="header" />
+    
+    
+    <figcaption>
+        <h4>header</h4>
+        
+    </figcaption>
+    
+</figure>
+
 
 <pre><code class="language-markdown"># H1
 ## H2
@@ -220,7 +240,7 @@
 
 <p>使用单引号 <code>*</code> 或者单下划线 <code>_</code> 标记 <em>斜体强调</em> 或者 <em>斜体强调</em></p>
 
-<p>使用两个引号 <code>**</code> 或者两个下划线 <code>__</code> 标记 <strong>加粗强调</strong> 或者 <strong>加粗强调</strong></p>
+<p>使用两个星号 <code>**</code> 或者两个下划线 <code>__</code> 标记 <strong>加粗强调</strong> 或者 <strong>加粗强调</strong></p>
 
 <p>引号和下划线可叠加使用 → <strong>只是加粗 <em>斜体并加粗</em></strong></p>
 
@@ -244,7 +264,7 @@
 
 <pre><code class="language-markdown">使用单引号 `*` 或者单下划线 `_` 标记 *斜体强调* 或者 _斜体强调_
 
-使用两个引号 `**` 或者两个下划线 `__` 标记 **加粗强调** 或者 __加粗强调__
+使用两个星号 `**` 或者两个下划线 `__` 标记 **加粗强调** 或者 __加粗强调__
 
 引号和下划线可叠加使用 → **只是加粗 _斜体并加粗_**
 
@@ -412,25 +432,49 @@ if (document.getElementById('my-player') !== null) {
 
 <h2 id="section-07">7. 图片</h2>
 
-<p>不带标题的图片，如下图??</p>
+<p>不带标题的图片，如下图：</p>
 
-<p><img src="https://raw.githubusercontent.com/olOwOlo/hugo-theme-even/master/images/showcase.png" alt="hugo even showcase" title="showcase.png" /></p>
+<p><img src="/img/even-preview/Villeneuve-les-Avignon.jpg" alt="Villeneuve-les-Avignon" /></p>
 
-<p>带标题的图片，如下图??</p>
+<p>带标题的图片，如下图：</p>
 
 
 <figure class="center">
     
-        <img src="https://raw.githubusercontent.com/olOwOlo/hugo-theme-even/master/images/showcase.png" alt="hugo even showcase" />
+        <img src="/img/even-preview/Villeneuve-les-Avignon.jpg" alt="Villeneuve-les-Avignon" />
     
     
     <figcaption>
-        <h4>showcase.png</h4>
+        <h4>Villeneuve-les-Avignon</h4>
         
     </figcaption>
     
 </figure>
 
+
+<pre><code class="language-markdown">不带标题的图片，如下图：
+
+![Villeneuve-les-Avignon](/img/even-preview/Villeneuve-les-Avignon.jpg)
+
+带标题的图片，如下图：
+
+`
+<figure class="center">
+    
+        <img src="/img/even-preview/Villeneuve-les-Avignon.jpg" alt="Villeneuve-les-Avignon" />
+    
+    
+    <figcaption>
+        <h4>Villeneuve-les-Avignon</h4>
+        
+    </figcaption>
+    
+</figure>
+`
+
+</code></pre>
+
+<p>图片来源：<a href="https://artsandculture.google.com/asset/CwH_vASwInhfQw?avm=3">Google Art</a></p>
 
 <h2 id="8-表格">8. 表格</h2>
 
@@ -1027,8 +1071,6 @@ Note over A,B: Note over both A and B
       <div class="post-tags">
           
           <a href="/tags/even-theme/">even theme</a>
-          
-          <a href="/tags/blog/">blog</a>
           
           <a href="/tags/hugo/">hugo</a>
           

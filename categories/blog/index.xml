@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on luo Space - Coding and thinking.</title>
+    <link>https://luozongtong123.github.io/categories/blog/</link>
+    <description>Recent content in Blog on luo Space - Coding and thinking.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 10 Oct 2018 22:20:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://luozongtong123.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>不蒜子域名更新</title>
+      <link>https://luozongtong123.github.io/post/busuanzi-domain/</link>
+      <pubDate>Wed, 10 Oct 2018 22:20:04 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/busuanzi-domain/</guid>
+      <description>&lt;p&gt;前天发现不蒜子网页访问计数一直是正在加载状态，没法正常工作。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 Git 子模块管理 hugo 博客</title>
+      <link>https://luozongtong123.github.io/post/git-submodule/</link>
+      <pubDate>Fri, 05 Oct 2018 10:02:56 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/git-submodule/</guid>
+      <description>&lt;p&gt;使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>hugo 博客系统 even 主题预览</title>
+      <link>https://luozongtong123.github.io/post/even-preview/</link>
+      <pubDate>Mon, 17 Sep 2018 22:11:40 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/even-preview/</guid>
+      <description>&lt;p&gt;这篇文章集中说明 even 主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些样式，可以去修改 css/ 文件夹下的 .scss 文件。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 cloud9 重建 Hexo 博客写作环境</title>
+      <link>https://luozongtong123.github.io/post/rebuilt-envirenment/</link>
+      <pubDate>Sat, 14 Mar 2015 16:33:52 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/rebuilt-envirenment/</guid>
+      <description>&lt;p&gt;在 cloud9 上写博客。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo luocman 主题的文章书写规范</title>
+      <link>https://luozongtong123.github.io/post/how-to-write/</link>
+      <pubDate>Sat, 28 Feb 2015 13:51:42 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/how-to-write/</guid>
+      <description>&lt;p&gt;将一些 Hexo luocman 主题的文章的书写规范和技巧总结一下。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>简单的 Git 入门</title>
+      <link>https://luozongtong123.github.io/post/something-about-git/</link>
+      <pubDate>Fri, 13 Feb 2015 22:31:00 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/something-about-git/</guid>
+      <description>&lt;p&gt;在使用 Hexo 作为博客程序的过程中使用了 Git 这个分布式版本控制系统。现在已经初步入门了。之前一直都没有深入去研究，但是今天上午突然想要把所有的东西都同步到某网盘上以免本地数据出现差错导致博客从头再来。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo world ！—— Hexo 博客搭建教程</title>
+      <link>https://luozongtong123.github.io/post/hexo-world--how-to-build-hexo-blog/</link>
+      <pubDate>Tue, 27 Jan 2015 21:11:00 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/hexo-world--how-to-build-hexo-blog/</guid>
+      <description>&lt;p&gt;博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去。
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

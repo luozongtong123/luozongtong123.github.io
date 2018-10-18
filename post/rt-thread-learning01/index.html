@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.49" />
+<meta name="generator" content="Hugo 0.49.2" />
 
 
 <link rel="canonical" href="https://luozongtong123.github.io/post/rt-thread-learning01/" />
@@ -67,7 +67,7 @@
 
 
 
-<meta itemprop="keywords" content="RT-Thread,线程,栈," />
+<meta itemprop="keywords" content="Thread,Stack," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RT-Thread 0x01：线程与线程的切换"/>
 <meta name="twitter:description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
@@ -100,6 +100,8 @@
         <li class="mobile-menu-item">归档</li>
       </a><a href="/tags/">
         <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
       </a><a href="/project/">
         <li class="mobile-menu-item">项目</li>
       </a><a href="/about/">
@@ -120,6 +122,8 @@
       </li><li class="menu-item">
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
         <a class="menu-item-link" href="/project/">项目</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/about/">关于</a>
@@ -138,7 +142,11 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-09-29 </span>
-        
+        <div class="post-category">
+            
+              <a href="/categories/rt-thread/"> RT-Thread </a>
+            
+          </div>
         <span class="more-meta"> 约 9272 字 </span>
         <span class="more-meta"> 预计阅读 19 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
@@ -1233,11 +1241,9 @@ void flag2_thread_entry( void *p_arg )
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/rt-thread/">RT-Thread</a>
+          <a href="/tags/thread/">Thread</a>
           
-          <a href="/tags/%E7%BA%BF%E7%A8%8B/">线程</a>
-          
-          <a href="/tags/%E6%A0%88/">栈</a>
+          <a href="/tags/stack/">Stack</a>
           
         </div>
 
