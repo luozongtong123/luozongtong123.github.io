@@ -51,11 +51,8 @@ Linux 上的安装就不必多讲了，直接上包管理器就好了。对于 W
  *  
  */
 
-#include <stdio.h>
-
 #include "glib.h"
 #include "glib/gprintf.h"
-
 
 /**
  * @brief  

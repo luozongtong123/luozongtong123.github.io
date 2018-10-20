@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scoop on luo Space - Coding and thinking.</title>
+    <link>https://luozongtong123.github.io/tags/scoop/</link>
+    <description>Recent content in Scoop on luo Space - Coding and thinking.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 18 Oct 2018 15:35:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://luozongtong123.github.io/tags/scoop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Scoop 助力 PowerShell</title>
+      <link>https://luozongtong123.github.io/post/scoop-intro/</link>
+      <pubDate>Thu, 18 Oct 2018 15:35:15 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/scoop-intro/</guid>
+      <description>&lt;p&gt;Windows 上的命令行工具 cmd 是一个有三十多年历史的古老程序。在 Windows 上 cmd 的竞争者的是 PowerShell，
+它功能更强大，用起来更方便，早在其版本号为 1.0 的时候我就尝试过，然而其异常缓慢的冷启动速度让人无法接受，
+尝试了几次后便无奈放弃。最近，一个偶然的机会让，了解到了 &lt;a href=&#34;https://scoop.sh/&#34;&gt;Scoop&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/PowerShell/PowerShell&#34;&gt;PowerShell Core&lt;/a&gt;。一番研究之后，最终放弃了 cmd ，开始使用 PowerShell。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
