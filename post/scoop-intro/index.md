@@ -1,6 +1,6 @@
 Windows 上的命令行工具 cmd 是一个有三十多年历史的古老程序。在 Windows 上 cmd 的竞争者的是 PowerShell，
 它功能更强大，用起来更方便，早在其版本号为 1.0 的时候我就尝试过，然而其异常缓慢的冷启动速度让人无法接受，
-尝试了几次后便无奈放弃。最近，一个偶然的机会让，了解到了 [Scoop](https://scoop.sh/) 和 [PowerShell Core](https://github.com/PowerShell/PowerShell)。一番研究之后，最终放弃了 cmd ，开始使用 PowerShell。  
+尝试了几次后便无奈放弃。最近，一个偶然的机会，了解到了 [Scoop](https://scoop.sh/) 和 [PowerShell Core](https://github.com/PowerShell/PowerShell)。一番研究之后，最终放弃了 cmd ，开始使用 PowerShell。  
 
 <!--more-->  
 
@@ -8,11 +8,11 @@ Windows 上的命令行工具 cmd 是一个有三十多年历史的古老程序�
 
 在说 Scoop 之前先说一说这个 PowerShell。经过几年的开发，Windows PowerShell 的版本号已经更新到 5.1 了。
 中所周知 PowerShell 最初是基于 .NET Framework 的，只能在 Wondows 上使用的。随着微软的开始拥抱开源，
-Windows 独占的 .NET Framework 变成了跨平台的 .NET Core。
+Windows 独占的 .NET Framework 发展 ~~变~~ 成了跨平台的 .NET Core。(.NET Core 是 .NET Framework 的子集)
 PowerShell 也顺理成章地变成了开源版本的 PowerShell Core 了。
-从此，PowerShell Core 不再依赖 .NET Framework 了。
-PowerShell 变成了可以跨平台运行在 Windows、Linux 和 macOS 上的工具了。Github 上下载来尝试了一下，
-启动速度明显变快了。  
+~~从此，PowerShell Core 不再依赖 .NET Framework 了。
+PowerShell 变成了可以跨平台运行在 Windows、Linux 和 macOS 上的工具了。~~
+Github 上下载来尝试了一下，启动速度明显变快了。  
 
 # 引子
 
@@ -26,9 +26,9 @@ Scoop 不是什么？
 不是包管理工具。  
 ****
 
-Scoop 看以来像一个包管理工具。但是 Scoop 的作者给这款工具的定位仅仅是一个程序安装工具，因为她处理不了复杂的依赖关系。
+Scoop 看以来像一个包管理工具。其实 Scoop 这款工具的定位仅仅是一个程序安装工具，因为她处理不了复杂的依赖关系。
 每个被安装的程序仅仅是一个个独立的软件，不会像包管理工具那样产生相互依赖。说起来包管理工具，不得不提 Chocolatey。
-Chocolatey 我也尝试过，但是她有许多我不能够忍的缺点：不能选择安装位置、需要管理员权限、UAC 弹窗、不会污染 path。
+Chocolatey 我也尝试过，但是她有许多我不能够忍的缺点：不能选择安装位置、需要管理员权限、UAC 弹窗。
 具体二者有何区别详见 [Chocolatey Comparison](https://github.com/lukesampson/scoop/wiki/Chocolatey-Comparison)。
 
 在正式开始之前我们先看一下 Scoop 长啥样：
@@ -69,15 +69,15 @@ which       Locate a shim/executable (similar to 'which' on Linux)
 要安装、卸载软件:
 
 ``` shell
-scoop install xxx
-scoop uninstall xxx
+scoop install <app>
+scoop uninstall <app>
 ```
 
 要更新软件：
 
 ``` shell
-# 更新 xxx 软件
-scoop update xxx  
+# 更新 app
+scoop update <app>  
 # 更新 scoop
 scoop update
 # 更新所有软件包

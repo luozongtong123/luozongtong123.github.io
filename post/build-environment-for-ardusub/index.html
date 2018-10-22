@@ -185,6 +185,11 @@
 
     
     
+  <div class="post-outdated">
+    <div class="hint">
+      <p>【注意】最后更新于 <span class="timeago" datetime="2018-09-13T21:31:45" title="September 13, 2018">September 13, 2018</span>，文中内容可能已过时，请谨慎使用。</p>
+    </div>
+  </div>
 
     
     <div class="post-content">
@@ -448,6 +453,13 @@ git submodule update --recursive
 <script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+  <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+  <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+<script>  
+  var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+  timeago().render(document.querySelectorAll('.timeago'), languageCode);
+  timeago.cancel();  
+</script>
 
 
 <script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
