@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Font Ligatures on luo Space - Coding and thinking.</title>
+    <link>https://luozongtong123.github.io/tags/font-ligatures/</link>
+    <description>Recent content in Font Ligatures on luo Space - Coding and thinking.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 22 Oct 2018 15:41:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://luozongtong123.github.io/tags/font-ligatures/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Visual Studio Code Can Do That?!</title>
+      <link>https://luozongtong123.github.io/post/vs-code-can-do-that/</link>
+      <pubDate>Mon, 22 Oct 2018 15:41:37 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/vs-code-can-do-that/</guid>
+      <description>&lt;p&gt;在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

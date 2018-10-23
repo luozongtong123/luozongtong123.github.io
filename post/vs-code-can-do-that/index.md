@@ -1,6 +1,10 @@
 在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。
 <!--more-->
 
+{{% figure class="left" src="/img/vs-code-can-do-that/build_ppt.png" alt="build_ppt" title="Microsoft Build 2018 Keynote" %}}
+
+视频是 Microsoft Build 2018 的录像。
+
 # 视频
 
 {{% youtube "x5GzCohd4eo" %}}
@@ -60,11 +64,11 @@ Prettier formatter 是一个可以自动美化 JavaScript/TypeScript/CSS 的扩�
 
 # 提到的插件
 
-1. Hop Light ：主讲人 1 喜欢的颜色主题
-2. Winter is Coming Theme：主讲人 2 喜欢的颜色主题
+1. Hop Light ：Burke Holland 喜欢的颜色主题
+2. Winter is Coming Theme：John Papa 喜欢的颜色主题
 3. Material Icon Theme：提到的一个文件图标主题
 4. Cobalt2 Theme Official：据说是对眼睛更好的一个颜色主题
 5. Azure Cosmos DB：一个可以管理 MongoDB 数据库的扩展
 
->发现视频主要讲的是前端开发相关的。总得来说视频很有趣，也学到了不少东西。  
+>发现视频主要讲的是前端开发相关的。两位讲的很有趣。    
 
