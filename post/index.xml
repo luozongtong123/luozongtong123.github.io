@@ -6,10 +6,19 @@
     <description>Recent content in Posts on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 22 Oct 2018 15:41:37 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Oct 2018 23:57:57 +0800</lastBuildDate>
     
 	<atom:link href="https://luozongtong123.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>F# Tutorial</title>
+      <link>https://luozongtong123.github.io/post/fsharp-tutorial/</link>
+      <pubDate>Fri, 26 Oct 2018 23:57:57 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/post/fsharp-tutorial/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Visual Studio Code Can Do That?!</title>

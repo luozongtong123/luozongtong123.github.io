@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Visual Studio Code Can Do That?! - luo Space - Coding and thinking.</title>
+  <title>F# Tutorial - luo Space - Coding and thinking.</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,8 @@
 
 
 <meta name="author" content="luo" />
-  <meta name="description" content="在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。 " />
+  <meta name="description" content="
+" />
 
   <meta name="keywords" content="coding, thinking" />
 
@@ -29,7 +30,7 @@
 <meta name="generator" content="Hugo 0.49.2" />
 
 
-<link rel="canonical" href="https://luozongtong123.github.io/post/vs-code-can-do-that/" />
+<link rel="canonical" href="https://luozongtong123.github.io/post/fsharp-tutorial/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,29 +50,26 @@
 
 
 
-<meta property="og:title" content="Visual Studio Code Can Do That?!" />
-<meta property="og:description" content="在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。
-" />
+<meta property="og:title" content="F# Tutorial" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://luozongtong123.github.io/post/vs-code-can-do-that/" /><meta property="article:published_time" content="2018-10-22T15:41:37&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-23T10:47:37&#43;08:00"/>
+<meta property="og:url" content="https://luozongtong123.github.io/post/fsharp-tutorial/" /><meta property="article:published_time" content="2018-10-26T23:57:57&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-26T23:57:57&#43;08:00"/>
 
-<meta itemprop="name" content="Visual Studio Code Can Do That?!">
-<meta itemprop="description" content="在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。
-">
-
-
-<meta itemprop="datePublished" content="2018-10-22T15:41:37&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-22T15:41:37&#43;08:00" />
-<meta itemprop="wordCount" content="728">
+<meta itemprop="name" content="F# Tutorial">
+<meta itemprop="description" content="">
 
 
+<meta itemprop="datePublished" content="2018-10-26T23:57:57&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-26T23:57:57&#43;08:00" />
+<meta itemprop="wordCount" content="292">
 
-<meta itemprop="keywords" content="Visual Studio Code,Font Ligatures,Microsoft Build," />
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Visual Studio Code Can Do That?!"/>
-<meta name="twitter:description" content="在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。
-"/>
+<meta name="twitter:title" content="F# Tutorial"/>
+<meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -138,129 +136,76 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Visual Studio Code Can Do That?!</h1>
+      <h1 class="post-title">F# Tutorial</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-10-22 </span>
+        <span class="post-time"> 2018-10-26 </span>
         
-        <span class="more-meta"> 约 728 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span class="more-meta"> 约 292 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
 
     
     
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    
+  </div>
+</div>
 
     
     
 
     
     <div class="post-content">
-      <p>在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。
-</p>
+      <p></p>
 
+<pre><code class="language-fsharp">let doFuns() =
+  let getSum(x : int, y : int) :int = x + y
 
-<figure class="left">
-    
-        <img src="/img/vs-code-can-do-that/build_ppt.png" alt="build_ppt" />
-    
-    
-    <figcaption>
-        <h4>Microsoft Build 2018 Keynote</h4>
-        
-    </figcaption>
-    
-</figure>
+  printfn &quot;5 + 7 = %i&quot; (getSum(5,7))
 
+  // 递归函数
+  let rec factorial x =
+    if x &lt; 1 then 1
+    else x * factorial (x - 1)
+  
+  printfn &quot;Factorial 4 : %i&quot; (factorial 4)
+  // 1st : result = 4 * factoral(3) = 4 * 6 = 24
+  // 2st : result = 3 * factoral(2) = 3 * 2 = 6
+  // 1st : result = 2 * factoral(1) = 2 * 1 = 2
 
-<p>视频是 Microsoft Build 2018 的录像。</p>
+  // 定义一个列表 (List)
+  let randList = [1; 2; 3]
+  // map 可以对数组里的每一个元素进行特定操作，
+  // 第一个参数是 lambda 表达式 (anonymous function, 匿名函数)
+  // 第二个参数是被操作的数组
+  let randList2 =  List.map (fun x -&gt; x * 2) randList
+  printfn &quot;Double List : %A&quot; randList2
 
-<h1 id="视频">视频</h1>
+  // 管道可以很方便地进行多步计算
+  // 管道：将值输入(|&gt;)到函数中
+  [5; 6; 7; 8]
+  |&gt; List.filter (fun v -&gt; (v % 2) = 0)
+  |&gt; List.map (fun x -&gt; x * 2)
+  |&gt; printfn &quot;Even Doubles %A&quot; 
 
+  // &gt;&gt; 和 &lt;&lt; 可以将两个函数合二为一
+  let multNum x = x * 3
+  let addNum y = y + 5
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/x5GzCohd4eo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+  let multAdd = multNum &gt;&gt; addNum
+  let addMult = multNum &lt;&lt; addNum
 
+  printfn &quot;multAdd : %i&quot; (multAdd 10)
+  printfn &quot;addMult : %i&quot; (addMult 10)
 
-<p>如果你无法访问 YouTube，B 站的搬运如下：
-<a href="https://www.bilibili.com/video/av34408553">VS Code Can Do That?! VS Code Tips and Tricks</a></p>
-
-<h1 id="主题">主题</h1>
-
-<p>You may know or may not know, VS Code 的主题非常丰富。视频中首先说了一下主题，
-其中提到了 <a href="https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2">Cobalt2</a> 主题。这个主题是一个有助于保护眼睛的主题。</p>
-
-<h1 id="合字">合字</h1>
-
-<p>这是一个非常炫酷的功能。Font Ligatures (合字) 可以将几个符号显示时变成一个符号，其效果如下：</p>
-
-
-<figure class="center">
-    
-        <img src="/img/vs-code-can-do-that/Fira-Code.png" alt="Fira Code" />
-    
-    
-    <figcaption>
-        <h4>Fira Code</h4>
-        
-    </figcaption>
-    
-</figure>
-
-
-<p>要实现这个功能首先需要到 GitHub 上下载安装 <a href="https://github.com/tonsky/FiraCode">Fira Code 字体</a>。
-下载后将压缩包解压，Windows 上，打开 ttf 文件夹，全选字体 &gt; 右键 &gt; 安装。</p>
-
-<p>VS Code 中将下面的语句添加到设置文件夹（可能需要重启才会生效）：</p>
-
-<pre><code class="language-json">&quot;editor.fontFamily&quot;: &quot;'Fira Code'&quot;,
-&quot;editor.fontLigatures&quot;: true
+doFuns()
 </code></pre>
-
-<p>需要注意的是，如果你需要在字体中选择多个字体，那么你需要将 <code>'Fira Code'</code> 放到第一的位置。</p>
-
-<h1 id="一些快捷键">一些快捷键</h1>
-
-<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> ：调出命令面板;<br />
-<kbd>Ctrl</kbd> + <kbd>P</kbd> + <kbd>P</kbd> ：在最近打开的文件之间切换;<br />
-<kbd>Ctrl</kbd> + <kbd>B</kbd>：开关侧栏;<br />
-<kbd>Ctrl</kbd> + <kbd>`</kbd>：开关终端;<br />
-<kbd>Ctrl</kbd> + <kbd>J</kbd>：开关底栏;</p>
-
-<h1 id="一些小技巧">一些小技巧</h1>
-
-<p><kbd>Ctrl</kbd> + <kbd>P</kbd> 然后输入 @ ，就可以在当前文件的大纲(Outline)范围内快速跳转，你甚至可以输入<kbd>：</kbd> 然后过滤你需要的内容;<br />
-<kbd>Ctrl</kbd> + <kbd>P</kbd> 然后输入<kbd>：</kbd>可以快速跳转到特定行号；<br />
-<kbd>Ctrl</kbd> + <kbd>P</kbd> 然后输入<kbd>?</kbd>可以查看帮助；</p>
-
-<h1 id="emmet-和-prettier-formatter">Emmet 和 Prettier formatter</h1>
-
-<p>Emmet (前身为 Zen Coding) 是一个能大幅度提高前端开发效率的一个工具。Emmet 可以自动补全 HTML和CSS等，
-甚至可以直接计算表达式的值和自动填写图片的大小。</p>
-
-<p>Prettier formatter 是一个可以自动美化 JavaScript/TypeScript/CSS 的扩展。</p>
-
-<p>由于我不搞前端，这部分就不细说了。</p>
-
-<h1 id="远程调试-azure-上的-node-js">远程调试 Azure 上的 Node.js</h1>
-
-<p>很强大。(不懂 Node.js)</p>
-
-<h1 id="提到的插件">提到的插件</h1>
-
-<ol>
-<li>Hop Light ：Burke Holland 喜欢的颜色主题</li>
-<li>Winter is Coming Theme：John Papa 喜欢的颜色主题</li>
-<li>Material Icon Theme：提到的一个文件图标主题</li>
-<li>Cobalt2 Theme Official：据说是对眼睛更好的一个颜色主题</li>
-<li>Azure Cosmos DB：一个可以管理 MongoDB 数据库的扩展</li>
-</ol>
-
-<blockquote>
-<p>发现视频主要讲的是前端开发相关的。两位讲的很有趣。</p>
-</blockquote>
     </div>
 
     
@@ -271,11 +216,11 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-10-23</span>
+    <span class="item-content">2018-10-26</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>
-      <span class="item-content"><a class="link-to-markdown" href="https://luozongtong123.github.io/post/vs-code-can-do-that/index.md" target="_blank">Markdown 文件</a></span>
+      <span class="item-content"><a class="link-to-markdown" href="https://luozongtong123.github.io/post/fsharp-tutorial/index.md" target="_blank">Markdown 文件</a></span>
     </p>
   <p class="copyright-item">
     <span class="item-title">许可协议</span>
@@ -287,27 +232,14 @@
     
 
     <footer class="post-footer">
-      <div class="post-tags">
-          
-          <a href="/tags/visual-studio-code/">Visual Studio Code</a>
-          
-          <a href="/tags/font-ligatures/">Font Ligatures</a>
-          
-          <a href="/tags/microsoft-build/">Microsoft Build</a>
-          
-        </div>
+      
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/fsharp-tutorial/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">F# Tutorial</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/scoop-intro/">
-            <span class="next-text nav-default">Scoop 助力 PowerShell</span>
+          <a class="next" href="/post/vs-code-can-do-that/">
+            <span class="next-text nav-default">Visual Studio Code Can Do That?!</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -323,8 +255,8 @@
     <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
-    id: '2018-10-22 15:41:37 \x2b0800 CST',
-    title: 'Visual Studio Code Can Do That?!',
+    id: '2018-10-26 23:57:57 \x2b0800 CST',
+    title: 'F# Tutorial',
     clientID: '773448aaf0a387786d40',
     clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
     repo: 'luozongtong123.github.io',
