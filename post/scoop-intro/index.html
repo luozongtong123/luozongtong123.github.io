@@ -205,7 +205,7 @@ Chocolatey 我也尝试过，但是她有许多我不能够忍的缺点：不能
 
 <p>在正式开始之前我们先看一下 Scoop 长啥样：</p>
 
-<pre><code class="language-shell">PS C:\Users\luo&gt; scoop
+<pre><code class="language-powershell">PS C:\Users\luo&gt; scoop
 Usage: scoop &lt;command&gt; [&lt;args&gt;]
 
 Some useful commands are:
@@ -239,13 +239,13 @@ which       Locate a shim/executable (similar to 'which' on Linux)
 
 <p>要安装、卸载软件:</p>
 
-<pre><code class="language-shell">scoop install &lt;app&gt;
+<pre><code class="language-powershell">scoop install &lt;app&gt;
 scoop uninstall &lt;app&gt;
 </code></pre>
 
 <p>要更新软件：</p>
 
-<pre><code class="language-shell"># 更新 app
+<pre><code class="language-powershell"># 更新 app
 scoop update &lt;app&gt;  
 # 更新 scoop
 scoop update
@@ -263,18 +263,18 @@ scoop update *
 
 <p>首先，在 PowerShell 里修改一下安全策略：</p>
 
-<pre><code class="language-shell">Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+<pre><code class="language-powershell">Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 </code></pre>
 
 <p>然后，输入以下命令安装：</p>
 
-<pre><code class="language-shell">iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+<pre><code class="language-powershell">iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 </code></pre>
 
 <p>Scoop 默认的安装位置是 <code>C:\Users\username\Scoop\</code>。<br />
 或者，你想修改一下 Scoop 默认的安装位置。在安装 Scoop 之前输入以下命令：</p>
 
-<pre><code class="language-shell"># 修改用户默认安装位置
+<pre><code class="language-powershell"># 修改用户默认安装位置
 # 注意去掉 [environment] 后的两个 \
 [environment]\:\:setEnvironmentVariable('SCOOP','D:\Applications\Scoop','User')
 $env:SCOOP='D:\Applications\Scoop'
@@ -313,7 +313,7 @@ scoop install -g &lt;app&gt;
 
 <p>而，<code>bucket</code> 则是一些 <code>manifest</code> 的集合。Scoop 默认指开启了主 <code>bucket</code>，你可以通过以下命令添加其他官方提供的“桶”。</p>
 
-<pre><code class="language-shell">scoop bucket known
+<pre><code class="language-powershell">scoop bucket known
 scoop bucket add extras
 scoop bucket add versions
 </code></pre>
@@ -395,7 +395,7 @@ scoop bucket add versions
 
 <p>使用如下命令添加自定义的 <code>bucket</code>。</p>
 
-<pre><code class="language-shell">scoop buckets add &lt;bucket&gt; url/tu/your/repo.git
+<pre><code class="language-powershell">scoop buckets add &lt;bucket&gt; url/tu/your/repo.git
 scoop install &lt;bucket&gt;/&lt;app&gt;
 </code></pre>
 
@@ -472,8 +472,8 @@ scoop install &lt;bucket&gt;/&lt;app&gt;
   
 
   <div id="gitalk-container"></div>
-  <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
-    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
     id: '2018-10-18 15:35:15 \x2b0800 CST',
@@ -507,7 +507,7 @@ scoop install &lt;bucket&gt;/&lt;app&gt;
   <span class="division">|</span>
   <span class="theme-info">
     主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+    <a class="theme-link" href="https://github.com/luozongtong123/hugo-theme-even">Even</a>
   </span>
 
   <div class="busuanzi-footer">

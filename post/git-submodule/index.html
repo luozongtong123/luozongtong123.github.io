@@ -198,20 +198,20 @@
 
 <p>首先，在 Github 上创建一个用于存放博客根目录的仓库。 将仓库 clone 到合适的位置。把博客根目录中的所有文件拷贝到本地仓库中。</p>
 
-<pre><code class="language-bash">git clone https://github.com/username/yourrepo.git
+<pre><code class="language-shell">git clone https://github.com/username/yourrepo.git
 </code></pre>
 
 <p><strong>注：如果你在添加 hugo 主题的时候用的是 Submodule ，那么下一步可以略过。</strong></p>
 
 <p>以将主题添加为 Submodule ，如果之前添加过主题需要删除整个主题文件夹。</p>
 
-<pre><code class="language-bash"># 在博客根目录下
+<pre><code class="language-shell"># 在博客根目录下
 git submodule add https://github.com/username/themename.git themes/themename
 </code></pre>
 
 <p>然后，将 <code>public</code> 文件夹删除，把 用于创建 Github Pages 的仓库以 <code>Submodule</code> 的形式添加到本地仓库。</p>
 
-<pre><code class="language-bash">git submodule add https://github.com/username/username.github.io.git public
+<pre><code class="language-shell">git submodule add https://github.com/username/username.github.io.git public
 # 这行命令会将博客静态文件仓库克隆到本地的 public 文件夹，并同时将该仓库添加为附仓库的子模块
 </code></pre>
 
@@ -221,7 +221,7 @@ git submodule add https://github.com/username/themename.git themes/themename
 
 <p>接下来当我们需要更新部署博客的时候只需要运行下面的 bat 脚本即可。</p>
 
-<pre><code class="language-bash">::cmd 
+<pre><code class="language-bat">::cmd 
 ::deploy.bat 
 @echo off 
 hugo 
@@ -276,14 +276,14 @@ echo deploy finished.
 
 <p>hugo 生成的文件是 LF 换行符，git 添加文件的时候会显示将 LF 替换为 CRLF 的警告，使用如下命令可以关闭这个警告。</p>
 
-<pre><code class="language-bash">git config --global core.safecrlf false
+<pre><code class="language-shell">git config --global core.safecrlf false
 </code></pre>
 
 <h2 id="在另一台电脑上使用">在另一台电脑上使用</h2>
 
 <p>当我们需要在一台新的电脑上更新博客的时候只需要将 Github 上博客的仓库递归克隆下来即可。</p>
 
-<pre><code class="language-bash">git clone https://github.com/username/yourblog.git yourblog --recursive 
+<pre><code class="language-shell">git clone https://github.com/username/yourblog.git yourblog --recursive 
 cd yourblog/public 
 git checkout master 
 </code></pre>
@@ -298,7 +298,7 @@ git checkout master
 
 <p>Git 子模块的一些常规操作：<sup><a href="#ref02">[2]</a></sup><sup><a href="#ref03">[3]</a></sup></p>
 
-<pre><code class="language-bash"># 添加子模块
+<pre><code class="language-shell"># 添加子模块
 git submodule add https://github.com/username/gitname.git gitname 
 
 # 递归克隆带有子模块的仓库
@@ -388,8 +388,8 @@ git commit -am &quot;Update submodule url.&quot;
   
 
   <div id="gitalk-container"></div>
-  <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
-    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
     id: '2018-10-05 10:02:56 \x2b0800 CST',
@@ -423,7 +423,7 @@ git commit -am &quot;Update submodule url.&quot;
   <span class="division">|</span>
   <span class="theme-info">
     主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+    <a class="theme-link" href="https://github.com/luozongtong123/hugo-theme-even">Even</a>
   </span>
 
   <div class="busuanzi-footer">

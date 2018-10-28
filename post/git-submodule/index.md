@@ -10,7 +10,7 @@
 
 首先，在 Github 上创建一个用于存放博客根目录的仓库。 将仓库 clone 到合适的位置。把博客根目录中的所有文件拷贝到本地仓库中。   
 
-```bash
+``` shell
 git clone https://github.com/username/yourrepo.git
 ```
 
@@ -18,7 +18,7 @@ git clone https://github.com/username/yourrepo.git
 
 以将主题添加为 Submodule ，如果之前添加过主题需要删除整个主题文件夹。
 
-```bash
+``` shell
 # 在博客根目录下
 git submodule add https://github.com/username/themename.git themes/themename
 ```
@@ -27,7 +27,7 @@ git submodule add https://github.com/username/themename.git themes/themename
 
 然后，将 `public` 文件夹删除，把 用于创建 Github Pages 的仓库以 `Submodule` 的形式添加到本地仓库。
 
-```bash
+``` shell
 git submodule add https://github.com/username/username.github.io.git public
 # 这行命令会将博客静态文件仓库克隆到本地的 public 文件夹，并同时将该仓库添加为附仓库的子模块
 ```
@@ -38,7 +38,7 @@ git submodule add https://github.com/username/username.github.io.git public
 
 接下来当我们需要更新部署博客的时候只需要运行下面的 bat 脚本即可。
 
-```bash
+``` bat
 ::cmd 
 ::deploy.bat 
 @echo off 
@@ -94,7 +94,7 @@ echo deploy finished.
 
 hugo 生成的文件是 LF 换行符，git 添加文件的时候会显示将 LF 替换为 CRLF 的警告，使用如下命令可以关闭这个警告。
 
-```bash
+``` shell
 git config --global core.safecrlf false
 ```
 
@@ -104,7 +104,7 @@ git config --global core.safecrlf false
 
 当我们需要在一台新的电脑上更新博客的时候只需要将 Github 上博客的仓库递归克隆下来即可。
 
-```bash
+``` shell
 git clone https://github.com/username/yourblog.git yourblog --recursive 
 cd yourblog/public 
 git checkout master 
@@ -122,7 +122,7 @@ git checkout master
 
 Git 子模块的一些常规操作：<sup>[[2]](#ref02)</sup><sup>[[3]](#ref03)</sup>
 
-```bash
+``` shell
 # 添加子模块
 git submodule add https://github.com/username/gitname.git gitname 
 

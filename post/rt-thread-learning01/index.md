@@ -505,7 +505,7 @@ void rt_system_scheduler_start(void)
 
 该函数的实现如下：
 
-```assembly
+``` arm
 ;*************************************************************************
 ;                                 全局变量
 ;*************************************************************************
@@ -594,7 +594,7 @@ rt_hw_context_switch_to    PROC
 
 PendSV_Handler()函数是真正实现线程上下文切换的地方，具体实现见代码：
 
-```assembly
+``` arm
 ;/*
 ; *-----------------------------------------------------------------------
 ; * void PendSV_Handler(void);
@@ -669,7 +669,7 @@ pendsv_exit
 ## 系统调度
 
 **rt_schedule()函数**  
-```assembly
+``` c
 /* 系统调度 */
 void rt_schedule(void)
 {
@@ -708,7 +708,7 @@ void rt_schedule(void)
 **rt_hw_contex_switch()函数**  
 rt_hw_contex_switch()函数用于产生上下文切换。  
 
-```assembly
+``` arm
 ;/*
 ; *-----------------------------------------------------------------------
 ; * void rt_hw_context_switch(rt_uint32 from, rt_uint32 to);

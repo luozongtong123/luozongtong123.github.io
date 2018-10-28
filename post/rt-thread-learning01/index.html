@@ -819,7 +819,7 @@ void rt_system_scheduler_start(void)
 
 <p>该函数的实现如下：</p>
 
-<pre><code class="language-assembly">;*************************************************************************
+<pre><code class="language-arm">;*************************************************************************
 ;                                 全局变量
 ;*************************************************************************
 ;使用 IMPORT 导入全局变量
@@ -907,7 +907,7 @@ rt_hw_context_switch_to    PROC
 
 <p>PendSV_Handler()函数是真正实现线程上下文切换的地方，具体实现见代码：</p>
 
-<pre><code class="language-assembly">;/*
+<pre><code class="language-arm">;/*
 ; *-----------------------------------------------------------------------
 ; * void PendSV_Handler(void);
 ; * r0 --&gt; switch from thread stack
@@ -982,7 +982,7 @@ pendsv_exit
 
 <p><strong>rt_schedule()函数</strong></p>
 
-<pre><code class="language-assembly">/* 系统调度 */
+<pre><code class="language-c">/* 系统调度 */
 void rt_schedule(void)
 {
     struct rt_thread *to_thread;
@@ -1020,7 +1020,7 @@ void rt_schedule(void)
 <p><strong>rt_hw_contex_switch()函数</strong><br />
 rt_hw_contex_switch()函数用于产生上下文切换。</p>
 
-<pre><code class="language-assembly">;/*
+<pre><code class="language-arm">;/*
 ; *-----------------------------------------------------------------------
 ; * void rt_hw_context_switch(rt_uint32 from, rt_uint32 to);
 ; * r0 --&gt; from
@@ -1269,8 +1269,8 @@ void flag2_thread_entry( void *p_arg )
   
 
   <div id="gitalk-container"></div>
-  <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
-    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
     id: '2018-09-29 09:37:14 \x2b0800 CST',
@@ -1304,7 +1304,7 @@ void flag2_thread_entry( void *p_arg )
   <span class="division">|</span>
   <span class="theme-info">
     主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+    <a class="theme-link" href="https://github.com/luozongtong123/hugo-theme-even">Even</a>
   </span>
 
   <div class="busuanzi-footer">

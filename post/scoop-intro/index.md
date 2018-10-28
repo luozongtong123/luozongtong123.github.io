@@ -33,7 +33,7 @@ Chocolatey 我也尝试过，但是她有许多我不能够忍的缺点：不能
 
 在正式开始之前我们先看一下 Scoop 长啥样：
 
-``` shell
+``` powershell
 PS C:\Users\luo> scoop
 Usage: scoop <command> [<args>]
 
@@ -68,14 +68,14 @@ which       Locate a shim/executable (similar to 'which' on Linux)
 
 要安装、卸载软件:
 
-``` shell
+``` powershell
 scoop install <app>
 scoop uninstall <app>
 ```
 
 要更新软件：
 
-``` shell
+``` powershell
 # 更新 app
 scoop update <app>  
 # 更新 scoop
@@ -94,20 +94,20 @@ scoop update *
 
 首先，在 PowerShell 里修改一下安全策略：
 
-``` shell
+``` powershell
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 ```
 
 然后，输入以下命令安装：
 
-``` shell
+``` powershell
 iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 ```
 
 Scoop 默认的安装位置是 `C:\Users\username\Scoop\`。  
 或者，你想修改一下 Scoop 默认的安装位置。在安装 Scoop 之前输入以下命令：
 
-``` shell
+``` powershell
 # 修改用户默认安装位置
 # 注意去掉 [environment] 后的两个 \
 [environment]\:\:setEnvironmentVariable('SCOOP','D:\Applications\Scoop','User')
@@ -148,7 +148,7 @@ Scoop 里有两个重要的概念，`bucket` 和 `manifest`。`bucket` 是一个
 
 而，`bucket` 则是一些 `manifest` 的集合。Scoop 默认指开启了主 `bucket`，你可以通过以下命令添加其他官方提供的“桶”。
 
-``` shell
+``` powershell
 scoop bucket known
 scoop bucket add extras
 scoop bucket add versions
@@ -233,7 +233,7 @@ gtester.json
 
 使用如下命令添加自定义的 `bucket`。  
 
-``` shell
+``` powershell
 scoop buckets add <bucket> url/tu/your/repo.git
 scoop install <bucket>/<app>
 ```
