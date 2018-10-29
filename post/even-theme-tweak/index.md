@@ -1,10 +1,10 @@
 当前博客的主题是 [even](https://github.com/luozongtong123/hugo-theme-even)。
-为了满足我刁钻的口味，有一些主题的小细节需要修改一下。
+为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。
 <!--more-->  
 
 # 修改主题颜色
 
-在 `src\css\_variables.scss` 文件中添加需要的颜色，并通过修改颜色配置添加到主题颜色配置选项中。
+在 `src\css\_variables.scss` 文件中添加需要的颜色，并通过修改颜色配置修改的主题颜色。
 
 ``` diff
 diff --git "a/..\\Temp\\TortoiseGit\\_variables-2c7773b.000.scss" "b/..\\even\\src\\css\\_variables.scss"
@@ -33,10 +33,15 @@ index 06d7507..39bdf23 100644
 
 # 使用 Fira Code 字体
 
-前文有提到过这个字体，这个字体除了显示代码时非常好看还可以将一些组合字符显示成连体字。  
+前文有提到过这个字体，这是一个支持连字的等宽字体，非常适合码代码。  
 
-还是修改 `src\css\_variables.scss` 文件。  
-此处只是将默认字体改为 `Fira Code`，如果浏览博客电脑没有安装这个字体的话就会使用其他备选的字体。
+还是修改 `src\css\_variables.scss` 文件。 
+
+{{% admonition note %}}
+
+此处只是将默认字体改为 `Fira Code`，如果用户的电脑上没有安装这个字体的话就会使用其他备选的字体。
+
+{{% /admonition %}}
 
 ``` diff
 @@ -193,7 +206,7 @@ $code-color: #c7254e !default;
@@ -50,7 +55,9 @@ index 06d7507..39bdf23 100644
  $code-highlight-color: (
 ```
 
-接下来我们需要将字体文件打包到网站上。还是修改 `src\css\_variables.scss` ，添加 `Fira Code` 字体家族。
+接下来我们需要将字体文件打包到网站上。  
+
+首先修改 `src\css\_variables.scss` ，添加 `Fira Code` 字体家族。
 
 ``` diff
 @@ -91,11 +92,23 @@ $header-padding: 20px 20px !default;
@@ -97,7 +104,8 @@ index f2218be..d96c24a 100644
 
 原作主题的代码高亮只启用了一小部分，接下来添加一些我需要的代码高亮，去掉一些不需要的高亮，同时把使用的 `highlightjs` 升级一下。  
 
-到官网的下载页面，勾选需要的高亮的语言，下载。。。替换掉 `static\lib\highlight\highlight.pack.js`  文件。
+到官网的[下载](https://highlightjs.org/download/)页面，勾选需要的高亮的语言，下载。。。  
+替换掉 `static\lib\highlight\highlight.pack.js`  文件。
 
 修改 `src\css\_variables.scss` 文件中的 `$code-type-list`。
 
@@ -144,7 +152,7 @@ $code-type-list: (
 ) !default;
 ```
 
-改用 `highlightjs` 官方默认的 CSS 样式渲染。将 `default.css` 文件中的内容复制到 `src\css\_partial\_post\_code.scss` 如下位置。
+改用 `highlightjs` 官方默认的 CSS 样式渲染。将 `default.css` 文件中的内容复制到 `src\css\_partial\_post\_code.scss` 中的如下位置。
 
 ``` scss
     .code {
@@ -170,8 +178,10 @@ $code-type-list: (
 
 # 添加 admonition
 
-在浏览 [olOwOlo](https://blog.olowolo.com/) 的[博文](https://blog.olowolo.com/post/generate-json-api-and-graphql-api-by-elide-and-spring/)时候发现，博客中的 `admonition`  非常漂亮，在博文下面询问是怎么实现的。无奈作者好像消失了一样。所以只能自己实现一套了。看了一下 Hugo 的[模版系统](https://gohugo.io/templates/introduction/)，抄了[olOwOlo](https://blog.olowolo.com/) 的 CSS，实现了如下的 `admonition` 。
+在浏览 [olOwOlo](https://blog.olowolo.com/) 的[博文](https://blog.olowolo.com/post/generate-json-api-and-graphql-api-by-elide-and-spring/)时候发现，博客中的 `admonition`  非常漂亮。在博文下面询问是怎么实现的，无奈作者好像消失了一样。所以只能自己实现一套了。看了一下 Hugo 的[模版系统](https://gohugo.io/templates/introduction/)，抄了[olOwOlo](https://blog.olowolo.com/) 的 `CSS`，实现了如下的 `admonition` 。自我感觉效果还不错。   
 
+具体实现就不详细讲了，想要了解的话直接去看我的[代码](https://github.com/luozongtong123/hugo-theme-even/commit/24840c633e9fb54a188012965d62ae94e087fa71)就行。  
+想要使用的直接 Fork 我的[仓库](https://github.com/luozongtong123/hugo-theme-even)即可。
 
 {{% admonition tip %}}
 
@@ -183,7 +193,9 @@ $code-type-list: (
 
 # Build
 
-上述所有修改 `src` 文件夹的操作都需要重新建议才能生效到虚体文件。  
+{{% admonition attention %}}
+上述所有修改 `src` 文件夹下文件的操作都需要重新编译才能实际生效。  
+{{% /admonition %}}
 
 ``` powershell
 # 使用 scoop 安装 Node.js LTS 
@@ -201,6 +213,7 @@ npm run build
 
 # admonition 演示
 
+tip
 {{% admonition tip %}}
 
 这是一个 `admonition` 示例的第一行。  
@@ -210,6 +223,7 @@ npm run build
 
 {{% /admonition %}}
 
+note、hint
 {{% admonition note %}}
 
 这是一个 `admonition` 示例的第一行。   
@@ -219,6 +233,7 @@ npm run build
 
 {{% /admonition %}}
 
+warning、important
 {{% admonition warning %}}
 
 这是一个 `admonition` 示例的第一行。   
@@ -228,6 +243,7 @@ npm run build
 
 {{% /admonition %}}
 
+question
 {{% admonition question %}}
 
 这是一个 `admonition` 示例的第一行。   
@@ -237,6 +253,7 @@ npm run build
 
 {{% /admonition %}}
 
+conclusion
 {{% admonition conclusion %}}
 
 这是一个 `admonition` 示例的第一行。   
@@ -246,6 +263,7 @@ npm run build
 
 {{% /admonition %}}
 
+bullshit
 {{% admonition bullshit %}}
 
 这是一个 `admonition` 示例的第一行。   
@@ -255,6 +273,7 @@ npm run build
 
 {{% /admonition %}}
 
+attention、caution、danger、error
 {{% admonition caution %}}
 
 这是一个 `admonition` 示例的第一行。   

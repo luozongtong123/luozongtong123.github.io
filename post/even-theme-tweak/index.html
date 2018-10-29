@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="luo" />
-  <meta name="description" content="当前博客的主题是 even。 为了满足我刁钻的口味，有一些主题的小细节需要修改一下。 " />
+  <meta name="description" content="当前博客的主题是 even。 为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。 " />
 
   <meta name="keywords" content="coding, thinking" />
 
@@ -51,7 +51,7 @@
 
 <meta property="og:title" content="Even Theme Tweak" />
 <meta property="og:description" content="当前博客的主题是 even。
-为了满足我刁钻的口味，有一些主题的小细节需要修改一下。
+为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luozongtong123.github.io/post/even-theme-tweak/" /><meta property="article:published_time" content="2018-10-28T11:48:09&#43;08:00"/>
@@ -59,13 +59,13 @@
 
 <meta itemprop="name" content="Even Theme Tweak">
 <meta itemprop="description" content="当前博客的主题是 even。
-为了满足我刁钻的口味，有一些主题的小细节需要修改一下。
+为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。
 ">
 
 
 <meta itemprop="datePublished" content="2018-10-28T11:48:09&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-28T11:48:09&#43;08:00" />
-<meta itemprop="wordCount" content="2033">
+<meta itemprop="wordCount" content="2145">
 
 
 
@@ -73,7 +73,7 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Even Theme Tweak"/>
 <meta name="twitter:description" content="当前博客的主题是 even。
-为了满足我刁钻的口味，有一些主题的小细节需要修改一下。
+为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。
 "/>
 
 <!--[if lte IE 9]>
@@ -150,7 +150,7 @@
               <a href="/categories/blog/"> Blog </a>
             
           </div>
-        <span class="more-meta"> 约 2033 字 </span>
+        <span class="more-meta"> 约 2145 字 </span>
         <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -182,12 +182,12 @@
     
     <div class="post-content">
       <p>当前博客的主题是 <a href="https://github.com/luozongtong123/hugo-theme-even">even</a>。
-为了满足我刁钻的口味，有一些主题的小细节需要修改一下。
+为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。
 </p>
 
 <h1 id="修改主题颜色">修改主题颜色</h1>
 
-<p>在 <code>src\css\_variables.scss</code> 文件中添加需要的颜色，并通过修改颜色配置添加到主题颜色配置选项中。</p>
+<p>在 <code>src\css\_variables.scss</code> 文件中添加需要的颜色，并通过修改颜色配置修改的主题颜色。</p>
 
 <pre><code class="language-diff">diff --git &quot;a/..\\Temp\\TortoiseGit\\_variables-2c7773b.000.scss&quot; &quot;b/..\\even\\src\\css\\_variables.scss&quot;
 index 06d7507..39bdf23 100644
@@ -215,10 +215,19 @@ index 06d7507..39bdf23 100644
 
 <h1 id="使用-fira-code-字体">使用 Fira Code 字体</h1>
 
-<p>前文有提到过这个字体，这个字体除了显示代码时非常好看还可以将一些组合字符显示成连体字。</p>
+<p>前文有提到过这个字体，这是一个支持连字的等宽字体，非常适合码代码。</p>
 
-<p>还是修改 <code>src\css\_variables.scss</code> 文件。<br />
-此处只是将默认字体改为 <code>Fira Code</code>，如果浏览博客电脑没有安装这个字体的话就会使用其他备选的字体。</p>
+<p>还是修改 <code>src\css\_variables.scss</code> 文件。</p>
+
+
+<div class="admonition-note">
+    <p class="admonition-note-title">
+        Note
+    </p>
+    <p><p>此处只是将默认字体改为 <code>Fira Code</code>，如果用户的电脑上没有安装这个字体的话就会使用其他备选的字体。</p>
+</p>
+</div>
+
 
 <pre><code class="language-diff">@@ -193,7 +206,7 @@ $code-color: #c7254e !default;
  $code-font-size: 13px !default;
@@ -231,7 +240,9 @@ index 06d7507..39bdf23 100644
  $code-highlight-color: (
 </code></pre>
 
-<p>接下来我们需要将字体文件打包到网站上。还是修改 <code>src\css\_variables.scss</code> ，添加 <code>Fira Code</code> 字体家族。</p>
+<p>接下来我们需要将字体文件打包到网站上。</p>
+
+<p>首先修改 <code>src\css\_variables.scss</code> ，添加 <code>Fira Code</code> 字体家族。</p>
 
 <pre><code class="language-diff">@@ -91,11 +92,23 @@ $header-padding: 20px 20px !default;
    font-style: normal;
@@ -276,7 +287,8 @@ index f2218be..d96c24a 100644
 
 <p>原作主题的代码高亮只启用了一小部分，接下来添加一些我需要的代码高亮，去掉一些不需要的高亮，同时把使用的 <code>highlightjs</code> 升级一下。</p>
 
-<p>到官网的下载页面，勾选需要的高亮的语言，下载。。。替换掉 <code>static\lib\highlight\highlight.pack.js</code>  文件。</p>
+<p>到官网的<a href="https://highlightjs.org/download/">下载</a>页面，勾选需要的高亮的语言，下载。。。<br />
+替换掉 <code>static\lib\highlight\highlight.pack.js</code>  文件。</p>
 
 <p>修改 <code>src\css\_variables.scss</code> 文件中的 <code>$code-type-list</code>。</p>
 
@@ -322,7 +334,7 @@ $code-type-list: (
 ) !default;
 </code></pre>
 
-<p>改用 <code>highlightjs</code> 官方默认的 CSS 样式渲染。将 <code>default.css</code> 文件中的内容复制到 <code>src\css\_partial\_post\_code.scss</code> 如下位置。</p>
+<p>改用 <code>highlightjs</code> 官方默认的 CSS 样式渲染。将 <code>default.css</code> 文件中的内容复制到 <code>src\css\_partial\_post\_code.scss</code> 中的如下位置。</p>
 
 <pre><code class="language-scss">    .code {
       // 复制到这
@@ -346,7 +358,10 @@ $code-type-list: (
 
 <h1 id="添加-admonition">添加 admonition</h1>
 
-<p>在浏览 <a href="https://blog.olowolo.com/">olOwOlo</a> 的<a href="https://blog.olowolo.com/post/generate-json-api-and-graphql-api-by-elide-and-spring/">博文</a>时候发现，博客中的 <code>admonition</code>  非常漂亮，在博文下面询问是怎么实现的。无奈作者好像消失了一样。所以只能自己实现一套了。看了一下 Hugo 的<a href="https://gohugo.io/templates/introduction/">模版系统</a>，抄了<a href="https://blog.olowolo.com/">olOwOlo</a> 的 CSS，实现了如下的 <code>admonition</code> 。</p>
+<p>在浏览 <a href="https://blog.olowolo.com/">olOwOlo</a> 的<a href="https://blog.olowolo.com/post/generate-json-api-and-graphql-api-by-elide-and-spring/">博文</a>时候发现，博客中的 <code>admonition</code>  非常漂亮。在博文下面询问是怎么实现的，无奈作者好像消失了一样。所以只能自己实现一套了。看了一下 Hugo 的<a href="https://gohugo.io/templates/introduction/">模版系统</a>，抄了<a href="https://blog.olowolo.com/">olOwOlo</a> 的 <code>CSS</code>，实现了如下的 <code>admonition</code> 。自我感觉效果还不错。</p>
+
+<p>具体实现就不详细讲了，想要了解的话直接去看我的<a href="https://github.com/luozongtong123/hugo-theme-even/commit/24840c633e9fb54a188012965d62ae94e087fa71">代码</a>就行。<br />
+想要使用的直接 Fork 我的<a href="https://github.com/luozongtong123/hugo-theme-even">仓库</a>即可。</p>
 
 
 <div class="admonition-tip">
@@ -361,7 +376,15 @@ $code-type-list: (
 
 <h1 id="build">Build</h1>
 
-<p>上述所有修改 <code>src</code> 文件夹的操作都需要重新建议才能生效到虚体文件。</p>
+
+<div class="admonition-attention">
+    <p class="admonition-attention-title">
+        Attention
+    </p>
+    <p><p>上述所有修改 <code>src</code> 文件夹下文件的操作都需要重新编译才能实际生效。</p>
+</p>
+</div>
+
 
 <pre><code class="language-powershell"># 使用 scoop 安装 Node.js LTS 
 scoop install nodejs-lts
@@ -378,6 +401,7 @@ npm run build
 
 <h1 id="admonition-演示">admonition 演示</h1>
 
+<p>tip
 
 <div class="admonition-tip">
     <p class="admonition-tip-title">
@@ -389,8 +413,9 @@ npm run build
 <p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
 </p>
 </div>
+</p>
 
-
+<p>note、hint
 
 <div class="admonition-note">
     <p class="admonition-note-title">
@@ -402,8 +427,9 @@ npm run build
 <p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
 </p>
 </div>
+</p>
 
-
+<p>warning、important
 
 <div class="admonition-warning">
     <p class="admonition-warning-title">
@@ -415,8 +441,9 @@ npm run build
 <p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
 </p>
 </div>
+</p>
 
-
+<p>question
 
 <div class="admonition-question">
     <p class="admonition-question-title">
@@ -428,8 +455,9 @@ npm run build
 <p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
 </p>
 </div>
+</p>
 
-
+<p>conclusion
 
 <div class="admonition-conclusion">
     <p class="admonition-conclusion-title">
@@ -441,8 +469,9 @@ npm run build
 <p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
 </p>
 </div>
+</p>
 
-
+<p>bullshit
 
 <div class="admonition-bullshit">
     <p class="admonition-bullshit-title">
@@ -454,8 +483,9 @@ npm run build
 <p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
 </p>
 </div>
+</p>
 
-
+<p>attention、caution、danger、error
 
 <div class="admonition-attention">
     <p class="admonition-attention-title">
@@ -467,6 +497,7 @@ npm run build
 <p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
 </p>
 </div>
+</p>
     </div>
 
     
