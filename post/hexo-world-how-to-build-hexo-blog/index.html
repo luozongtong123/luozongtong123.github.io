@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hexo world ！—— Hexo 博客搭建教程 - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去。 " />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.50" />
+
+
+<link rel="canonical" href="https://luozongtong123.github.io/post/hexo-world-how-to-build-hexo-blog/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Hexo world ！—— Hexo 博客搭建教程" />
+<meta property="og:description" content="博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luozongtong123.github.io/post/hexo-world-how-to-build-hexo-blog/" /><meta property="article:published_time" content="2015-01-27T21:11:00&#43;08:00"/>
+<meta property="article:modified_time" content="2018-09-22T10:56:39&#43;08:00"/>
+
+<meta itemprop="name" content="Hexo world ！—— Hexo 博客搭建教程">
+<meta itemprop="description" content="博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去。
+">
+
+
+<meta itemprop="datePublished" content="2015-01-27T21:11:00&#43;08:00" />
+<meta itemprop="dateModified" content="2018-09-22T10:56:39&#43;08:00" />
+<meta itemprop="wordCount" content="5089">
+
+
+
+<meta itemprop="keywords" content="Hexo," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hexo world ！—— Hexo 博客搭建教程"/>
+<meta name="twitter:description" content="博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去。
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/project/">
+        <li class="mobile-menu-item">项目</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/project/">项目</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hexo world ！—— Hexo 博客搭建教程</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-01-27 </span>
+        <div class="post-category">
+            
+              <a href="/categories/blog/"> Blog </a>
+            
+          </div>
+        <span class="more-meta"> 约 5089 字 </span>
+        <span class="more-meta"> 预计阅读 11 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#配置-github-pages">配置 GitHub Pages</a></li>
+<li><a href="#配置-git">配置 Git</a>
+<ul>
+<li><a href="#下载并安装-git">下载并安装 Git</a></li>
+<li><a href="#配置-ssh-key">配置 SSH Key</a>
+<ul>
+<li><a href="#检查ssh-key-的设置">检查SSH Key 的设置</a></li>
+<li><a href="#生成新的ssh-key">生成新的SSH Key</a></li>
+<li><a href="#添加ssh-key到github">添加SSH Key到GitHub</a></li>
+<li><a href="#测试">测试</a></li>
+<li><a href="#设置用户信息">设置用户信息</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#配置-node-js">配置 node.js</a></li>
+<li><a href="#配置-hexo">配置 Hexo</a>
+<ul>
+<li><a href="#安装-npm">安装 npm</a></li>
+<li><a href="#安装hexo">安装Hexo</a></li>
+<li><a href="#部署hexo">部署Hexo</a></li>
+<li><a href="#获得满意的-hexo-主题">获得满意的 Hexo 主题</a></li>
+<li><a href="#配置主目录下-config-yml">配置主目录下_config.yml</a></li>
+<li><a href="#将所选择的主题修改成你想要样子">将所选择的主题修改成你想要样子</a>
+<ul>
+<li><a href="#修改博客的主要参数">修改博客的主要参数</a></li>
+<li><a href="#修改主题的主要参数">修改主题的主要参数</a></li>
+<li><a href="#修改局部页面">修改局部页面</a></li>
+<li><a href="#修改主题配色">修改主题配色</a></li>
+<li><a href="#404页面">404页面</a></li>
+<li><a href="#发表新文章">发表新文章</a></li>
+</ul></li>
+<li><a href="#本地调试以及上传部署到-github">本地调试以及上传部署到 GitHub</a></li>
+<li><a href="#安装其他插件">安装其他插件</a></li>
+</ul></li>
+<li><a href="#设置独立域名">设置独立域名</a></li>
+<li><a href="#dns-设置与监控">DNS 设置与监控</a></li>
+<li><a href="#图床">图床</a></li>
+<li><a href="#参考资料">参考资料</a></li>
+<li><a href="#鸣谢">鸣谢</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+  <div class="post-outdated">
+    <div class="hint">
+      <p>【注意】最后更新于 <span class="timeago" datetime="2018-09-22T10:56:39" title="September 22, 2018">September 22, 2018</span>，文中内容可能已过时，请谨慎使用。</p>
+    </div>
+  </div>
+
+    
+    <div class="post-content">
+      <p>博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去。
+</p>
+
+<h2 id="前言">前言</h2>
+
+<p>博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去，但也难免有所疏漏，还请谅解。
+在 <a href="http://github.com/">GitHub</a> 上托管博客的优点，免费300M空间，速度较国外无需备案的空间快不少。
+至于使用 <a href="http://hexo.io/">Hexo</a> 这个博客程序的原因就如官网介绍的那样 <code>A fast, simple &amp; powerful blog framework,powered by Node.js.</code>
+Hexo <strong>足够轻，足够快</strong>。</p>
+
+<h2 id="配置-github-pages">配置 GitHub Pages</h2>
+
+<p>GitHub Pages 本用于介绍托管在GitHub的项目，不过，由于他的空间免费稳定，用它来托管博客越来越流行。GitHub Pages 可以被认为是一个可以用来展示某个开源项目或者是 GitHub 用户的个人主页，这个页面只能托管静态网页。不过不用担心无法给博客添加评论系统，樱井优许多大神为 Hexo 开发的主题都支持很方便的添加评论系统。</p>
+
+<ol>
+<li>注册 GitHub 账户：
+这里是 GitHub 网站的 <a href="http://github.com/">注册页</a>。</li>
+<li>创建GitHub Pages：
+注册并登录 GitHub 之后可以在右上角用户名右侧看到一个 + ，New repositoy 。在这里 repositoy 是仓库的意思。仓库的名字必须以是 <code>yourname.github.io</code> ，这里的 yourname 是你的帐户名。其他的部分可以按个人喜好随便填写。</li>
+</ol>
+
+<h2 id="配置-git">配置 Git</h2>
+
+<p><a href="http://git-scm.com/download/">Git</a> 是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。在这里 Git 的主要作用是将本地用 Hexo 生成的静态网页上传到 GitHub 指定的的代码仓库里，除此以外 Git 还负责下载更新 Hexo 、 Hexo 的主题以及 Hexo 的各种插件。</p>
+
+<h3 id="下载并安装-git">下载并安装 Git</h3>
+
+<p><a href="http://git-scm.com/download/">下载地址</a>
+如果你不知道某些选项的意思， <strong>安装时一直点下一步即可</strong> 。</p>
+
+<h3 id="配置-ssh-key">配置 SSH Key</h3>
+
+<h4 id="检查ssh-key-的设置">检查SSH Key 的设置</h4>
+
+<p>在任意文件夹右键，找到 Git Bash ,打开 Git Bash ，输入如下命令（如不特殊提示下文所有的明令均是在 Git Bash 中使用,//后的内容为注释不包含在命令里）：</p>
+
+<pre><code>cd ~/.ssh
+</code></pre>
+
+<p>如果提示：No such file or directory 说明你是第一次使用git。</p>
+
+<h4 id="生成新的ssh-key">生成新的SSH Key</h4>
+
+<pre><code>ssh-keygen -t rsa -C &quot;邮件地址@youremail.com&quot;
+</code></pre>
+
+<p>提示：</p>
+
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):
+</code></pre>
+
+<p>回车就可以。
+ <strong>注意</strong> : 此处的邮箱地址，你可以输入自己的邮箱地址；此处的「-C」的是大写的「C」。
+ 然后系统会要你输入密码：</p>
+
+<pre><code> Enter passphrase (empty for no passphrase):&lt;输入加密串&gt;
+Enter same passphrase again:&lt;再次输入加密串&gt;
+</code></pre>
+
+<p>在回车中会提示你输入一个密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。这个设置是防止别人往你的项目里提交内容。</p>
+
+<p><strong>注意</strong> ：输入密码的时候没有*字样的，你直接输入就可以了。</p>
+
+<p><del>最后看到这样的界面，就成功设置ssh key了：</del></p>
+
+<h4 id="添加ssh-key到github">添加SSH Key到GitHub</h4>
+
+<p>在本机设置SSH Key之后，需要添加到GitHub上，以完成SSH链接的设置。</p>
+
+<ul>
+<li>打开本地C:\User \你的用户名.shh\id_rsa.pub文件(windows操作系统)。此文件里面内容为刚才生成的密钥。如果看不到这个文件，你需要设置显示隐藏文件。准确的复制这个文件的内容（用记事本打开即可），才能保证设置的成功。</li>
+<li>登陆github系统。点击右上角的 Account Settings—-&gt;SSH Public keys —-&gt; add another public keys</li>
+<li>把你本地生成的密钥复制到里面（key文本框中）， 点击 add key 就ok了</li>
+</ul>
+
+<h4 id="测试">测试</h4>
+
+<p>可以输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：</p>
+
+<pre><code> ssh -T git@github.com
+</code></pre>
+
+<p>如果是下面的反馈：</p>
+
+<pre><code>The authenticity of host 'github.com (207.97.227.239)' can't be established.
+RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)?
+</code></pre>
+
+<p>不要紧张，输入yes就好，然后会看到：</p>
+
+<pre><code>Hi cnfeat! You've successfully authenticated, but GitHub does not provide shell access.
+</code></pre>
+
+<h4 id="设置用户信息">设置用户信息</h4>
+
+<p>现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。</p>
+
+<p>Git会根据用户的名字和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的，名字必须是你的真名，而不是GitHub的昵称。</p>
+
+<pre><code>$ git config --global user.name &quot;yourame&quot;//用户名
+$ git config --global user.email  &quot;yourame@gmail.com&quot;//填写自己的邮箱
+</code></pre>
+
+<h2 id="配置-node-js">配置 node.js</h2>
+
+<p><a href="http://nodejs.org/">Node.js</a>  是一个基于Chrome JavaScript 运行时建立的一个平台，用来方便地搭建快速的易于扩展的网络应用· Node.js 借助事件驱动，非阻塞I/O模型变得轻量和高效，非常适合 运行在分布式设备的数据密集型的实时应用。</p>
+
+<p>下载好 node.js ，安装时一路点下一步即可。 <a href="http://nodejs.org/download/">下载地址</a></p>
+
+<h2 id="配置-hexo">配置 Hexo</h2>
+
+<p><a href="http://hexo.io/">Hexo</a> a fast, simple &amp; powerful blog framework,powered by Node.js.</p>
+
+<h3 id="安装-npm">安装 npm</h3>
+
+<pre><code>git clone --recursive git://github.com/isaacs/npm.git
+</code></pre>
+
+<pre><code>node cli.js install npm -gf
+</code></pre>
+
+<h3 id="安装hexo">安装Hexo</h3>
+
+<p>打开git。</p>
+
+<pre><code>npm install -g hexo
+</code></pre>
+
+<h3 id="部署hexo">部署Hexo</h3>
+
+<p>在你的电脑里找一个中意的文件夹（此后所有数据保存在本文件夹里,此后的所有操作均为从本文件夹右键打开 Git Bash，后文所提到的主目录就是这个文件夹），然后在此文件夹中右键打开Git Bash。</p>
+
+<pre><code>hexo init
+</code></pre>
+
+<p>Hexo随后会自动在目标文件夹建立网站所需要的所有文件。</p>
+
+<pre><code>hexo g
+hexo s
+</code></pre>
+
+<p>现在我们已经搭建起本地的hexo博客了，到浏览器输入<a href="http://localhost:4000/">localhost:4000</a>查看。</p>
+
+<h3 id="获得满意的-hexo-主题">获得满意的 Hexo 主题</h3>
+
+<p>到目前为止 Hexo 已经有不少的主题了，所有主题查看请<a href="https://github.com/hexojs/hexo/wiki/Themes">点这里</a>。</p>
+
+<p>你可以从这里挑选一个你满意的主题，并记下这个主题的 GitHub 的地址。
+下面的操作均是在选择<a href="http://wuchong.me/">wuchong</a>的<a href="https://github.com/wuchong/jacman">jacman</a>主题之后进行的操作。</p>
+
+<pre><code>git clone https://github.com/wuchong/jacman.git themes/jacman
+&lt;注意：此处的jacman是主体的名字，可以任意，这个文件夹称为主题主目录&gt;
+</code></pre>
+
+<p><strong>注意：</strong> 此处的网址就是你选择的主题的 GitHub 地址。
+ 更新主题可以使用如下命令：</p>
+
+<pre><code> cd themes/jacman
+ git pull
+</code></pre>
+
+<h3 id="配置主目录下-config-yml">配置主目录下_config.yml</h3>
+
+<p>找到主目录下的_config.yml ，用文本编辑器打开，推荐<a href="http://xhmikosr.github.io/notepad2-mod/">Notepad2</a>或者下载<a href="http://7u2qla.com1.z0.glb.clouddn.com/hello-worldNotepad2.zip">汉化版</a>      本汉化版来自某下载站。</p>
+
+<ul>
+<li>找到 theme 属性，将它设置为你的主题主目录
+<code>
+theme: jacman
+</code></li>
+</ul>
+
+<p><strong>注意：</strong> 所有的文件在修改的时候都应该注意，冒号为英文输入法状态下的半角字符，并且每个冒号后面都有一个空格，这个空格也是英文状态下的。
+ * 找到 deploy 类属性</p>
+
+<pre><code>deploy:
+type: github
+repository: git@github.com:yourname/yourame.github.com.git
+branch: master
+</code></pre>
+
+<p><strong>注意：</strong> 此处的 <code>yourame</code> 是你的 GitHub 帐户名。</p>
+
+<h3 id="将所选择的主题修改成你想要样子">将所选择的主题修改成你想要样子</h3>
+
+<h4 id="修改博客的主要参数">修改博客的主要参数</h4>
+
+<p>打开注目下的_config.yml就可以修改博客的主要参数</p>
+
+<pre><code>## Hexo Configuration
+## Docs: http://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title:  #博客名
+subtitle:  #博客描述，副标题
+description: #博客描述，用于搜索引擎，不展示在博客里
+author: #作者
+email: #邮箱
+language: zh-CN #语言
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url:  #你的博客的域名，后面就会说到如何绑定独立域名
+root: /
+permalink: :year/:month/:day/:title/ #时间格式
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+permalink_defaults:
+about_dir: about
+
+# Directory
+source_dir: source
+public_dir: public
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+highlight:
+  enable: true
+  line_number: true
+  tab_replace:
+
+# Category &amp; Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Archives
+## 2: Enable pagination
+## 1: Disable pagination
+## 0: Fully Disable
+archive: 2
+category: 2
+tag: 2
+
+# Server
+## Hexo uses Connect as a server
+## You can customize the logger format as defined in
+## http://www.senchalabs.org/connect/logger.html
+port: 4000
+server_ip: localhost
+logger: false
+logger_format: dev
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: MMM D YYYY
+time_format: H:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Disqus
+disqus_shortname:
+
+# Extensions
+## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
+## Themes: https://github.com/hexojs/hexo/wiki/Themes
+# Extensions
+Plugins:
+- hexo-generator-feed
+- hexo-generator-sitemap
+
+#Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
+#sitemap
+sitemap:
+  path: sitemap.xml
+
+#theme
+theme: jacman #主题主目录
+stylus:
+  compress: true
+exclude_generator:
+
+# Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:  #GitHub 参数
+  type: github
+  repository: https://github.com/luozongtong123/luozongtong123.github.io.git
+  branch: master
+</code></pre>
+
+<h4 id="修改主题的主要参数">修改主题的主要参数</h4>
+
+<p>打开主题主目录下的_config.yml就可以修改主题的主要参数</p>
+
+<pre><code>##### 菜单
+menu:
+  主页 | Index: /
+  归档 | Archives: /archives
+  标签 | Tags: /tags
+  关于 | About: /about
+
+#### 控件
+widgets:
+- category
+- tag
+- links
+- rss
+
+#### RSS
+rss: /atom.xml
+
+#### 图片相关
+imglogo:
+  enable: false               ## 是否显示网站 logo
+  src: img/logo.png
+favicon: img/ico1.ico     ## 网站图标
+apple_icon: img/ico2.jpg   ## 苹果设备上的图标，背景不要透明
+author_img: img/author.jpg   ## 网站底部的博主头像
+
+#### 首页相关
+index:
+  expand: false              ## 首页文章是否展开。默认为展开式，显示 Read More。
+  excerpt_link: Read More
+
+#### 作者信息
+author:
+  intro_line1:  &quot;Hello , I'm balabal .&quot;    ## 网站底部的个人介绍
+  intro_line2:  &quot;This is my blog , believe it or not .&quot;
+  weibo_verifier:  ## 微博秀的验证码
+  tsina:           ## 用于微博秀和微博分享
+  weibo:           ## 用于显示网站底部社交按钮（填写账号名即可），下同
+  douban:
+  zhihu:
+  email:
+  twitter:
+  github:
+  facebook:
+  linkedin:
+  google_plus:
+  stackoverflow:
+
+
+#### 目录
+toc:
+  article: true   ## 是否在文章中显示目录
+  aside: true     ## 是否在侧边栏显示目录
+
+#### 友情链接
+links:
+  码农圈: https://coderq.com,一个面向程序员交流分享的新一代社区
+  Jark's Blog: http://wuchong.me
+
+#### 评论
+duoshuo_shortname:  #多说社会化评论的域名的三级域名（你特有的那部分）
+disqus_shortname:
+
+#### 分享按钮
+jiathis:
+  enable: false   ## 默认使用主题内建分享
+  id:
+  tsina:
+
+#### 网站统计
+google_analytics:
+  enable: false
+  id:            ## google analytics ID.
+  site:          ## 网站地址.
+baidu_tongji:
+  enable: true
+  sitecode:       ## 百度统计站点特征码，可以到百度统计申请
+cnzz_tongji:
+  enable: false
+  siteid:        ## CNZZ统计站点ID
+
+#### 杂项
+ShowCustomFont: true
+fancybox: true
+totop: true
+
+#### 自定义搜索
+google_cse:
+  enable: true
+  cx: 001711285529756717210:xbaab-fgpk4  #谷歌站内搜索的特征码，可以到谷歌申请
+baidu_search:
+  enable: false
+  id:   #百度站内搜索的特征码
+  site: http://zhannei.baidu.com/cse/search
+
+</code></pre>
+
+<h4 id="修改局部页面">修改局部页面</h4>
+
+<p>页面展现的全部逻辑都在每个主题中控制，源代码在hexo\themes\jackman\（jackman主题的，具体你的主题如何修改查看你的主题的帮助文档）中：</p>
+
+<pre><code>.
+├── languages  #多语言
+|   ├── default.yml#默认语言
+|   └── zh-CN.yml  #中文语言
+├── layout #布局，根目录下的*.ejs文件是对主页，分页，存档等的控制
+|   ├── _partial   #局部的布局，此目录下的*.ejs是对头尾等局部的控制
+|   └── _widget#小挂件的布局，页面下方小挂件的控制
+├── source #源码
+|   ├── css#css源码
+|   |   ├── _base  #*.styl基础css
+|   |   ├── _partial   #*.styl局部css
+|   |   ├── fonts  #字体
+|   |   ├── images #图片
+|   |   └── style.styl #*.styl引入需要的css源码
+|   ├── fancybox   #fancybox效果源码
+|   └── js #javascript源代码
+├── _config.yml#主题配置文件
+└── README.md  #用GitHub的都知道
+</code></pre>
+
+<h4 id="修改主题配色">修改主题配色</h4>
+
+<p>包括颜色在内的很多变量都在jacman/source/css/_base/variable.styl（jackman主题的，具体你的主题如何修改查看你的主题的帮助文档）文件中</p>
+
+<pre><code>//Color
+color-background = #ddd         //文章以外的背景颜色，背景色
+color-content = #413F3F         //文章字体颜色
+color-font = #817C7C            //各个标签字体颜色以及友链,微博分享等的图标颜色
+color-white = #ffffff           //导航栏字体颜色，右侧RSS订阅，底栏字体已及个人信息图标颜色
+color-blue = #008080            //标题字体颜色，包括超链接&lt;a&gt;&lt;/a&gt;以及作者名字，右侧主标签（分类，标签，友链）颜色
+color-orange = #413F3F          //标题鼠标移到标题等部分color-blue处后颜色ea6753
+color-theme = #008080           //主题主颜色
+color-font-nav =#ffffff         //导航栏鼠标移至后的颜色E9CD4C
+color-section = #fafafa         //文章的背景颜色
+color-footer = #1f1f1f          //页面最下方的背景颜色
+color-gray = #CCC               //分割线的颜色，以及标签的底色
+color-meta = #808080            //图片信息字体颜色
+color-heading = #333333         //部分字体颜色 ##号字体
+color-quote = #f5f5f5           //四个空格后的代码块背景颜色
+color-code = #eee               //小块之间的代码背景颜色
+color-twitter = #00aced         //分享至Twitter处 鼠标移至后的颜色
+color-facebook = #3b5998        //分享处facebook鼠标移至后的颜色
+color-weibo = #c64d3e           //分享处weibo鼠标移至后的颜色
+color-google = #dd4b39          //分享处google鼠标移至后的颜色
+color-qrcode= #49ae0f           //分享处qrcode鼠标移至后的颜色
+color-renren= #369              //分享处renren鼠标移至后的颜色
+color-top = #762c54             //分享处top鼠标移至后的颜色
+</code></pre>
+
+<p>jackman的帮助文档<a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/">在这</a>。</p>
+
+<h4 id="404页面">404页面</h4>
+
+<p>直接在 <code>主目录\source\</code> 下创建自己的404.html或者404.md就可以。但是自定义404页面仅对绑定顶级域名的项目才起作用，GitHub默认分配的二级域名是不起作用的，使用hexo server在本机调试也是不起作用的。</p>
+
+<p>推荐使用<a href="http://www.qq.com/404/">腾讯公益404</a>。</p>
+
+<h4 id="发表新文章">发表新文章</h4>
+
+<pre><code>hexo n postname
+</code></pre>
+
+<p>其中 postname 为文章标题，执行命令后，会在 <code>主目录\source_posts\</code> 中生成 <code>postname.md</code> 文件，用编辑器打开编写即可。</p>
+
+<p>使用jacman或pacman主题，建议按此标准语法写：</p>
+
+<pre><code>title: postName #文章页面上的显示名称，可以任意修改，不会出现在URL中
+date: 2013-12-02 15:30:16 #文章生成时间，一般不改，当然也可以任意修改
+categories: example #分类
+tags: [tag1,tag2,tag3] #文章标签，可空，多标签请用格式，注意:后面有个空格
+description: 附加一段文章摘要，字数最好在140字以内。
+---
+
+以下正文
+</code></pre>
+
+<p>博客正文使用 Markdown 语法书写。 具体可以看这里<a href="http://www.jianshu.com/p/q81RER">献给写作者的 Markdown 新手指南</a>。</p>
+
+<h3 id="本地调试以及上传部署到-github">本地调试以及上传部署到 GitHub</h3>
+
+<ul>
+<li>清除已经生成的静态网页，这个命令可以解决有时明明修改对了却没有达到本应的效果的问题。
+<code>
+hexo clean
+</code></li>
+<li>生成静态网页
+<code>
+hexo generate
+</code>
+或
+<code>
+hexo g
+</code></li>
+<li>启动本地服务，进行文章预览调试
+<code>
+hexo serve
+</code>
+或
+<code>
+hexo s
+</code></li>
+<li>上传部署到 GitHub
+<code>
+hexo deploy
+</code></li>
+</ul>
+
+<p>或</p>
+
+<pre><code>hexo d
+</code></pre>
+
+<p>也可以使用生成静态网页和部署合二为一的命令</p>
+
+<pre><code>hexo d -g
+</code></pre>
+
+<p>在此过程中需要输入你的 GitHub 密码。
+如果你不想每次部署都输入密码的话，就请看<a href="http://zipperary.com/2013/05/26/ssh-errors-with-github/">这里</a>。
+至此你的网页已经成功部署到 GitHub ，访问 <code>yourname.github.io</code>     就可以查看你的网站了。</p>
+
+<h3 id="安装其他插件">安装其他插件</h3>
+
+<p>在主目录下使用以下命令可以给博客生成，RSS和网站sitmap</p>
+
+<pre><code>npm install hexo-generator-feed
+npm install hexo-generator-sitemap
+</code></pre>
+
+<p>评论系统、网站统计、站内搜索请查看主题的帮助文档。</p>
+
+<h2 id="设置独立域名">设置独立域名</h2>
+
+<p>###购买独立域名
+推荐到狗爹（<a href="https://www.godaddy.com">godaddy</a>）购买，支持支付宝付款。相关内容请自行利用搜索引擎查找。
+###将你的 GitHub Pages 与独立域名绑定
+在 <code>主目录\source\</code> 下新建一个名为 <code>CNAME</code> 的没有文件扩展名的纯文本文档，并且在里面写好你购买的独立域名。</p>
+
+<h2 id="dns-设置与监控">DNS 设置与监控</h2>
+
+<p>推荐使用<a href="https://www.dnspod.cn">DNSpod</a>，免费，稳定。
+相关设置请自行利用搜索引擎查找。</p>
+
+<h2 id="图床">图床</h2>
+
+<p>推荐使用<a href="https://portal.qiniu.com/">七牛云存储</a>，         免费10G空间，还有网站镜像加速。</p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<p><a href="http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/"> 如何搭建一个独立博客——简明Github Pages与Hexo教程
+</a></p>
+
+<p><a href="http://xuanwo.org/2014/08/14/hexo-usual-problem/">Hexo常见问题解决方案</a></p>
+
+<p><a href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html">搭建一个免费的，无限流量的Blog&mdash;-github Pages和Jekyll入门</a></p>
+
+<p><a href="http://www.pchou.info/web-build/2013/01/03/build-github-blog-page-01.html">一步步在GitHub上创建博客主页</a></p>
+
+<p><a href="http://ibruce.info/2013/11/22/hexo-your-blog/">hexo你的博客</a></p>
+
+<h2 id="鸣谢">鸣谢</h2>
+
+<p><a href="http://wuchong.me/">wuchong</a></p>
+
+<p><a href="http://cnfeat.com/">cnfeat</a></p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-09-22</span>
+  </p>
+  <p class="copyright-item">
+      <span class="item-title">原始文档</span>
+      <span class="item-content"><a class="link-to-markdown" href="https://luozongtong123.github.io/post/hexo-world-how-to-build-hexo-blog/index.md" target="_blank">Markdown 文件</a></span>
+    </p>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC 署名 4.0 国际</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/hexo/">Hexo</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/something-about-git/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">简单的 Git 入门</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2015-01-27 21:11:00 \x2b0800 CST',
+    title: 'Hexo world ！—— Hexo 博客搭建教程',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'luozongtong123.github.io',
+    owner: 'luozongtong123',
+    admin: ['luozongtong123'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:luozongtong123@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/luozongtong123" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.zhihu.com/people/luozongtong123" class="iconfont icon-zhihu" title="zhihu"></a>
+  <a href="https://luozongtong123.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/luozongtong123/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+  <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+  <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+<script>  
+  var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+  timeago().render(document.querySelectorAll('.timeago'), languageCode);
+  timeago.cancel();  
+</script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

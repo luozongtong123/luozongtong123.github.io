@@ -248,6 +248,6 @@ scoop install <bucket>/<app>
 # 参考
 
 1. [Scoop Wiki](https://github.com/lukesampson/scoop/wiki)  
-2. [再谈谈 Scoop 这个 Windows 下的软件包管理器](https://h404bi.com/blog/2018/05/12/talk-about-scoop-the-package-manager-for-windows-again.html#fn4)  
+2. [再谈谈 Scoop 这个 Windows 下的软件包管理器](https://h404bi.com/blog/2018/05/12/talk-about-scoop-the-package-manager-for-windows-again.html)  
 3. [用 Scoop 改善 Windows Powershell](https://h404bi.com/blog/2015/08/23/use-scoop-to-enhance-windows-powershell.html)  
 4. [Scoop - A command-line installer for Windows](https://scoop.sh/)  

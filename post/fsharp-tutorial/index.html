@@ -27,7 +27,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.49.2" />
+<meta name="generator" content="Hugo 0.50" />
 
 
 <link rel="canonical" href="https://luozongtong123.github.io/post/fsharp-tutorial/" />
@@ -62,7 +62,7 @@
 
 <meta itemprop="datePublished" content="2018-10-26T23:57:57&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-26T23:57:57&#43;08:00" />
-<meta itemprop="wordCount" content="292">
+<meta itemprop="wordCount" content="1962">
 
 
 
@@ -141,8 +141,8 @@
       <div class="post-meta">
         <span class="post-time"> 2018-10-26 </span>
         
-        <span class="more-meta"> 约 292 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span class="more-meta"> 约 1962 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -164,7 +164,46 @@
     <div class="post-content">
       <p></p>
 
-<pre><code class="language-fsharp">let doFuns() =
+<pre><code class="language-fsharp">open System                        // 这步操作可以让我们使用 .NET Core 的函数库
+open System.Drawing
+
+let hello() =                      // let 用来绑定函数名或者参数名
+  printf &quot;Enter your name: &quot;     // printf 不启用新行的打印函数
+    
+  let name = Console.ReadLine()  // 读取一行并将读取到的值和 name 绑定
+
+  printfn &quot;Hello %s!&quot; name       // 启用新行的打印 % 引用参数
+  // %s %i %f %b %A %O           
+
+hello()
+
+let hello1() =
+  printfn &quot;PI: %f&quot; 3.14159265358979323846264338327       // 浮点数只有6位小数
+  printfn &quot;PI: %.4f&quot; 3.14159265358979323846264338327     // 可以调整显示的小数的位数
+  printfn &quot;Big PI: %M&quot; 3.14159265358979323846264338327M  // 最高可以到达27位小数
+
+hello1()
+
+let hello2() =
+  printfn &quot;%-5s %5s&quot; &quot;a&quot; &quot;b&quot;             // 添加空格
+  printfn &quot;%*s&quot; 10 &quot;Hi&quot;                  // 动态空格
+    
+hello2()
+
+let bindStuff() =
+  let mutable weight = 175         // 可以改变的参数 (mutable)
+  weight &lt;- 170                    // 使用 &lt;- 赋值
+  
+  printfn &quot;Weight: %i&quot; weight
+
+  let changeMe = ref 10            // 奇怪的语法，先不管这了
+  changeMe := 50
+
+  printfn &quot;Change: %i&quot; ! changeMe
+
+bindStuff()
+
+let doFuns() =
   let getSum(x : int, y : int) :int = x + y
 
   printfn &quot;5 + 7 = %i&quot; (getSum(5,7))
@@ -205,7 +244,374 @@
   printfn &quot;addMult : %i&quot; (addMult 10)
 
 doFuns()
+
+// 一些数学函数
+let doMath() =
+  printfn &quot;5 + 4 = %i&quot; (5 + 4)
+  printfn &quot;5 - 4 = %i&quot; (5 - 4)
+  printfn &quot;5 * 4 = %i&quot; (5 * 4)
+  printfn &quot;5 / 4 = %i&quot; (5 / 4)
+  // &quot;&quot; 里面用 % 要用 %%
+  printfn &quot;5 %% 4 = %i&quot; (5 % 4)
+  // 5^2
+  printfn &quot;5 ** 2 = %f&quot; (5.0 ** 2.0)
+
+  let number = 2
+  printfn &quot;Type: %A&quot; (number.GetType())
+  printfn &quot;A Float: %.2f&quot; (float number)
+  printfn &quot;An Int: %i&quot; (int 3.14)
+
+  // 其他数学函数
+  // 绝对值
+  printfn &quot;abs 4.5 : %i&quot; (abs -1)
+  // 向上取整
+  printfn &quot;ceil 4.5 : %f&quot; (ceil 4.5)
+  // 向下取整
+  printfn &quot;floor 4.5 : %f&quot; (floor 4.5)
+  // ln
+  printfn &quot;log 2.71828 : %f&quot; (log 2.71828)
+  // lg
+  printfn &quot;log10 1000 : %F&quot; (log10 1000.0)
+  // 求平方根
+  printfn &quot;sqrt 25 : %f&quot; (sqrt 25.0)
+
+
+doMath()
+
+let stringStuff() =
+  let str1 = &quot;This is a random string\\&quot;
+  // @ 加到字符串之前可以将 \ 加入到字符串之中
+  let str2 = @&quot;I ignore backslashes\\\\&quot;
+  // 三个双引号可将引号添加到字符串
+  let str3 = &quot;&quot;&quot; &quot;I ignore qutes and backslashes&quot; &quot;&quot;&quot;
+  // 字符串相连
+  let str4 = str1 + &quot; &quot; + str2
+  // length 获取字符串的长度
+  printfn &quot;Length : %i&quot; (String.length str4)
+  // 和 C 相似的字符访问
+  printfn &quot;%c&quot; str1.[1]
+  // 和 Python 相似的字符串切片操作
+  printfn &quot;First word : %s&quot; (str1.[..3])
+  printfn &quot;Second word : %s&quot; (str1.[5..6])
+  printfn &quot;The rest word : %s&quot; (str1.[8..])
+
+  // 
+  let upperStr = String.collect (fun c -&gt; sprintf &quot;%c, &quot; c) &quot;commas&quot;
+  printfn &quot;Commas : %s&quot; upperStr
+
+  // 测试字符串中是否有字符满足条件
+  printfn &quot;Any upper: %b&quot; (String.exists (fun c -&gt; Char.IsUpper c) str1)
+
+  // 测试字符串中所有的字符满足条件
+  printfn &quot;Number : %b&quot; (String.forall (fun c -&gt; Char.IsDigit c) &quot;1234&quot;)
+
+  // 初始化字符串
+  let string1 = String.init 10 (fun i -&gt; i.ToString() )
+  printfn &quot;Numbers : %s&quot; string1
+
+  // 对字符串中的每个字符进行操作
+  String.iter (fun c -&gt; printfn &quot;%c&quot; c) &quot;Print Me!&quot;
+
+stringStuff()
+
+let loopStuffWhile() =
+  let magic_num = &quot;7&quot;
+  let mutable guess = &quot;&quot;
+
+  while not (magic_num.Equals(guess)) do
+    printf &quot;Guess the Number :&quot;
+    guess &lt;- Console.ReadLine()
+
+  printfn &quot;You Guessed the Number!&quot;
+
+loopStuffWhile()
+
+let loopStuffFor() = 
+  for i = 1 to 10 do 
+    printfn &quot;%i&quot; i
+
+  for i = 10 downto 1 do
+    printfn &quot;%i&quot; i
+
+  for i in [1..10] do
+    printfn &quot;%i&quot; i
+
+  [1..10] |&gt; List.iter (printfn &quot;Num : %i&quot;)
+
+  let sum = List.reduce (+) [1..10]
+  printfn &quot;Sum : %i&quot; sum
+
+loopStuffFor()
+
+let cond_stuff() =
+  let age = 8
+
+  if age &lt; 5 then
+    printfn &quot;Preschool&quot;
+  elif age = 5 then
+    printfn &quot;Kindergarten&quot;
+  elif (age &gt; 5) &amp;&amp; (age &lt;= 18) then
+    let grade = age - 5
+    printfn &quot;Go to grade %i&quot; grade
+  else
+    printfn &quot;Go to College&quot;
+
+  let gpa = 3.9
+  let income = 15000
+
+  printfn &quot;College Grant: %b&quot; ((gpa &gt;= 3.8) || (income &lt;= 12000))
+
+  printfn &quot;Not True: %b&quot; (not true)
+
+  let grade2: string =
+    match age with
+    | age when age &lt; 5 -&gt; &quot;Preschool&quot;
+    | 5 -&gt; &quot;Kindergaten&quot;
+    | age when ((age &gt; 5) &amp;&amp; (age &lt;= 18)) -&gt; (age - 5).ToString()
+    | _ -&gt; &quot;Collage&quot;
+
+  printfn &quot;Grade2 : %s&quot; grade2
+
+cond_stuff()
+
+let list_stuff() =
+
+  let list1 = [1; 2; 3; 4]
+  list1 |&gt; List.iter (printfn &quot;Num : %i&quot;)
+  printfn &quot;list1 : %A&quot; list1
+
+  let list2 = 5::6::7::[]
+  printfn &quot;list2 : %A&quot; list2 
+
+  let list3 = [1..5]
+  printfn &quot;list : %A&quot; list3
+
+  let list4 = ['a'..'g']
+  printfn &quot;list4 : %A&quot; list4
+
+  let list5 = List.init 5 (fun i -&gt; i * 2)
+  printfn &quot;list5 : %A&quot; list5
+
+  let list6 = [for a in 1..5 do yield (a * a)]
+  printfn &quot;list6 : %A&quot; list6
+
+  let list7 = [for a in 1..20 do if a % 2 = 0 then yield a]
+  printfn &quot;list7 : %A&quot; list7
+
+  let list8 = [for a in 1..3 do yield! [a..a + 2]]
+  printfn &quot;list8 : %A&quot; list8
+
+  printfn &quot;Length : %i&quot; list8.Length
+  printfn &quot;Empty : %b&quot; list8.IsEmpty
+  printfn &quot;Index 2 : %c&quot; (list4.Item(2))
+  printfn &quot;Head : %c&quot; (list4.Head)
+  printfn &quot;Tail : %A&quot; (list4.Tail)
+
+  let list9 = list3 |&gt; List.filter (fun x -&gt; x % 2 = 0)
+
+  let list10 = list9 |&gt; List.map (fun x -&gt; (x * x))
+
+  printfn &quot;Sorted : %A&quot; (List.sort [5; 4; 3])
+
+  printfn &quot;Sum : %i&quot; (List.fold (fun sum elem -&gt; sum + elem) 0 [1; 2; 3])
+
+list_stuff()
+
+type emotion =
+| joy = 0
+| fear = 1
+| anger = 3
+
+let enum_stuff() =
+  let myFeeling = emotion.joy
+
+  match myFeeling with
+  | joy -&gt; printfn &quot;I'm joyful&quot;
+  | fear -&gt; printfn &quot;I'm fearful&quot;
+  | anger -&gt; printfn &quot;I'm angry&quot;
+
+enum_stuff()
+
+let optionStuff() =
+  let divide x y =
+    match y with
+    | 0 -&gt; None
+    | _ -&gt; Some(x / y)
+
+  if (divide 5 0).IsSome then
+    printfn &quot;5/0 = %A&quot; ((divide 5 0).Value)
+  elif (divide 5 0).IsNone then
+    printfn &quot;Can't Divide by Zero&quot;
+  else
+    printfn &quot;Something happenend&quot;
+
+optionStuff()
+
+let tupleStuff() =
+  let avg (w, x, y, z) : float =
+    let sum = w + x + y + z
+    sum / 4.0
+
+  printfn &quot;Avg : %f&quot; (avg (1.0, 2.0, 3.0, 4.0))
+
+  let my_data = (&quot;luo&quot;, 22, 6.25)
+
+  let (name, age, _) = my_data
+
+  printfn &quot;Name : %s, age : %i&quot; name age
+
+tupleStuff()
+
+type customer =
+  {Name : string;
+   Blance : float}
+
+let recordStuff() = 
+  let bob = {Name = &quot;Bob Smith&quot;; Blance = 101.5012}
+  printfn &quot;%s owes us %.2f&quot; bob.Name bob.Blance
+
+recordStuff()
+
+let seqStuff() = 
+  let seq1 = seq {1..100}
+  let seq2 = seq {0..2..50}
+  let seq3 = seq {50..1}
+
+  printfn &quot;%A&quot; seq2
+
+  Seq.toList seq2 |&gt; List.iter (printfn &quot;Num : %i&quot;)
+
+  let isPrime n =
+    let rec check i =
+      i &gt; (n / 2) || (n % i &lt;&gt; 0 &amp;&amp; check (i + 1))
+    check 2
+
+  let prime_seq = seq {for n in 1..500 do if isPrime n then yield n}
+
+  printfn &quot;%A&quot; prime_seq
+
+  Seq.toList prime_seq |&gt; List.iter (printfn &quot;Prime : %i&quot;)
+  
+seqStuff()
+
+let mapStuff() =
+  let customers =
+    Map.empty.
+      Add(&quot;Bob Smith&quot;, 100.50).
+      Add(&quot;Sally Marks&quot;, 50.25)
+
+  printfn &quot;# of Customers %i&quot; customers.Count
+
+  let cust = customers.TryFind &quot;Bob Smith&quot;
+  match cust with
+  | Some x -&gt; printfn &quot;Balace : %.2f&quot; x
+  | None -&gt; printfn &quot;Not Found&quot;
+
+  printfn &quot;Customer : %A&quot; customers
+
+  if customers.ContainsKey &quot;Bob Smith&quot; then
+    printfn &quot;Bob Smith was found&quot;
+
+  printfn &quot;Bobs Blance : %.2f&quot; customers.[&quot;Bob Smith&quot;]
+
+  let custs2 = Map.remove &quot;Sally Marks&quot; customers
+
+  printfn &quot;# of Customers %i&quot; custs2.Count
+
+mapStuff()
+
+let addStuff&lt;'T&gt; x y =
+  printfn &quot;%A&quot; (x + y)
+
+let genericStuff() =
+  addStuff&lt;float&gt; 5.5 2.4
+  // addStuff&lt;int&gt; 4 2
+
+genericStuff()
+
+let expStuff() =
+  let divideFloat x y =
+    try 
+      printfn &quot;%.2f / %.2f = %.2f&quot; x y (x / y)
+    with 
+      | :? System.DivideByZeroException as ex -&gt;
+        printfn &quot;Can't Divide by Zero&quot;
+  divideFloat 5.0 0.0
+
+  let divideInt x y =
+    try 
+      printfn &quot;%i / %i = %i&quot; x y (x / y)
+    with 
+      | :? System.DivideByZeroException as ex -&gt;
+        printfn &quot;Can't Divide by Zero&quot;
+  divideInt 5 0
+
+  let divideIntR x y =
+    try 
+      if y = 0 then raise(DivideByZeroException &quot;Can't Divide by 0&quot;)
+      else
+        printfn &quot;%i / %i = %i&quot; x y (x / y)
+    with 
+      | :? System.DivideByZeroException as ex -&gt;
+        printfn &quot;Can't Divide by Zero&quot;
+  divideIntR 5 0
+
+expStuff()
+
+type Rectangle = struct
+  val Length : float
+  val Width : float
+  new (length, width) =
+    {Length = length; Width = width;}
+end
+
+let structStuff() =
+  let area(shape: Rectangle) =
+    shape.Length * shape.Width
+
+  let rect = new Rectangle(5.0, 6.0)
+
+  let rect_area = area rect
+
+  printfn &quot;Area : %.2f&quot; rect_area
+
+structStuff()
+
+type Animal = class
+  val Name : string
+  val Height : float
+  val Weight : float
+
+  new (name, height, weight) =
+    {Name = name; Height = height; Weight = weight;}
+
+  member x.Run =
+    printfn &quot;%s Runs&quot; x.Name
+end
+
+type Dog(name, height, weight) =
+  inherit Animal(name, height, weight)
+
+  member x.Bark = 
+    printfn &quot;%s Barks&quot; x.Name
+
+let classStuff() =
+  let spot = new Animal(&quot;Spot&quot;, 20.5, 40.5)
+  spot.Run
+
+  let bowser = new Dog(&quot;Bowser&quot;, 20.5, 40.5)
+  bowser.Run
+  bowser.Bark
+
+classStuff()
+
+Console.ReadKey() |&gt; ignore        // 输入一个字符，防止命令行一闪而过
+
 </code></pre>
+
+<p>Gist:</p>
+
+<script src="https://gist.github.com/luozongtong123/d6cc2dc11eb5a1548ed84b5218215636.js"></script>
     </div>
 
     
