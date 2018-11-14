@@ -18,8 +18,7 @@
       
       <guid>https://luozongtong123.github.io/post/even-theme-tweak/</guid>
       <description>&lt;p&gt;当前博客的主题是 &lt;a href=&#34;https://github.com/luozongtong123/hugo-theme-even&#34;&gt;even&lt;/a&gt;。
-为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。
-&lt;/p&gt;</description>
+为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28,9 +27,7 @@
       <pubDate>Mon, 17 Sep 2018 22:11:40 +0800</pubDate>
       
       <guid>https://luozongtong123.github.io/post/even-preview/</guid>
-      <description>&lt;p&gt;这篇文章集中说明 even 主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些样式，可以去修改 css/ 文件夹下的 .scss 文件。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;这篇文章集中说明 even 主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些样式，可以去修改 css/ 文件夹下的 .scss 文件。&lt;/p&gt;</description>
     </item>
     
   </channel>

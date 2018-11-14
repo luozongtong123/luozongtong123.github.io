@@ -17,9 +17,7 @@
       <pubDate>Fri, 05 Oct 2018 10:02:56 +0800</pubDate>
       
       <guid>https://luozongtong123.github.io/post/git-submodule/</guid>
-      <description>&lt;p&gt;使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28,8 +26,7 @@
       <pubDate>Fri, 13 Feb 2015 22:31:00 +0800</pubDate>
       
       <guid>https://luozongtong123.github.io/post/something-about-git/</guid>
-      <description>&lt;p&gt;在使用 Hexo 作为博客程序的过程中使用了 Git 这个分布式版本控制系统。现在已经初步入门了。之前一直都没有深入去研究，但是今天上午突然想要把所有的东西都同步到某网盘上以免本地数据出现差错导致博客从头再来。
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;在使用 Hexo 作为博客程序的过程中使用了 Git 这个分布式版本控制系统。现在已经初步入门了。之前一直都没有深入去研究，但是今天上午突然想要把所有的东西都同步到某网盘上以免本地数据出现差错导致博客从头再来。&lt;/p&gt;</description>
     </item>
     
   </channel>

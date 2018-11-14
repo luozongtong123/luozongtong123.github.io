@@ -17,7 +17,8 @@
 
 
 <meta name="author" content="luo" />
-  <meta name="description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。 " />
+  <meta name="description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
+" />
 
   <meta name="keywords" content="coding, thinking" />
 
@@ -26,7 +27,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.50" />
+<meta name="generator" content="Hugo 0.51" />
 
 
 <link rel="canonical" href="https://luozongtong123.github.io/post/rt-thread-learning01/" />
@@ -50,15 +51,13 @@
 
 
 <meta property="og:title" content="RT-Thread 0x01：线程与线程的切换" />
-<meta property="og:description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
-" />
+<meta property="og:description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://luozongtong123.github.io/post/rt-thread-learning01/" /><meta property="article:published_time" content="2018-09-29T09:37:14&#43;08:00"/>
 <meta property="article:modified_time" content="2018-10-14T22:00:14&#43;08:00"/>
 
 <meta itemprop="name" content="RT-Thread 0x01：线程与线程的切换">
-<meta itemprop="description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
-">
+<meta itemprop="description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。">
 
 
 <meta itemprop="datePublished" content="2018-09-29T09:37:14&#43;08:00" />
@@ -70,8 +69,7 @@
 <meta itemprop="keywords" content="Thread,Stack," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RT-Thread 0x01：线程与线程的切换"/>
-<meta name="twitter:description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
-"/>
+<meta name="twitter:description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -189,8 +187,7 @@
 
     
     <div class="post-content">
-      <p>野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
-</p>
+      <p>野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。</p>
 
 <p>电子版的书和工程源文件以及参考资料下载链接如下：</p>
 
