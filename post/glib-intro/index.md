@@ -113,7 +113,7 @@ link_libraries("libglib-2.0-0.dll" "libgio-2.0-0.dll")
 # 用来关闭 gcc 编译器的 DEPRECATION_WARNINGS
 add_compile_options(-DGLIB_DISABLE_DEPRECATION_WARNINGS)
 
-add_executable(hello_world  hello_world .c)
+add_executable(hello_world  hello_world.c)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
