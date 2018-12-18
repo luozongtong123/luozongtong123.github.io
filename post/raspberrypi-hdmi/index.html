@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Raspberry Pi HDMI 连接显示器黑屏问题 - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="记录一下解决树莓派连接显示器黑屏的问题。
+" />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52" />
+
+
+<link rel="canonical" href="https://luozongtong123.github.io/post/raspberrypi-hdmi/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Raspberry Pi HDMI 连接显示器黑屏问题" />
+<meta property="og:description" content="记录一下解决树莓派连接显示器黑屏的问题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://luozongtong123.github.io/post/raspberrypi-hdmi/" /><meta property="article:published_time" content="2018-01-28T22:56:21&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-18T15:55:21&#43;08:00"/>
+
+<meta itemprop="name" content="Raspberry Pi HDMI 连接显示器黑屏问题">
+<meta itemprop="description" content="记录一下解决树莓派连接显示器黑屏的问题。">
+
+
+<meta itemprop="datePublished" content="2018-01-28T22:56:21&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-18T15:55:21&#43;08:00" />
+<meta itemprop="wordCount" content="276">
+
+
+
+<meta itemprop="keywords" content="Raspberry Pi," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Raspberry Pi HDMI 连接显示器黑屏问题"/>
+<meta name="twitter:description" content="记录一下解决树莓派连接显示器黑屏的问题。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/project/">
+        <li class="mobile-menu-item">项目</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/project/">项目</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Raspberry Pi HDMI 连接显示器黑屏问题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-01-28 </span>
+        
+        <span class="more-meta"> 约 276 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>记录一下解决树莓派连接显示器黑屏的问题。</p>
+
+<p><strong>树莓派版本：</strong>3<br />
+<strong>显示器：</strong>  4:3的长城显示器，通过 HDMI 转 VGA 的转接头连接。<br />
+<strong>问题描述</strong>：树莓派通过 HDMI 接口连接显示器。只有第一次成功显示，之后再也无法显示。第一次显示的时候也有部分屏幕无法显示。<br />
+<strong>解决方法：</strong><br />
+<strong>修改 SD 卡 boot 分区的 config.txt 文件。</strong><br />
+将 SD 卡插入到电脑中，首先备份 config.txt 文件，然后使用编辑器打开，这里不推荐记事本，可以使用 notepad++ 打开。然后加入以下几个选项：</p>
+
+<pre><code>hdmi_force_hotplug=1
+config_hdmi_boost=4
+hdmi_group=2
+hdmi_mode=35
+hdmi_drive=2
+hdmi_ignore_edid=0xa5000080
+disable_overscan=1      
+</code></pre>
+
+<p>这里我的显示器分辨率是 1280*1024，所以修改为 hdmi_mode=35，如果你的显示器分辨率不同，请查找需要修改的值。</p>
+
+<p>参考：<br />
+<a href="http://blog.lxx1.com/1706">解决树莓派使用 HDMI-VGA 转换器黑屏的方案</a><br />
+<a href="https://www.raspberrypi.org/documentation/configuration/config-txt/README.md">CONFIG.TXT</a><br />
+<a href="https://www.raspberrypi.org/documentation/configuration/config-txt/video.md">VIDEO OPTIONS IN CONFIG.TXT</a></p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-12-18</span>
+  </p>
+  <p class="copyright-item">
+      <span class="item-title">原始文档</span>
+      <span class="item-content"><a class="link-to-markdown" href="https://luozongtong123.github.io/post/raspberrypi-hdmi/index.md" target="_blank">Markdown 文件</a></span>
+    </p>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC 署名 4.0 国际</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/raspberry-pi/">Raspberry Pi</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/lede-phicomm-k2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Phicomm K2 刷 LEDE </span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/raspberrypi-wifi/">
+            <span class="next-text nav-default">Raspberry Pi 连接 Wifi</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-01-28 22:56:21 \x2b0800 CST',
+    title: 'Raspberry Pi HDMI 连接显示器黑屏问题',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'luozongtong123.github.io',
+    owner: 'luozongtong123',
+    admin: ['luozongtong123'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:luozongtong123@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/luozongtong123" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.zhihu.com/people/luozongtong123" class="iconfont icon-zhihu" title="zhihu"></a>
+  <a href="https://luozongtong123.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/luozongtong123/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -6,7 +6,7 @@
     <description>Recent content in Tags on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 08 Sep 2018 20:36:46 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 18 Dec 2018 14:49:19 +0800</lastBuildDate>
     
 	<atom:link href="https://luozongtong123.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>ArduSub</title>
       <link>https://luozongtong123.github.io/tags/ardusub/</link>
-      <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
+      <pubDate>Tue, 18 Dec 2018 14:49:19 +0800</pubDate>
       
       <guid>https://luozongtong123.github.io/tags/ardusub/</guid>
       <description></description>
@@ -95,7 +95,7 @@
     <item>
       <title>Pixhawk</title>
       <link>https://luozongtong123.github.io/tags/pixhawk/</link>
-      <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
+      <pubDate>Tue, 18 Dec 2018 14:49:19 +0800</pubDate>
       
       <guid>https://luozongtong123.github.io/tags/pixhawk/</guid>
       <description></description>
@@ -152,6 +152,15 @@
       <pubDate>Tue, 28 Aug 2018 09:30:26 +0800</pubDate>
       
       <guid>https://luozongtong123.github.io/tags/rov/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi</title>
+      <link>https://luozongtong123.github.io/tags/raspberry-pi/</link>
+      <pubDate>Tue, 18 Dec 2018 14:49:19 +0800</pubDate>
+      
+      <guid>https://luozongtong123.github.io/tags/raspberry-pi/</guid>
       <description></description>
     </item>
     

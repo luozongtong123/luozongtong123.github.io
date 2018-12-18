@@ -17,6 +17,13 @@
   </url>
   
   <url>
+    <loc>https://luozongtong123.github.io/post/ardusub-interface/</loc>
+    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://luozongtong123.github.io/post/even-theme-tweak/</loc>
     <lastmod>2018-10-28T11:48:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -108,8 +115,29 @@
   </url>
   
   <url>
+    <loc>https://luozongtong123.github.io/post/raspberrypi-tutorial/</loc>
+    <lastmod>2018-12-18T15:44:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://luozongtong123.github.io/post/lede-phicomm-k2/</loc>
     <lastmod>2018-09-13T21:50:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://luozongtong123.github.io/post/raspberrypi-hdmi/</loc>
+    <lastmod>2018-12-18T15:55:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://luozongtong123.github.io/post/raspberrypi-wifi/</loc>
+    <lastmod>2018-12-18T16:11:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -214,7 +242,7 @@
   
   <url>
     <loc>https://luozongtong123.github.io/tags/ardusub/</loc>
-    <lastmod>2018-09-13T21:31:45+08:00</lastmod>
+    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -312,7 +340,7 @@
   
   <url>
     <loc>https://luozongtong123.github.io/tags/pixhawk/</loc>
-    <lastmod>2018-09-13T21:31:45+08:00</lastmod>
+    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -333,7 +361,7 @@
   
   <url>
     <loc>https://luozongtong123.github.io/post/</loc>
-    <lastmod>2018-10-28T11:48:09+08:00</lastmod>
+    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -369,6 +397,13 @@
   <url>
     <loc>https://luozongtong123.github.io/categories/rt-thread/</loc>
     <lastmod>2018-10-14T22:00:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://luozongtong123.github.io/tags/raspberry-pi/</loc>
+    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -410,7 +445,7 @@
   
   <url>
     <loc>https://luozongtong123.github.io/tags/</loc>
-    <lastmod>2018-09-13T21:31:45+08:00</lastmod>
+    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
