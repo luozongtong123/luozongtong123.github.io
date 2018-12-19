@@ -66,4 +66,6 @@ Waterlinked 页面，地址是 ip:2770/waterlinked，默认的地址为[192.168.
 
 {{% figure class="center" src="/img/ardusub-interface/file-manager.png" alt="File Manager" title="File Manager" %}}
 
+参考：  
+[Companion Web Interface](https://www.ardusub.com/operators-manual/companion-web.html)  
 

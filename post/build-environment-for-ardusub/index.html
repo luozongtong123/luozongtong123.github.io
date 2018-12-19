@@ -64,7 +64,7 @@
 
 <meta itemprop="datePublished" content="2018-09-08T20:36:46&#43;08:00" />
 <meta itemprop="dateModified" content="2018-09-13T21:31:45&#43;08:00" />
-<meta itemprop="wordCount" content="1850">
+<meta itemprop="wordCount" content="1881">
 
 
 
@@ -144,7 +144,7 @@
       <div class="post-meta">
         <span class="post-time"> 2018-09-08 </span>
         
-        <span class="more-meta"> 约 1850 字 </span>
+        <span class="more-meta"> 约 1881 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -169,6 +169,7 @@
 <li><a href="#4-克隆-ardupilot-代码库到本地">4、克隆 Ardupilot 代码库到本地</a></li>
 <li><a href="#5-进行环境设置">5、进行环境设置</a></li>
 <li><a href="#6-进行编译">6、进行编译</a></li>
+<li><a href="#7-下载程序">7、下载程序</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -205,7 +206,13 @@
 
 <p>这一步很简单，直接上图。</p>
 
-<p><img src="/img/build-environment-for-ArduSub/enable-wsl.jpg" alt="enable-WSL" /></p>
+<figure class="center">
+    <img src="/img/build-environment-for-ardusub/enable-wsl.jpg"
+         alt="enable WSL"/> <figcaption>
+            <h4>enable WSL</h4>
+        </figcaption>
+</figure>
+
 
 <h3 id="2-安装-ubuntu-应用">2、安装 Ubuntu 应用</h3>
 
@@ -219,7 +226,13 @@
 
 <p>打开安装的 Ubuntu 应用，或者当系统中只安装了一个 WSL 应用时，可以直接输入 bash 启动那个唯一的 WSL。需要注意的是 *inux 系统输入密码时不会显示已输入的字符的数量。</p>
 
-<p><img src="/img/build-environment-for-ArduSub/wsl-init.png" alt="wsl-init" /></p>
+<figure class="center">
+    <img src="/img/build-environment-for-ardusub/wsl-init.png"
+         alt="WSL init"/> <figcaption>
+            <h4>WSL init</h4>
+        </figcaption>
+</figure>
+
 
 <p>初始化完成后，为了提高安装软件包的速度，需要将 Ubuntu 的软件源替换成国内速度较快的软件源，这里推荐使用网易的源。</p>
 
@@ -318,7 +331,24 @@ git submodule update --recursive
 ./waf --upload sub
 </code></pre>
 
-<p>下载程序需要用到 QGroundControl。</p>
+<h3 id="7-下载程序">7、下载程序</h3>
+
+<p>下载程序需要使用 QGroundControl 或者 ArduSub Companion Web Interface。操作方法见如下两图。</p>
+
+<figure class="center">
+    <img src="/img/build-environment-for-ardusub/firmware-setup.png"
+         alt="QGroundControl Firmware Setup"/> <figcaption>
+            <h4>QGroundControl Firmware Setup</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/build-environment-for-ardusub/pixhawk-firmware-update.png"
+         alt="ArduSub Companion Web Interface Pixhawk Firmware Update"/> <figcaption>
+            <h4>ArduSub Companion Web Interface Pixhawk Firmware Update</h4>
+        </figcaption>
+</figure>
     </div>
 
     

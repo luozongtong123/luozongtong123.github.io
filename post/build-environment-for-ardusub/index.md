@@ -20,7 +20,7 @@ Pixhawk1（px4_v2） 飞控使用了两片单片机。Pixhawk 其实是 PX4FMU �
 
 这一步很简单，直接上图。
 
-![enable-WSL](/img/build-environment-for-ArduSub/enable-wsl.jpg)
+{{% figure class="center" src="/img/build-environment-for-ardusub/enable-wsl.jpg" alt="enable WSL" title="enable WSL" %}}
 
 ### 2、安装 Ubuntu 应用
 
@@ -36,13 +36,12 @@ Ubuntu 18.04 LTS 上自带的是版本号 6.3 的 gcc-arm-none-eabi ，编译环
 
 打开安装的 Ubuntu 应用，或者当系统中只安装了一个 WSL 应用时，可以直接输入 bash 启动那个唯一的 WSL。需要注意的是 *inux 系统输入密码时不会显示已输入的字符的数量。
 
-![wsl-init](/img/build-environment-for-ArduSub/wsl-init.png)
-
+{{% figure class="center" src="/img/build-environment-for-ardusub/wsl-init.png" alt="WSL init" title="WSL init" %}}
 
 
 初始化完成后，为了提高安装软件包的速度，需要将 Ubuntu 的软件源替换成国内速度较快的软件源，这里推荐使用网易的源。
 
-```bash
+``` bash
 # 用 nano 打开镜像源列表文件
 sudo nano /etc/apt/sources.list 
 # 注释掉所有官方的源
@@ -55,7 +54,7 @@ sudo apt-get upgrade
 
 Ubuntu 16.04 LTS 源：
 
-```bash
+``` bash
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb https://mirrors.163.com/ubuntu/ xenial main restricted universe multiverse
 # deb-src https://mirrors.163.com/ubuntu/ xenial main restricted universe multiverse
@@ -74,7 +73,7 @@ deb https://mirrors.163.com/ubuntu/ xenial-security main restricted universe mul
 
 ~~Ubuntu 18.04 LTS 源：~~
 
-```bash
+``` bash
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb https://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse
 # deb-src https://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse
@@ -94,7 +93,7 @@ deb https://mirrors.163.com/ubuntu/ bionic-security main restricted universe mul
 
 ### 4、克隆 Ardupilot 代码库到本地
 
-```bash
+``` bash
 git clone https://github.com/ardupilot/ardupilot.git
 cd ardupilot
 git submodule init
@@ -107,7 +106,7 @@ git submodule update --recursive
 
 首先运行脚本，准备好大部分的环境。
 
-```bash
+``` bash
 ./Tools/scripts/install-prereqs-ubuntu.sh # 安装软件时将需要账号密码
 # 若是 WSL 默认的纯净环境这一步需要下载接近 300M 的软件包，安装后占用 1.3G 的空间
 nano ~/.profile 
@@ -117,7 +116,7 @@ nano ~/.profile
 
 脚本下载的是32位的 gcc-arm-none-eabi ，版本号 4_9-2015q3，解压的目录位置是 `/opt/gcc-arm-none-eabi-4_9-2015q3/` ，我们的 WSL 是64位的，需要下载 64 位的 gcc-arm-none-eabi ，解压的文件可以直接删除。
 
-```bash
+``` bash
 sudo rm -rf /opt/gcc-arm-none-eabi-4_9-2015q3
 sudo apt-get install gcc-arm-none-eabi
 source ~/.profile
@@ -127,7 +126,7 @@ source ~/.profile
 
 接下来安装 Ninja 构建系统。 Ninja 比 Make 更快，并且 PX4 的CMake 生成器官方支持 Ninja。不幸的是，Ubuntu 目前只支持一个非常过时的版本（Ubuntu 16.04 LTS）。下载二进制文件并添加到系统路径来安装最新版本的 [Ninja](https://github.com/martine/ninja)：
 
-```bash
+``` bash
 mkdir -p $HOME/ninja
 cd $HOME/ninja
 wget https://github.com/martine/ninja/releases/download/v1.8.2/ninja-linux.zip 
@@ -143,7 +142,7 @@ if grep -Fxq "$exportline" ~/.profile; then echo nothing to do ; else echo $expo
 
 ### 6、进行编译
 
-```bash
+``` bash
 git fetch --tags
 git checkout ArduSub-stable
 git submodule update --recursive
@@ -153,7 +152,12 @@ git submodule update --recursive
 ./waf --upload sub
 ```
 
-下载程序需要用到 QGroundControl。
+### 7、下载程序  
 
+下载程序需要使用 QGroundControl 或者 ArduSub Companion Web Interface。操作方法见如下两图。
+
+{{% figure class="center" src="/img/build-environment-for-ardusub/firmware-setup.png" alt="QGroundControl Firmware Setup" title="QGroundControl Firmware Setup" %}}
+
+{{% figure class="center" src="/img/build-environment-for-ardusub/pixhawk-firmware-update.png" alt="ArduSub Companion Web Interface Pixhawk Firmware Update" title="ArduSub Companion Web Interface Pixhawk Firmware Update" %}}
 
 
