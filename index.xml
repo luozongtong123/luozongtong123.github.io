@@ -54,7 +54,7 @@
       <pubDate>Fri, 26 Oct 2018 23:57:57 +0800</pubDate>
       
       <guid>https://luozongtong123.github.io/post/fsharp-tutorial/</guid>
-      <description>open System // 这步操作可以让我们使用 .NET Core 的函数库 open System.Drawing let hello() = // let 用来绑定函数名或者参数名 printf &amp;quot;Enter your name: &amp;quot; // printf 不启用新行的打印函数 let name = Console.ReadLine() // 读取一行并将读取到</description>
+      <description>&lt;p&gt;This is a F# Tutorial.&lt;/p&gt;</description>
     </item>
     
     <item>
