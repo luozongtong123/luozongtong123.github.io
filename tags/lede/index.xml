@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LEDE on luo Space - Coding and thinking.</title>
-    <link>https://luozongtong123.github.io/tags/lede/</link>
+    <link>https://blog.ztluo.dev/tags/lede/</link>
     <description>Recent content in LEDE on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 04 Feb 2018 04:06:48 +0800</lastBuildDate>
     
-	<atom:link href="https://luozongtong123.github.io/tags/lede/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.ztluo.dev/tags/lede/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Phicomm K2 刷 LEDE </title>
-      <link>https://luozongtong123.github.io/post/lede-phicomm-k2/</link>
+      <link>https://blog.ztluo.dev/post/lede-phicomm-k2/</link>
       <pubDate>Sun, 04 Feb 2018 04:06:48 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/lede-phicomm-k2/</guid>
+      <guid>https://blog.ztluo.dev/post/lede-phicomm-k2/</guid>
       <description>&lt;p&gt;最近买了个斐讯的路由器，总结一下刷机过程。&lt;/p&gt;</description>
     </item>
     

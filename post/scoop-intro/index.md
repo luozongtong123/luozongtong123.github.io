@@ -159,7 +159,7 @@ scoop bucket add versions
 Scoop 简洁的设计令你可以非常方便自定义你自己的软件源（buckets）。
 下面给出一个自定义软件源的示例。  
 
-首先，你需要一个 git 仓库，可以是公开的也可以是私有的。我在 Gihub 上见了一个我自急用的仓库，[直达](https://github.com/luozongtong123/bucket-luo)。
+首先，你需要一个 git 仓库，可以是公开的也可以是私有的。我在 Gihub 上见了一个我自急用的仓库，[直达](https://github.com/zt-luo/bucket-luo)。
 然后，将这个仓库克隆到本地。按照官方 [wiki](https://github.com/lukesampson/scoop/wiki/App-Manifests) 
 参考已有的 `manifest` 编写自己的 `manifest`。下面给出我自己用的两个 `manifest`。  
 

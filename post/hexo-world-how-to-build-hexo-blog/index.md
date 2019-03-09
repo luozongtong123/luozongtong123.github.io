@@ -288,7 +288,7 @@ exclude_generator:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:  #GitHub 参数
   type: github
-  repository: https://github.com/luozongtong123/luozongtong123.github.io.git
+  repository: https://github.com/zt-luo/zt-luo.github.io.git
   branch: master
 ```
 

@@ -27,14 +27,14 @@ npm install hexo-server --save
 npm install hexo-deployer-git --save
 hexo init
 cd themes/
-git clone git@github.com:luozongtong123/luocman.git
+git clone git@github.com:zt-luo/luocman.git
 cd luocman/
 cp _config-index.yml ~/myblog/
 cd
 cd myblog/
 mv _config-index.yml _config.yml
 rm -rf source/
-git clone git@github.com:luozongtong123/source.git
+git clone git@github.com:zt-luo/source.git
 rm -rf scaffolds/
 cd themes/luocman/
 mv scaffolds/ ~/myblog/

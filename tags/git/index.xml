@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on luo Space - Coding and thinking.</title>
-    <link>https://luozongtong123.github.io/tags/git/</link>
+    <link>https://blog.ztluo.dev/tags/git/</link>
     <description>Recent content in Git on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 05 Oct 2018 10:02:56 +0800</lastBuildDate>
     
-	<atom:link href="https://luozongtong123.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.ztluo.dev/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用 Git 子模块管理 hugo 博客</title>
-      <link>https://luozongtong123.github.io/post/git-submodule/</link>
+      <link>https://blog.ztluo.dev/post/git-submodule/</link>
       <pubDate>Fri, 05 Oct 2018 10:02:56 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/git-submodule/</guid>
+      <guid>https://blog.ztluo.dev/post/git-submodule/</guid>
       <description>&lt;p&gt;使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>简单的 Git 入门</title>
-      <link>https://luozongtong123.github.io/post/something-about-git/</link>
+      <link>https://blog.ztluo.dev/post/something-about-git/</link>
       <pubDate>Fri, 13 Feb 2015 22:31:00 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/something-about-git/</guid>
+      <guid>https://blog.ztluo.dev/post/something-about-git/</guid>
       <description>&lt;p&gt;在使用 Hexo 作为博客程序的过程中使用了 Git 这个分布式版本控制系统。现在已经初步入门了。之前一直都没有深入去研究，但是今天上午突然想要把所有的东西都同步到某网盘上以免本地数据出现差错导致博客从头再来。&lt;/p&gt;</description>
     </item>
     

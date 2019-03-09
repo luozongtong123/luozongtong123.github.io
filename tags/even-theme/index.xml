@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>even theme on luo Space - Coding and thinking.</title>
-    <link>https://luozongtong123.github.io/tags/even-theme/</link>
+    <link>https://blog.ztluo.dev/tags/even-theme/</link>
     <description>Recent content in even theme on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 28 Oct 2018 11:48:09 +0800</lastBuildDate>
     
-	<atom:link href="https://luozongtong123.github.io/tags/even-theme/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.ztluo.dev/tags/even-theme/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Even Theme Tweak</title>
-      <link>https://luozongtong123.github.io/post/even-theme-tweak/</link>
+      <link>https://blog.ztluo.dev/post/even-theme-tweak/</link>
       <pubDate>Sun, 28 Oct 2018 11:48:09 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/even-theme-tweak/</guid>
-      <description>&lt;p&gt;当前博客的主题是 &lt;a href=&#34;https://github.com/luozongtong123/hugo-theme-even&#34;&gt;even&lt;/a&gt;。
+      <guid>https://blog.ztluo.dev/post/even-theme-tweak/</guid>
+      <description>&lt;p&gt;当前博客的主题是 &lt;a href=&#34;https://github.com/zt-luo/hugo-theme-even&#34;&gt;even&lt;/a&gt;。
 为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>hugo 博客系统 even 主题预览</title>
-      <link>https://luozongtong123.github.io/post/even-preview/</link>
+      <link>https://blog.ztluo.dev/post/even-preview/</link>
       <pubDate>Mon, 17 Sep 2018 22:11:40 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/even-preview/</guid>
+      <guid>https://blog.ztluo.dev/post/even-preview/</guid>
       <description>&lt;p&gt;这篇文章集中说明 even 主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些样式，可以去修改 css/ 文件夹下的 .scss 文件。&lt;/p&gt;</description>
     </item>
     

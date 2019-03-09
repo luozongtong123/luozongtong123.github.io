@@ -43,7 +43,7 @@ Linux 上的安装就不必多讲了，直接上包管理器就好了。对于 W
 ``` c
 /**
  * @file hello_world.c
- * @author Zongtong Luo (luozongtong123@163.com)
+ * @author Zongtong Luo (me@ztluo.dev)
  * @brief  
  * @version 0.1
  * @date 2018-10-16

@@ -1,4 +1,4 @@
-当前博客的主题是 [even](https://github.com/luozongtong123/hugo-theme-even)。
+当前博客的主题是 [even](https://github.com/zt-luo/hugo-theme-even)。
 为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。
 <!--more-->  
 
@@ -180,8 +180,8 @@ $code-type-list: (
 
 在浏览 [olOwOlo](https://blog.olowolo.com/) 的[博文](https://blog.olowolo.com/post/generate-json-api-and-graphql-api-by-elide-and-spring/)时候发现，博客中的 `admonition`  非常漂亮。在博文下面询问是怎么实现的，无奈作者好像消失了一样。所以只能自己实现一套了。看了一下 Hugo 的[模版系统](https://gohugo.io/templates/introduction/)，抄了[olOwOlo](https://blog.olowolo.com/) 的 `CSS`，实现了如下的 `admonition` 。自我感觉效果还不错。   
 
-具体实现就不详细讲了，想要了解的话直接去看我的[代码](https://github.com/luozongtong123/hugo-theme-even/commit/24840c633e9fb54a188012965d62ae94e087fa71)就行。  
-想要使用的直接 Fork 我的[仓库](https://github.com/luozongtong123/hugo-theme-even)即可。
+具体实现就不详细讲了，想要了解的话直接去看我的[代码](https://github.com/zt-luo/hugo-theme-even/commit/24840c633e9fb54a188012965d62ae94e087fa71)就行。  
+想要使用的直接 Fork 我的[仓库](https://github.com/zt-luo/hugo-theme-even)即可。
 
 {{% admonition tip %}}
 

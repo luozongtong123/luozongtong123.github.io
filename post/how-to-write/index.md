@@ -136,7 +136,7 @@ tags:
 
 示例：
 
-这是去往 [本人博客](https://luozongtong123.gihub.io) 的链接。
+这是去往 [本人博客](https://blog.ztluo.dev) 的链接。
  
 ### 4. 无序列表
 

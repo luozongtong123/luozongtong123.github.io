@@ -1,548 +1,548 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<?xml-stylesheet type="text/xsl" href="https://luozongtong123.github.io/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://blog.ztluo.dev/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://luozongtong123.github.io/project/</loc>
+    <loc>https://blog.ztluo.dev/project/</loc>
     <lastmod>2018-09-13T21:28:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/about/</loc>
+    <loc>https://blog.ztluo.dev/about/</loc>
     <lastmod>2018-09-13T21:28:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/ardusub-interface/</loc>
+    <loc>https://blog.ztluo.dev/post/ardusub-interface/</loc>
     <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/even-theme-tweak/</loc>
+    <loc>https://blog.ztluo.dev/post/even-theme-tweak/</loc>
     <lastmod>2018-10-28T11:48:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/fsharp-tutorial/</loc>
+    <loc>https://blog.ztluo.dev/post/fsharp-tutorial/</loc>
     <lastmod>2018-10-26T23:57:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/vs-code-can-do-that/</loc>
+    <loc>https://blog.ztluo.dev/post/vs-code-can-do-that/</loc>
     <lastmod>2018-10-23T10:47:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/scoop-intro/</loc>
+    <loc>https://blog.ztluo.dev/post/scoop-intro/</loc>
     <lastmod>2018-10-22T21:34:15+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/glib-intro/</loc>
+    <loc>https://blog.ztluo.dev/post/glib-intro/</loc>
     <lastmod>2018-10-18T14:55:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/busuanzi-domain/</loc>
+    <loc>https://blog.ztluo.dev/post/busuanzi-domain/</loc>
     <lastmod>2018-10-10T22:20:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/portugal-visa-cultural/</loc>
+    <loc>https://blog.ztluo.dev/post/portugal-visa-cultural/</loc>
     <lastmod>2018-11-14T10:15:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/pages/_test/</loc>
+    <loc>https://blog.ztluo.dev/pages/_test/</loc>
     <lastmod>2018-10-07T11:10:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/git-submodule/</loc>
+    <loc>https://blog.ztluo.dev/post/git-submodule/</loc>
     <lastmod>2018-10-05T10:02:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/rt-thread-learning01/</loc>
+    <loc>https://blog.ztluo.dev/post/rt-thread-learning01/</loc>
     <lastmod>2018-10-14T22:00:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/even-preview/</loc>
+    <loc>https://blog.ztluo.dev/post/even-preview/</loc>
     <lastmod>2018-09-22T14:40:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/build-environment-for-ardusub/</loc>
+    <loc>https://blog.ztluo.dev/post/build-environment-for-ardusub/</loc>
     <lastmod>2018-12-19T20:53:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/make-a-rov/</loc>
+    <loc>https://blog.ztluo.dev/post/make-a-rov/</loc>
     <lastmod>2018-09-22T11:28:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/raspberrypi-tutorial/</loc>
+    <loc>https://blog.ztluo.dev/post/raspberrypi-tutorial/</loc>
     <lastmod>2018-12-18T15:44:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/lede-phicomm-k2/</loc>
+    <loc>https://blog.ztluo.dev/post/lede-phicomm-k2/</loc>
     <lastmod>2018-09-13T21:50:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/raspberrypi-hdmi/</loc>
+    <loc>https://blog.ztluo.dev/post/raspberrypi-hdmi/</loc>
     <lastmod>2018-12-18T15:55:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/raspberrypi-wifi/</loc>
+    <loc>https://blog.ztluo.dev/post/raspberrypi-wifi/</loc>
     <lastmod>2018-12-18T16:11:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/seadrone-hardware/</loc>
+    <loc>https://blog.ztluo.dev/post/seadrone-hardware/</loc>
     <lastmod>2018-01-08T22:36:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/seadrone-disassemble-reassemble/</loc>
+    <loc>https://blog.ztluo.dev/post/seadrone-disassemble-reassemble/</loc>
     <lastmod>2017-12-30T18:35:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/using-of-xsens-mti-300-ahrs/</loc>
+    <loc>https://blog.ztluo.dev/post/using-of-xsens-mti-300-ahrs/</loc>
     <lastmod>2018-09-13T21:42:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/postgraduate/</loc>
+    <loc>https://blog.ztluo.dev/post/postgraduate/</loc>
     <lastmod>2018-02-06T17:05:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/my2015/</loc>
+    <loc>https://blog.ztluo.dev/post/my2015/</loc>
     <lastmod>2016-01-03T21:40:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/yukun-first-two-day/</loc>
+    <loc>https://blog.ztluo.dev/post/yukun-first-two-day/</loc>
     <lastmod>2015-09-20T07:33:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/relationship/</loc>
+    <loc>https://blog.ztluo.dev/post/relationship/</loc>
     <lastmod>2015-05-30T17:36:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/something-about-association/</loc>
+    <loc>https://blog.ztluo.dev/post/something-about-association/</loc>
     <lastmod>2015-05-17T12:54:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/python-in-life/</loc>
+    <loc>https://blog.ztluo.dev/post/python-in-life/</loc>
     <lastmod>2015-04-06T09:58:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/rebuilt-envirenment/</loc>
+    <loc>https://blog.ztluo.dev/post/rebuilt-envirenment/</loc>
     <lastmod>2015-03-14T16:33:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/how-to-write/</loc>
+    <loc>https://blog.ztluo.dev/post/how-to-write/</loc>
     <lastmod>2018-09-22T11:08:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/search-engine-skills/</loc>
+    <loc>https://blog.ztluo.dev/post/search-engine-skills/</loc>
     <lastmod>2015-02-27T20:55:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/something-about-git/</loc>
+    <loc>https://blog.ztluo.dev/post/something-about-git/</loc>
     <lastmod>2018-09-22T11:15:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/hexo-world-how-to-build-hexo-blog/</loc>
+    <loc>https://blog.ztluo.dev/post/hexo-world-how-to-build-hexo-blog/</loc>
     <lastmod>2018-09-22T10:56:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/ardusub/</loc>
+    <loc>https://blog.ztluo.dev/tags/ardusub/</loc>
     <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/categories/blog/</loc>
+    <loc>https://blog.ztluo.dev/categories/blog/</loc>
     <lastmod>2018-10-28T11:48:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/categories/</loc>
+    <loc>https://blog.ztluo.dev/categories/</loc>
     <lastmod>2018-10-28T11:48:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/excel/</loc>
+    <loc>https://blog.ztluo.dev/tags/excel/</loc>
     <lastmod>2015-04-06T09:58:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/categories/feeling/</loc>
+    <loc>https://blog.ztluo.dev/categories/feeling/</loc>
     <lastmod>2016-01-03T21:40:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/font-ligatures/</loc>
+    <loc>https://blog.ztluo.dev/tags/font-ligatures/</loc>
     <lastmod>2018-10-23T10:47:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/categories/glib/</loc>
+    <loc>https://blog.ztluo.dev/categories/glib/</loc>
     <lastmod>2018-10-18T14:55:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/git/</loc>
+    <loc>https://blog.ztluo.dev/tags/git/</loc>
     <lastmod>2018-10-05T10:02:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/hexo/</loc>
+    <loc>https://blog.ztluo.dev/tags/hexo/</loc>
     <lastmod>2015-03-14T16:33:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/imu/</loc>
+    <loc>https://blog.ztluo.dev/tags/imu/</loc>
     <lastmod>2018-09-13T21:42:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/lede/</loc>
+    <loc>https://blog.ztluo.dev/tags/lede/</loc>
     <lastmod>2018-09-13T21:50:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/microsoft-build/</loc>
+    <loc>https://blog.ztluo.dev/tags/microsoft-build/</loc>
     <lastmod>2018-10-23T10:47:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/pages/</loc>
+    <loc>https://blog.ztluo.dev/pages/</loc>
     <lastmod>2018-10-07T11:10:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/phicomm-k2/</loc>
+    <loc>https://blog.ztluo.dev/tags/phicomm-k2/</loc>
     <lastmod>2018-09-13T21:50:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/pixhawk/</loc>
+    <loc>https://blog.ztluo.dev/tags/pixhawk/</loc>
     <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/portugal/</loc>
+    <loc>https://blog.ztluo.dev/tags/portugal/</loc>
     <lastmod>2018-11-14T10:15:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/postgraduate/</loc>
+    <loc>https://blog.ztluo.dev/tags/postgraduate/</loc>
     <lastmod>2018-02-06T17:05:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/post/</loc>
+    <loc>https://blog.ztluo.dev/post/</loc>
     <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/powershell/</loc>
+    <loc>https://blog.ztluo.dev/tags/powershell/</loc>
     <lastmod>2018-10-22T21:34:15+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/python/</loc>
+    <loc>https://blog.ztluo.dev/tags/python/</loc>
     <lastmod>2015-04-06T09:58:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/qgc/</loc>
+    <loc>https://blog.ztluo.dev/tags/qgc/</loc>
     <lastmod>2018-09-22T11:28:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/rov/</loc>
+    <loc>https://blog.ztluo.dev/tags/rov/</loc>
     <lastmod>2018-09-22T11:28:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/categories/rt-thread/</loc>
+    <loc>https://blog.ztluo.dev/categories/rt-thread/</loc>
     <lastmod>2018-10-14T22:00:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/raspberry-pi/</loc>
+    <loc>https://blog.ztluo.dev/tags/raspberry-pi/</loc>
     <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/router/</loc>
+    <loc>https://blog.ztluo.dev/tags/router/</loc>
     <lastmod>2018-09-13T21:50:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/scoop/</loc>
+    <loc>https://blog.ztluo.dev/tags/scoop/</loc>
     <lastmod>2018-10-22T21:34:15+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/seadrone/</loc>
+    <loc>https://blog.ztluo.dev/tags/seadrone/</loc>
     <lastmod>2018-01-08T22:36:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/stack/</loc>
+    <loc>https://blog.ztluo.dev/tags/stack/</loc>
     <lastmod>2018-10-14T22:00:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/submodule/</loc>
+    <loc>https://blog.ztluo.dev/tags/submodule/</loc>
     <lastmod>2018-10-05T10:02:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/</loc>
+    <loc>https://blog.ztluo.dev/tags/</loc>
     <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/thread/</loc>
+    <loc>https://blog.ztluo.dev/tags/thread/</loc>
     <lastmod>2018-10-14T22:00:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/ubuntu/</loc>
+    <loc>https://blog.ztluo.dev/tags/ubuntu/</loc>
     <lastmod>2018-12-19T20:53:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/visa/</loc>
+    <loc>https://blog.ztluo.dev/tags/visa/</loc>
     <lastmod>2018-11-14T10:15:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/visual-studio-code/</loc>
+    <loc>https://blog.ztluo.dev/tags/visual-studio-code/</loc>
     <lastmod>2018-10-23T10:47:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/wsl/</loc>
+    <loc>https://blog.ztluo.dev/tags/wsl/</loc>
     <lastmod>2018-12-19T20:53:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/xsens-mti-300/</loc>
+    <loc>https://blog.ztluo.dev/tags/xsens-mti-300/</loc>
     <lastmod>2018-09-13T21:42:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/busuanzi/</loc>
+    <loc>https://blog.ztluo.dev/tags/busuanzi/</loc>
     <lastmod>2018-10-10T22:20:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/cloud9/</loc>
+    <loc>https://blog.ztluo.dev/tags/cloud9/</loc>
     <lastmod>2015-03-14T16:33:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/even-theme/</loc>
+    <loc>https://blog.ztluo.dev/tags/even-theme/</loc>
     <lastmod>2018-10-28T11:48:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/hugo/</loc>
+    <loc>https://blog.ztluo.dev/tags/hugo/</loc>
     <lastmod>2018-10-28T11:48:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/</loc>
+    <loc>https://blog.ztluo.dev/</loc>
     <lastmod>2018-09-13T21:28:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/luocman/</loc>
+    <loc>https://blog.ztluo.dev/tags/luocman/</loc>
     <lastmod>2018-09-22T11:08:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/msys2/</loc>
+    <loc>https://blog.ztluo.dev/tags/msys2/</loc>
     <lastmod>2018-10-18T14:55:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://luozongtong123.github.io/tags/tips/</loc>
+    <loc>https://blog.ztluo.dev/tags/tips/</loc>
     <lastmod>2015-02-27T20:55:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

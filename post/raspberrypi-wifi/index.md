@@ -43,7 +43,7 @@ sudo ifdown wlan0
 # ~~自动重连WiFi~~  
 `可能没有作用`
 ``` bash
-git clone https://github.com/luozongtong123/WiFi_Check.git  
+git clone https://github.com/zt-luo/WiFi_Check.git  
 cd WiFi_Check
 chmod +x WiFi_Check
 sudo nano /etc/crontab

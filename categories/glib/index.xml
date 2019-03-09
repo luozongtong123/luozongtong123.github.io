@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GLib on luo Space - Coding and thinking.</title>
-    <link>https://luozongtong123.github.io/categories/glib/</link>
+    <link>https://blog.ztluo.dev/categories/glib/</link>
     <description>Recent content in GLib on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 17 Oct 2018 22:06:31 +0800</lastBuildDate>
     
-	<atom:link href="https://luozongtong123.github.io/categories/glib/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.ztluo.dev/categories/glib/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>GLib 简介</title>
-      <link>https://luozongtong123.github.io/post/glib-intro/</link>
+      <link>https://blog.ztluo.dev/post/glib-intro/</link>
       <pubDate>Wed, 17 Oct 2018 22:06:31 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/glib-intro/</guid>
+      <guid>https://blog.ztluo.dev/post/glib-intro/</guid>
       <description>&lt;p&gt;最近在翻 《C 程序设计新思维（第2版）》这本书的时候，看到了 GLib 这么一个现代化的 C 语言第三方库，
 一时惊为天人，想着这不就是我一直想要的 C 语言的跨平台的库了吗。所以就花了一些时间研究了一下。&lt;/p&gt;</description>
     </item>

@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hexo on luo Space - Coding and thinking.</title>
-    <link>https://luozongtong123.github.io/tags/hexo/</link>
+    <link>https://blog.ztluo.dev/tags/hexo/</link>
     <description>Recent content in Hexo on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 14 Mar 2015 16:33:52 +0800</lastBuildDate>
     
-	<atom:link href="https://luozongtong123.github.io/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.ztluo.dev/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用 cloud9 重建 Hexo 博客写作环境</title>
-      <link>https://luozongtong123.github.io/post/rebuilt-envirenment/</link>
+      <link>https://blog.ztluo.dev/post/rebuilt-envirenment/</link>
       <pubDate>Sat, 14 Mar 2015 16:33:52 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/rebuilt-envirenment/</guid>
+      <guid>https://blog.ztluo.dev/post/rebuilt-envirenment/</guid>
       <description>&lt;p&gt;在 cloud9 上写博客。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Hexo luocman 主题的文章书写规范</title>
-      <link>https://luozongtong123.github.io/post/how-to-write/</link>
+      <link>https://blog.ztluo.dev/post/how-to-write/</link>
       <pubDate>Sat, 28 Feb 2015 13:51:42 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/how-to-write/</guid>
+      <guid>https://blog.ztluo.dev/post/how-to-write/</guid>
       <description>&lt;p&gt;将一些 Hexo luocman 主题的文章的书写规范和技巧总结一下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Hexo world ！—— Hexo 博客搭建教程</title>
-      <link>https://luozongtong123.github.io/post/hexo-world-how-to-build-hexo-blog/</link>
+      <link>https://blog.ztluo.dev/post/hexo-world-how-to-build-hexo-blog/</link>
       <pubDate>Tue, 27 Jan 2015 21:11:00 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/hexo-world-how-to-build-hexo-blog/</guid>
+      <guid>https://blog.ztluo.dev/post/hexo-world-how-to-build-hexo-blog/</guid>
       <description>&lt;p&gt;博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去。&lt;/p&gt;</description>
     </item>
     

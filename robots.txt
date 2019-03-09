@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://luozongtong123.github.io/sitemap.xml
+Sitemap: https://blog.ztluo.dev/sitemap.xml

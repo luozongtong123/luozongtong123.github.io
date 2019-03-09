@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Postgraduate on luo Space - Coding and thinking.</title>
-    <link>https://luozongtong123.github.io/tags/postgraduate/</link>
+    <link>https://blog.ztluo.dev/tags/postgraduate/</link>
     <description>Recent content in Postgraduate on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 17 Aug 2017 17:05:37 +0800</lastBuildDate>
     
-	<atom:link href="https://luozongtong123.github.io/tags/postgraduate/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.ztluo.dev/tags/postgraduate/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>研究生生涯</title>
-      <link>https://luozongtong123.github.io/post/postgraduate/</link>
+      <link>https://blog.ztluo.dev/post/postgraduate/</link>
       <pubDate>Thu, 17 Aug 2017 17:05:37 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/postgraduate/</guid>
+      <guid>https://blog.ztluo.dev/post/postgraduate/</guid>
       <description>&lt;p&gt;记录一下研究生生涯。&lt;/p&gt;</description>
     </item>
     

@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Raspberry Pi on luo Space - Coding and thinking.</title>
-    <link>https://luozongtong123.github.io/tags/raspberry-pi/</link>
+    <link>https://blog.ztluo.dev/tags/raspberry-pi/</link>
     <description>Recent content in Raspberry Pi on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 18 Dec 2018 14:49:19 +0800</lastBuildDate>
     
-	<atom:link href="https://luozongtong123.github.io/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.ztluo.dev/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Ardusub 的界面</title>
-      <link>https://luozongtong123.github.io/post/ardusub-interface/</link>
+      <link>https://blog.ztluo.dev/post/ardusub-interface/</link>
       <pubDate>Tue, 18 Dec 2018 14:49:19 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/ardusub-interface/</guid>
+      <guid>https://blog.ztluo.dev/post/ardusub-interface/</guid>
       <description>&lt;p&gt;ArduSub 的事情又要捡起来了。这篇博客就写一些 ArduSub 留给我们来与其交互的接口。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Raspberry Pi: 从开箱到吃灰</title>
-      <link>https://luozongtong123.github.io/post/raspberrypi-tutorial/</link>
+      <link>https://blog.ztluo.dev/post/raspberrypi-tutorial/</link>
       <pubDate>Mon, 12 Mar 2018 15:19:00 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/raspberrypi-tutorial/</guid>
+      <guid>https://blog.ztluo.dev/post/raspberrypi-tutorial/</guid>
       <description>烧录镜像 拿到树莓派后第一步是将系统镜像烧录到存储卡。镜像下载：地址。这里选择没有桌面的 Raspbian Lite。烧录工具使用 Win32 Disk Imager。 开启 SSH Raspbian 默认</description>
     </item>
     
     <item>
       <title>Raspberry Pi HDMI 连接显示器黑屏问题</title>
-      <link>https://luozongtong123.github.io/post/raspberrypi-hdmi/</link>
+      <link>https://blog.ztluo.dev/post/raspberrypi-hdmi/</link>
       <pubDate>Sun, 28 Jan 2018 22:56:21 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/raspberrypi-hdmi/</guid>
+      <guid>https://blog.ztluo.dev/post/raspberrypi-hdmi/</guid>
       <description>&lt;p&gt;记录一下解决树莓派连接显示器黑屏的问题。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Raspberry Pi 连接 Wifi</title>
-      <link>https://luozongtong123.github.io/post/raspberrypi-wifi/</link>
+      <link>https://blog.ztluo.dev/post/raspberrypi-wifi/</link>
       <pubDate>Sun, 28 Jan 2018 22:25:00 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/raspberrypi-wifi/</guid>
+      <guid>https://blog.ztluo.dev/post/raspberrypi-wifi/</guid>
       <description>&lt;p&gt;树莓派连接 Wifi，HOW。&lt;/p&gt;</description>
     </item>
     

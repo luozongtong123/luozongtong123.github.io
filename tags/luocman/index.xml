@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>luocman on luo Space - Coding and thinking.</title>
-    <link>https://luozongtong123.github.io/tags/luocman/</link>
+    <link>https://blog.ztluo.dev/tags/luocman/</link>
     <description>Recent content in luocman on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 28 Feb 2015 13:51:42 +0800</lastBuildDate>
     
-	<atom:link href="https://luozongtong123.github.io/tags/luocman/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.ztluo.dev/tags/luocman/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hexo luocman 主题的文章书写规范</title>
-      <link>https://luozongtong123.github.io/post/how-to-write/</link>
+      <link>https://blog.ztluo.dev/post/how-to-write/</link>
       <pubDate>Sat, 28 Feb 2015 13:51:42 +0800</pubDate>
       
-      <guid>https://luozongtong123.github.io/post/how-to-write/</guid>
+      <guid>https://blog.ztluo.dev/post/how-to-write/</guid>
       <description>&lt;p&gt;将一些 Hexo luocman 主题的文章的书写规范和技巧总结一下。&lt;/p&gt;</description>
     </item>
     
