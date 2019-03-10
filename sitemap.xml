@@ -17,6 +17,13 @@
   </url>
   
   <url>
+    <loc>https://blog.ztluo.dev/post/coder/</loc>
+    <lastmod>2019-03-10T15:52:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.ztluo.dev/post/change-domain/</loc>
     <lastmod>2019-03-09T15:36:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -368,7 +375,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/post/</loc>
-    <lastmod>2019-03-09T15:36:44+08:00</lastmod>
+    <lastmod>2019-03-10T15:52:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
