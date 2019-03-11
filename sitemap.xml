@@ -24,6 +24,13 @@
   </url>
   
   <url>
+    <loc>https://blog.ztluo.dev/post/ardupilot-scheduler/</loc>
+    <lastmod>2019-03-09T16:54:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.ztluo.dev/post/change-domain/</loc>
     <lastmod>2019-03-09T15:36:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -256,14 +263,14 @@
   
   <url>
     <loc>https://blog.ztluo.dev/tags/ardusub/</loc>
-    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
+    <lastmod>2019-03-09T16:54:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/categories/ardupilot/</loc>
-    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
+    <lastmod>2019-03-09T16:54:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -276,8 +283,15 @@
   </url>
   
   <url>
+    <loc>https://blog.ztluo.dev/tags/c&#43;&#43;/</loc>
+    <lastmod>2019-03-09T16:54:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.ztluo.dev/categories/</loc>
-    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
+    <lastmod>2019-03-09T16:54:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -361,7 +375,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/tags/pixhawk/</loc>
-    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
+    <lastmod>2019-03-09T16:54:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -437,6 +451,13 @@
   </url>
   
   <url>
+    <loc>https://blog.ztluo.dev/tags/scheduler/</loc>
+    <lastmod>2019-03-09T16:54:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.ztluo.dev/tags/scoop/</loc>
     <lastmod>2018-10-22T21:34:15+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -466,7 +487,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/tags/</loc>
-    <lastmod>2018-12-18T14:49:19+08:00</lastmod>
+    <lastmod>2019-03-09T16:54:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

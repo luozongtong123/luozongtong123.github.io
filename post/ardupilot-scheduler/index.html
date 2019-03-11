@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Ardupilot Scheduler - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="参看 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。
+" />
+<meta name="keywords" content="Scheduler" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+<link rel="canonical" href="https://blog.ztluo.dev/post/ardupilot-scheduler/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Ardupilot Scheduler" />
+<meta property="og:description" content="参看 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ztluo.dev/post/ardupilot-scheduler/" />
+<meta property="article:published_time" content="2019-03-09T16:54:22&#43;08:00"/>
+<meta property="article:modified_time" content="2019-03-09T16:54:22&#43;08:00"/>
+
+<meta itemprop="name" content="Ardupilot Scheduler">
+<meta itemprop="description" content="参看 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。">
+
+
+<meta itemprop="datePublished" content="2019-03-09T16:54:22&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-09T16:54:22&#43;08:00" />
+<meta itemprop="wordCount" content="1740">
+
+
+
+<meta itemprop="keywords" content="ArduSub,Scheduler,C&#43;&#43;,Pixhawk," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ardupilot Scheduler"/>
+<meta name="twitter:description" content="参看 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/project/">
+        <li class="mobile-menu-item">项目</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/project/">项目</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Ardupilot Scheduler</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-09 </span>
+        <div class="post-category">
+            
+              <a href="/categories/ardupilot/"> Ardupilot </a>
+            
+          </div>
+        <span class="more-meta"> 约 1740 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#0x00-overview">0x00-&gt;Overview</a></li>
+<li><a href="#0x01-ap-scheduler">0x01-&gt;AP_Scheduler</a></li>
+<li><a href="#0x02-hal-scheduler">0x02-&gt;HAL::Scheduler</a></li>
+<li><a href="#0x03-thread-create">0x03-&gt;thread_create()</a></li>
+<li><a href="#0x04-change-log">0x04-&gt;change_log</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>参看 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。</p>
+
+<h1 id="0x00-overview">0x00-&gt;Overview</h1>
+
+<p>关于 Ardupilot 的调度器可以分成三个层次去理解。首先，最高层次，即实现在航行器特定代码层的 <code>AP_Scheduler</code>；然后是实现在 HAL 层的基于不同操作系统的 <code>HAL::Scheduler</code>，最后是实现在 HAL 层的基于不同操作系统的 <code>HAL::Scheduler::thread_create()</code>。这一层只是对操作系统提供的创建线程的接口做了一层包裹。</p>
+
+<p>开始之前，我们先来看看一个 Ardupilot 程序是从哪里开始运行的。</p>
+
+
+<div class="admonition-note">
+    <p class="admonition-note-title">
+        Hint
+    </p>
+    <p><p>本文所有代码均以 Ardupilot 最新代码库中的 ArduSub 为例。</p>
+
+<p>同时，由于我现在是使用 Pixhawk 的硬件，在最新本版的 Ardupilot 中已经放弃使用 NuttX 而使用 ChibiOS 了，所以 <code>HAL</code> 相关的代码都以 <code>HAL_ChibiOS</code> 为例。</p>
+</p>
+</div>
+
+
+
+<div class="admonition-warning">
+    <p class="admonition-warning-title">
+        Important
+    </p>
+    <p><p>为了精简篇幅，文中代码会在不影响理解的前提下做部分精简。实际代码请查阅代码库。</p>
+</p>
+</div>
+
+
+<p>在 <code>ArduSub.cpp</code> 文件中可以看到有下面两个函数：</p>
+
+<pre><code class="language-cpp">void Sub::setup(){
+  // code
+  }
+
+void Sub::loop(){
+  // code
+  }
+</code></pre>
+
+<p>了解过 Arduno 的可能会感觉到很熟悉。这套东西就是从 Arduno 那里继承来的。最早 Ardupilot 就是基于 Arduno 的，从名字也可以看出来，这其实是 Arduno 和 Autopilot 两者的结合。Ardupilot 通过 <code>AP_HAL_MAIN()</code> 或 <code>AP_HAL_MAIN_CALLBACKS()</code> 两个宏函数将将 <code>setup()</code> 和 <code>loop()</code> 绑定到主函数。其中 <code>AP_HAL_MAIN()</code> 用于纯 C 语言环境，<code>AP_HAL_MAIN_CALLBACKS()</code> 用于 C++ 中实例的成员函数。</p>
+
+<pre><code class="language-cpp">// file: libraries/AP_HAL/AP_HAL_Main.h
+#ifndef AP_MAIN
+#define AP_MAIN main
+#endif
+
+#define AP_HAL_MAIN() \
+    AP_HAL::HAL::FunCallbacks callbacks(setup, loop); \
+    extern &quot;C&quot; {                               \
+    int AP_MAIN(int argc, char* const argv[]); \
+    int AP_MAIN(int argc, char* const argv[]) { \
+        hal.run(argc, argv, &amp;callbacks); \
+        return 0; \
+    } \
+    }
+
+#define AP_HAL_MAIN_CALLBACKS(CALLBACKS) extern &quot;C&quot; { \
+    int AP_MAIN(int argc, char* const argv[]); \
+    int AP_MAIN(int argc, char* const argv[]) { \
+        hal.run(argc, argv, CALLBACKS); \
+        return 0; \
+    } \
+    }
+
+// file: libraries/AP_HAL/HAL.h
+
+class AP_HAL::HAL {
+struct FunCallbacks : public Callbacks {
+    FunCallbacks(void (*setup_fun)(void), void (*loop_fun)(void));
+
+    void setup() override { _setup(); }
+    void loop() override { _loop(); }
+
+private:
+    void (*_setup)(void);
+    void (*_loop)(void);
+    };
+}
+
+// file: libraries/AP_HAL/HAL.cpp
+namespace AP_HAL {
+HAL::FunCallbacks::FunCallbacks(void (*setup_fun)(void), void (*loop_fun)(void))
+    : _setup(setup_fun)  //参数初始化表
+    , _loop(loop_fun)
+{
+    assert(setup_fun);
+    assert(loop_fun);
+}
+}
+</code></pre>
+
+<pre><code class="language-cpp">AP_HAL_MAIN();
+// 或者
+// flie: ArduSub/ArduSub.cpp
+AP_HAL_MAIN_CALLBACKS(&amp;sub);
+</code></pre>
+
+<p>这两个宏函数展开后如下</p>
+
+<pre><code class="language-cpp">// AP_HAL_MAIN()
+AP_HAL::HAL::FunCallbacks callbacks(setup, loop);
+int main(int argc, char* const argv[]);
+int main(int argc, char* const argv[])
+{
+  hal.run(argc, argv, &amp;callbacks);
+  return 0;
+}
+
+// AP_HAL_MAIN_CALLBACKS(&amp;sub)
+int main(int argc, char* const argv[]);
+int main(int argc, char* const argv[])
+{
+  hal.run(argc, argv, &amp;sub);
+  return 0;
+}
+</code></pre>
+
+<p>观察 <code>AP_HAL_MAIN()</code> 可以发现，首先是实例化了一个 callbacks 实例，然后将这个实例传给了 <code>hal.run()</code>。而 <code>AP_HAL_MAIN_CALLBACKS(&amp;sub)</code> 则是直接将 <code>sub</code> 传给了 <code>hal.run()</code>。这是因为， <code>Sub</code> 这个类本来就是 <code>AP_HAL::HAL::FunCallbacks</code> 的子类。</p>
+
+<pre><code class="language-cpp">// file: ArduSub/Sub.h
+class Sub : public AP_HAL::HAL::Callbacks {
+}
+// file: ArduSub/Sub.cpp
+Sub sub;
+</code></pre>
+
+<p>接下来，我们来看 <code>hal.run()</code> 都干了啥。</p>
+
+<pre><code class="language-cpp">void HAL_ChibiOS::run(int argc, char * const argv[], Callbacks* callbacks) const
+{
+  // 将 callbacks 赋值给 g_callbacks
+  g_callbacks = callbacks;
+
+  // 调用 main_loop() 接管 main 函数.
+  //Takeover main
+  main_loop();
+}
+</code></pre>
+
+<pre><code class="language-cpp">static void main_loop()
+{
+  // 一些初始化工作, 包括串口等硬件
+  hal.uartA-&gt;begin(115200);
+  hal.uartB-&gt;begin(38400);
+  hal.uartC-&gt;begin(57600);
+
+  hal.scheduler-&gt;init();
+
+  // 执行 setup
+  g_callbacks-&gt;setup();
+
+  // 进入死循环, 执行 loop
+  while (true) {
+    g_callbacks-&gt;loop();
+    // 一些延时
+    hal.scheduler-&gt;delay_microseconds(50);
+  }
+}
+</code></pre>
+
+<p>至此,我们一层层把 Ardupilot 的 main 函数找出来了。</p>
+
+<p>接下来，将从前文提到的三个层次分别做相关的说明。</p>
+
+<h1 id="0x01-ap-scheduler">0x01-&gt;AP_Scheduler</h1>
+
+<p>首先 AP_Scheduler 是作为一个库存在于 Ardupilot 中的。具体位置为 <code>libraries/AP_Scheduler</code>。</p>
+
+<p>AP_Scheduler 的核心思想是，将时间分块，根据任务表中的任务和当前时间片段的剩余时间决定那个任务执行。关于任务表，任务表就是需要执行的任务 (task) 函数以及任务执行的频率和任务执行所需要的最大可能的时间 (最坏的情况) 。</p>
+
+<p>一个任务表的样子如下：</p>
+
+<pre><code class="language-cpp">// file: ArduSub/ArduSub.cpp
+#define SCHED_TASK(func, rate_hz, max_time_micros) SCHED_TASK_CLASS(Sub, &amp;sub, func, rate_hz, max_time_micros)
+
+#define SCHED_TASK_CLASS(classname, classptr, func, _rate_hz, _max_time_micros) { \
+    .function = FUNCTOR_BIND(classptr, &amp;classname::func, void),\
+    AP_SCHEDULER_NAME_INITIALIZER(func)\
+    .rate_hz = _rate_hz,\
+    .max_time_micros = _max_time_micros\
+}
+
+const AP_Scheduler::Task Sub::scheduler_tasks[] = {
+  SCHED_TASK(fifty_hz_loop,         50,     75),
+  SCHED_TASK(update_GPS,            50,    200),
+  SCHED_TASK(three_hz_loop,          3,     75),
+  SCHED_TASK_CLASS(GCS,      (GCS*)&amp;sub._gcs,   update_receive,     400, 180),
+};
+</code></pre>
+
+<p>AP_Scheduler 的基本原理是周期性地调用 loop 函数，这个函数决定那个任务执行。我们下面来看一下 loop 函数。</p>
+
+<pre><code class="language-cpp">// file: libraries/AP_Scheduler.cpp
+void AP_Scheduler::loop()
+{
+    // wait for an INS sample
+    AP::ins().wait_for_sample();
+
+    const uint32_t sample_time_us = AP_HAL::micros();
+    
+    if (_loop_timer_start_us == 0) {
+        _loop_timer_start_us = sample_time_us;
+        _last_loop_time_s = get_loop_period_s();
+    } else {
+        _last_loop_time_s = (sample_time_us - _loop_timer_start_us) * 1.0e-6;
+    }
+
+    // Execute the fast loop
+    // ---------------------
+    if (_fastloop_fn) {
+        _fastloop_fn();
+    }
+
+    // tell the scheduler one tick has passed
+    tick();
+
+    // run all the tasks that are due to run. Note that we only
+    // have to call this once per loop, as the tasks are scheduled
+    // in multiples of the main loop tick. So if they don't run on
+    // the first call to the scheduler they won't run on a later
+    // call until scheduler.tick() is called again
+    const uint32_t loop_us = get_loop_period_us();
+    const uint32_t time_available = (sample_time_us + loop_us) - AP_HAL::micros();
+    run(time_available &gt; loop_us ? 0u : time_available);
+
+    // check loop time
+    perf_info.check_loop_time(sample_time_us - _loop_timer_start_us);
+        
+    _loop_timer_start_us = sample_time_us;
+}
+</code></pre>
+
+<ol>
+<li>进入 loop 首先等待 IMU 的数据，IMU 的数据是每隔 25ms 来一次，即执行的频率是 400Hz。</li>
+<li>然后记录一下拿到 IMU 数据的时间，计算一下上一个循环具体用了多长时间，这个循环时间应该是用来看主循环的负载的，不参与调度器的逻辑控制。</li>
+<li>接下来执行 <code>fast_loop()</code>。</li>
+<li>通知 scheduler 已经走了一个 tick。</li>
+<li>计算这个循环还剩余的时间，将剩余时间传递给 run 函数，run 函数具体判断每个任务需不需要执行。</li>
+<li>最后检查一下循环的时间 (用处？)，并记录一下循环开始的时间。</li>
+</ol>
+
+<p>一个简单的流程图如下所示：</p>
+
+<figure class="center">
+    <img src="/img/ardupilot-scheduler/ap-scheduler-flowchart.png"
+         alt="AP_Scheduler"/> <figcaption>
+            <h4>AP_Scheduler</h4>
+        </figcaption>
+</figure>
+
+
+<p>关于 AP_Scheduler 还有几个细节需要说明一下。<code>fast_loop()</code> 是在 AP_Scheduler 初始化时传递的：</p>
+
+<pre><code class="language-cpp">// file: ArduSub/Sub.h
+// main loop scheduler
+AP_Scheduler scheduler{FUNCTOR_BIND_MEMBER(&amp;Sub::fast_loop, void)};
+</code></pre>
+
+<p>实际上 <code>wait_for_sample()</code> 除了再上面 <code>loop</code> 中调用了，还在 <code>fast_loop</code> 也调用了 (ins.update())。但是由于 <code>wait_for_sample()</code> 中有一个判断，如果 IMU 的数据没有被取走，是不用等待的，所以其实第二次调用时无效的，直接跳过了。这么做的原因可能是与其他版本相兼容？</p>
+
+<p>TODO</p>
+
+<h1 id="0x02-hal-scheduler">0x02-&gt;HAL::Scheduler</h1>
+
+<h1 id="0x03-thread-create">0x03-&gt;thread_create()</h1>
+
+<h1 id="0x04-change-log">0x04-&gt;change_log</h1>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-03-09</span>
+  </p>
+  <p class="copyright-item">
+      <span class="item-title">原始文档</span>
+      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/ardupilot-scheduler/index.md" target="_blank">Markdown 文件</a></span>
+    </p>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC 署名 4.0 国际</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/wechat_reward_qr-code.png">
+        <span>微信长按/扫码打赏</span>
+      </label>
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/ardusub/">ArduSub</a>
+          
+          <a href="/tags/scheduler/">Scheduler</a>
+          
+          <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+          
+          <a href="/tags/pixhawk/">Pixhawk</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/coder/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Coder online IDE!</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/change-domain/">
+            <span class="next-text nav-default">更换了谷歌的 .dev 域名</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2019-03-09 16:54:22 \x2b0800 CST',
+    title: 'Ardupilot Scheduler',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'zt-luo.github.io',
+    owner: 'zt-luo',
+    admin: ['zt-luo'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:me@ztluo.dev" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zt-luo" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.ztluo.dev/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/zt-luo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
