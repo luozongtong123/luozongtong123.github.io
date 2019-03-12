@@ -17,7 +17,7 @@
       <pubDate>Sat, 09 Mar 2019 16:54:22 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/post/ardupilot-scheduler/</guid>
-      <description>&lt;p&gt;看靠 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。&lt;/p&gt;</description>
+      <description>&lt;p&gt;参考 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。&lt;/p&gt;</description>
     </item>
     
     <item>

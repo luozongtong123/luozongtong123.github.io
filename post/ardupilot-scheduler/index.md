@@ -1,4 +1,4 @@
-看靠 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。  
+参考 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。  
 <!--more-->
 # 0x00->Overview  
 关于 Ardupilot 的调度器可以分成三个层次去理解。首先，最高层次，即实现在航行器特定代码层的 `AP_Scheduler`；然后是实现在 HAL 层的基于不同操作系统的 `HAL::Scheduler`，最后是实现在 HAL 层的基于不同操作系统的 `HAL::Scheduler::thread_create()`。这一层只是对操作系统提供的创建线程的接口做了一层包裹。  
