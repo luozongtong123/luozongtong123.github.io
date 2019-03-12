@@ -1,4 +1,4 @@
-参看 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。  
+看靠 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。  
 <!--more-->
 # 0x00->Overview  
 关于 Ardupilot 的调度器可以分成三个层次去理解。首先，最高层次，即实现在航行器特定代码层的 `AP_Scheduler`；然后是实现在 HAL 层的基于不同操作系统的 `HAL::Scheduler`，最后是实现在 HAL 层的基于不同操作系统的 `HAL::Scheduler::thread_create()`。这一层只是对操作系统提供的创建线程的接口做了一层包裹。  
@@ -162,7 +162,11 @@ static void main_loop()
 # 0x01->AP_Scheduler  
 首先 AP_Scheduler 是作为一个库存在于 Ardupilot 中的。具体位置为 `libraries/AP_Scheduler`。  
 
-AP_Scheduler 的核心思想是，将时间分块，根据任务表中的任务和当前时间片段的剩余时间决定那个任务执行。关于任务表，任务表就是需要执行的任务 (task) 函数以及任务执行的频率和任务执行所需要的最大可能的时间 (最坏的情况) 。  
+AP_Scheduler 的核心思想是，将时间分块，根据任务表中的任务和当前时间片段的剩余时间决定那个任务执行。  
+
+## scheduler table  
+
+任务表 (scheduler table) 就是需要执行的任务 (task) 函数以及任务执行的频率和任务执行所需要的最大可能的时间 (最坏的情况) 。  
 
 一个任务表的样子如下：  
 
@@ -184,6 +188,12 @@ const AP_Scheduler::Task Sub::scheduler_tasks[] = {
   SCHED_TASK_CLASS(GCS,      (GCS*)&sub._gcs,   update_receive,     400, 180),
 };
 ```
+列表中的函数必须遵循如下几点:  
+1. 永远不能阻塞；  
+2. 永远不能 sleep；  
+3. 最坏情况下的执行时间必须是可预测的。  
+
+## loop  
 
 AP_Scheduler 的基本原理是周期性地调用 loop 函数，这个函数决定那个任务执行。我们下面来看一下 loop 函数。
 
@@ -235,11 +245,13 @@ void AP_Scheduler::loop()
 5. 计算这个循环还剩余的时间，将剩余时间传递给 run 函数，run 函数具体判断每个任务需不需要执行。
 6. 最后检查一下循环的时间 (用处？)，并记录一下循环开始的时间。
 
-一个简单的流程图如下所示：
+基本流程是首先等待 IMU 数据，有了数据后执行 `fast_loop()`，然后开始执行任务表中的任务。一个简单的流程图如下所示：
 
 {{% figure class="center" src="/img/ardupilot-scheduler/ap-scheduler-flowchart.png" alt="AP_Scheduler" title="AP_Scheduler" %}}
 
-关于 AP_Scheduler 还有几个细节需要说明一下。`fast_loop()` 是在 AP_Scheduler 初始化时传递的：
+## fast_loop  
+
+`fast_loop()` 是在 AP_Scheduler 初始化时传递的：
 
 ``` cpp
 // file: ArduSub/Sub.h
@@ -247,11 +259,144 @@ void AP_Scheduler::loop()
 AP_Scheduler scheduler{FUNCTOR_BIND_MEMBER(&Sub::fast_loop, void)};
 ```
 
-实际上 `wait_for_sample()` 除了再上面 `loop` 中调用了，还在 `fast_loop` 也调用了 (ins.update())。但是由于 `wait_for_sample()` 中有一个判断，如果 IMU 的数据没有被取走，是不用等待的，所以其实第二次调用时无效的，直接跳过了。这么做的原因可能是与其他版本相兼容？  
+`fast_loop()` 是主线程的唯一一个肯定能运行的任务，所以一些重要的任务必须放到这里面来执行，而其他一些重要性不是很高的任务则可以放到任务表里面，根据实际情况决定是否运行。 ArduSub 的 `fast_loop()` 代码如下：
 
-TODO
+``` cpp
+void Sub::fast_loop()
+{
+    // update INS immediately to get current gyro data populated
+    ins.update();
+
+    if (control_mode != MANUAL) { //don't run rate controller in manual mode
+        // run low level rate controllers that only require IMU data
+        attitude_control.rate_controller_run();
+    }
+
+    // send outputs to the motors library
+    motors_output();
+
+    // run EKF state estimator (expensive)
+    // --------------------
+    read_AHRS();
+
+    // Inertial Nav
+    // --------------------
+    read_inertia();
+
+    // check if ekf has reset target heading
+    check_ekf_yaw_reset();
+
+    // run the attitude controllers
+    update_flight_mode();
+
+    // update home from EKF if necessary
+    update_home_from_EKF();
+
+    // check if we've reached the surface or bottom
+    update_surface_and_bottom_detector();
+
+#if MOUNT == ENABLED
+    // camera mount's fast update
+    camera_mount.update_fast();
+#endif
+
+    // log sensor health
+    if (should_log(MASK_LOG_ANY)) {
+        Log_Sensor_Health();
+    }
+}
+```
+
+## wait_for_sample  
+
+实际上 `wait_for_sample()` 除了再上面 `loop` 中调用了，还在 `fast_loop` 也调用了 (`ins.update()`中)。但是由于 `wait_for_sample()` 中有一个判断，如果 IMU 的数据没有被取走，是不用等待的，所以其实第二次调用时无效的，直接跳过了。这么做的原因可能是与其他版本相兼容？猜测可能有的航行器实现不需要等待 IMU 数据，同时为了满足这种航行器的调度保证兼容。  
+
+按照官方的文档[说法](http://ardupilot.org/dev/docs/learning-ardupilot-threading.html#the-ap-scheduler-system)，` ins.wait_for_sample()` 是驱动 AP_Scheduler 运行的节拍器(metronome)。  
+
+另外，AP_Scheduler 节拍的大小是在飞控启动时由 LOOP_RATE 参数决定的。具体代码如下：  
+
+``` cpp
+// file: ArduSub/Sub.h
+AP_InertialSensor ins;
+
+// file: ArduSub/ArduSub.cpp
+void Sub::setup()
+{
+  ...
+  init_ardupilot();
+  ...
+}
+
+// file: ArduSub/system.cpp
+void Sub::init_ardupilot()
+{
+  ...
+  startup_INS_ground();
+  ...
+}
+
+void Sub::startup_INS_ground()
+{
+  ...
+  ins.init(scheduler.get_loop_rate_hz());
+  ...
+}
+
+// file libraries/AP_Scheduler/AP_Scheduler.h
+// get the active main loop rate
+uint16_t get_loop_rate_hz(void) {
+  if (_active_loop_rate_hz == 0) {
+      _active_loop_rate_hz = _loop_rate_hz;
+  }
+  return _active_loop_rate_hz;
+}
+
+// overall scheduling rate in Hz
+AP_Int16 _loop_rate_hz;
+// loop rate in Hz as set at startup
+AP_Int16 _active_loop_rate_hz;
+
+// LOOP_RATE 参数决定节拍的大小
+// file: libraries/AP_Scheduler/AP_Scheduler.cpp
+const AP_Param::GroupInfo AP_Scheduler::var_info[] = {
+  ...
+  AP_GROUPINFO("LOOP_RATE",  1, AP_Scheduler, _loop_rate_hz, SCHEDULER_DEFAULT_LOOP_RATE),
+  AP_GROUPEND
+};
+
+// 关于 AP_Int16 这是一个宏定义，具体追究起来还要涉及 AP_ParamT 模板类以及基类 AP_Param， 
+// 这里暂时不深究了。可以确定的是 _active_loop_rate_hz 在初始化的时候已经被设为 0 了，所以
+// _active_loop_rate_hz 的值在启动时 LOOP_RATE 参数决定的。
+// file: libraries/AP_Param/AP_Param.h
+// declare a scalar type
+// _t is the base type
+// _suffix is the suffix on the AP_* type name
+// _pt is the enum ap_var_type type
+#define AP_PARAMDEF(_t, _suffix, _pt)   typedef AP_ParamT<_t, _pt> AP_ ## _suffix;
+
+AP_PARAMDEF(int16_t, Int16, AP_PARAM_INT16);  // defines AP_Int16
+```
+
+## api  
+
+AP_Scheduler 提供了一个非常有用的成员函数和一个成员变量：  
+
+``` cpp
+float load_average();
+
+// current running task, or -1 if none.
+static int8_t current_task;
+```
+
+`load_average()` 可以返回调度的负载，计算方法是这一个节拍中实际执行任务的时间除以节拍的总时间。要注意的是这个负载只是调度器线程的负载，整个飞控的负载无法通过这一个线程得知。  
+
+`current_task` 可以用来得知当前执行的任务是哪一个，主要是用来调试任务表中的任务是否由任务阻塞了等等。
 
 # 0x02->HAL::Scheduler  
+
+说完了最上层的 AP_Scheduler ，我们现在来看一看 实现在 HAL 层的 Scheduler。
+
+TODO
 
 # 0x03->thread_create()  
 
