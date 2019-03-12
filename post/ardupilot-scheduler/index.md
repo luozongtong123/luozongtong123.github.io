@@ -396,10 +396,82 @@ static int8_t current_task;
 
 说完了最上层的 AP_Scheduler ，我们现在来看一看 实现在 HAL 层的 Scheduler。
 
-TODO
+``` cpp
+class ChibiOS::Scheduler : public AP_HAL::Scheduler {
+  ...
+}
+```
 
-# 0x03->thread_create()  
+ChibiOS 的 Scheduler 继承自 `AP_HAL::Scheduler`，大部分函数都重写了，保留了了一个 `register_delay_callback()` ，关于这个成员函数我们后面再说。
 
-# 0x04->change_log  
+## timer_process  
 
+`void register_timer_process(AP_HAL::MemberProc);` 用来注册一个定时器回调函数。这个定时器的执行频率是 1kHz。执行的逻辑很简单，在定时器线程中。首先获取定时器回调函数的数量，然后依次执行回调函数。要注意的是这个线程的频率并不是严格的 1kHz，因为定时的实现方法是在定时器线程中固定延时 1ms，回调函数的执行时间没有包括在内。这是一个比较重要的函数，主要是用来方便编写基于定时器的驱动程序。回调函数的上限为 `#define CHIBIOS_SCHEDULER_MAX_TIMER_PROCS 8`  
+
+## io_process  
+
+`void register_io_process(AP_HAL::MemberProc);` 用来注册一个 IO 回调函数。官方文档的说法是这个函数可以用来注册一些执行频率较低的函数。但是实际代码中的执行频率也是 1kHz。文档中有不少东西都过时了。执行逻辑和 timer_process 是一样的。回调函数上限同 timer_process。
+
+## other thread  
+
+观察 `void Scheduler::init()` 得知除了上述两个线程外，还有 `rcin_thread` `storage_thread` ，执行的频率分别为 400Hz 和 100Hz。  
+
+通过 thread_create 中的 priority_map 大概可以看到会有哪几个线程，具体的线程我们就不去探究了。  
+
+``` cpp
+static const struct {
+  priority_base base;
+  uint8_t p;
+} priority_map[] = {
+    { PRIORITY_BOOST, APM_MAIN_PRIORITY_BOOST},
+    { PRIORITY_MAIN, APM_MAIN_PRIORITY},
+    { PRIORITY_SPI, APM_SPI_PRIORITY},
+    { PRIORITY_I2C, APM_I2C_PRIORITY},
+    { PRIORITY_CAN, APM_CAN_PRIORITY},
+    { PRIORITY_TIMER, APM_TIMER_PRIORITY},
+    { PRIORITY_RCIN, APM_RCIN_PRIORITY},
+    { PRIORITY_IO, APM_IO_PRIORITY},
+    { PRIORITY_UART, APM_UART_PRIORITY},
+    { PRIORITY_STORAGE, APM_STORAGE_PRIORITY},
+    { PRIORITY_SCRIPTING, APM_SCRIPTING_PRIORITY},
+  };
+```
+
+比较奇怪的是，串口驱动直接用的 `thread_create_alloc()` 接口，而不是更高一个层级的 `Scheduler::thread_create()`。关于 `thread_create_alloc()`，这是一个在 ChibiOS 上的一层 `hwdef`，具体所在的位置是 libraries/AP_HAL_ChibiOS/hwdf 。
+
+# 0x03->thread_create  
+
+`ChibiOS::Scheduler` 中定义了创建线程的函数 `Scheduler::thread_create()`，除了这个函数还有上面提到的 位于 `hwdef` 的 `thread_create_alloc()`。  
+
+其实看了一圈下来，在 Ardupilot 的开发中需要自己创建线程的需求并不大，一般任务表的定时器回调函数就够用了。本来想着线程这单成一章，但其实内容并不是太多。但是该说的还是要提一下。说到多线程就不得不说一下**线程间同步**以及数据的**一致性**。这两方面也没啥特别的，就是一些常用的方法。  
+
+## semaphore  
+
+信号量，一个常用的线程间同步的方法。一个使用的例子如下：  
+
+``` cpp
+binary_semaphore_t _timer_semaphore;
+
+// wait for semaphore to be available
+chBSemWait(&_timer_semaphore);
+
+// do something here
+
+// release semaphore
+chBSemSignal(&_timer_semaphore);
+```
+
+## lockless  
+
+文档中说 ArduPilot 使用不需加锁的数据结构，但是由于文档过期了，并没有在代码找到使用的例子。同时还提到了对于串口等需要读写缓存的地方可以使用环形缓冲区。
+
+# 0x04->nutshell  
+
+简单来说就是能用任务列表的就不用定时器回调，能用定时器回调的就不要自己创建线程。只是在任务列表中互相访问数据的话可以不用考虑线程间同步的问题，一旦用到定时器回调以及自己创建线程就必须考虑线程间同步。  
+
+# 0x05->upcoming  
+
+1. 整体架构
+2. 如何将自己写的代码嵌入到 ArduPilot 中
+3. AP_Motors6DOF 的理解
 
