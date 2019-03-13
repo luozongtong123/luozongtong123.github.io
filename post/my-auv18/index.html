@@ -63,7 +63,7 @@
 
 <meta itemprop="datePublished" content="2019-03-12T19:52:28&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-12T19:52:28&#43;08:00" />
-<meta itemprop="wordCount" content="545">
+<meta itemprop="wordCount" content="1185">
 
 
 
@@ -142,8 +142,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-03-12 </span>
         
-        <span class="more-meta"> 约 545 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span class="more-meta"> 约 1185 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -158,7 +158,23 @@
 <ul>
 <li><a href="#会议简介">会议简介</a></li>
 <li><a href="#主题">主题</a></li>
-<li><a href="#海报内容">海报内容</a></li>
+<li><a href="#海报内容">海报内容</a>
+<ul>
+<li><a href="#concept">CONCEPT</a>
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#approach">Approach</a></li>
+</ul></li>
+<li><a href="#design-solution">DESIGN SOLUTION</a>
+<ul>
+<li><a href="#hull-structures">Hull Structures</a></li>
+<li><a href="#power-consumption">Power Consumption</a></li>
+<li><a href="#communication">Communication</a></li>
+</ul></li>
+<li><a href="#schematics">SCHEMATICS</a></li>
+<li><a href="#海报">海报</a></li>
+</ul></li>
+<li><a href="#会场">会场</a></li>
 </ul>
 </nav>
   </div>
@@ -186,9 +202,11 @@
 <ul>
 <li>Vehicle Design</li>
 <li>Vehicle Navigation</li>
-<li>Sensor Fusion、Vehicle Control</li>
+<li>Sensor Fusion</li>
+<li>Vehicle Control</li>
 <li>Vehicle Planning and Execution Control</li>
-<li>Multi Vehicle Systems、Vehicle Applications</li>
+<li>Multi Vehicle Systems</li>
+<li>Vehicle Applications</li>
 <li>Open Source Robotics<br /></li>
 </ul>
 
@@ -238,15 +256,277 @@
 
 <p><strong>Design of an AUV System Based on Wireless Mesh Network for Data Collection in the Water Column</strong></p>
 
+<h2 id="concept">CONCEPT</h2>
+
+<h3 id="background">Background</h3>
+
+<p>主要尝试去解决的一个问题是水下采集数据的效率问题。主要的想法是通过大量廉价的 AUV 集群去采集数据，为了解决 AUV 之间的通信问题，使用了无线 Mesh 网作为通信手段。</p>
+
+<h3 id="approach">Approach</h3>
+
 <figure class="center">
     <img src="/img/my-auv18/AUV.png"
-         alt="ARMs-I"/> <figcaption>
-            <h4>ARMs-I</h4>
+         alt="Fig.1 ARMs-I"/> <figcaption>
+            <h4>Fig.1 ARMs-I</h4>
         </figcaption>
 </figure>
 
 
-<p>主要尝试去解决的一个问题是水下采集数据的效率问题。主要的想法是通过大量廉价的 AUV 集群去采集数据，为了解决 AUV 之间的通信问题，使用了无线 Mesh 网作为通信手段。</p>
+<p>设计了如 Fig.1 所示的 AUV，搭载有两个侧推两个垂推一个主推，没有舵，推进器是整体暴露在水中的，整个航行器没有动密封，密封结构简单可靠。航行器可以在海面上与临近的航行器建立无线 Mesh 网。所有的航行器都通过这个网络与其他的航行器通信，互通信息。</p>
+
+<figure class="center">
+    <img src="/img/my-auv18/network_area.png"
+         alt="Fig.2 Network area"/> <figcaption>
+            <h4>Fig.2 Network area</h4>
+        </figcaption>
+</figure>
+
+
+<p>如 Fig.2 所示，将待采集数据的区域划分成等大小方块，方块中心有一个圆。方块区域是每个 AUV 的作业区域，圆形区域是 AUV 可以建立通信的区域。在原型区域内，1-2，1-4 都在通信范围内。之所以在作业区域内又划分了一个圆形区域是为了在保证通信的前提下尽可能不把作业区域划分的过小，减少 AUV 因为更换作业区域导致的效率降低。</p>
+
+<figure class="center">
+    <img src="/img/my-auv18/taskv.png"
+         alt="Fig.3 A typical scenario"/> <figcaption>
+            <h4>Fig.3 A typical scenario</h4>
+        </figcaption>
+</figure>
+
+
+<p>一个典型的工作流程如 Fig. 3 所示。首先，所有 AUV 先到第一个指定位置，到位后进行数据采集，采集完成后回到开始的位置，建立网络，交换信息，然后移动到下一个区域，重复这一步直至完成数据采集。</p>
+
+<p><strong>特色：</strong></p>
+
+<ul>
+<li><strong>引入了无线 Mesh 网，赋予了 AUV 网络通信的能力，让 AUV 间的协作成为可能。</strong><br /></li>
+<li><strong>提出的工作流程能够有效提高水下数据采集作业的效率。</strong><br /></li>
+<li><strong>设计的 AUV 制作成本低，可以大量应用。</strong><br /></li>
+</ul>
+
+<h2 id="design-solution">DESIGN SOLUTION</h2>
+
+<h3 id="hull-structures">Hull Structures</h3>
+
+<p>船壳的结构主要是参考了 ISiMI<sup>1</sup> 的设计。</p>
+
+<figure class="center">
+    <img src="/img/my-auv18/dimensions_of_AUV2.png"
+         alt="Dimensions of ARMs-I"/> <figcaption>
+            <h4>Dimensions of ARMs-I</h4>
+        </figcaption>
+</figure>
+
+
+<table>
+<thead>
+<tr>
+<th align="center">Parameters</th>
+<th align="center">Value</th>
+<th align="center">Unit</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">a</td>
+<td align="center">200</td>
+<td align="center">mm</td>
+<td align="left">Nose section</td>
+</tr>
+
+<tr>
+<td align="center">b</td>
+<td align="center">600</td>
+<td align="center">mm</td>
+<td align="left">Mid-section</td>
+</tr>
+
+<tr>
+<td align="center">c</td>
+<td align="center">400</td>
+<td align="center">mm</td>
+<td align="left">Tail sectionTail section</td>
+</tr>
+
+<tr>
+<td align="center">d</td>
+<td align="center">170</td>
+<td align="center">mm</td>
+<td align="left">Diameter</td>
+</tr>
+
+<tr>
+<td align="center">e</td>
+<td align="center">60</td>
+<td align="center">mm</td>
+<td align="left">Main thruster</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="power-consumption">Power Consumption</h3>
+
+<p>首先根据推力公式计算出所需要的推进器的推力。推力公式如下：</p>
+
+<p>$$ F_d = \dfrac{1}{2} \rho v^{2} C_d A $$</p>
+
+<p>计算结果如下表：</p>
+
+<table>
+<thead>
+<tr>
+<th>Speed</th>
+<th>1m/s</th>
+<th>1.5m/s</th>
+<th>1.8m/s</th>
+<th>2m/s</th>
+<th>2.5m/s</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$$ F_d(N)$$</td>
+<td>2.2698</td>
+<td>5.1071</td>
+<td>7.3541</td>
+<td>9.0792</td>
+<td>14.1867</td>
+</tr>
+
+<tr>
+<td>$$ F_d(lfb) $$</td>
+<td>0.5101</td>
+<td>1.1481</td>
+<td>1.6533</td>
+<td>2.0411</td>
+<td>3.1893</td>
+</tr>
+</tbody>
+</table>
+
+<p>结合主推进器的效率和功率图，确定航行器的最大速度为 2m/s 持续运行速度为 1.5m/s。</p>
+
+<figure class="center">
+    <img src="/img/my-auv18/T200_Efficiency.png"
+         alt="T200 Efficiency vs Thrust"/> <figcaption>
+            <h4>T200 Efficiency vs Thrust</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/my-auv18/T200_Power.png"
+         alt="T200 Power vs Thrust"/> <figcaption>
+            <h4>T200 Power vs Thrust</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="communication">Communication</h3>
+
+<p>通信方式 ESP Mesh。ESP Mesh 是一种 WiFi Mesh 的实现。</p>
+
+<h2 id="schematics">SCHEMATICS</h2>
+
+<figure class="center">
+    <img src="/img/my-auv18/AUV_Hardware_architecture.png"
+         alt="Hardware architecture"/> <figcaption>
+            <h4>Hardware architecture</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/my-auv18/Network_topology.png"
+         alt="Network topology"/> <figcaption>
+            <h4>Network topology</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="海报">海报</h2>
+
+<figure class="center">
+    <img src="/img/my-auv18/AUV2018-poster.png"
+         alt="Poster"/> <figcaption>
+            <h4>Poster</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="会场">会场</h1>
+
+<figure class="center">
+    <img src="/img/my-auv18/Rectory%27s-Fa%c3%a7ade%20.png"
+         alt="Rectory&#39;s Façade"/> <figcaption>
+            <h4>Rectory&#39;s Façade</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/my-auv18/Rectory%27s-Archways.jpg"
+         alt="Rectory&#39;s Archways"/> <figcaption>
+            <h4>Rectory&#39;s Archways</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/my-auv18/Interior-of-The-Noble-Hall.png"
+         alt="Interiorof The Noble Hall"/> <figcaption>
+            <h4>Interior of The Noble Hall</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/my-auv18/talk.jpg"
+         alt="Talk"/> <figcaption>
+            <h4>Talk</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/my-auv18/coffee-break.jpg"
+         alt="Coffee break"/> <figcaption>
+            <h4>Coffee break</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/my-auv18/lunch.jpg"
+         alt="Lunch"/> <figcaption>
+            <h4>Lunch</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/my-auv18/dinner.jpg"
+         alt="Dinner"/> <figcaption>
+            <h4>Dinner</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/my-auv18/award.jpg"
+         alt="Award"/> <figcaption>
+            <h4>Award</h4>
+        </figcaption>
+</figure>
+
+
+<figure class="center">
+    <img src="/img/my-auv18/AUV18-group-photo.jpg"
+         alt="Group photo"/> <figcaption>
+            <h4>Group photo</h4>
+        </figcaption>
+</figure>
     </div>
 
     
@@ -372,6 +652,14 @@
 
 
 <script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 
