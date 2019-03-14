@@ -16,7 +16,7 @@
 - Vehicle Applications
 - Open Source Robotics  
 
-主要面向水下自主航行器相关的内容。本来是每两年举办一次，由于会议的影响力变大了现在改成一年办一次名字也改了，这个我会在最后再说一下。  
+主要面向水下自主航行器相关的内容。每两年举办一次。  
 
 {{% figure class="center" src="/img/my-auv18/meeting-room.jpg" alt="主会场" title="主会场" %}}
 
@@ -65,7 +65,7 @@
 
 {{% figure class="center" src="/img/my-auv18/network_area.png" alt="Fig.2 Network area" title="Fig.2 Network area" %}}
 
-如 Fig.2 所示，将待采集数据的区域划分成等大小方块，方块中心有一个圆。方块区域是每个 AUV 的作业区域，圆形区域是 AUV 可以建立通信的区域。在原型区域内，1-2，1-4 都在通信范围内。之所以在作业区域内又划分了一个圆形区域是为了在保证通信的前提下尽可能不把作业区域划分的过小，减少 AUV 因为更换作业区域导致的效率降低。  
+如 Fig.2 所示，将待采集数据的区域划分成等大小方块，方块中心有一个圆。方块区域是每个 AUV 的作业区域，圆形区域是 AUV 可以建立通信的区域。在圆形区域内，1-2，1-4 都在通信范围内。之所以在作业区域内又划分了一个圆形区域是为了在保证通信的前提下尽可能不把作业区域划分的过小，减少 AUV 因为更换作业区域导致的效率降低。  
 
 {{% figure class="center" src="/img/my-auv18/taskv.png" alt="Fig.3 A typical scenario" title="Fig.3 A typical scenario" %}}  
 
@@ -145,5 +145,18 @@ $$ F_d = \dfrac{1}{2} \rho v^{2} C_d A $$
 {{% figure class="center" src="/img/my-auv18/award.jpg" alt="Award" title="Award" %}}
 
 {{% figure class="center" src="/img/my-auv18/AUV18-group-photo.jpg" alt="Group photo" title="Group photo" %}}
+
+# 风景  
+
+# 益处  
+
+- 学术交流
+- 开阔视野
+- 旅游
+- 论文
+
+# 签证  
+
+及早准备。
 
 

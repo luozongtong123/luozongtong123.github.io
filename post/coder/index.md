@@ -6,7 +6,7 @@ Coder 是一个基于 Visual Studio Code 的开源的远程开发环境。
 # 前生  
 在此之前也尝试过几个在线的 IDE 。最早是 [Cloud9 IDE](https://c9.io/login)，后来也试过 [Coding](https://coding.net/) 以及后来的腾讯云开发者平台的 [Cloud Studio](https://studio.dev.tencent.com/) 的在线 IDE 服务。试来试去总有种隔靴挠痒的感觉，性能和体验并不好， Cloud9 还是尝试用过一段时间， Coding 的就只是尝试了几下就放弃了。直到看到了 code-server，我知道，这才是我想要的在线 IDE。这三个老大哥的问题是性能体验不好同时还缺乏 Visual Studio Code 多到爆炸的扩展和用户群群体。我不知道这个公司提供的在线服务会不会大火，但我觉得 code-server 这个项目肯定会爆发一阵热潮。  
 
-另外，在 Windows 上使用 Visual Studio Code 结合 WSL 编程一直是一个让人头疼的问题，虽然 VSCode 团队也在跟进相关的功能，但是进展一直不是很理想不知道什么时候能够用得上。或许 code-server 是一个不错的解决方案。
+另外，在 Windows 上使用 Visual Studio Code 结合 WSL 编程一直是一个让人头疼的问题，虽然 VSCode 团队也在跟进相关的功能，但是进展一直不是很理想不知道什么时候能够用得上[#63155](https://github.com/Microsoft/vscode/issues/63155)。或许 code-server 是一个不错的解决方案。
 
 # 今世  
 code-server 最早在 GitHub 上的一次 Release 是 6 天前，目前基于的是 Visual Studio Code 1.31.1。项目还处在早期发展的阶段。试用 Coder 的在线服务，发现也有一些问题。接下来就把调教过程记录一下。
