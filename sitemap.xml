@@ -25,7 +25,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/post/coder/</loc>
-    <lastmod>2019-03-10T15:52:18+08:00</lastmod>
+    <lastmod>2019-03-15T10:44:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -522,7 +522,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/tags/visual-studio-code/</loc>
-    <lastmod>2019-03-10T15:52:18+08:00</lastmod>
+    <lastmod>2019-03-15T10:44:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -551,6 +551,20 @@
   <url>
     <loc>https://blog.ztluo.dev/tags/cloud9/</loc>
     <lastmod>2015-03-14T16:33:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/code-server/</loc>
+    <lastmod>2019-03-15T10:44:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/coder/</loc>
+    <lastmod>2019-03-15T10:44:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

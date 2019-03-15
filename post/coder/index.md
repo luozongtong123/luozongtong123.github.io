@@ -16,7 +16,7 @@ code-server 最早在 GitHub 上的一次 Release 是 6 天前，目前基于的
 
 {{% figure class="center" src="/img/coder/coder-welcome.png" alt="coder welcome" title="coder welcome" %}}
 
-是这熟悉的画面。右下角可以看到 CPU 、内存和硬盘占用。正常模式下内存只有 1GB，在左边那栏的闪电可以开启急速模式，开启后内存变为 16GB，CPU 和网速也变得更强了，可能是现在是公开测试阶段，急速模式好像还没有时间限制。硬盘好像是提供了 3GB，硬盘空间有点小。
+是这熟悉的画面。右下角可以看到 CPU 、内存和硬盘占用。~~ 正常模式下内存只有 1GB，在左边那栏的闪电可以开启急速模式，开启后内存变为 16GB，CPU 和网速也变得更强了，可能是现在是公开测试阶段，急速模式好像还没有时间限制。~~ 急速模式的开关去掉了。硬盘提供了 3GB，硬盘空间有点小。
 
 ## 安装必要的软件  
 
@@ -25,8 +25,12 @@ code-server 最早在 GitHub 上的一次 Release 是 6 天前，目前基于的
 apt-get update
 apt-get upgrade
 
+# fix locales
+apt-get install locales
+locale-gen en_US.UTF-8
+echo "LANG=en_US.UTF-8" > /etc/default/locale
+
 # 安装一些软件
-apt install locales  
 apt install build-essential
 atp install cmake
 apt install python3-dev python3-pip 
@@ -43,5 +47,11 @@ apt install python3-dev python3-pip
 
 # 实际体验  
 
-实际体验起来真的和本地的 Visual Studio Code 没什么两样，真的是太强了。
+~~ 实际体验起来真的和本地的 Visual Studio Code 没什么两样，真的是太强了。 ~~
+
+目前存在的缺陷：  
+- 可以安装简体中文语言包，但是无法切换到简体中文；
+- 无法使用 settings sync，配置同步是个问题；
+- terminal 字体好像无法更改；
+- 无法退出登录，想要退出当前账号只能清除浏览器的 cookie；
 

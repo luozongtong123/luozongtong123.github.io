@@ -55,19 +55,19 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.ztluo.dev/post/coder/" />
 <meta property="article:published_time" content="2019-03-10T15:52:18&#43;08:00"/>
-<meta property="article:modified_time" content="2019-03-10T15:52:18&#43;08:00"/>
+<meta property="article:modified_time" content="2019-03-15T10:44:18&#43;08:00"/>
 
 <meta itemprop="name" content="Coder online IDE!">
 <meta itemprop="description" content="Coder 是一个基于 Visual Studio Code 的开源的远程开发环境。">
 
 
 <meta itemprop="datePublished" content="2019-03-10T15:52:18&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-10T15:52:18&#43;08:00" />
-<meta itemprop="wordCount" content="878">
+<meta itemprop="dateModified" content="2019-03-15T10:44:18&#43;08:00" />
+<meta itemprop="wordCount" content="996">
 
 
 
-<meta itemprop="keywords" content="Visual Studio Code," />
+<meta itemprop="keywords" content="coder,Visual Studio Code,code-server," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Coder online IDE!"/>
 <meta name="twitter:description" content="Coder 是一个基于 Visual Studio Code 的开源的远程开发环境。"/>
@@ -142,7 +142,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-03-10 </span>
         
-        <span class="more-meta"> 约 878 字 </span>
+        <span class="more-meta"> 约 996 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -204,7 +204,7 @@
 </figure>
 
 
-<p>是这熟悉的画面。右下角可以看到 CPU 、内存和硬盘占用。正常模式下内存只有 1GB，在左边那栏的闪电可以开启急速模式，开启后内存变为 16GB，CPU 和网速也变得更强了，可能是现在是公开测试阶段，急速模式好像还没有时间限制。硬盘好像是提供了 3GB，硬盘空间有点小。</p>
+<p>是这熟悉的画面。右下角可以看到 CPU 、内存和硬盘占用。~~ 正常模式下内存只有 1GB，在左边那栏的闪电可以开启急速模式，开启后内存变为 16GB，CPU 和网速也变得更强了，可能是现在是公开测试阶段，急速模式好像还没有时间限制。~~ 急速模式的开关去掉了。硬盘提供了 3GB，硬盘空间有点小。</p>
 
 <h2 id="安装必要的软件">安装必要的软件</h2>
 
@@ -212,8 +212,12 @@
 apt-get update
 apt-get upgrade
 
+# fix locales
+apt-get install locales
+locale-gen en_US.UTF-8
+echo &quot;LANG=en_US.UTF-8&quot; &gt; /etc/default/locale
+
 # 安装一些软件
-apt install locales  
 apt install build-essential
 atp install cmake
 apt install python3-dev python3-pip 
@@ -230,7 +234,13 @@ apt install python3-dev python3-pip
 
 <h1 id="实际体验">实际体验</h1>
 
-<p>实际体验起来真的和本地的 Visual Studio Code 没什么两样，真的是太强了。</p>
+<p>~~ 实际体验起来真的和本地的 Visual Studio Code 没什么两样，真的是太强了。 ~~</p>
+
+<p>目前存在的缺陷：<br />
+- 可以安装简体中文语言包，但是无法切换到简体中文；
+- 无法使用 settings sync，配置同步是个问题；
+- terminal 字体好像无法更改；
+- 无法退出登录，想要退出当前账号只能清除浏览器的 cookie；</p>
     </div>
 
     
@@ -241,7 +251,7 @@ apt install python3-dev python3-pip
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-03-10</span>
+    <span class="item-content">2019-03-15</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>
@@ -272,7 +282,11 @@ apt install python3-dev python3-pip
     <footer class="post-footer">
       <div class="post-tags">
           
+          <a href="/tags/coder/">coder</a>
+          
           <a href="/tags/visual-studio-code/">Visual Studio Code</a>
+          
+          <a href="/tags/code-server/">code-server</a>
           
         </div>
 
@@ -362,6 +376,13 @@ apt install python3-dev python3-pip
 <script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+  <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+  <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+<script>  
+  var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+  timeago().render(document.querySelectorAll('.timeago'), languageCode);
+  timeago.cancel();  
+</script>
 
 
 <script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
