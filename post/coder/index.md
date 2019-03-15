@@ -54,4 +54,7 @@ apt install python3-dev python3-pip
 - 无法使用 settings sync，配置同步是个问题；  
 - terminal 字体好像无法更改；  
 - 无法退出登录，想要退出当前账号只能清除浏览器的 cookie；  
+- 无法打开工作区；  
+- 一些奇怪的问题，比如无法运行 lsb-release；  
+- 磁盘空间只有 3GB，太小了；  
 
