@@ -21,20 +21,51 @@ code-server 最早在 GitHub 上的一次 Release 是 6 天前，目前基于的
 ## 安装必要的软件  
 
 ``` bash
+# 看一下系统的情况 
+cat /etc/issue
+Ubuntu 16.04.5 LTS \n \l
+
+uname -a
+Linux coder 4.18.4-041804-generic #201808220230 SMP Wed Aug 22 06:33:04 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdbf       3.0G  620M  2.2G  22% /
+```
+
+更新一下系统。
+``` bash
 # 首先更新一下系统
-apt-get update
-apt-get upgrade
-
+apt update
+apt upgrade
+```
+更新系统的时候会出现如下的提示：
+``` shell
+$ apt upgrade
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+```
+这是由于 Coder 根据浏览器的设置将容器的 locales 设置成了 `zh_CN.UTF-8`，而默认的容器中不包含 `zh_CN.UTF-8` 所以我们需要自己生成或者是该成其他的。设置的方法如下：
+``` bash
 # fix locales
-apt-get install locales
-locale-gen en_US.UTF-8
-echo "LANG=en_US.UTF-8" > /etc/default/locale
+apt install locales
+cat /etc/default/locale # 查看默认的 locale 设置
+locale-gen zh_CN.UTF-8 en_US.UTF-8 # 生成 zh_CN.UTF-8 和 en_US.UTF-8
 
-# 安装一些软件
-apt install build-essential
-atp install cmake
-apt install python3-dev python3-pip 
+# 设置系统默认 locale
+update-locale LANG=en_US.UTF-8
+# update-locale LANG=zh_CN.UTF-8
 
+# 更改用户 locale
+nano ~/.bashrc
+# 添加如下一行即可
+export LANG=en_US.UTF-8
+# export LANG=zh_CN.UTF-8
 ```
 
 ## 安装一些扩展  
@@ -53,8 +84,13 @@ apt install python3-dev python3-pip
 - 可以安装简体中文语言包，但是无法切换到简体中文；  
 - 无法使用 settings sync，配置同步是个问题；  
 - terminal 字体好像无法更改；  
-- 无法退出登录，想要退出当前账号只能清除浏览器的 cookie；  
+- ~~无法退出登录，想要退出当前账号只能清除浏览器的 cookie；~~ 是有 logout 选项的，在 File 选项下；  
 - 无法打开工作区；  
 - 一些奇怪的问题，比如无法运行 lsb-release；  
-- 磁盘空间只有 3GB，太小了；  
+- 磁盘空间只有 3GB，而且只有 2.2GB 可用，太小了；  
+
+------  
+update: 2019.03.16  
+终于可以重置容器了，硬盘空间太小，有一个账号不小心被撑爆了。可以一下还原啦~  
+
 
