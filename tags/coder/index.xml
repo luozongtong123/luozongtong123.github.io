@@ -6,10 +6,19 @@
     <description>Recent content in coder on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 10 Mar 2019 15:52:18 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 Mar 2019 11:14:41 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.ztluo.dev/tags/coder/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在 Coder 上开发 Ardupilot</title>
+      <link>https://blog.ztluo.dev/post/ardupilot-dev-on-coder/</link>
+      <pubDate>Thu, 14 Mar 2019 11:14:41 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/ardupilot-dev-on-coder/</guid>
+      <description>&lt;p&gt;本地 WSL 编译太慢了，同时又由于 WSL 和原本文件系统之间的一些问题，在 Windows 上的 VSCode 中的代码提醒无法正常工作，这对理解代码非常不友好。所以就向尝试在 Coder 上进行 Ardupilot 的开发。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Coder online IDE!</title>
