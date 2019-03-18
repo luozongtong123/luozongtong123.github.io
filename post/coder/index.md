@@ -88,6 +88,7 @@ export LANG=en_US.UTF-8
 - 无法打开工作区；  
 - 一些奇怪的问题，比如无法运行 lsb-release；  
 - 磁盘空间只有 3GB，而且只有 2.2GB 可用，太小了；  
+- 没有实现 markdown 预览；  
 
 ------  
 update: 2019.03.16  

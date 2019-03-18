@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>更换了谷歌的 .dev 域名 - luo Space - Coding and thinking.</title>
+  <title>Phicomm N1 - luo Space - Coding and thinking.</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="luo" />
-  <meta name="description" content="更换新域名了🎉🎉🎉。
+  <meta name="description" content="前几天发现了 斐讯 N1 这个好东西，买了一个拿来玩玩。记录一下折腾过程。
 " />
 
   <meta name="keywords" content="coding, thinking" />
@@ -30,7 +30,7 @@
 <meta name="generator" content="Hugo 0.54.0" />
 
 
-<link rel="canonical" href="https://blog.ztluo.dev/post/change-domain/" />
+<link rel="canonical" href="https://blog.ztluo.dev/post/phicomm-n1/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -50,27 +50,27 @@
 
 
 
-<meta property="og:title" content="更换了谷歌的 .dev 域名" />
-<meta property="og:description" content="更换新域名了🎉🎉🎉。" />
+<meta property="og:title" content="Phicomm N1" />
+<meta property="og:description" content="前几天发现了 斐讯 N1 这个好东西，买了一个拿来玩玩。记录一下折腾过程。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.ztluo.dev/post/change-domain/" />
-<meta property="article:published_time" content="2019-03-09T15:36:44&#43;08:00"/>
-<meta property="article:modified_time" content="2019-03-09T15:36:44&#43;08:00"/>
+<meta property="og:url" content="https://blog.ztluo.dev/post/phicomm-n1/" />
+<meta property="article:published_time" content="2019-02-07T18:27:39&#43;08:00"/>
+<meta property="article:modified_time" content="2019-03-18T16:39:39&#43;08:00"/>
 
-<meta itemprop="name" content="更换了谷歌的 .dev 域名">
-<meta itemprop="description" content="更换新域名了🎉🎉🎉。">
+<meta itemprop="name" content="Phicomm N1">
+<meta itemprop="description" content="前几天发现了 斐讯 N1 这个好东西，买了一个拿来玩玩。记录一下折腾过程。">
 
 
-<meta itemprop="datePublished" content="2019-03-09T15:36:44&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-09T15:36:44&#43;08:00" />
-<meta itemprop="wordCount" content="234">
+<meta itemprop="datePublished" content="2019-02-07T18:27:39&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-18T16:39:39&#43;08:00" />
+<meta itemprop="wordCount" content="163">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="更换了谷歌的 .dev 域名"/>
-<meta name="twitter:description" content="更换新域名了🎉🎉🎉。"/>
+<meta name="twitter:title" content="Phicomm N1"/>
+<meta name="twitter:description" content="前几天发现了 斐讯 N1 这个好东西，买了一个拿来玩玩。记录一下折腾过程。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -137,16 +137,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">更换了谷歌的 .dev 域名</h1>
+      <h1 class="post-title">Phicomm N1</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-03-09 </span>
-        <div class="post-category">
-            
-              <a href="/categories/blog/"> Blog </a>
-            
-          </div>
-        <span class="more-meta"> 约 234 字 </span>
+        <span class="post-time"> 2019-02-07 </span>
+        
+        <span class="more-meta"> 约 163 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -158,7 +154,20 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content">
-    
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#刷机">刷机</a>
+<ul>
+<li><a href="#替换-dtb-解决负载不正常的问题">替换 dtb 解决负载不正常的问题</a></li>
+</ul></li>
+<li><a href="#armbian-相关">Armbian 相关</a>
+<ul>
+<li><a href="#解决-sudo-慢的问题">解决 sudo 慢的问题</a></li>
+<li><a href="#ntp-时间自动更新">NTP 时间自动更新</a></li>
+<li><a href="#oh-my-zsh">oh-my-zsh</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
 </div>
 
@@ -167,13 +176,51 @@
 
     
     <div class="post-content">
-      <p>更换新域名了🎉🎉🎉。</p>
+      <p>前几天发现了 斐讯 N1 这个好东西，买了一个拿来玩玩。记录一下折腾过程。</p>
 
-<p>前几天在 <a href="https://www.ithome.com/0/409/829.htm">IT之家</a> 上得知谷歌 <code>.dev</code> 顶级域名即将开始公开注册，就预先关注了一波。3月1日开放免费注册的时候赶紧去注册了一个。体验了一下 Google Domains 的服务，感觉体验还不错，对 <code>.dev</code> 域名感兴趣的可以<a href="https://get.dev/">到这</a>了解一下。</p>
+<h1 id="刷机">刷机</h1>
 
-<p>前几年也前前后后注册过两三个域名，都是那种第一年年费超便宜然后续费贵的那种，都是用了一年就不了了之了。谷歌域名的年费是 $12 ，加上谷歌让人信赖的服务，还是挺合适的。打算这个域名就长期使用了。</p>
+<p>首先需要需要刷 webpad 的固件。</p>
 
-<p>唯一让人伤心的是更换域名后之前在不蒜子上累积的一千多的访客量就没了😭😭😭。</p>
+<h2 id="替换-dtb-解决负载不正常的问题">替换 dtb 解决负载不正常的问题</h2>
+
+<p>替换 5.0.0 dtb</p>
+
+<p><a href="https://github.com/yangxuan8282/phicomm-n1/issues/15#issuecomment-473663722">dtb 链接</a><br />
+<a href="/zip/phicomm-n1/meson-gxl-s905d-phicomm-n1.7z">直接下载</a></p>
+
+<h1 id="armbian-相关">Armbian 相关</h1>
+
+<h2 id="解决-sudo-慢的问题">解决 sudo 慢的问题</h2>
+
+<pre><code class="language-bash"># 查看 hostname
+hostname
+# 将 hostname 添加到 host 的第一和第二行
+sudo nano /etc/hosts
+</code></pre>
+
+<h2 id="ntp-时间自动更新">NTP 时间自动更新</h2>
+
+<pre><code class="language-bash">sudo apt install ntpdate
+sudo crontab -e
+# 添加如下一行
+00 10 * * * /usr/sbin/ntpdate -u cn.pool.ntp.org &gt; /dev/null 2&gt;&amp;1
+</code></pre>
+
+<h2 id="oh-my-zsh">oh-my-zsh</h2>
+
+<pre><code class="language-bash"># 安装
+sh -c &quot;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+
+# 更换主题
+nano ~/.zshrc
+# 修改
+ZSH_THEME=&quot;ys&quot;
+source ~/.zshrc
+
+# 添加插件
+...
+</code></pre>
     </div>
 
     
@@ -184,11 +231,11 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-03-09</span>
+    <span class="item-content">2019-03-18</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>
-      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/change-domain/index.md" target="_blank">Markdown 文件</a></span>
+      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/phicomm-n1/index.md" target="_blank">Markdown 文件</a></span>
     </p>
   <p class="copyright-item">
     <span class="item-title">许可协议</span>
@@ -218,14 +265,14 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/ardupilot-scheduler/">
+          <a class="prev" href="/post/change-domain/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Ardupilot Scheduler</span>
+            <span class="prev-text nav-default">更换了谷歌的 .dev 域名</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
-          <a class="next" href="/post/phicomm-n1/">
-            <span class="next-text nav-default">Phicomm N1</span>
+          <a class="next" href="/post/ardusub-interface/">
+            <span class="next-text nav-default">Ardusub 的界面</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -241,8 +288,8 @@
     <script src="/lib/gitalk/gitalk.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
-    id: '2019-03-09 15:36:44 \x2b0800 CST',
-    title: '更换了谷歌的 .dev 域名',
+    id: '2019-02-07 18:27:39 \x2b0800 CST',
+    title: 'Phicomm N1',
     clientID: '773448aaf0a387786d40',
     clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
     repo: 'zt-luo.github.io',
