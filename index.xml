@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>Ardupilot 如何处理 MAVLink 消息</title>
+      <link>https://blog.ztluo.dev/post/ardupilot-handle-msg/</link>
+      <pubDate>Fri, 15 Mar 2019 20:00:37 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/ardupilot-handle-msg/</guid>
+      <description>&lt;p&gt;看一下 Ardupilot 是怎样处理 Mavlink 消息的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>在 Coder 上开发 Ardupilot</title>
       <link>https://blog.ztluo.dev/post/ardupilot-dev-on-coder/</link>
       <pubDate>Thu, 14 Mar 2019 11:14:41 +0800</pubDate>

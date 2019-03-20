@@ -3,6 +3,9 @@
 # 刷机  
 
 首先需要需要刷 webpad 的固件。  
+https://www.mivm.cn/phicomm-n1-linux/  
+https://www.zrj96.com/post-1159.html  
+
 
 ## 替换 dtb 解决负载不正常的问题  
 
@@ -12,6 +15,11 @@
 [直接下载](/zip/phicomm-n1/meson-gxl-s905d-phicomm-n1.7z)
 
 # Armbian 相关  
+
+## 启用 bbr  
+
+[参考](https://sb.sb/blog/debian-ubuntu-tcp-bbr/)
+
 
 ## 解决 sudo 慢的问题
 
@@ -48,4 +56,7 @@ source ~/.zshrc
 ...
 ```
 
+# 启用测试版软件仓库  
+
+https://linux.cn/article-3288-1.html  
 
