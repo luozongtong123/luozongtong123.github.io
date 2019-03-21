@@ -6,7 +6,7 @@
     <description>Recent content in Tags on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 09 Mar 2019 16:54:22 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 15 Mar 2019 20:00:37 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.ztluo.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>ArduSub</title>
       <link>https://blog.ztluo.dev/tags/ardusub/</link>
-      <pubDate>Sat, 09 Mar 2019 16:54:22 +0800</pubDate>
+      <pubDate>Fri, 15 Mar 2019 20:00:37 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/tags/ardusub/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>C&#43;&#43;</title>
       <link>https://blog.ztluo.dev/tags/c&#43;&#43;/</link>
-      <pubDate>Sat, 09 Mar 2019 16:54:22 +0800</pubDate>
+      <pubDate>Fri, 15 Mar 2019 20:00:37 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/tags/c&#43;&#43;/</guid>
       <description></description>
@@ -44,6 +44,15 @@
       <pubDate>Mon, 22 Oct 2018 15:41:37 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/tags/font-ligatures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GCS</title>
+      <link>https://blog.ztluo.dev/tags/gcs/</link>
+      <pubDate>Fri, 15 Mar 2019 20:00:37 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/tags/gcs/</guid>
       <description></description>
     </item>
     
@@ -84,6 +93,15 @@
     </item>
     
     <item>
+      <title>MAVLink</title>
+      <link>https://blog.ztluo.dev/tags/mavlink/</link>
+      <pubDate>Fri, 15 Mar 2019 20:00:37 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/tags/mavlink/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Microsoft Build</title>
       <link>https://blog.ztluo.dev/tags/microsoft-build/</link>
       <pubDate>Mon, 22 Oct 2018 15:41:37 +0800</pubDate>
@@ -104,7 +122,7 @@
     <item>
       <title>Pixhawk</title>
       <link>https://blog.ztluo.dev/tags/pixhawk/</link>
-      <pubDate>Sat, 09 Mar 2019 16:54:22 +0800</pubDate>
+      <pubDate>Fri, 15 Mar 2019 20:00:37 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/tags/pixhawk/</guid>
       <description></description>

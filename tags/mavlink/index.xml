@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>C&#43;&#43; on luo Space - Coding and thinking.</title>
-    <link>https://blog.ztluo.dev/tags/c&#43;&#43;/</link>
-    <description>Recent content in C&#43;&#43; on luo Space - Coding and thinking.</description>
+    <title>MAVLink on luo Space - Coding and thinking.</title>
+    <link>https://blog.ztluo.dev/tags/mavlink/</link>
+    <description>Recent content in MAVLink on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 15 Mar 2019 20:00:37 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.ztluo.dev/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.ztluo.dev/tags/mavlink/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://blog.ztluo.dev/post/ardupilot-handle-msg/</guid>
       <description>&lt;p&gt;由于目前需要实现自定义的功能，这要求可以对 Ardupilot 中的通信进行干预，包括接收处理消息和发送消息。为了达成这个目的，阅读了通信相关的代码，看一下 Ardupilot 是怎样处理 Mavlink 消息的。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Ardupilot Scheduler</title>
-      <link>https://blog.ztluo.dev/post/ardupilot-scheduler/</link>
-      <pubDate>Sat, 09 Mar 2019 16:54:22 +0800</pubDate>
-      
-      <guid>https://blog.ztluo.dev/post/ardupilot-scheduler/</guid>
-      <description>&lt;p&gt;参考 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。&lt;/p&gt;</description>
     </item>
     
   </channel>

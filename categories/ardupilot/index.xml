@@ -6,10 +6,19 @@
     <description>Recent content in Ardupilot on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 09 Mar 2019 16:54:22 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 15 Mar 2019 20:00:37 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.ztluo.dev/categories/ardupilot/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ardupilot 如何处理 MAVLink 消息</title>
+      <link>https://blog.ztluo.dev/post/ardupilot-handle-msg/</link>
+      <pubDate>Fri, 15 Mar 2019 20:00:37 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/ardupilot-handle-msg/</guid>
+      <description>&lt;p&gt;由于目前需要实现自定义的功能，这要求可以对 Ardupilot 中的通信进行干预，包括接收处理消息和发送消息。为了达成这个目的，阅读了通信相关的代码，看一下 Ardupilot 是怎样处理 Mavlink 消息的。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Ardupilot Scheduler</title>
