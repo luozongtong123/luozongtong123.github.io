@@ -222,11 +222,11 @@ const AP_Param::GroupInfo GCS_MAVLINK::var_info[] = {
 
 添加自定义消息需要修改 `modules/mavlink/message_definitions/v1.0/common.xml` 文件，而这个文件位于 `mavlink` 子模块，这就意味着如果要修改这个子模块中的文件就要再另外维护一个子模块仓库，所以暂时不考虑做这一操作。  
 
-为了达成相似的功能，使用 `NAMED_VALUE_FLOAT (#251)` 和 `NAMED_VALUE_INT ( 252)` 两个消息可以完成相似的功能。  
+为了达成相似的功能，使用 [NAMED_VALUE_FLOAT (#251)](https://mavlink.io/en/messages/common.html#NAMED_VALUE_FLOAT)  和 [NAMED_VALUE_INT (#252)](https://mavlink.io/en/messages/common.html#NAMED_VALUE_INT) 两个消息可以完成单个数据的传递的功能。[RC_CHANNELS_OVERRIDE (#70)](https://mavlink.io/en/messages/common.html#RC_CHANNELS_OVERRIDE) 可以一次完成多个数据的传递。  
 
 {{% admonition note %}}
 
-通过阅读这部分代码，发现可以通过类的继承添加自己的代码到现有的代码中，这样组织代码会比较合理。打算添加 `GCS_Sub_lab->GCS_Sub` 和  `GCS_MAVLINK_Sub_lab->GCS_MAVLINK_Sub` 这两个子类来添加通信相关的代码。
+通过阅读这部分代码，发现可以通过类的继承添加自己的代码到现有的代码中，这样组织代码会比较合理。打算添加 `GCS_Sub_lab->GCS_Sub` 和  `GCS_MAVLINK_Sub_lab->GCS_MAVLINK_Sub` 这两个子类来添加通信相关的代码。相关实现见这个 [commit](https://github.com/zt-luo/ardupilot/commit/e00726b691ce8a1ab2217c3961391d39f7dcb7ca) 。
 
 {{% /admonition %}}
 

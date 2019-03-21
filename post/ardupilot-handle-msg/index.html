@@ -55,15 +55,15 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.ztluo.dev/post/ardupilot-handle-msg/" />
 <meta property="article:published_time" content="2019-03-15T20:00:37&#43;08:00"/>
-<meta property="article:modified_time" content="2019-03-20T21:49:37&#43;08:00"/>
+<meta property="article:modified_time" content="2019-03-21T16:28:37&#43;08:00"/>
 
 <meta itemprop="name" content="Ardupilot 如何处理 MAVLink 消息">
 <meta itemprop="description" content="由于目前需要实现自定义的功能，这要求可以对 Ardupilot 中的通信进行干预，包括接收处理消息和发送消息。为了达成这个目的，阅读了通信相关的代码，看一下 Ardupilot 是怎样处理 Mavlink 消息的。">
 
 
 <meta itemprop="datePublished" content="2019-03-15T20:00:37&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-20T21:49:37&#43;08:00" />
-<meta itemprop="wordCount" content="1759">
+<meta itemprop="dateModified" content="2019-03-21T16:28:37&#43;08:00" />
+<meta itemprop="wordCount" content="1807">
 
 
 
@@ -146,7 +146,7 @@
               <a href="/categories/ardupilot/"> Ardupilot </a>
             
           </div>
-        <span class="more-meta"> 约 1759 字 </span>
+        <span class="more-meta"> 约 1807 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -405,14 +405,14 @@ AP_Int16 streamRates[NUM_STREAMS];
 
 <p>添加自定义消息需要修改 <code>modules/mavlink/message_definitions/v1.0/common.xml</code> 文件，而这个文件位于 <code>mavlink</code> 子模块，这就意味着如果要修改这个子模块中的文件就要再另外维护一个子模块仓库，所以暂时不考虑做这一操作。</p>
 
-<p>为了达成相似的功能，使用 <code>NAMED_VALUE_FLOAT (#251)</code> 和 <code>NAMED_VALUE_INT ( 252)</code> 两个消息可以完成相似的功能。</p>
+<p>为了达成相似的功能，使用 <a href="https://mavlink.io/en/messages/common.html#NAMED_VALUE_FLOAT">NAMED_VALUE_FLOAT (#251)</a>  和 <a href="https://mavlink.io/en/messages/common.html#NAMED_VALUE_INT">NAMED_VALUE_INT (#252)</a> 两个消息可以完成单个数据的传递的功能。<a href="https://mavlink.io/en/messages/common.html#RC_CHANNELS_OVERRIDE">RC_CHANNELS_OVERRIDE (#70)</a> 可以一次完成多个数据的传递。</p>
 
 
 <div class="admonition-note">
     <p class="admonition-note-title">
         Note
     </p>
-    <p><p>通过阅读这部分代码，发现可以通过类的继承添加自己的代码到现有的代码中，这样组织代码会比较合理。打算添加 <code>GCS_Sub_lab-&gt;GCS_Sub</code> 和  <code>GCS_MAVLINK_Sub_lab-&gt;GCS_MAVLINK_Sub</code> 这两个子类来添加通信相关的代码。</p>
+    <p><p>通过阅读这部分代码，发现可以通过类的继承添加自己的代码到现有的代码中，这样组织代码会比较合理。打算添加 <code>GCS_Sub_lab-&gt;GCS_Sub</code> 和  <code>GCS_MAVLINK_Sub_lab-&gt;GCS_MAVLINK_Sub</code> 这两个子类来添加通信相关的代码。相关实现见这个 <a href="https://github.com/zt-luo/ardupilot/commit/e00726b691ce8a1ab2217c3961391d39f7dcb7ca">commit</a> 。</p>
 </p>
 </div>
     </div>
@@ -425,7 +425,7 @@ AP_Int16 streamRates[NUM_STREAMS];
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-03-20</span>
+    <span class="item-content">2019-03-21</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>
