@@ -12,6 +12,8 @@
 接下来就是进行路由器设置，首先第一步需要先让路由器联网，方法是将学校的网线连接到WAN口，电脑通过LAN口或者WIFI与路由器相连，在电脑上登陆web认证。
 然后安装 mentohust 实现校园网自动认证（伪？？），可以直接安装 luci-i18n-mentohust-zh-cn opkg会自动处理依赖问题。关于 mentohust 的设置，填写用户名和密码，更改网卡名为eth0，DHCP方式为 1（二次认证），其他默认即可。
 
+可以优先参考这个[博客](https://www.weining.me/2016/09/05/config-ipv6-on-openwrt-based-router)进行IPv6的设置。
+
 利用NAT6，让内网用户可以连接 IPv6。首先确认路由器可以获得 IPv6 公网地址（2开头），ping ipv6.google.com 进一步确认。然后安装 ip6tables 和 nat6 。在 网络>接口>LAN>DHCP服务器>IPv6设置>勾选总是广播默认路由。编写如下脚本自动设置：
 ```bash
 #!/bin/sh
