@@ -6,10 +6,19 @@
     <description>Recent content in Posts on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 15 Mar 2019 20:00:37 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 19 Apr 2019 10:23:46 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.ztluo.dev/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>自定义 Mavlink 消息</title>
+      <link>https://blog.ztluo.dev/post/gen-new-mavlink-msg/</link>
+      <pubDate>Fri, 19 Apr 2019 10:23:46 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/gen-new-mavlink-msg/</guid>
+      <description>&lt;p&gt;MAVLink 是一个很轻量的应用层通信协议，最初是应用与无人机领域，目前已经在小型机器人无人车无人水下航行器等领域有所应用。本文主要是介绍如何生成自定义的 MAVLink 消息。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Ardupilot 如何处理 MAVLink 消息</title>
