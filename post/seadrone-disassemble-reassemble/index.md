@@ -25,3 +25,9 @@
 5. 以上便是Seadrone的安装操作。
 
 ##   
+
+
+
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

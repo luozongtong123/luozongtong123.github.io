@@ -34,3 +34,8 @@
 
 再说上文提及的我真正想做的事其实就是在做我自己的微信平台，平台定位为服务类工具类。
 
+
+
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

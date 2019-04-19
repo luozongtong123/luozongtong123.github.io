@@ -72,3 +72,8 @@ Prettier formatter 是一个可以自动美化 JavaScript/TypeScript/CSS 的扩�
 
 >发现视频主要讲的是前端开发相关的。两位讲的很有趣。    
 
+
+
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

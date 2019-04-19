@@ -25,3 +25,6 @@ git checkout sub-lab
 编译的时候容易因为网络问题没有响应,多等一会就好啦.  
 
 
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

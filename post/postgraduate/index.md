@@ -23,3 +23,6 @@ SeaDrone ROV 的漏水传感器加装。首先是拆解ROV，摸清了ROV的硬�
 
 
 
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

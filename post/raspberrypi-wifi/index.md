@@ -56,3 +56,8 @@ sudo nano /etc/crontab
 [树莓派连接 WiFi（最稳定的方法）](https://www.cmgine.com/archives/11053.html)  
 [树莓派 3 代从 0 到连接 WIFI 访问（无显示器）](http://movesan.me/2017/02/07/raspberry/)  
 
+
+
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

@@ -133,3 +133,8 @@ for i in range(1, len(s)):  # 产生符合 MarkDown 语法的数据，并 print 
 总结一下，利用所学解决问题这真是好爽啊啊啊。
 另外，代码写得丑望见谅。还有一点写文件没有搞定，当时赶时间就没有弄，得找个时间解决一下。
 
+
+
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

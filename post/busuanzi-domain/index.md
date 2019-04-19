@@ -13,3 +13,8 @@ even 主题启用不蒜子很简单，只需要在博客配置文件里启用即
 
 只需要将文件中的 `dn-lbstatics.qbox.me` 替换为 `busuanzi.ibruce.info` 即可修复。  
 
+
+
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

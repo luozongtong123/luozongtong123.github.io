@@ -161,3 +161,7 @@ git submodule update --recursive
 {{% figure class="center" src="/img/build-environment-for-ardusub/pixhawk-firmware-update.png" alt="ArduSub Companion Web Interface Pixhawk Firmware Update" title="ArduSub Companion Web Interface Pixhawk Firmware Update" %}}
 
 
+
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

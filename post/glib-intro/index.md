@@ -145,3 +145,8 @@ include(CPack)
 2. [浅析 GLib](https://www.ibm.com/developerworks/cn/linux/l-glib/index.html)  
 3. [Linux：shell 脚本之命令替换（eval，反引号和 $()）](https://blog.csdn.net/if9600/article/details/74221548)  
 
+
+
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

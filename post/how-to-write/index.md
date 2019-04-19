@@ -215,3 +215,8 @@ tags:
 
 [Hexo文档](http://hexo.io/zh-cn/docs/)
 
+
+
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

@@ -54,3 +54,6 @@ chmod 644 /etc/hotplug.d/iface/90-ipv6
 
 
 
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+

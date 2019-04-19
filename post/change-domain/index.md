@@ -6,3 +6,8 @@
 
 唯一让人伤心的是更换域名后之前在不蒜子上累积的一千多的访客量就没了:sob::sob::sob:。
 
+
+
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+
