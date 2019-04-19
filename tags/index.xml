@@ -95,7 +95,7 @@
     <item>
       <title>MAVLink</title>
       <link>https://blog.ztluo.dev/tags/mavlink/</link>
-      <pubDate>Fri, 15 Mar 2019 20:00:37 +0800</pubDate>
+      <pubDate>Fri, 19 Apr 2019 10:23:46 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/tags/mavlink/</guid>
       <description></description>
@@ -359,6 +359,15 @@
       <pubDate>Sat, 28 Feb 2015 13:51:42 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/tags/luocman/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mavgen</title>
+      <link>https://blog.ztluo.dev/tags/mavgen/</link>
+      <pubDate>Fri, 19 Apr 2019 10:23:46 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/tags/mavgen/</guid>
       <description></description>
     </item>
     

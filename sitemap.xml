@@ -305,7 +305,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/categories/ardupilot/</loc>
-    <lastmod>2019-03-21T16:28:37+08:00</lastmod>
+    <lastmod>2019-04-19T10:23:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -326,7 +326,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/categories/</loc>
-    <lastmod>2019-03-21T16:28:37+08:00</lastmod>
+    <lastmod>2019-04-19T10:23:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -396,7 +396,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/tags/mavlink/</loc>
-    <lastmod>2019-03-21T16:28:37+08:00</lastmod>
+    <lastmod>2019-04-19T10:23:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -635,6 +635,13 @@
   <url>
     <loc>https://blog.ztluo.dev/tags/luocman/</loc>
     <lastmod>2018-09-22T11:08:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/mavgen/</loc>
+    <lastmod>2019-04-19T10:23:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
