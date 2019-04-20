@@ -147,6 +147,11 @@ messages：当前方言定义的消息
 
 mavgenerate 只是一个 GUI 的包裹工具，其后端是 mavgen。mavgen 是一个命令行的工具，位于 `pymavlink/tools/mavgen.py`。其使用方法可以参考[这里](https://mavlink.io/en/getting_started/generate_libraries.html#mavgen)。
 
+``` bash
+# 显示帮助信息
+./pymavlink/tools/mavgen.py -h
+```
+
 ## update_c_library  
 
 由于我做自定义的消息的时候的主要目的是用于 Ardupilot 的开发，所以为了方便我直接使用 `scripts/update_c_library.sh` 脚本生成 c 语言的版本并且自动同步到 github 的仓库。update_c_library 同样使用 mavgen 作为后端。
