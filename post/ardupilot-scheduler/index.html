@@ -27,7 +27,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.55.3" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/ardupilot-scheduler/" />
@@ -200,27 +200,25 @@
 
 <p>开始之前，我们先来看看一个 Ardupilot 程序是从哪里开始运行的。</p>
 
-
 <div class="admonition-note">
     <p class="admonition-note-title">
         Hint
     </p>
-    <p><p>本文所有代码均以 Ardupilot 最新代码库中的 ArduSub 为例。</p>
+    <p>
+本文所有代码均以 Ardupilot 最新代码库中的 ArduSub 为例。  
 
-<p>同时，由于我现在是使用 Pixhawk 的硬件，在最新本版的 Ardupilot 中已经放弃使用 NuttX 而使用 ChibiOS 了，所以 <code>HAL</code> 相关的代码都以 <code>HAL_ChibiOS</code> 为例。</p>
+同时，由于我现在是使用 Pixhawk 的硬件，在最新本版的 Ardupilot 中已经放弃使用 NuttX 而使用 ChibiOS 了，所以 `HAL` 相关的代码都以 `HAL_ChibiOS` 为例。
 </p>
 </div>
-
-
 
 <div class="admonition-warning">
     <p class="admonition-warning-title">
         Important
     </p>
-    <p><p>为了精简篇幅，文中代码会在不影响理解的前提下做部分精简。实际代码请查阅代码库。</p>
+    <p>
+为了精简篇幅，文中代码会在不影响理解的前提下做部分精简。实际代码请查阅代码库。
 </p>
 </div>
-
 
 <p>在 <code>ArduSub.cpp</code> 文件中可以看到有下面两个函数：</p>
 
@@ -454,7 +452,6 @@ void AP_Scheduler::loop()
             <h4>AP_Scheduler</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="fast-loop">fast_loop</h2>
 

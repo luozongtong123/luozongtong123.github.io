@@ -27,7 +27,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.55.3" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/even-theme-tweak/" />
@@ -65,7 +65,7 @@
 
 <meta itemprop="datePublished" content="2018-10-28T11:48:09&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-28T11:48:09&#43;08:00" />
-<meta itemprop="wordCount" content="2145">
+<meta itemprop="wordCount" content="2146">
 
 
 
@@ -149,7 +149,7 @@
               <a href="/categories/blog/"> Blog </a>
             
           </div>
-        <span class="more-meta"> 约 2145 字 </span>
+        <span class="more-meta"> 约 2146 字 </span>
         <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -217,15 +217,16 @@ index 06d7507..39bdf23 100644
 
 <p>还是修改 <code>src\css\_variables.scss</code> 文件。</p>
 
-
 <div class="admonition-note">
     <p class="admonition-note-title">
         Note
     </p>
-    <p><p>此处只是将默认字体改为 <code>Fira Code</code>，如果用户的电脑上没有安装这个字体的话就会使用其他备选的字体。</p>
+    <p>
+
+此处只是将默认字体改为 `Fira Code`，如果用户的电脑上没有安装这个字体的话就会使用其他备选的字体。
+
 </p>
 </div>
-
 
 <pre><code class="language-diff">@@ -193,7 +206,7 @@ $code-color: #c7254e !default;
  $code-font-size: 13px !default;
@@ -361,28 +362,28 @@ $code-type-list: (
 <p>具体实现就不详细讲了，想要了解的话直接去看我的<a href="https://github.com/zt-luo/hugo-theme-even/commit/24840c633e9fb54a188012965d62ae94e087fa71">代码</a>就行。<br />
 想要使用的直接 Fork 我的<a href="https://github.com/zt-luo/hugo-theme-even">仓库</a>即可。</p>
 
-
 <div class="admonition-tip">
     <p class="admonition-tip-title">
         Tip
     </p>
-    <p><p>这是一个 <code>admonition</code> 示例的第一行。<br />
-这是一个 <code>admonition</code> 示例的第二行。</p>
+    <p>
+
+这是一个 `admonition` 示例的第一行。  
+这是一个 `admonition` 示例的第二行。  
+
 </p>
 </div>
 
-
 <h1 id="build">Build</h1>
-
 
 <div class="admonition-attention">
     <p class="admonition-attention-title">
         Attention
     </p>
-    <p><p>上述所有修改 <code>src</code> 文件夹下文件的操作都需要重新编译才能实际生效。</p>
+    <p>
+上述所有修改 `src` 文件夹下文件的操作都需要重新编译才能实际生效。  
 </p>
 </div>
-
 
 <pre><code class="language-powershell"># 使用 scoop 安装 Node.js LTS 
 scoop install nodejs-lts
@@ -399,103 +400,117 @@ npm run build
 
 <h1 id="admonition-演示">admonition 演示</h1>
 
-<p>tip
+<p>tip</p>
 
 <div class="admonition-tip">
     <p class="admonition-tip-title">
         Tip
     </p>
-    <p><p>这是一个 <code>admonition</code> 示例的第一行。<br />
-这是一个 <code>admonition</code> 示例的第二行。</p>
+    <p>
 
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
+这是一个 `admonition` 示例的第一行。  
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
 </p>
 </div>
-</p>
 
-<p>note、hint
+<p>note、hint</p>
 
 <div class="admonition-note">
     <p class="admonition-note-title">
         Note
     </p>
-    <p><p>这是一个 <code>admonition</code> 示例的第一行。<br />
-这是一个 <code>admonition</code> 示例的第二行。</p>
+    <p>
 
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
 </p>
 </div>
-</p>
 
-<p>warning、important
+<p>warning、important</p>
 
 <div class="admonition-warning">
     <p class="admonition-warning-title">
         Warning
     </p>
-    <p><p>这是一个 <code>admonition</code> 示例的第一行。<br />
-这是一个 <code>admonition</code> 示例的第二行。</p>
+    <p>
 
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
 </p>
 </div>
-</p>
 
-<p>question
+<p>question</p>
 
 <div class="admonition-question">
     <p class="admonition-question-title">
         Question
     </p>
-    <p><p>这是一个 <code>admonition</code> 示例的第一行。<br />
-这是一个 <code>admonition</code> 示例的第二行。</p>
+    <p>
 
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
 </p>
 </div>
-</p>
 
-<p>conclusion
+<p>conclusion</p>
 
 <div class="admonition-conclusion">
     <p class="admonition-conclusion-title">
         Conclusion
     </p>
-    <p><p>这是一个 <code>admonition</code> 示例的第一行。<br />
-这是一个 <code>admonition</code> 示例的第二行。</p>
+    <p>
 
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
 </p>
 </div>
-</p>
 
-<p>bullshit
+<p>bullshit</p>
 
 <div class="admonition-bullshit">
     <p class="admonition-bullshit-title">
         Bullshit
     </p>
-    <p><p>这是一个 <code>admonition</code> 示例的第一行。<br />
-这是一个 <code>admonition</code> 示例的第二行。</p>
+    <p>
 
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
 </p>
 </div>
-</p>
 
-<p>attention、caution、danger、error
+<p>attention、caution、danger、error</p>
 
 <div class="admonition-attention">
     <p class="admonition-attention-title">
         Caution
     </p>
-    <p><p>这是一个 <code>admonition</code> 示例的第一行。<br />
-这是一个 <code>admonition</code> 示例的第二行。</p>
+    <p>
 
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
 </p>
 </div>
-</p>
 
 <p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
     </div>

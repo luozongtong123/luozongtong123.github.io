@@ -27,7 +27,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.55.3" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/ardupilot-handle-msg/" />
@@ -63,7 +63,7 @@
 
 <meta itemprop="datePublished" content="2019-03-15T20:00:37&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-21T16:28:37&#43;08:00" />
-<meta itemprop="wordCount" content="1807">
+<meta itemprop="wordCount" content="1809">
 
 
 
@@ -146,7 +146,7 @@
               <a href="/categories/ardupilot/"> Ardupilot </a>
             
           </div>
-        <span class="more-meta"> 约 1807 字 </span>
+        <span class="more-meta"> 约 1809 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -183,10 +183,10 @@
     <p class="admonition-note-title">
         Note
     </p>
-    <p><p><code>GCS_Sub-&gt;GCS</code> 是指 <code>GCS_Sub</code> 的基类是 <code>GCS</code>。</p>
+    <p>
+`GCS_Sub->GCS` 是指 `GCS_Sub` 的基类是 `GCS`。
 </p>
 </div>
-
 
 <p>Ardupilot 对 Mavlink 消息的处理，主要实现在 <code>GCS_Sub-&gt;GCS</code> 和 <code>GCS_MAVLINK_Sub-&gt;GCS_MAVLINK</code> 这两个类中。</p>
 
@@ -387,7 +387,6 @@ AP_Int16 streamRates[NUM_STREAMS];
         </figcaption>
 </figure>
 
-
 <p><strong>如我我们需要修改某条现有的消息的发送频率只需要调整这条消息的分组或者调整消息分组的发送频率。</strong></p>
 
 <p><strong>如果我们要添加一条自定义的消息到周期性发送的任务中则需要做一下几点：</strong></p>
@@ -406,15 +405,16 @@ AP_Int16 streamRates[NUM_STREAMS];
 
 <p>为了达成相似的功能，使用 <a href="https://mavlink.io/en/messages/common.html#NAMED_VALUE_FLOAT">NAMED_VALUE_FLOAT (#251)</a>  和 <a href="https://mavlink.io/en/messages/common.html#NAMED_VALUE_INT">NAMED_VALUE_INT (#252)</a> 两个消息可以完成单个数据的传递的功能。<a href="https://mavlink.io/en/messages/common.html#RC_CHANNELS_OVERRIDE">RC_CHANNELS_OVERRIDE (#70)</a> 可以一次完成多个数据的传递。</p>
 
-
 <div class="admonition-note">
     <p class="admonition-note-title">
         Note
     </p>
-    <p><p>通过阅读这部分代码，发现可以通过类的继承添加自己的代码到现有的代码中，这样组织代码会比较合理。打算添加 <code>GCS_Sub_lab-&gt;GCS_Sub</code> 和  <code>GCS_MAVLINK_Sub_lab-&gt;GCS_MAVLINK_Sub</code> 这两个子类来添加通信相关的代码。相关实现见这个 <a href="https://github.com/zt-luo/ardupilot/commit/e00726b691ce8a1ab2217c3961391d39f7dcb7ca">commit</a> 。</p>
+    <p>
+
+通过阅读这部分代码，发现可以通过类的继承添加自己的代码到现有的代码中，这样组织代码会比较合理。打算添加 `GCS_Sub_lab->GCS_Sub` 和  `GCS_MAVLINK_Sub_lab->GCS_MAVLINK_Sub` 这两个子类来添加通信相关的代码。相关实现见这个 [commit](https://github.com/zt-luo/ardupilot/commit/e00726b691ce8a1ab2217c3961391d39f7dcb7ca) 。
+
 </p>
 </div>
-
 
 <p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
     </div>

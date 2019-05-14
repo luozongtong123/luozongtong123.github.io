@@ -27,7 +27,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.55.3" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/rt-thread-learning01/" />
@@ -358,7 +358,6 @@ typedef struct rt_list_node rt_list_t;
         </figcaption>
 </figure>
 
-
 <p>如上图左半边图所示，我们已知 <code>prt</code> 要求 <code>f_struct_prt</code> ，显然只要知道深色部分标注为<strong>偏移</strong>的大小即可。那么如何才能求出偏移量的大小呢，这需要借助于 <strong>0 地址</strong>。</p>
 
 <ol>
@@ -382,7 +381,6 @@ typedef struct rt_list_node rt_list_t;
         </figcaption>
 </figure>
 
-
 <p>链表的操作包括初始化链表节点、在双向链表表头前面插入一个节点、在双向链表表头后面插入一个节点、从双向链表中删除一个节点。相关函数的实现在 <code>rtservice.h</code> 。</p>
 
 <p><strong>初始化链表节点</strong></p>
@@ -401,7 +399,7 @@ typedef struct rt_list_node rt_list_t;
             <h4>初始化链表节点</h4>
         </figcaption>
 </figure>
-
+  
 
 <p><strong>在双向链表表头后面插入一个节点</strong></p>
 
@@ -432,7 +430,7 @@ rt_inline void rt_list_insert_after(rt_list_t *l, rt_list_t *n)
             <h4>在双向链表表头后面插入一个节点</h4>
         </figcaption>
 </figure>
-
+  
 
 <p><strong>在双向链表表头前面插入一个节点</strong></p>
 
@@ -454,7 +452,7 @@ rt_inline void rt_list_insert_after(rt_list_t *l, rt_list_t *n)
             <h4>在双向链表表头前面插入一个节点</h4>
         </figcaption>
 </figure>
-
+  
 
 <p><strong>从双向链表删除一个节点</strong></p>
 
@@ -475,7 +473,7 @@ rt_inline void rt_list_insert_after(rt_list_t *l, rt_list_t *n)
             <h4>从双向链表删除一个节点</h4>
         </figcaption>
 </figure>
-
+  
 
 <p><strong>rt_hw_stack_init()函数</strong></p>
 
@@ -570,7 +568,7 @@ struct stack_frame
             <h4>完成栈地址字节对齐后的栈空间</h4>
         </figcaption>
 </figure>
-
+  
 
 <p>完成栈地址对齐后，接下来要<strong>对首次线程切换时用到的栈中的数据进行初始化</strong>。将栈地址向下移动 <code>sizeof(struct stack_frame)</code> 个地址，将 <code>stk</code> 指针强制转化为 <code>stack_frame</code> 类型后存到指针变量
 <code>stack_frame</code> 中，这个时候 <code>stack_frame</code> 在线程栈里面的指向具体见下图：</p>
@@ -581,7 +579,7 @@ struct stack_frame
             <h4>stack_frame 的栈空间</h4>
         </figcaption>
 </figure>
-
+  
 
 <p>接下来以 <code>stack_frame</code> 为起始地址，将栈空间里面的 <code>sizeof(struct stack_frame)</code> 个内存初始化为  <code>0xdeadbeef</code> 。将内存初始化为 <code>0xdeadbeef</code> 的原因是，这个数字是一个在嵌入式领域常用的魔力数，只是用来标识未使用的内存。接下来，设置线程初次运行时加载到 CPU 寄存器的环境参数。从栈顶开始，初始化的顺序固定，首先是异常发生时自动保存的 8 个寄存器，即 xPSR、R15、R14、R12、R3、R2、R1和 R0。其中 xPSR 寄存器的位 24 必须是 1，R15 PC 指针必须存的是线程的入口地址，R0 必须是线程形参，剩下的 R14、R12、R3、R2、 R1我们初始化为 0。完成初始化的栈空间如下图所示：</p>
 
@@ -591,7 +589,7 @@ struct stack_frame
             <h4>初始化完成后的栈空间</h4>
         </figcaption>
 </figure>
-
+  
 
 <p>最后栈初始化函数返回线程栈顶指针 <code>stk</code> ，线程初始化函数返回线程创建成功的错误码。关于错误码，其定义如下：</p>
 
@@ -652,7 +650,7 @@ struct stack_frame
             <h4>一个空的就序列表</h4>
         </figcaption>
 </figure>
-
+  
 
 <p><strong>将线程插入到就绪列表</strong></p>
 
@@ -685,7 +683,7 @@ rt_list_insert_before( &amp;(rt_thread_priority_table[1]),&amp;(rt_flag2_thread.
             <h4>插入线程的就序列表</h4>
         </figcaption>
 </figure>
-
+  
 
 <h1 id="实现调度器">实现调度器</h1>
 

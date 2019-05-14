@@ -6,7 +6,7 @@
     <description>Recent content on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 28 Jan 2015 14:42:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 19 Apr 2019 10:23:46 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.ztluo.dev/index.xml" rel="self" type="application/rss+xml" />
     
@@ -26,7 +26,7 @@
       <pubDate>Wed, 28 Jan 2015 14:42:00 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/about/</guid>
-      <description>这是一个记录学习和生活的地方。</description>
+      <description>这是一个记录学习和生活的地方。 Github contributions chart:</description>
     </item>
     
     <item>
@@ -238,7 +238,7 @@
       <pubDate>Mon, 12 Mar 2018 15:19:00 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/post/raspberrypi-tutorial/</guid>
-      <description>烧录镜像 拿到树莓派后第一步是将系统镜像烧录到存储卡。镜像下载：地址。这里选择没有桌面的 Raspbian Lite。烧录工具使用 Win32 Disk Imager。 开启 SSH Raspbian 默认</description>
+      <description></description>
     </item>
     
     <item>
