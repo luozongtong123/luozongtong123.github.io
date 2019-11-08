@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>v2ray - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="我爱我的祖国。
+" />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.59.0" />
+
+
+<link rel="canonical" href="https://blog.ztluo.dev/post/v2ray/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="v2ray" />
+<meta property="og:description" content="我爱我的祖国。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ztluo.dev/post/v2ray/" />
+<meta property="article:published_time" content="2019-03-09T19:47:56+08:00" />
+<meta property="article:modified_time" content="2019-03-09T19:47:56+08:00" />
+<meta itemprop="name" content="v2ray">
+<meta itemprop="description" content="我爱我的祖国。">
+
+
+<meta itemprop="datePublished" content="2019-03-09T19:47:56&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-09T19:47:56&#43;08:00" />
+<meta itemprop="wordCount" content="555">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="v2ray"/>
+<meta name="twitter:description" content="我爱我的祖国。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/project/">
+        <li class="mobile-menu-item">项目</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/project/">项目</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">v2ray</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-03-09 </span>
+        
+        <span class="more-meta"> 约 555 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#服务器配置">服务器配置</a>
+<ul>
+<li><a href="#安装">安装</a></li>
+</ul></li>
+<li><a href="#客户端配置">客户端配置</a>
+<ul>
+<li><a href="#配置文件">配置文件</a></li>
+</ul></li>
+<li><a href="#关于-pac">关于 pac</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>我爱我的祖国。</p>
+
+<p>之前搭建的代理服务器丢包太严重了，想试试 v2ray 会不会好一点。</p>
+
+<h1 id="服务器配置">服务器配置</h1>
+
+<h2 id="安装">安装</h2>
+
+<pre><code class="language-bash"># based on Ubuntu 16.04
+cd ~
+sudo apt install curl
+curl https://install.direct/go.sh &gt; v2ray_setup.sh
+chmod u+x v2ray_setup.sh
+sudo ./v2ray_setup.sh
+
+</code></pre>
+
+<h1 id="客户端配置">客户端配置</h1>
+
+<h2 id="配置文件">配置文件</h2>
+
+<pre><code class="language-json">// /etc/v2ray/config.json
+{
+  &quot;log&quot;: {
+    &quot;access&quot;: &quot;&quot;,
+    &quot;error&quot;: &quot;&quot;,
+    &quot;loglevel&quot;: &quot;warning&quot;
+  },
+  &quot;inbounds&quot;: [
+    {
+      &quot;port&quot;: 1088,
+      &quot;listen&quot;: &quot;127.0.0.1&quot;,
+      &quot;protocol&quot;: &quot;socks&quot;,
+      &quot;sniffing&quot;: {
+        &quot;enabled&quot;: true,
+        &quot;destOverride&quot;: [
+          &quot;http&quot;,
+          &quot;tls&quot;
+        ]
+      },
+      &quot;settings&quot;: {
+        &quot;auth&quot;: &quot;noauth&quot;,
+        &quot;udp&quot;: true,
+        &quot;ip&quot;: null,
+        &quot;clients&quot;: null
+      },
+      &quot;streamSettings&quot;: null
+    },
+    {
+      &quot;port&quot;: 8008,
+      &quot;listen&quot;: &quot;127.0.0.1&quot;,
+      &quot;protocol&quot;: &quot;http&quot;,
+      &quot;settings&quot;: {
+        &quot;auth&quot;: &quot;noauth&quot;,
+        &quot;udp&quot;: true,
+        &quot;ip&quot;: null,
+        &quot;clients&quot;: null
+      }
+    }
+  ],
+  &quot;outbounds&quot;: [
+    {
+      &quot;tag&quot;: &quot;proxy&quot;,
+      &quot;protocol&quot;: &quot;vmess&quot;,
+      &quot;settings&quot;: {
+        &quot;vnext&quot;: [
+          {
+            &quot;address&quot;: &quot;×.×.×.×&quot;,
+            &quot;port&quot;: 80,
+            &quot;users&quot;: [
+              {
+                &quot;id&quot;: &quot;xxxxxxxx-xxx-xxxx-xxxx-xxxxxx&quot;,
+                &quot;alterId&quot;: 4,
+                &quot;email&quot;: &quot;t@t.tt&quot;,
+                &quot;security&quot;: &quot;auto&quot;
+              }
+            ]
+          }
+        ],
+        &quot;servers&quot;: null,
+        &quot;response&quot;: null
+      },
+      &quot;streamSettings&quot;: {
+        &quot;network&quot;: &quot;tcp&quot;,
+        &quot;security&quot;: &quot;&quot;,
+        &quot;tlsSettings&quot;: null,
+        &quot;tcpSettings&quot;: null,
+        &quot;kcpSettings&quot;: null,
+        &quot;wsSettings&quot;: null,
+        &quot;httpSettings&quot;: null
+      },
+      &quot;mux&quot;: {
+        &quot;enabled&quot;: true
+      }
+    },
+    {
+      &quot;tag&quot;: &quot;direct&quot;,
+      &quot;protocol&quot;: &quot;freedom&quot;,
+      &quot;settings&quot;: {
+        &quot;vnext&quot;: null,
+        &quot;servers&quot;: null,
+        &quot;response&quot;: null
+      },
+      &quot;streamSettings&quot;: null,
+      &quot;mux&quot;: null
+    },
+    {
+      &quot;tag&quot;: &quot;block&quot;,
+      &quot;protocol&quot;: &quot;blackhole&quot;,
+      &quot;settings&quot;: {
+        &quot;vnext&quot;: null,
+        &quot;servers&quot;: null,
+        &quot;response&quot;: {
+          &quot;type&quot;: &quot;http&quot;
+        }
+      },
+      &quot;streamSettings&quot;: null,
+      &quot;mux&quot;: null
+    }
+  ],
+  &quot;dns&quot;: null,
+  &quot;routing&quot;: {
+    &quot;domainStrategy&quot;: &quot;IPIfNonMatch&quot;,
+    &quot;rules&quot;: [
+      {
+        &quot;type&quot;: &quot;field&quot;,
+        &quot;port&quot;: null,
+        &quot;outboundTag&quot;: &quot;proxy&quot;,
+        &quot;ip&quot;: null,
+        &quot;domain&quot;: [
+          &quot;geosite:google&quot;,
+          &quot;geosite:github&quot;,
+          &quot;geosite:netflix&quot;,
+          &quot;geosite:steam&quot;,
+          &quot;geosite:telegram&quot;,
+          &quot;geosite:tumblr&quot;,
+          &quot;geosite:speedtest&quot;,
+          &quot;geosite:bbc&quot;,
+          &quot;domain:gvt1.com&quot;,
+          &quot;domain:textnow.com&quot;,
+          &quot;domain:twitch.tv&quot;,
+          &quot;domain:wikileaks.org&quot;,
+          &quot;domain:naver.com&quot;
+        ]
+      },
+      {
+        &quot;type&quot;: &quot;field&quot;,
+        &quot;port&quot;: null,
+        &quot;outboundTag&quot;: &quot;proxy&quot;,
+        &quot;ip&quot;: [
+          &quot;91.108.4.0/22&quot;,
+          &quot;91.108.8.0/22&quot;,
+          &quot;91.108.12.0/22&quot;,
+          &quot;91.108.20.0/22&quot;,
+          &quot;91.108.36.0/23&quot;,
+          &quot;91.108.38.0/23&quot;,
+          &quot;91.108.56.0/22&quot;,
+          &quot;149.154.160.0/20&quot;,
+          &quot;149.154.164.0/22&quot;,
+          &quot;149.154.172.0/22&quot;,
+          &quot;74.125.0.0/16&quot;,
+          &quot;173.194.0.0/16&quot;,
+          &quot;172.217.0.0/16&quot;,
+          &quot;216.58.200.0/24&quot;,
+          &quot;216.58.220.0/24&quot;
+        ],
+        &quot;domain&quot;: null
+      },
+      {
+        &quot;type&quot;: &quot;field&quot;,
+        &quot;port&quot;: null,
+        &quot;outboundTag&quot;: &quot;direct&quot;,
+        &quot;ip&quot;: null,
+        &quot;domain&quot;: [
+          &quot;domain:12306.com&quot;,
+          &quot;domain:51ym.me&quot;,
+          &quot;domain:52pojie.cn&quot;,
+          &quot;domain:8686c.com&quot;,
+          &quot;domain:abercrombie.com&quot;,
+          &quot;domain:adobesc.com&quot;,
+          &quot;domain:air-matters.com&quot;,
+          &quot;domain:air-matters.io&quot;,
+          &quot;domain:airtable.com&quot;,
+          &quot;domain:akadns.net&quot;,
+          &quot;domain:apache.org&quot;,
+          &quot;domain:api.crisp.chat&quot;,
+          &quot;domain:api.termius.com&quot;,
+          &quot;domain:appshike.com&quot;,
+          &quot;domain:appstore.com&quot;,
+          &quot;domain:aweme.snssdk.com&quot;,
+          &quot;domain:bababian.com&quot;,
+          &quot;domain:battle.net&quot;,
+          &quot;domain:beatsbydre.com&quot;,
+          &quot;domain:bet365.com&quot;,
+          &quot;domain:bilibili.cn&quot;,
+          &quot;domain:ccgslb.com&quot;,
+          &quot;domain:ccgslb.net&quot;,
+          &quot;domain:chunbo.com&quot;,
+          &quot;domain:chunboimg.com&quot;,
+          &quot;domain:clashroyaleapp.com&quot;,
+          &quot;domain:cloudsigma.com&quot;,
+          &quot;domain:cloudxns.net&quot;,
+          &quot;domain:cmfu.com&quot;,
+          &quot;domain:culturedcode.com&quot;,
+          &quot;domain:dct-cloud.com&quot;,
+          &quot;domain:didialift.com&quot;,
+          &quot;domain:douyutv.com&quot;,
+          &quot;domain:duokan.com&quot;,
+          &quot;domain:dytt8.net&quot;,
+          &quot;domain:easou.com&quot;,
+          &quot;domain:ecitic.net&quot;,
+          &quot;domain:eclipse.org&quot;,
+          &quot;domain:eudic.net&quot;,
+          &quot;domain:ewqcxz.com&quot;,
+          &quot;domain:fir.im&quot;,
+          &quot;domain:frdic.com&quot;,
+          &quot;domain:fresh-ideas.cc&quot;,
+          &quot;domain:godic.net&quot;,
+          &quot;domain:goodread.com&quot;,
+          &quot;domain:haibian.com&quot;,
+          &quot;domain:hdslb.net&quot;,
+          &quot;domain:hollisterco.com&quot;,
+          &quot;domain:hongxiu.com&quot;,
+          &quot;domain:hxcdn.net&quot;,
+          &quot;domain:images.unsplash.com&quot;,
+          &quot;domain:img4me.com&quot;,
+          &quot;domain:ipify.org&quot;,
+          &quot;domain:ixdzs.com&quot;,
+          &quot;domain:jd.hk&quot;,
+          &quot;domain:jianshuapi.com&quot;,
+          &quot;domain:jomodns.com&quot;,
+          &quot;domain:jsboxbbs.com&quot;,
+          &quot;domain:knewone.com&quot;,
+          &quot;domain:kuaidi100.com&quot;,
+          &quot;domain:lemicp.com&quot;,
+          &quot;domain:letvcloud.com&quot;,
+          &quot;domain:lizhi.io&quot;,
+          &quot;domain:localizecdn.com&quot;,
+          &quot;domain:lucifr.com&quot;,
+          &quot;domain:luoo.net&quot;,
+          &quot;domain:mai.tn&quot;,
+          &quot;domain:maven.org&quot;,
+          &quot;domain:miwifi.com&quot;,
+          &quot;domain:moji.com&quot;,
+          &quot;domain:moke.com&quot;,
+          &quot;domain:mtalk.google.com&quot;,
+          &quot;domain:mxhichina.com&quot;,
+          &quot;domain:myqcloud.com&quot;,
+          &quot;domain:myunlu.com&quot;,
+          &quot;domain:netease.com&quot;,
+          &quot;domain:nfoservers.com&quot;,
+          &quot;domain:nssurge.com&quot;,
+          &quot;domain:nuomi.com&quot;,
+          &quot;domain:ourdvs.com&quot;,
+          &quot;domain:overcast.fm&quot;,
+          &quot;domain:paypal.com&quot;,
+          &quot;domain:paypalobjects.com&quot;,
+          &quot;domain:pgyer.com&quot;,
+          &quot;domain:qdaily.com&quot;,
+          &quot;domain:qdmm.com&quot;,
+          &quot;domain:qin.io&quot;,
+          &quot;domain:qingmang.me&quot;,
+          &quot;domain:qingmang.mobi&quot;,
+          &quot;domain:qqurl.com&quot;,
+          &quot;domain:rarbg.to&quot;,
+          &quot;domain:rrmj.tv&quot;,
+          &quot;domain:ruguoapp.com&quot;,
+          &quot;domain:sm.ms&quot;,
+          &quot;domain:snwx.com&quot;,
+          &quot;domain:soku.com&quot;,
+          &quot;domain:startssl.com&quot;,
+          &quot;domain:store.steampowered.com&quot;,
+          &quot;domain:symcd.com&quot;,
+          &quot;domain:teamviewer.com&quot;,
+          &quot;domain:tmzvps.com&quot;,
+          &quot;domain:trello.com&quot;,
+          &quot;domain:trellocdn.com&quot;,
+          &quot;domain:ttmeiju.com&quot;,
+          &quot;domain:udache.com&quot;,
+          &quot;domain:uxengine.net&quot;,
+          &quot;domain:weather.bjango.com&quot;,
+          &quot;domain:weather.com&quot;,
+          &quot;domain:webqxs.com&quot;,
+          &quot;domain:weico.cc&quot;,
+          &quot;domain:wenku8.net&quot;,
+          &quot;domain:werewolf.53site.com&quot;,
+          &quot;domain:windowsupdate.com&quot;,
+          &quot;domain:wkcdn.com&quot;,
+          &quot;domain:workflowy.com&quot;,
+          &quot;domain:xdrig.com&quot;,
+          &quot;domain:xiaojukeji.com&quot;,
+          &quot;domain:xiaomi.net&quot;,
+          &quot;domain:xiaomicp.com&quot;,
+          &quot;domain:ximalaya.com&quot;,
+          &quot;domain:xitek.com&quot;,
+          &quot;domain:xmcdn.com&quot;,
+          &quot;domain:xslb.net&quot;,
+          &quot;domain:xteko.com&quot;,
+          &quot;domain:yach.me&quot;,
+          &quot;domain:yixia.com&quot;,
+          &quot;domain:yunjiasu-cdn.net&quot;,
+          &quot;domain:zealer.com&quot;,
+          &quot;domain:zgslb.net&quot;,
+          &quot;domain:zimuzu.tv&quot;,
+          &quot;domain:zmz002.com&quot;,
+          &quot;domain:samsungdm.com&quot;
+        ]
+      },
+      {
+        &quot;type&quot;: &quot;field&quot;,
+        &quot;port&quot;: null,
+        &quot;outboundTag&quot;: &quot;block&quot;,
+        &quot;ip&quot;: null,
+        &quot;domain&quot;: [
+          &quot;geosite:category-ads&quot;
+        ]
+      },
+      {
+        &quot;type&quot;: &quot;field&quot;,
+        &quot;port&quot;: null,
+        &quot;outboundTag&quot;: &quot;direct&quot;,
+        &quot;ip&quot;: [
+          &quot;geoip:private&quot;
+        ],
+        &quot;domain&quot;: null
+      },
+      {
+        &quot;type&quot;: &quot;field&quot;,
+        &quot;port&quot;: null,
+        &quot;outboundTag&quot;: &quot;direct&quot;,
+        &quot;ip&quot;: [
+          &quot;geoip:cn&quot;
+        ],
+        &quot;domain&quot;: null
+      },
+      {
+        &quot;type&quot;: &quot;field&quot;,
+        &quot;port&quot;: null,
+        &quot;outboundTag&quot;: &quot;direct&quot;,
+        &quot;ip&quot;: null,
+        &quot;domain&quot;: [
+          &quot;geosite:cn&quot;
+        ]
+      }
+    ]
+  }
+}
+
+</code></pre>
+
+<h1 id="关于-pac">关于 pac</h1>
+
+<p>pac 是一个脚本，可以是本地文件的形式，也可以是本地网络的形式。</p>
+
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-03-09</span>
+  </p>
+  <p class="copyright-item">
+      <span class="item-title">原始文档</span>
+      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/v2ray/index.md" target="_blank">Markdown 文件</a></span>
+    </p>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC 署名 4.0 国际</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/wechat_reward_qr-code.png">
+        <span>微信长按/扫码打赏</span>
+      </label>
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/coder/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Coder online IDE!</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/ardupilot-scheduler/">
+            <span class="next-text nav-default">Ardupilot Scheduler</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2019-03-09 19:47:56 \x2b0800 CST',
+    title: 'v2ray',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'zt-luo.github.io',
+    owner: 'zt-luo',
+    admin: ['zt-luo'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:me@ztluo.dev" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zt-luo" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.ztluo.dev/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/zt-luo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
