@@ -89,19 +89,62 @@ gst_element_set_state(m_pipeline, GST_STATE_PLAYING);
 ...
 ```
 
+``` qml
+import QtQuick 2.0
+import QtQuick.Controls 1.0
+
+import org.freedesktop.gstreamer.GLVideoItem 1.0
+
+Rectangle {
+    objectName:"Rectangle"
+    Item {
+        anchors.fill: parent
+
+        GstGLVideoItem {
+            id: video
+            objectName: "videoItem"
+            anchors.centerIn: parent
+            width: parent.width
+            height: parent.height
+        }
+    }
+}
+```
+
 具体过程如下：  
 首先，使用 `gst_init()` 进行初始化；  
 接着，使用 `gst_pipeline_new()` 和 `gst_element_factory_make()` 新建 pipeline 和 element；  
 接着，使用 `gst_bin_add_many()` 和  `gst_element_link_many()` 将所有元素连接起来；  
-接着，加载 qml ，并找到 `videoItem` 节点和 `Quick Window`，使用 `g_object_set()` 将 `videoItem` 和 gst 的 sink 连接起来；  
-最后，在 `Quick Window` 的 `scheduleRenderJob()` 中将 pipeline 设定为播放状态。  
+接着，加载 qml ，并找到 `videoItem` 节点和 `Quick Window`。
+接着，使用 `g_object_set()` 设定对象的属性，将 `videoItem` 作为 `widget` 添加到 sink；  
+最后，使用 `scheduleRenderJob()` 在 `Quick Window` 进行渲染前设定 pipeline 为播放状态。  
 
 官方例子是完全使用 Qt Quick 来实现的，在 SubControl 里的界面是使用 Widget 实现的，所以要拿来用的话还要解决 qml 嵌入到 Widget 的问题。
 
 # c++ 与 qml 交互  
 
-TODO
+所有的 QML 对象类型，包括 QML 引擎内部实现或者实现第三方库，都是 QObject 子类，都允许 QML 引擎使用 Qt 元对象系统动态实例化任何 QML 对象类型。在启动 QML 时，会初始化一个 QQmlEngine 作为 QML 引擎，然后使用 QQmlComponent 对象加载 QML 文档，QML 引擎会提供一个默认的 QQmlContext 对象作为顶层执行的上下文，用来执行 QML 文档中定义的函数和表达式。
+`QQmlEngine::rootContext()` 返回当前引擎 QML 的上下文。`QQuickItem* QQuickView::rootObject()` 返回当前 QQuickView 的根节点，也就是 QML 的根节点。
 
+在这里 quickWidget 的实现中的主要区别是寻找到 `videoItem` 对象的方式不同，其主要代码如下：
 
-<!-- [![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post) -->
+``` cpp
+QQuickItem *videoItem;
+QQuickWindow *qQuickWindows;
+
+/* find and set the videoItem on the sink */
+videoItem = ui->quickWidget->rootObject();
+ideoItem = videoItem->findChild<QQuickItem *>("videoItem");
+assert(videoItem);
+g_object_set(sink, "widget", videoItem, nullptr);
+
+qQuickWindows = videoItem->window();
+assert(qQuickWindows);
+qQuickWindows->scheduleRenderJob(new SetPlaying(pipeline),
+                                     QQuickWindow::BeforeSynchronizingStage);
+```
+
+最后，完整的 Demo 见 GitHub [链接](https://github.com/zt-luo/QuickWidgetPlayer)。
+
+[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
 
