@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CMake on luo Space - Coding and thinking.</title>
+    <link>https://blog.ztluo.dev/tags/cmake/</link>
+    <description>Recent content in CMake on luo Space - Coding and thinking.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 11 Nov 2019 17:30:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.ztluo.dev/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在 Visual Studio Code 中编写 Qt 代码</title>
+      <link>https://blog.ztluo.dev/post/qt-coding-in-vscode/</link>
+      <pubDate>Mon, 11 Nov 2019 17:30:25 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/qt-coding-in-vscode/</guid>
+      <description>&lt;p&gt;对 Qt Creator 的界面是在是不能忍受，所以萌生了改用 Visual Studio Code 的想法，探索一番，成功实现 Qt 代码在 VSCode 中的代码提示和调试的功能。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

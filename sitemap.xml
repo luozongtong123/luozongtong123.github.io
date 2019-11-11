@@ -16,21 +16,56 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/tags/gstreamer/</loc>
-    <lastmod>2019-11-09T21:25:22+08:00</lastmod>
+    <loc>https://blog.ztluo.dev/tags/cmake/</loc>
+    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/</loc>
-    <lastmod>2019-11-09T21:25:22+08:00</lastmod>
+    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/post/</loc>
+    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/qt/</loc>
+    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/</loc>
+    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/visual-studio-code/</loc>
+    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/post/qt-coding-in-vscode/</loc>
+    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/gstreamer/</loc>
     <lastmod>2019-11-09T21:25:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -45,20 +80,6 @@
   
   <url>
     <loc>https://blog.ztluo.dev/tags/qquickwidget/</loc>
-    <lastmod>2019-11-09T21:25:22+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/tags/qt/</loc>
-    <lastmod>2019-11-09T21:25:22+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/tags/</loc>
     <lastmod>2019-11-09T21:25:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -171,13 +192,6 @@
   
   <url>
     <loc>https://blog.ztluo.dev/post/coder/</loc>
-    <lastmod>2019-03-16T09:28:18+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/tags/visual-studio-code/</loc>
     <lastmod>2019-03-16T09:28:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
