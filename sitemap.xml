@@ -24,14 +24,14 @@
   
   <url>
     <loc>https://blog.ztluo.dev/</loc>
-    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
+    <lastmod>2019-11-12T20:43:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/post/</loc>
-    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
+    <lastmod>2019-11-12T20:43:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -45,7 +45,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/tags/</loc>
-    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
+    <lastmod>2019-11-12T20:43:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -248,7 +248,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/tags/raspberry-pi/</loc>
-    <lastmod>2018-12-18T16:11:00+08:00</lastmod>
+    <lastmod>2019-11-12T20:43:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -528,7 +528,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/post/raspberrypi-hdmi/</loc>
-    <lastmod>2018-12-18T15:55:21+08:00</lastmod>
+    <lastmod>2019-11-12T20:43:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

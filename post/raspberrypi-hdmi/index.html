@@ -54,14 +54,14 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.ztluo.dev/post/raspberrypi-hdmi/" />
 <meta property="article:published_time" content="2018-01-28T22:56:21+08:00" />
-<meta property="article:modified_time" content="2018-12-18T15:55:21+08:00" />
+<meta property="article:modified_time" content="2019-11-12T20:43:21+08:00" />
 <meta itemprop="name" content="Raspberry Pi HDMI 连接显示器黑屏问题">
 <meta itemprop="description" content="记录一下解决树莓派连接显示器黑屏的问题。">
 
 
 <meta itemprop="datePublished" content="2018-01-28T22:56:21&#43;08:00" />
-<meta itemprop="dateModified" content="2018-12-18T15:55:21&#43;08:00" />
-<meta itemprop="wordCount" content="276">
+<meta itemprop="dateModified" content="2019-11-12T20:43:21&#43;08:00" />
+<meta itemprop="wordCount" content="274">
 
 
 
@@ -140,7 +140,7 @@
       <div class="post-meta">
         <span class="post-time"> 2018-01-28 </span>
         
-        <span class="more-meta"> 约 276 字 </span>
+        <span class="more-meta"> 约 274 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -161,7 +161,7 @@
 <strong>问题描述</strong>：树莓派通过 HDMI 接口连接显示器。只有第一次成功显示，之后再也无法显示。第一次显示的时候也有部分屏幕无法显示。<br />
 <strong>解决方法：</strong><br />
 <strong>修改 SD 卡 boot 分区的 config.txt 文件。</strong><br />
-将 SD 卡插入到电脑中，首先备份 config.txt 文件，然后使用编辑器打开，这里不推荐记事本，可以使用 notepad++ 打开。然后加入以下几个选项：</p>
+将 SD 卡插入到电脑中，首先备份 config.txt 文件，然后使用编辑器打开，加入以下几个选项：</p>
 
 <pre><code>hdmi_force_hotplug=1
 config_hdmi_boost=4
@@ -172,11 +172,13 @@ hdmi_ignore_edid=0xa5000080
 disable_overscan=1      
 </code></pre>
 
-<p>这里我的显示器分辨率是 1280*1024，所以修改为 hdmi_mode=35，如果你的显示器分辨率不同，请查找需要修改的值。</p>
+<p>其中 hdmi_mode 需要根据实际情况修改为正确的数值，具体数值 <a href="https://www.raspberrypi.org/documentation/configuration/config-txt/video.md">在这</a>(搜索 hdmi_mode) 查看。</p>
+
+<p>这里我的显示器分辨率是 1280*1024，所以修改为 hdmi_mode=35。</p>
 
 <p>参考：<br />
 <a href="http://blog.lxx1.com/1706">解决树莓派使用 HDMI-VGA 转换器黑屏的方案</a><br />
-<a href="https://www.raspberrypi.org/documentation/configuration/config-txt/README.md">CONFIG.TXT</a><br />
+<a href="https://www.raspberrypi.org/documentation/configuration/config-txt/README.md">树莓派配置文件 CONFIG.TXT</a><br />
 <a href="https://www.raspberrypi.org/documentation/configuration/config-txt/video.md">VIDEO OPTIONS IN CONFIG.TXT</a></p>
 
 <p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
@@ -190,7 +192,7 @@ disable_overscan=1
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-12-18</span>
+    <span class="item-content">2019-11-12</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>
