@@ -16,6 +16,62 @@
   </url>
   
   <url>
+    <loc>https://blog.ztluo.dev/</loc>
+    <lastmod>2019-11-22T10:31:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/post/</loc>
+    <lastmod>2019-11-22T10:31:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/</loc>
+    <lastmod>2019-11-22T10:31:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/uuv_simulator/</loc>
+    <lastmod>2019-11-22T10:31:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/virtualbox/</loc>
+    <lastmod>2019-11-22T10:31:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/xubuntu/</loc>
+    <lastmod>2019-11-22T10:31:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/ros/</loc>
+    <lastmod>2019-11-22T10:31:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/post/play-ros-on-vm/</loc>
+    <lastmod>2019-11-22T10:31:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.ztluo.dev/tags/cmake/</loc>
     <lastmod>2019-11-11T17:30:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -23,29 +79,8 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/</loc>
-    <lastmod>2019-11-12T20:43:21+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/post/</loc>
-    <lastmod>2019-11-12T20:43:21+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.ztluo.dev/tags/qt/</loc>
     <lastmod>2019-11-11T17:30:25+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/tags/</loc>
-    <lastmod>2019-11-12T20:43:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VirtualBox on luo Space - Coding and thinking.</title>
+    <link>https://blog.ztluo.dev/tags/virtualbox/</link>
+    <description>Recent content in VirtualBox on luo Space - Coding and thinking.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 22 Nov 2019 10:31:17 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.ztluo.dev/tags/virtualbox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在虚拟机上使用 ROS</title>
+      <link>https://blog.ztluo.dev/post/play-ros-on-vm/</link>
+      <pubDate>Fri, 22 Nov 2019 10:31:17 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/play-ros-on-vm/</guid>
+      <description>&lt;p&gt;最近想研究一下 &lt;code&gt;uuv_simulator&lt;/code&gt; 怎么使用，可能的话作为我毕业论文的一部分。&lt;code&gt;uuv_simulator&lt;/code&gt; 是基于 ROS 的， ROS 官方支持的系统是 Ubuntu ，而我机器上跑得是 Manjaro，如果在新分区或着是在新硬盘上安装 Ubuntu 则需要高一整套的学习和工具链，思来想去还是安装虚拟机吧。于是就有了这篇博文。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
