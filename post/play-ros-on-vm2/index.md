@@ -40,7 +40,9 @@ sudo m-a prepare
 
 唉？怎么又是这张图?🤔  
 
-{{% figure class="center" src="/img/play-ros-on-vm2/gazebo.png" alt="gazebo" title="gazebo" %}}
+{{% figure class="center" src="/img/play-ros-on-vm2/gazebo.png" alt="gazebo" title="gazebo" %}}  
+
+虽然帧率仍然并不是很高而且帧率波动还比较大但是总的来说勉强够用。  
 
 大功告成！收工。
 
