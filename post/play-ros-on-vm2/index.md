@@ -40,7 +40,9 @@ sudo m-a prepare
 
 唉？怎么又是这张图?🤔  
 
-大功告成！手工。
+{{% figure class="center" src="/img/play-ros-on-vm2/gazebo.png" alt="gazebo" title="gazebo" %}}
+
+大功告成！收工。
 
 
 # 参考  
