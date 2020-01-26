@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.2" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/build-environment-for-ardusub/" />
@@ -59,16 +59,13 @@
 <meta itemprop="name" content="搭建 Pixhawk 飞控固件编译环境">
 <meta itemprop="description" content="ArduSub 官方的程序无法直接给电机发送指令，这个功能需要自己实现。为了实现这个功能首先需要搭建 Pixhawk 的编译环境。
 下面将简要介绍一下环境的搭建步骤。">
-
-
 <meta itemprop="datePublished" content="2018-09-08T20:36:46&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-19T20:53:45&#43;08:00" />
-<meta itemprop="wordCount" content="1881">
+<meta itemprop="wordCount" content="1867">
 
 
 
-<meta itemprop="keywords" content="Pixhawk,Ubuntu,WSL,ArduSub," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Pixhawk,Ubuntu,WSL,ArduSub," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="搭建 Pixhawk 飞控固件编译环境"/>
 <meta name="twitter:description" content="ArduSub 官方的程序无法直接给电机发送指令，这个功能需要自己实现。为了实现这个功能首先需要搭建 Pixhawk 的编译环境。
 下面将简要介绍一下环境的搭建步骤。"/>
@@ -147,7 +144,7 @@
               <a href="/categories/ardupilot/"> Ardupilot </a>
             
           </div>
-        <span class="more-meta"> 约 1881 字 </span>
+        <span class="more-meta"> 约 1867 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -160,22 +157,20 @@
   
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#一-前言">一、前言</a></li>
-<li><a href="#二-编译环境配置">二、编译环境配置</a>
-<ul>
-<li><a href="#1-启用-wsl">1、启用 WSL</a></li>
-<li><a href="#2-安装-ubuntu-应用">2、安装 Ubuntu 应用</a></li>
-<li><a href="#3-初始化-ubuntu">3、初始化 Ubuntu</a></li>
-<li><a href="#4-克隆-ardupilot-代码库到本地">4、克隆 Ardupilot 代码库到本地</a></li>
-<li><a href="#5-进行环境设置">5、进行环境设置</a></li>
-<li><a href="#6-进行编译">6、进行编译</a></li>
-<li><a href="#7-下载程序">7、下载程序</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#一前言">一、前言</a></li>
+    <li><a href="#二编译环境配置">二、编译环境配置</a>
+      <ul>
+        <li><a href="#1启用-wsl">1、启用 WSL</a></li>
+        <li><a href="#2安装-ubuntu-应用">2、安装 Ubuntu 应用</a></li>
+        <li><a href="#3初始化-ubuntu">3、初始化 Ubuntu</a></li>
+        <li><a href="#4克隆-ardupilot-代码库到本地">4、克隆 Ardupilot 代码库到本地</a></li>
+        <li><a href="#5进行环境设置">5、进行环境设置</a></li>
+        <li><a href="#6进行编译">6、进行编译</a></li>
+        <li><a href="#7下载程序">7、下载程序</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
@@ -192,165 +187,99 @@
     <div class="post-content">
       <p>ArduSub 官方的程序无法直接给电机发送指令，这个功能需要自己实现。为了实现这个功能首先需要搭建 Pixhawk 的编译环境。
 下面将简要介绍一下环境的搭建步骤。</p>
-
-<h2 id="一-前言">一、前言</h2>
-
+<h2 id="一前言">一、前言</h2>
 <p>Pixhawk1（px4_v2） 飞控使用了两片单片机。Pixhawk 其实是 PX4FMU 与 PX4IO 两块板子的组合，其中PX4FMU 使用的单片机是 <a href="http://www.st.com/web/en/catalog/mmc/FM141/SC1169/SS1577/LN1789">STM32F427</a> ，PX4IO 使用的单片机是 STM32F100。PX4FMU  负责复杂的浮点运算，PX4IO 负责将 PX4FMU 计算得到的控制量输出为 PWM 或 其他信号。</p>
-
 <p>官方支持的是 gcc-arm-none-eabi 编译器，使用的编译管理系统的是 <a href="https://waf.io/">Waf</a>，Waf 依赖 Python，mavlink 的代码的生成也依赖 Python ，除此以外 Pixhawk1 上运行着 <a href="http://nuttx.org/">NuttX</a> RTOS，Pixhawk1 固件的生成依赖 <a href="https://github.com/PX4/Firmware">PX4Firmware</a>。</p>
-
 <p>官方支持的编译环境包括一下几个：<a href="http://ardupilot.org/dev/docs/building-setup-linux.html">Linux/Ubuntu</a>、<a href="http://ardupilot.org/dev/docs/building-setup-windows.html">Windows</a>、<a href="http://ardupilot.org/dev/docs/building-setup-windows10.html">Windows10 WSL</a>、<a href="http://ardupilot.org/dev/docs/building-setup-windows-cygwin.html">Windows Cygwin</a>、<a href="http://ardupilot.org/dev/docs/building-setup-mac.html">MacOSX</a>。目前使用的 Windows10 系统，电脑性能较差虚拟机暂不考虑，双系统切换麻烦 暂不考虑。官方提供的 Windows 编译环境使用的是一个较老版本的 msys 性能较差 不考虑。Cygwin 包的配置需要一个一个的安装非常费劲同时性能也很差 不考虑。那么现在只剩下一个选项 Windows10 WSL。之前也使用过一段时间的 Windows10 WSL 但是后来还是转投了 msys2 的阵营，主要原因是最初 WSL 与 Windows10 文件系统的交互较差，只能从 WSL 中访问 Windows10 的文件，无法从 Windows10 中访问 WSL 里的文件，有时这是一个非常恼人的特性。最近发现可以直接从 Windows10 中访问 WSL 的文件系统，我又欢快地从 msys2 转投了 WSl 阵营。另外，提一下完整编译的时间，使用 msys 的情况下我的电脑需要一个半小时，使用 WSL 可以缩短为半个小时，可以说性能提高很明显了。</p>
-
 <p>官方提供的配置教程其实足够详细了，但是教程中只提到了使用 Ubuntu 16.04 LTS 的情况下的配置， <del>没有提 Ubuntu 18.04 LTS 的配置，也</del>没有提 nijia 的安装。</p>
-
-<h2 id="二-编译环境配置">二、编译环境配置</h2>
-
-<h3 id="1-启用-wsl">1、启用 WSL</h3>
-
+<h2 id="二编译环境配置">二、编译环境配置</h2>
+<h3 id="1启用-wsl">1、启用 WSL</h3>
 <p>这一步很简单，直接上图。</p>
-
-<figure class="center">
-    <img src="/img/build-environment-for-ardusub/enable-wsl.jpg"
-         alt="enable WSL"/> <figcaption>
-            <h4>enable WSL</h4>
-        </figcaption>
-</figure>
-
-<h3 id="2-安装-ubuntu-应用">2、安装 Ubuntu 应用</h3>
-
+<!-- raw HTML omitted -->
+<h3 id="2安装-ubuntu-应用">2、安装 Ubuntu 应用</h3>
 <p><del>如果为了省时省力可以直接安装 <a href="https://www.microsoft.com/store/productId/9PJN388HP8C9">Ubuntu 16.04 LTS</a> ，现在是2018 年下半年了，为了使用新版本的程序我选择 Ubuntu 18.04 LTS 。安装时可以直接点击上面链接也可以打开 Microsoft Store 搜索 Ubuntu 选择合适的版本下载即可。</del></p>
-
 <p>Ubuntu 18.04 LTS 上自带的是版本号 6.3 的 gcc-arm-none-eabi ，编译环境只支持 4.9 和 5.4。ARM 官方 4.9 和 5.4 只有 32位版本的，自行编译太过麻烦。</p>
-
 <p>注：商店中没有标明版本号的 Ubuntu 应用默认安装的是最新的 LTS 版本，如果时之前安装的Ubuntu 应用，现在有了新的 LTS 版本，可以通过 do-release-upgrade 命令升级 LTS版本号。Ubuntu LTS 的服务支持的时间是 5 年。</p>
-
-<h3 id="3-初始化-ubuntu">3、初始化 Ubuntu</h3>
-
+<h3 id="3初始化-ubuntu">3、初始化 Ubuntu</h3>
 <p>打开安装的 Ubuntu 应用，或者当系统中只安装了一个 WSL 应用时，可以直接输入 bash 启动那个唯一的 WSL。需要注意的是 *inux 系统输入密码时不会显示已输入的字符的数量。</p>
-
-<figure class="center">
-    <img src="/img/build-environment-for-ardusub/wsl-init.png"
-         alt="WSL init"/> <figcaption>
-            <h4>WSL init</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <p>初始化完成后，为了提高安装软件包的速度，需要将 Ubuntu 的软件源替换成国内速度较快的软件源，这里推荐使用网易的源。</p>
-
-<pre><code class="language-bash"># 用 nano 打开镜像源列表文件
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 用 nano 打开镜像源列表文件</span>
 sudo nano /etc/apt/sources.list 
-# 注释掉所有官方的源
-# 复制对应版本号的源到文件的最下方
-# Ctrl + x 关闭并保存文件
-# 更新软件列表、更新软件
+<span style="color:#75715e"># 注释掉所有官方的源</span>
+<span style="color:#75715e"># 复制对应版本号的源到文件的最下方</span>
+<span style="color:#75715e"># Ctrl + x 关闭并保存文件</span>
+<span style="color:#75715e"># 更新软件列表、更新软件</span>
 sudo apt-get update
 sudo apt-get upgrade
-</code></pre>
-
-<p>Ubuntu 16.04 LTS 源：</p>
-
-<pre><code class="language-bash"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+</code></pre></div><p>Ubuntu 16.04 LTS 源：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span>
 deb https://mirrors.163.com/ubuntu/ xenial main restricted universe multiverse
-# deb-src https://mirrors.163.com/ubuntu/ xenial main restricted universe multiverse
+<span style="color:#75715e"># deb-src https://mirrors.163.com/ubuntu/ xenial main restricted universe multiverse</span>
 deb https://mirrors.163.com/ubuntu/ xenial-updates main restricted universe multiverse
-# deb-src https://mirrors.163.com/ubuntu/ xenial-updates main restricted universe multiverse
+<span style="color:#75715e"># deb-src https://mirrors.163.com/ubuntu/ xenial-updates main restricted universe multiverse</span>
 deb https://mirrors.163.com/ubuntu/ xenial-backports main restricted universe multiverse
-# deb-src https://mirrors.163.com/ubuntu/ xenial-backports main restricted universe multiverse
+<span style="color:#75715e"># deb-src https://mirrors.163.com/ubuntu/ xenial-backports main restricted universe multiverse</span>
 deb https://mirrors.163.com/ubuntu/ xenial-security main restricted universe multiverse
-# deb-src https://mirrors.163.com/ubuntu/ xenial-security main restricted universe multiverse
+<span style="color:#75715e"># deb-src https://mirrors.163.com/ubuntu/ xenial-security main restricted universe multiverse</span>
 
-# 预发布软件源，不建议启用
-# deb https://mirrors.163.com/ubuntu/ xenial-proposed main restricted universe multiverse
-# deb-src https://mirrors.163.com/ubuntu/ xenial-proposed main restricted universe multiverse
+<span style="color:#75715e"># 预发布软件源，不建议启用</span>
+<span style="color:#75715e"># deb https://mirrors.163.com/ubuntu/ xenial-proposed main restricted universe multiverse</span>
+<span style="color:#75715e"># deb-src https://mirrors.163.com/ubuntu/ xenial-proposed main restricted universe multiverse</span>
 
-</code></pre>
-
-<p><del>Ubuntu 18.04 LTS 源：</del></p>
-
-<pre><code class="language-bash"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+</code></pre></div><p><del>Ubuntu 18.04 LTS 源：</del></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span>
 deb https://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse
-# deb-src https://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse
+<span style="color:#75715e"># deb-src https://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse</span>
 deb https://mirrors.163.com/ubuntu/ bionic-updates main restricted universe multiverse
-# deb-src https://mirrors.163.com/ubuntu/ bionic-updates main restricted universe multiverse
+<span style="color:#75715e"># deb-src https://mirrors.163.com/ubuntu/ bionic-updates main restricted universe multiverse</span>
 deb https://mirrors.163.com/ubuntu/ bionic-backports main restricted universe multiverse
-# deb-src https://mirrors.163.com/ubuntu/ bionic-backports main restricted universe multiverse
+<span style="color:#75715e"># deb-src https://mirrors.163.com/ubuntu/ bionic-backports main restricted universe multiverse</span>
 deb https://mirrors.163.com/ubuntu/ bionic-security main restricted universe multiverse
-# deb-src https://mirrors.163.com/ubuntu/ bionic-security main restricted universe multiverse
+<span style="color:#75715e"># deb-src https://mirrors.163.com/ubuntu/ bionic-security main restricted universe multiverse</span>
 
-# 预发布软件源，不建议启用
-# deb https://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse
-# deb-src https://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse
-</code></pre>
-
-<h3 id="4-克隆-ardupilot-代码库到本地">4、克隆 Ardupilot 代码库到本地</h3>
-
-<pre><code class="language-bash">git clone https://github.com/ardupilot/ardupilot.git
+<span style="color:#75715e"># 预发布软件源，不建议启用</span>
+<span style="color:#75715e"># deb https://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse</span>
+<span style="color:#75715e"># deb-src https://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse</span>
+</code></pre></div><h3 id="4克隆-ardupilot-代码库到本地">4、克隆 Ardupilot 代码库到本地</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/ardupilot/ardupilot.git
 cd ardupilot
 git submodule init
 git submodule update --recursive
-</code></pre>
-
-<h3 id="5-进行环境设置">5、进行环境设置</h3>
-
+</code></pre></div><h3 id="5进行环境设置">5、进行环境设置</h3>
 <p>首先运行脚本，准备好大部分的环境。</p>
-
-<pre><code class="language-bash">./Tools/scripts/install-prereqs-ubuntu.sh # 安装软件时将需要账号密码
-# 若是 WSL 默认的纯净环境这一步需要下载接近 300M 的软件包，安装后占用 1.3G 的空间
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./Tools/scripts/install-prereqs-ubuntu.sh <span style="color:#75715e"># 安装软件时将需要账号密码</span>
+<span style="color:#75715e"># 若是 WSL 默认的纯净环境这一步需要下载接近 300M 的软件包，安装后占用 1.3G 的空间</span>
 nano ~/.profile 
-# 删除下面这行，如果有的话， ctrl + x 保存关闭
-# export PATH=/opt/gcc-arm-none-eabi-4_9-2015q3/bin:$PATH
-</code></pre>
-
-<p>脚本下载的是32位的 gcc-arm-none-eabi ，版本号 4_9-2015q3，解压的目录位置是 <code>/opt/gcc-arm-none-eabi-4_9-2015q3/</code> ，我们的 WSL 是64位的，需要下载 64 位的 gcc-arm-none-eabi ，解压的文件可以直接删除。</p>
-
-<pre><code class="language-bash">sudo rm -rf /opt/gcc-arm-none-eabi-4_9-2015q3
+<span style="color:#75715e"># 删除下面这行，如果有的话， ctrl + x 保存关闭</span>
+<span style="color:#75715e"># export PATH=/opt/gcc-arm-none-eabi-4_9-2015q3/bin:$PATH</span>
+</code></pre></div><p>脚本下载的是32位的 gcc-arm-none-eabi ，版本号 4_9-2015q3，解压的目录位置是 <code>/opt/gcc-arm-none-eabi-4_9-2015q3/</code> ，我们的 WSL 是64位的，需要下载 64 位的 gcc-arm-none-eabi ，解压的文件可以直接删除。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo rm -rf /opt/gcc-arm-none-eabi-4_9-2015q3
 sudo apt-get install gcc-arm-none-eabi
 source ~/.profile
-</code></pre>
-
-<p>接下来安装 Ninja 构建系统。 Ninja 比 Make 更快，并且 PX4 的CMake 生成器官方支持 Ninja。不幸的是，Ubuntu 目前只支持一个非常过时的版本（Ubuntu 16.04 LTS）。下载二进制文件并添加到系统路径来安装最新版本的 <a href="https://github.com/martine/ninja">Ninja</a>：</p>
-
-<pre><code class="language-bash">mkdir -p $HOME/ninja
+</code></pre></div><p>接下来安装 Ninja 构建系统。 Ninja 比 Make 更快，并且 PX4 的CMake 生成器官方支持 Ninja。不幸的是，Ubuntu 目前只支持一个非常过时的版本（Ubuntu 16.04 LTS）。下载二进制文件并添加到系统路径来安装最新版本的 <a href="https://github.com/martine/ninja">Ninja</a>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $HOME/ninja
 cd $HOME/ninja
 wget https://github.com/martine/ninja/releases/download/v1.8.2/ninja-linux.zip 
-# 最新版本是 v1.8.2，
+<span style="color:#75715e"># 最新版本是 v1.8.2，</span>
 unzip ninja-linux.zip
 rm ninja-linux.zip
-exportline=&quot;export PATH=$HOME/ninja:\$PATH&quot;
-if grep -Fxq &quot;$exportline&quot; ~/.profile; then echo nothing to do ; else echo $exportline &gt;&gt; ~/.profile; fi
+exportline<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">export PATH=</span>$HOME<span style="color:#e6db74">/ninja:\$PATH</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">if</span> grep -Fxq <span style="color:#e6db74">&#34;</span>$exportline<span style="color:#e6db74">&#34;</span> ~/.profile; <span style="color:#66d9ef">then</span> echo nothing to <span style="color:#66d9ef">do</span> ; <span style="color:#66d9ef">else</span> echo $exportline &gt;&gt; ~/.profile; <span style="color:#66d9ef">fi</span>
 . ~/.profile
-</code></pre>
-
-<h3 id="6-进行编译">6、进行编译</h3>
-
-<pre><code class="language-bash">git fetch --tags
+</code></pre></div><h3 id="6进行编译">6、进行编译</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git fetch --tags
 git checkout ArduSub-stable
 git submodule update --recursive
 ./waf configure --board px4-v2
 ./waf build sub
-# 编译并下载程序到飞控，注意 WSL 不支持这么做
+<span style="color:#75715e"># 编译并下载程序到飞控，注意 WSL 不支持这么做</span>
 ./waf --upload sub
-</code></pre>
-
-<h3 id="7-下载程序">7、下载程序</h3>
-
+</code></pre></div><h3 id="7下载程序">7、下载程序</h3>
 <p>下载程序需要使用 QGroundControl 或者 ArduSub Companion Web Interface。操作方法见如下两图。</p>
-
-<figure class="center">
-    <img src="/img/build-environment-for-ardusub/firmware-setup.png"
-         alt="QGroundControl Firmware Setup"/> <figcaption>
-            <h4>QGroundControl Firmware Setup</h4>
-        </figcaption>
-</figure>
-
-<figure class="center">
-    <img src="/img/build-environment-for-ardusub/pixhawk-firmware-update.png"
-         alt="ArduSub Companion Web Interface Pixhawk Firmware Update"/> <figcaption>
-            <h4>ArduSub Companion Web Interface Pixhawk Firmware Update</h4>
-        </figcaption>
-</figure>
-
-<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount"></a></p>
     </div>
 
     
@@ -471,7 +400,7 @@ git submodule update --recursive
     &copy; 
     
       2015 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

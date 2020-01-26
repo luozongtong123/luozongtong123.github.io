@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.2" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/qt-coding-in-vscode/" />
@@ -57,16 +57,13 @@
 <meta property="article:modified_time" content="2019-11-11T17:30:25+08:00" />
 <meta itemprop="name" content="在 Visual Studio Code 中编写 Qt 代码">
 <meta itemprop="description" content="对 Qt Creator 的界面是在是不能忍受，所以萌生了改用 Visual Studio Code 的想法，探索一番，成功实现 Qt 代码在 VSCode 中的代码提示和调试的功能。">
-
-
 <meta itemprop="datePublished" content="2019-11-11T17:30:25&#43;08:00" />
 <meta itemprop="dateModified" content="2019-11-11T17:30:25&#43;08:00" />
-<meta itemprop="wordCount" content="752">
+<meta itemprop="wordCount" content="727">
 
 
 
-<meta itemprop="keywords" content="Qt,Visual Studio Code,CMake," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Qt,Visual Studio Code,CMake," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在 Visual Studio Code 中编写 Qt 代码"/>
 <meta name="twitter:description" content="对 Qt Creator 的界面是在是不能忍受，所以萌生了改用 Visual Studio Code 的想法，探索一番，成功实现 Qt 代码在 VSCode 中的代码提示和调试的功能。"/>
 
@@ -140,7 +137,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-11-11 </span>
         
-        <span class="more-meta"> 约 752 字 </span>
+        <span class="more-meta"> 约 727 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -152,14 +149,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#qmake">Qmake</a></li>
-<li><a href="#cmake">CMake</a></li>
-<li><a href="#visual-studio-code">Visual Studio Code</a></li>
-<li><a href="#参考">参考</a></li>
-</ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
 
@@ -169,145 +159,120 @@
     
     <div class="post-content">
       <p>对 Qt Creator 的界面是在是不能忍受，所以萌生了改用 Visual Studio Code 的想法，探索一番，成功实现 Qt 代码在 VSCode 中的代码提示和调试的功能。</p>
-
 <h1 id="qmake">Qmake</h1>
-
 <p>Qt Creator，准确的说应该是 Qmake，使用 <code>.pro</code> 来进行项目的管理，包括设定头文件包含目录、链接库、<code>.ui</code> 文件、<code>.qrc</code> 文件、以及编译选项等等的管理。Qmake 自动替我们将<code>.ui</code> 文件预处理为 <code>ui_xx.h</code> 文件、<code>.qrc</code> 文件机文件中的资源预处理为 <code>qrc_xx.cpp</code>、将带有 <code>Q_OBJECT</code> 等 Qt 自带宏的头文件预处理为 <code>moc_xx.cpp</code>。这三个预处理过程分别由 <code>uic</code> 、<code>rcc</code>、<code>moc</code> 三个工具来完成。</p>
-
 <p>正常来说，只要在 VSCode 中编译任务中将 Qmake 命令写好就可以了，但是，由于 VSCode 中没有 Qmake 的插件，头文件的包含无法自动完成。于是考虑使用 CMake 来进行编译过程的管理。</p>
-
 <h1 id="cmake">CMake</h1>
-
 <p>一个简单的 CMake 例子如下所示：</p>
-
-<pre><code class="language-cmake">cmake_minimum_required(VERSION 3.10)
-
-# your project name
-project(&quot;SubControl&quot;)
-
-add_compile_options(-g -O0 
-                    # -Wno-unused-parameter
-                    -static)
-                    # -shared)
-
-# find includes in the corresponding build directories
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-# run moc automatically
-# set(CMAKE_AUTOMOC ON)
-# run uic automatically
-# set(CMAKE_AUTOUIC ON)
-# run rcc automatically
-# set (CMAKE_AUTORCC ON)
-
-message(&quot;Looking for Qt...&quot;)
-# Qt modules (https://doc.qt.io/qt-5/qtmodules.html) you're using in your application
-find_package(Qt5 REQUIRED Widgets Core Gui Charts Gamepad)
-if (${Qt5_FOUND})
-    message(&quot;Found Qt &quot; ${Qt5_VERSION})
-else()
-    message(&quot;Couldn't find Qt&quot;)
-endif()
-
-link_libraries(
-    Qt5::Core
-    Qt5::Widgets
-    Qt5::Gui
-    Qt5::Charts
-    Qt5::Gamepad
-    )
-
-qt5_wrap_ui(ui_list 
-    &quot;ui/mainwindow.ui&quot;
-    &quot;ui/videowindow.ui&quot;
-    )
-
-qt5_wrap_cpp(moc_list
-    &quot;inc/chart.h&quot;
-    &quot;inc/mainwindow.h&quot;
-    &quot;inc/qFlightInstruments.h&quot;
-    &quot;inc/videowindow.h&quot;
-)
-
-qt5_add_resources(qrc_list 
-    &quot;assets.qrc&quot;)
-
-# check and search moudles
-find_package(PkgConfig REQUIRED)
-pkg_search_module(GLIB REQUIRED glib-2.0)
-pkg_search_module(LIBSERIALPORT REQUIRED libserialport)
-pkg_search_module(LIBVLC_CORE REQUIRED libVLCQtCore)
-pkg_search_module(LIBVLC_WIDGETS REQUIRED libVLCQtWidgets)
-
-include_directories(
-    ${GLIB_INCLUDE_DIRS} ${LIBSERIALPORT_INCLUDE_DIRS} 
-    ${LIBVL_CCORE_INCLUDE_DIRS} ${LIBVLC_WIDGETS_INCLUDE_DIRS} 
-    )
-
-link_libraries(
-    ${GLIB_LDFLAGS} ${LIBSERIALPORT_LDFLAGS} 
-    ${LIBVLC_CORE_LDFLAGS} ${LIBVLC_WIDGETS_LDFLAGS} 
-    )
-
-ADD_SUBDIRECTORY(ardusub_api)
-link_libraries(ardusub_static)
-# link_libraries(ardusub_shared)
-
-# add include dir
-include_directories(&quot;ardusub_api/mavlink_c_library_v2&quot;)
-include_directories(&quot;inc&quot;)
-
-# your source files
-set(src_list
-    &quot;src/chart.cpp&quot;
-    &quot;src/control.cpp&quot;
-    &quot;src/joystick.cpp&quot;
-    &quot;src/main.cpp&quot;
-    &quot;src/mainwindow.cpp&quot;
-    &quot;src/qFlightInstruments.cpp&quot;
-    &quot;src/timer.cpp&quot;
-    &quot;src/video.cpp&quot;
-    &quot;src/videowindow.cpp&quot;
-)
-
-# name of the .exe file, window flag and the list of things to compile
-# add_executable(${CMAKE_PROJECT_NAME} WIN32 ${sources})
-add_executable(${CMAKE_PROJECT_NAME} ${src_list} ${ui_list} ${moc_list} ${qrc_list})
-</code></pre>
-
-<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmake" data-lang="cmake">cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.10</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># your project name
+</span><span style="color:#75715e"></span>project(<span style="color:#e6db74">&#34;SubControl&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>add_compile_options(<span style="color:#e6db74">-g</span> <span style="color:#e6db74">-O0</span> 
+                    <span style="color:#75715e"># -Wno-unused-parameter
+</span><span style="color:#75715e"></span>                    <span style="color:#e6db74">-static</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>                    <span style="color:#75715e"># -shared)
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># find includes in the corresponding build directories
+</span><span style="color:#75715e"></span>set(<span style="color:#e6db74">CMAKE_INCLUDE_CURRENT_DIR</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># run moc automatically
+</span><span style="color:#75715e"></span><span style="color:#75715e"># set(CMAKE_AUTOMOC ON)
+</span><span style="color:#75715e"></span><span style="color:#75715e"># run uic automatically
+</span><span style="color:#75715e"></span><span style="color:#75715e"># set(CMAKE_AUTOUIC ON)
+</span><span style="color:#75715e"></span><span style="color:#75715e"># run rcc automatically
+</span><span style="color:#75715e"></span><span style="color:#75715e"># set (CMAKE_AUTORCC ON)
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>message(<span style="color:#e6db74">&#34;Looking for Qt...&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Qt modules (https://doc.qt.io/qt-5/qtmodules.html) you&#39;re using in your application
+</span><span style="color:#75715e"></span>find_package(<span style="color:#e6db74">Qt5</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">Widgets</span> <span style="color:#e6db74">Core</span> <span style="color:#e6db74">Gui</span> <span style="color:#e6db74">Charts</span> <span style="color:#e6db74">Gamepad</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>if (<span style="color:#f92672">${</span>Qt5_FOUND<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    message(<span style="color:#e6db74">&#34;Found Qt &#34;</span> <span style="color:#f92672">${</span>Qt5_VERSION<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>else()<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    message(<span style="color:#e6db74">&#34;Couldn&#39;t find Qt&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>link_libraries(
+    <span style="color:#e6db74">Qt5::Core</span>
+    <span style="color:#e6db74">Qt5::Widgets</span>
+    <span style="color:#e6db74">Qt5::Gui</span>
+    <span style="color:#e6db74">Qt5::Charts</span>
+    <span style="color:#e6db74">Qt5::Gamepad</span>
+    )<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>qt5_wrap_ui(<span style="color:#e6db74">ui_list</span> 
+    <span style="color:#e6db74">&#34;ui/mainwindow.ui&#34;</span>
+    <span style="color:#e6db74">&#34;ui/videowindow.ui&#34;</span>
+    )<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>qt5_wrap_cpp(<span style="color:#e6db74">moc_list</span>
+    <span style="color:#e6db74">&#34;inc/chart.h&#34;</span>
+    <span style="color:#e6db74">&#34;inc/mainwindow.h&#34;</span>
+    <span style="color:#e6db74">&#34;inc/qFlightInstruments.h&#34;</span>
+    <span style="color:#e6db74">&#34;inc/videowindow.h&#34;</span>
+)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>qt5_add_resources(<span style="color:#e6db74">qrc_list</span> 
+    <span style="color:#e6db74">&#34;assets.qrc&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># check and search moudles
+</span><span style="color:#75715e"></span>find_package(<span style="color:#e6db74">PkgConfig</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>pkg_search_module(<span style="color:#e6db74">GLIB</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">glib-2.0</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>pkg_search_module(<span style="color:#e6db74">LIBSERIALPORT</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">libserialport</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>pkg_search_module(<span style="color:#e6db74">LIBVLC_CORE</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">libVLCQtCore</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>pkg_search_module(<span style="color:#e6db74">LIBVLC_WIDGETS</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">libVLCQtWidgets</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>include_directories(
+    <span style="color:#f92672">${</span>GLIB_INCLUDE_DIRS<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>LIBSERIALPORT_INCLUDE_DIRS<span style="color:#f92672">}</span> 
+    <span style="color:#f92672">${</span>LIBVL_CCORE_INCLUDE_DIRS<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>LIBVLC_WIDGETS_INCLUDE_DIRS<span style="color:#f92672">}</span> 
+    )<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>link_libraries(
+    <span style="color:#f92672">${</span>GLIB_LDFLAGS<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>LIBSERIALPORT_LDFLAGS<span style="color:#f92672">}</span> 
+    <span style="color:#f92672">${</span>LIBVLC_CORE_LDFLAGS<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>LIBVLC_WIDGETS_LDFLAGS<span style="color:#f92672">}</span> 
+    )<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>ADD_SUBDIRECTORY(<span style="color:#e6db74">ardusub_api</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>link_libraries(<span style="color:#e6db74">ardusub_static</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># link_libraries(ardusub_shared)
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># add include dir
+</span><span style="color:#75715e"></span>include_directories(<span style="color:#e6db74">&#34;ardusub_api/mavlink_c_library_v2&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>include_directories(<span style="color:#e6db74">&#34;inc&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># your source files
+</span><span style="color:#75715e"></span>set(<span style="color:#e6db74">src_list</span>
+    <span style="color:#e6db74">&#34;src/chart.cpp&#34;</span>
+    <span style="color:#e6db74">&#34;src/control.cpp&#34;</span>
+    <span style="color:#e6db74">&#34;src/joystick.cpp&#34;</span>
+    <span style="color:#e6db74">&#34;src/main.cpp&#34;</span>
+    <span style="color:#e6db74">&#34;src/mainwindow.cpp&#34;</span>
+    <span style="color:#e6db74">&#34;src/qFlightInstruments.cpp&#34;</span>
+    <span style="color:#e6db74">&#34;src/timer.cpp&#34;</span>
+    <span style="color:#e6db74">&#34;src/video.cpp&#34;</span>
+    <span style="color:#e6db74">&#34;src/videowindow.cpp&#34;</span>
+)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># name of the .exe file, window flag and the list of things to compile
+</span><span style="color:#75715e"></span><span style="color:#75715e"># add_executable(${CMAKE_PROJECT_NAME} WIN32 ${sources})
+</span><span style="color:#75715e"></span>add_executable(<span style="color:#f92672">${</span>CMAKE_PROJECT_NAME<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>src_list<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>ui_list<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>moc_list<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>qrc_list<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><blockquote>
 <p>CMakeLists.txt 来自 <a href="https://github.com/zt-luo/SubControl/blob/master/CMakeLists.txt">SubControl</a> 项目。</p>
 </blockquote>
-
 <p><code>set(CMAKE_AUTOMOC ON)</code> <code>set(CMAKE_AUTOUIC ON)</code> <code>set (CMAKE_AUTORCC ON)</code> 可以打开相应预处理的自动处理开关。不过，自动处理的前提是这些文件需要和源文件在同一个目录下。如果不在一个目录下的话只能通过 <code>qt5_wrap_ui</code> <code>qt5_wrap_cpp</code> <code>qt5_add_resources</code> 来完成预处理的配置。</p>
-
-<div class="admonition-warning">
-    <p class="admonition-warning-title">
-        Important
-    </p>
-    <p>
-
-Qt 模块的第一个字母需要大写。
-
-</p>
-</div>
-
+<!-- raw HTML omitted -->
+<p>Qt 模块的第一个字母需要大写。</p>
+<!-- raw HTML omitted -->
 <h1 id="visual-studio-code">Visual Studio Code</h1>
-
 <p>其实到了这一步基本上已经完成了，开篇提到的任务，已经可以在 VSCode 上完成日常的代码编辑的调试工作了。只需要再安装一个 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools">CMake Tools</a> 扩展即可。</p>
-
 <p>最后，在 <code>.vscode/settings.json</code> 中，添加以下一行就可以让 CMake Tools 自动为 VSCode 提供代码提示公共必要的信息。</p>
-
-<pre><code class="language-json">&quot;C_Cpp.default.configurationProvider&quot;: &quot;vector-of-bool.cmake-tools&quot;
-</code></pre>
-
-<h1 id="参考">参考</h1>
-
-<p><a href="https://retifrav.github.io/blog/2019/05/11/vscode-cmake-qt/">Visual Studio Code and CMake for Qt</a><br />
-<a href="https://blog.csdn.net/Bruce_0712/article/details/53574170">用 cmake 构建 Qt 工程 (对比 qmake 进行学习)</a><br />
-<a href="https://www.cnblogs.com/xiangism/p/4621108.html">qt 的 moc,uic,rcc 命令的使用</a><br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;C_Cpp.default.configurationProvider&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;vector-of-bool.cmake-tools&#34;</span>
+</code></pre></div><h1 id="参考">参考</h1>
+<p><a href="https://retifrav.github.io/blog/2019/05/11/vscode-cmake-qt/">Visual Studio Code and CMake for Qt</a><br>
+<a href="https://blog.csdn.net/Bruce_0712/article/details/53574170">用 cmake 构建 Qt 工程 (对比 qmake 进行学习)</a><br>
+<a href="https://www.cnblogs.com/xiangism/p/4621108.html">qt 的 moc,uic,rcc 命令的使用</a><br>
 <a href="https://blog.csdn.net/hktkfly6/article/details/61922685">linux 给运行程序指定动态库路径</a></p>
-
-<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount"></a></p>
     </div>
 
     
@@ -426,7 +391,7 @@ Qt 模块的第一个字母需要大写。
     &copy; 
     
       2015 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

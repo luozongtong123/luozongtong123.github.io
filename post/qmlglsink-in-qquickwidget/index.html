@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.2" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/qmlglsink-in-qquickwidget/" />
@@ -57,16 +57,13 @@
 <meta property="article:modified_time" content="2019-11-09T21:25:22+08:00" />
 <meta itemprop="name" content="在 QQuickWidget 中使用 qmlglsink 播放视频">
 <meta itemprop="description" content="在 SubControl 地面站软件中视频流最初使用的是 vlc-qt 插件，但由于在调试时发现一个在有视频播放时软件无法正常退出，同时友考虑到 vlc-qt 不够灵活，所以花了点时间探索了下使用 gst-plugins-good 中的 qmlglsink 播放视频。">
-
-
 <meta itemprop="datePublished" content="2019-11-08T11:06:22&#43;08:00" />
 <meta itemprop="dateModified" content="2019-11-09T21:25:22&#43;08:00" />
 <meta itemprop="wordCount" content="1018">
 
 
 
-<meta itemprop="keywords" content="GStreamer,qmlglsink,QT,QQuickWidget," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="GStreamer,qmlglsink,QT,QQuickWidget," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在 QQuickWidget 中使用 qmlglsink 播放视频"/>
 <meta name="twitter:description" content="在 SubControl 地面站软件中视频流最初使用的是 vlc-qt 插件，但由于在调试时发现一个在有视频播放时软件无法正常退出，同时友考虑到 vlc-qt 不够灵活，所以花了点时间探索了下使用 gst-plugins-good 中的 qmlglsink 播放视频。"/>
 
@@ -152,13 +149,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#安装环境">安装环境</a></li>
-<li><a href="#官方例子">官方例子</a></li>
-<li><a href="#c-与-qml-交互">c++ 与 qml 交互</a></li>
-</ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
 
@@ -168,97 +159,72 @@
     
     <div class="post-content">
       <p>在 <a href="https://github.com/zt-luo/SubControl">SubControl</a> 地面站软件中视频流最初使用的是 <a href="https://github.com/vlc-qt/vlc-qt">vlc-qt</a> 插件，但由于在调试时发现一个在有视频播放时软件无法正常退出，同时友考虑到 vlc-qt 不够灵活，所以花了点时间探索了下使用 gst-plugins-good 中的 qmlglsink 播放视频。</p>
-
 <h1 id="安装环境">安装环境</h1>
-
 <p>Qt 的安装就不多说了，GStreamer 的话注意要安装好 gst-plugins-good。如果运行软件时有如下提示则说明环境没有配置好。</p>
-
 <pre><code>module &quot;org.freedesktop.gstreamer.GLVideoItem&quot; is not installed
-</code></pre>
-
-<p>依次做以下检查：</p>
-
-<pre><code class="language-shell">gst-inspect-1.0 qmlglsink
-</code></pre>
-
-<p>不显示 <code>No such element or plugin 'qmlglsink'</code> 或 <code>没有那样的组件或插件‘qmlglsink’</code> 则表明正常，
+</code></pre><p>依次做以下检查：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gst-inspect-1.0 qmlglsink
+</code></pre></div><p>不显示 <code>No such element or plugin 'qmlglsink'</code> 或 <code>没有那样的组件或插件‘qmlglsink’</code> 则表明正常，
 在我的机器上显示找不到 qmlglsink ，但是 gst-plugins-good 确认安装没问题。在谷歌上搜索了一番发现是 qmlglsink 进了黑名单。</p>
-
-<pre><code class="language-shell"># 检查黑名单文件
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 检查黑名单文件</span>
 gst-inspect-1.0 -b
-</code></pre>
-
-<p>输出如下：</p>
-
-<pre><code class="language-shell">Blacklisted files:
+</code></pre></div><p>输出如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Blacklisted files:
   libgstqmlgl.so
 
 文件黑名单:
   libgstqmlgl.so
-</code></pre>
+</code></pre></div><p>排查过程：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 进入 ~/.cache/gstreamer-1.0/</span>
+<span style="color:#75715e"># 注册文件名字为 registry.[arch].bin ，如 registry.x86_64.bin</span>
+cd ~/.cache/gstreamer-1.0/ <span style="color:#f92672">&amp;&amp;</span> ls
 
-<p>排查过程：</p>
-
-<pre><code class="language-shell"># 进入 ~/.cache/gstreamer-1.0/
-# 注册文件名字为 registry.[arch].bin ，如 registry.x86_64.bin
-cd ~/.cache/gstreamer-1.0/ &amp;&amp; ls
-
-# 删除注册文件
+<span style="color:#75715e"># 删除注册文件</span>
 rm registry.x86_64.bin
 
-# 运行 gst-inspect-1.0 刷新注册文件
+<span style="color:#75715e"># 运行 gst-inspect-1.0 刷新注册文件</span>
 gst-inspect-1.0
-</code></pre>
-
-<p>接下来就可以根据提示进行排查原因了。在我的机器上显示如下警告：</p>
-
+</code></pre></div><p>接下来就可以根据提示进行排查原因了。在我的机器上显示如下警告：</p>
 <p><code>(gst-plugin-scanner:5461): GStreamer-WARNING **: 09:58:48.318: Failed to load plugin '/usr/lib/gstreamer-1.0/libgstqmlgl.so': libQt5WaylandClient.so.5: cannot open shared object file: No such file or directory</code></p>
-
 <p>猜测可能跟 Qt5 的 <code>Wayland</code> 协议有关有关。安装 <code>qt5-wayland</code> 包后再进行一次上述的排查过程就可以解决这个问题。</p>
-
 <h1 id="官方例子">官方例子</h1>
-
 <p>例子代码详见 <a href="https://github.com/GStreamer/gst-plugins-good/tree/master/tests/examples/qt/qmlsink">GItHub 链接</a>。</p>
-
 <p>例子的核心代码如下：</p>
-
-<pre><code class="language-cpp">...
-gst_init (&amp;argc, &amp;argv);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">...
+gst_init (<span style="color:#f92672">&amp;</span>argc, <span style="color:#f92672">&amp;</span>argv);
 ...
-GstElement *pipeline = gst_pipeline_new (nullptr);
-GstElement *src = gst_element_factory_make (&quot;videotestsrc&quot;, nullptr);
-GstElement *glupload = gst_element_factory_make (&quot;glupload&quot;, nullptr);
-/* the plugin must be loaded before loading the qml file to register the
- * GstGLVideoItem qml item */
-GstElement *sink = gst_element_factory_make (&quot;qmlglsink&quot;, nullptr);
+GstElement <span style="color:#f92672">*</span>pipeline <span style="color:#f92672">=</span> gst_pipeline_new (<span style="color:#66d9ef">nullptr</span>);
+GstElement <span style="color:#f92672">*</span>src <span style="color:#f92672">=</span> gst_element_factory_make (<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">videotestsrc</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">nullptr</span>);
+GstElement <span style="color:#f92672">*</span>glupload <span style="color:#f92672">=</span> gst_element_factory_make (<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">glupload</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">nullptr</span>);
+<span style="color:#75715e">/* the plugin must be loaded before loading the qml file to register the
+</span><span style="color:#75715e"> * GstGLVideoItem qml item */</span>
+GstElement <span style="color:#f92672">*</span>sink <span style="color:#f92672">=</span> gst_element_factory_make (<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">qmlglsink</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">nullptr</span>);
 ...
-gst_bin_add_many (GST_BIN (pipeline), src, glupload, sink, nullptr);
-gst_element_link_many (src, glupload, sink, nullptr);
+gst_bin_add_many (GST_BIN (pipeline), src, glupload, sink, <span style="color:#66d9ef">nullptr</span>);
+gst_element_link_many (src, glupload, sink, <span style="color:#66d9ef">nullptr</span>);
 ...
 QQmlApplicationEngine engine;
-engine.load(QUrl(QStringLiteral(&quot;qrc:/main.qml&quot;)));
+engine.load(QUrl(QStringLiteral(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">qrc:/main.qml</span><span style="color:#e6db74">&#34;</span>)));
 
-QQuickItem *videoItem;
-QQuickWindow *rootObject;
+QQuickItem <span style="color:#f92672">*</span>videoItem;
+QQuickWindow <span style="color:#f92672">*</span>rootObject;
 
-/* find and set the videoItem on the sink */
-rootObject = static_cast&lt;QQuickWindow *&gt; (engine.rootObjects().first());
-videoItem = rootObject-&gt;findChild&lt;QQuickItem *&gt; (&quot;videoItem&quot;);
+<span style="color:#75715e">/* find and set the videoItem on the sink */</span>
+rootObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>QQuickWindow <span style="color:#f92672">*</span><span style="color:#f92672">&gt;</span> (engine.rootObjects().first());
+videoItem <span style="color:#f92672">=</span> rootObject<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>findChild<span style="color:#f92672">&lt;</span>QQuickItem <span style="color:#f92672">*</span><span style="color:#f92672">&gt;</span> (<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">videoItem</span><span style="color:#e6db74">&#34;</span>);
 g_assert (videoItem);
-g_object_set(sink, &quot;widget&quot;, videoItem, nullptr);
+g_object_set(sink, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">widget</span><span style="color:#e6db74">&#34;</span>, videoItem, <span style="color:#66d9ef">nullptr</span>);
 
-rootObject-&gt;scheduleRenderJob (new SetPlaying (pipeline),
-    QQuickWindow::BeforeSynchronizingStage);
+rootObject<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>scheduleRenderJob (<span style="color:#66d9ef">new</span> SetPlaying (pipeline),
+    QQuickWindow<span style="color:#f92672">:</span><span style="color:#f92672">:</span>BeforeSynchronizingStage);
 ...
 
 ...
-void SetPlaying::run()
+<span style="color:#66d9ef">void</span> SetPlaying<span style="color:#f92672">:</span><span style="color:#f92672">:</span>run()
 ...
 gst_element_set_state(m_pipeline, GST_STATE_PLAYING);
 ...
-</code></pre>
-
-<pre><code class="language-qml">import QtQuick 2.0
+</code></pre></div><pre><code class="language-qml" data-lang="qml">import QtQuick 2.0
 import QtQuick.Controls 1.0
 
 import org.freedesktop.gstreamer.GLVideoItem 1.0
@@ -277,43 +243,33 @@ Rectangle {
         }
     }
 }
-</code></pre>
-
-<p>具体过程如下：<br />
-首先，使用 <code>gst_init()</code> 进行初始化；<br />
-接着，使用 <code>gst_pipeline_new()</code> 和 <code>gst_element_factory_make()</code> 新建 pipeline 和 element；<br />
-接着，使用 <code>gst_bin_add_many()</code> 和  <code>gst_element_link_many()</code> 将所有元素连接起来；<br />
+</code></pre><p>具体过程如下：<br>
+首先，使用 <code>gst_init()</code> 进行初始化；<br>
+接着，使用 <code>gst_pipeline_new()</code> 和 <code>gst_element_factory_make()</code> 新建 pipeline 和 element；<br>
+接着，使用 <code>gst_bin_add_many()</code> 和  <code>gst_element_link_many()</code> 将所有元素连接起来；<br>
 接着，加载 qml ，并找到 <code>videoItem</code> 节点和 <code>Quick Window</code>。
-接着，使用 <code>g_object_set()</code> 设定对象的属性，将 <code>videoItem</code> 作为 <code>widget</code> 添加到 sink；<br />
+接着，使用 <code>g_object_set()</code> 设定对象的属性，将 <code>videoItem</code> 作为 <code>widget</code> 添加到 sink；<br>
 最后，使用 <code>scheduleRenderJob()</code> 在 <code>Quick Window</code> 进行渲染前设定 pipeline 为播放状态。</p>
-
 <p>官方例子是完全使用 Qt Quick 来实现的，在 SubControl 里的界面是使用 Widget 实现的，所以要拿来用的话还要解决 qml 嵌入到 Widget 的问题。</p>
-
 <h1 id="c-与-qml-交互">c++ 与 qml 交互</h1>
-
 <p>所有的 QML 对象类型，包括 QML 引擎内部实现或者实现第三方库，都是 QObject 子类，都允许 QML 引擎使用 Qt 元对象系统动态实例化任何 QML 对象类型。在启动 QML 时，会初始化一个 QQmlEngine 作为 QML 引擎，然后使用 QQmlComponent 对象加载 QML 文档，QML 引擎会提供一个默认的 QQmlContext 对象作为顶层执行的上下文，用来执行 QML 文档中定义的函数和表达式。
 <code>QQmlEngine::rootContext()</code> 返回当前引擎 QML 的上下文。<code>QQuickItem* QQuickView::rootObject()</code> 返回当前 QQuickView 的根节点，也就是 QML 的根节点。</p>
-
 <p>在这里 quickWidget 的实现中的主要区别是寻找到 <code>videoItem</code> 对象的方式不同，其主要代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">QQuickItem <span style="color:#f92672">*</span>videoItem;
+QQuickWindow <span style="color:#f92672">*</span>qQuickWindows;
 
-<pre><code class="language-cpp">QQuickItem *videoItem;
-QQuickWindow *qQuickWindows;
-
-/* find and set the videoItem on the sink */
-videoItem = ui-&gt;quickWidget-&gt;rootObject();
-ideoItem = videoItem-&gt;findChild&lt;QQuickItem *&gt;(&quot;videoItem&quot;);
+<span style="color:#75715e">/* find and set the videoItem on the sink */</span>
+videoItem <span style="color:#f92672">=</span> ui<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>quickWidget<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rootObject();
+ideoItem <span style="color:#f92672">=</span> videoItem<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>findChild<span style="color:#f92672">&lt;</span>QQuickItem <span style="color:#f92672">*</span><span style="color:#f92672">&gt;</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">videoItem</span><span style="color:#e6db74">&#34;</span>);
 assert(videoItem);
-g_object_set(sink, &quot;widget&quot;, videoItem, nullptr);
+g_object_set(sink, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">widget</span><span style="color:#e6db74">&#34;</span>, videoItem, <span style="color:#66d9ef">nullptr</span>);
 
-qQuickWindows = videoItem-&gt;window();
+qQuickWindows <span style="color:#f92672">=</span> videoItem<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>window();
 assert(qQuickWindows);
-qQuickWindows-&gt;scheduleRenderJob(new SetPlaying(pipeline),
-                                     QQuickWindow::BeforeSynchronizingStage);
-</code></pre>
-
-<p>最后，完整的 Demo 见 GitHub <a href="https://github.com/zt-luo/QuickWidgetPlayer">链接</a>。</p>
-
-<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
+qQuickWindows<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>scheduleRenderJob(<span style="color:#66d9ef">new</span> SetPlaying(pipeline),
+                                     QQuickWindow<span style="color:#f92672">:</span><span style="color:#f92672">:</span>BeforeSynchronizingStage);
+</code></pre></div><p>最后，完整的 Demo 见 GitHub <a href="https://github.com/zt-luo/QuickWidgetPlayer">链接</a>。</p>
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount"></a></p>
     </div>
 
     
@@ -434,7 +390,7 @@ qQuickWindows-&gt;scheduleRenderJob(new SetPlaying(pipeline),
     &copy; 
     
       2015 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

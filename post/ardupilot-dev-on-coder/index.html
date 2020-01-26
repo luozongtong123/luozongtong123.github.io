@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.2" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/ardupilot-dev-on-coder/" />
@@ -57,16 +57,13 @@
 <meta property="article:modified_time" content="2019-03-19T09:30:41+08:00" />
 <meta itemprop="name" content="在 Coder 上开发 Ardupilot">
 <meta itemprop="description" content="本地 WSL 编译太慢了，同时又由于 WSL 和原本文件系统之间的一些问题，在 Windows 上的 VSCode 中的代码提醒无法正常工作，这对理解代码非常不友好。所以就向尝试在 Coder 上进行 Ardupilot 的开发。">
-
-
 <meta itemprop="datePublished" content="2019-03-14T11:14:41&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-19T09:30:41&#43;08:00" />
 <meta itemprop="wordCount" content="289">
 
 
 
-<meta itemprop="keywords" content="coder,code-server," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="coder,code-server," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在 Coder 上开发 Ardupilot"/>
 <meta name="twitter:description" content="本地 WSL 编译太慢了，同时又由于 WSL 和原本文件系统之间的一些问题，在 Windows 上的 VSCode 中的代码提醒无法正常工作，这对理解代码非常不友好。所以就向尝试在 Coder 上进行 Ardupilot 的开发。"/>
 
@@ -152,7 +149,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content">
-    
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
 
@@ -162,33 +159,23 @@
     
     <div class="post-content">
       <p>本地 WSL 编译太慢了，同时又由于 WSL 和原本文件系统之间的一些问题，在 Windows 上的 VSCode 中的代码提醒无法正常工作，这对理解代码非常不友好。所以就向尝试在 Coder 上进行 Ardupilot 的开发。</p>
-
 <p>前期尝试使用 Coder 的时候把两个账号里的容器都搞得不纯净了，没法测试安装依赖的步骤是否正确。还有因为 Coder 提供的硬盘空间实在是太小了，用默认的安装依赖的脚本直接把硬盘撑爆了。还好今天 Coder 上线了重置容器的功能，终于可以从零开始配置环境了。</p>
-
 <p>开始之前现需要按照 <a href="/post/coder/">Coder online IDE!</a> 中配置 locale 的方法配置好 locale。</p>
-
 <p>配置编译依赖:</p>
-
-<pre><code class="language-bash">apt install gcc-arm-none-eabi
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install gcc-arm-none-eabi
 apt install python-pip cmake ninja-build
 
 pip2 install --upgrade pip
 pip install future lxml pymavlink MAVProxy
-</code></pre>
-
-<p>开始编译🎉</p>
-
-<pre><code class="language-bash">git clone https://github.com/zt-luo/ardupilot.git ardupilot --recursive
+</code></pre></div><p>开始编译🎉</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/zt-luo/ardupilot.git ardupilot --recursive
 cd ardupilot
 git checkout sub-lab
 
 ./waf configure --board Pixhawk1
 ./waf sub
-</code></pre>
-
-<p>编译的时候容易因为网络问题没有响应,多等一会就好啦.</p>
-
-<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
+</code></pre></div><p>编译的时候容易因为网络问题没有响应,多等一会就好啦.</p>
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount"></a></p>
     </div>
 
     
@@ -305,7 +292,7 @@ git checkout sub-lab
     &copy; 
     
       2015 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

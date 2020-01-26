@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.2" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/coder/" />
@@ -57,16 +57,13 @@
 <meta property="article:modified_time" content="2019-03-16T09:28:18+08:00" />
 <meta itemprop="name" content="Coder online IDE!">
 <meta itemprop="description" content="Coder 是一个基于 Visual Studio Code 的开源的远程开发环境。">
-
-
 <meta itemprop="datePublished" content="2019-03-10T15:52:18&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-16T09:28:18&#43;08:00" />
-<meta itemprop="wordCount" content="1335">
+<meta itemprop="wordCount" content="1324">
 
 
 
-<meta itemprop="keywords" content="coder,Visual Studio Code,code-server," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="coder,Visual Studio Code,code-server," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Coder online IDE!"/>
 <meta name="twitter:description" content="Coder 是一个基于 Visual Studio Code 的开源的远程开发环境。"/>
 
@@ -140,7 +137,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-03-10 </span>
         
-        <span class="more-meta"> 约 1335 字 </span>
+        <span class="more-meta"> 约 1324 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -153,18 +150,12 @@
   
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#缘起">缘起</a></li>
-<li><a href="#前生">前生</a></li>
-<li><a href="#今世">今世</a>
-<ul>
-<li><a href="#登陆和注册">登陆和注册</a></li>
-<li><a href="#安装必要的软件">安装必要的软件</a></li>
-<li><a href="#安装一些扩展">安装一些扩展</a></li>
-<li><a href="#更改字体">更改字体</a></li>
-</ul></li>
-<li><a href="#实际体验">实际体验</a></li>
-</ul>
+  <ul>
+    <li><a href="#登陆和注册">登陆和注册</a></li>
+    <li><a href="#安装必要的软件">安装必要的软件</a></li>
+    <li><a href="#安装一些扩展">安装一些扩展</a></li>
+    <li><a href="#更改字体">更改字体</a></li>
+  </ul>
 </nav>
   </div>
 </div>
@@ -180,114 +171,78 @@
     
     <div class="post-content">
       <p>Coder 是一个基于 Visual Studio Code 的开源的远程开发环境。</p>
-
 <h1 id="缘起">缘起</h1>
-
 <p>在 <a href="https://web.okjike.com/">即刻</a> 的 <a href="https://web.okjike.com/topic/55e02198dcef9f0e00d7b3c3/official">Jithub</a> 话题下看到 <a href="https://github.com/codercom/code-server">code-server</a> 这个每日流行项目。觉得有趣就去了解了一下。code-server 利用 Docker 提供远程的 Visual Studio Code 服务，只需要一个浏览器就能使用 VSCode。自己尝试着在 Windows 10 上的 WSL(Ubuntu 16.04) 上搭建，结果没有成功。不知道是不是 WSL 的问题。思量再三，决定先放弃在 WSL 上尝试的想法。转而去尝试官方提供的在线的服务 <a href="https://coder.com/signup">Coder</a>。</p>
-
 <h1 id="前生">前生</h1>
-
 <p>在此之前也尝试过几个在线的 IDE 。最早是 <a href="https://c9.io/login">Cloud9 IDE</a>，后来也试过 <a href="https://coding.net/">Coding</a> 以及后来的腾讯云开发者平台的 <a href="https://studio.dev.tencent.com/">Cloud Studio</a> 的在线 IDE 服务。试来试去总有种隔靴挠痒的感觉，性能和体验并不好， Cloud9 还是尝试用过一段时间， Coding 的就只是尝试了几下就放弃了。直到看到了 code-server，我知道，这才是我想要的在线 IDE。这三个老大哥的问题是性能体验不好同时还缺乏 Visual Studio Code 多到爆炸的扩展和用户群群体。我不知道这个公司提供的在线服务会不会大火，但我觉得 code-server 这个项目肯定会爆发一阵热潮。</p>
-
 <p>另外，在 Windows 上使用 Visual Studio Code 结合 WSL 编程一直是一个让人头疼的问题，虽然 VSCode 团队也在跟进相关的功能，但是进展一直不是很理想不知道什么时候能够用得上<a href="https://github.com/Microsoft/vscode/issues/63155">#63155</a>。或许 code-server 是一个不错的解决方案。</p>
-
 <h1 id="今世">今世</h1>
-
 <p>code-server 最早在 GitHub 上的一次 Release 是 6 天前，目前基于的是 Visual Studio Code 1.31.1。项目还处在早期发展的阶段。试用 Coder 的在线服务，发现也有一些问题。接下来就把调教过程记录一下。</p>
-
 <h2 id="登陆和注册">登陆和注册</h2>
-
 <p><a href="https://coder.com/signup">注册地址在这</a>。官方提供了 Github 和 Google 的快速登陆，非常贴心。为了防止服务被滥用需要验证你的手机，一个手机号只能注册一个账号。由于注册登陆过程过于简单，具体操作就不说了。</p>
-
-<figure class="center">
-    <img src="/img/coder/coder-welcome.png"
-         alt="coder welcome"/> <figcaption>
-            <h4>coder welcome</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <p>是这熟悉的画面。右下角可以看到 CPU 、内存和硬盘占用。<del>正常模式下内存只有 1GB，在左边那栏的闪电可以开启急速模式，开启后内存变为 16GB，CPU 和网速也变得更强了，可能是现在是公开测试阶段，急速模式好像还没有时间限制</del> 急速模式的开关去掉了。硬盘提供了 3GB，硬盘空间有点小。</p>
-
 <h2 id="安装必要的软件">安装必要的软件</h2>
-
-<pre><code class="language-bash"># 看一下系统的情况 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 看一下系统的情况</span> 
 cat /etc/issue
-Ubuntu 16.04.5 LTS \n \l
+Ubuntu 16.04.5 LTS <span style="color:#ae81ff">\n</span> <span style="color:#ae81ff">\l</span>
 
 uname -a
-Linux coder 4.18.4-041804-generic #201808220230 SMP Wed Aug 22 06:33:04 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+Linux coder 4.18.4-041804-generic <span style="color:#75715e">#201808220230 SMP Wed Aug 22 06:33:04 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span>
 
 df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdbf       3.0G  620M  2.2G  22% /
-</code></pre>
-
-<p>更新一下系统。</p>
-
-<pre><code class="language-bash"># 首先更新一下系统
+</code></pre></div><p>更新一下系统。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 首先更新一下系统</span>
 apt update
 apt upgrade
-</code></pre>
-
-<p>更新系统的时候会出现如下的提示：</p>
-
-<pre><code class="language-shell">$ apt upgrade
+</code></pre></div><p>更新系统的时候会出现如下的提示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ apt upgrade
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
-        LANGUAGE = (unset),
-        LC_ALL = (unset),
-        LANG = &quot;zh_CN.UTF-8&quot;
+        LANGUAGE <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>unset<span style="color:#f92672">)</span>,
+        LC_ALL <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>unset<span style="color:#f92672">)</span>,
+        LANG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zh_CN.UTF-8&#34;</span>
     are supported and installed on your system.
-perl: warning: Falling back to the standard locale (&quot;C&quot;).
-</code></pre>
-
-<p>这是由于 Coder 根据浏览器的设置将容器的 locales 设置成了 <code>zh_CN.UTF-8</code>，而默认的容器中不包含 <code>zh_CN.UTF-8</code> 所以我们需要自己生成或者是该成其他的。设置的方法如下：</p>
-
-<pre><code class="language-bash"># fix locales
+perl: warning: Falling back to the standard locale <span style="color:#f92672">(</span><span style="color:#e6db74">&#34;C&#34;</span><span style="color:#f92672">)</span>.
+</code></pre></div><p>这是由于 Coder 根据浏览器的设置将容器的 locales 设置成了 <code>zh_CN.UTF-8</code>，而默认的容器中不包含 <code>zh_CN.UTF-8</code> 所以我们需要自己生成或者是该成其他的。设置的方法如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># fix locales</span>
 apt install locales
-cat /etc/default/locale # 查看默认的 locale 设置
-locale-gen zh_CN.UTF-8 en_US.UTF-8 # 生成 zh_CN.UTF-8 和 en_US.UTF-8
+cat /etc/default/locale <span style="color:#75715e"># 查看默认的 locale 设置</span>
+locale-gen zh_CN.UTF-8 en_US.UTF-8 <span style="color:#75715e"># 生成 zh_CN.UTF-8 和 en_US.UTF-8</span>
 
-# 设置系统默认 locale
-update-locale LANG=en_US.UTF-8
-# update-locale LANG=zh_CN.UTF-8
+<span style="color:#75715e"># 设置系统默认 locale</span>
+update-locale LANG<span style="color:#f92672">=</span>en_US.UTF-8
+<span style="color:#75715e"># update-locale LANG=zh_CN.UTF-8</span>
 
-# 更改用户 locale
+<span style="color:#75715e"># 更改用户 locale</span>
 nano ~/.bashrc
-# 添加如下一行即可
-export LANG=en_US.UTF-8
-# export LANG=zh_CN.UTF-8
-</code></pre>
-
-<h2 id="安装一些扩展">安装一些扩展</h2>
-
+<span style="color:#75715e"># 添加如下一行即可</span>
+export LANG<span style="color:#f92672">=</span>en_US.UTF-8
+<span style="color:#75715e"># export LANG=zh_CN.UTF-8</span>
+</code></pre></div><h2 id="安装一些扩展">安装一些扩展</h2>
 <p>安装一些常用的 C 语言和 Python 的扩展。</p>
-
 <h2 id="更改字体">更改字体</h2>
-
 <p>甚至可以换成 <code>Fira Code</code> 字体。</p>
-
 <h1 id="实际体验">实际体验</h1>
-
 <p><del>实际体验起来真的和本地的 Visual Studio Code 没什么两样，真的是太强了。</del></p>
-
-<p>目前存在的缺陷：<br />
-- 可以安装简体中文语言包，但是无法切换到简体中文；<br />
-- 无法使用 settings sync，配置同步是个问题；<br />
-- terminal 字体好像无法更改；<br />
-- <del>无法退出登录，想要退出当前账号只能清除浏览器的 cookie；</del> 是有 logout 选项的，在 File 选项下；<br />
-- 无法打开工作区；<br />
-- 一些奇怪的问题，比如无法运行 lsb-release；<br />
-- 磁盘空间只有 3GB，而且只有 2.2GB 可用，太小了；<br />
-- 没有实现 markdown 预览；<br />
-- 容易丢失 socket 连接；</p>
-
-<hr />
-
-<p>update: 2019.03.16<br />
+<p>目前存在的缺陷：</p>
+<ul>
+<li>可以安装简体中文语言包，但是无法切换到简体中文；</li>
+<li>无法使用 settings sync，配置同步是个问题；</li>
+<li>terminal 字体好像无法更改；</li>
+<li><del>无法退出登录，想要退出当前账号只能清除浏览器的 cookie；</del> 是有 logout 选项的，在 File 选项下；</li>
+<li>无法打开工作区；</li>
+<li>一些奇怪的问题，比如无法运行 lsb-release；</li>
+<li>磁盘空间只有 3GB，而且只有 2.2GB 可用，太小了；</li>
+<li>没有实现 markdown 预览；</li>
+<li>容易丢失 socket 连接；</li>
+</ul>
+<hr>
+<p>update: 2019.03.16<br>
 终于可以重置容器了，硬盘空间太小，有一个账号不小心被撑爆了。可以一下还原啦~</p>
-
-<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount"></a></p>
     </div>
 
     
@@ -406,7 +361,7 @@ export LANG=en_US.UTF-8
     &copy; 
     
       2015 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
