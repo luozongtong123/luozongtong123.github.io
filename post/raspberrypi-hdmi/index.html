@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.2" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/raspberrypi-hdmi/" />
@@ -57,16 +57,13 @@
 <meta property="article:modified_time" content="2019-11-12T20:43:21+08:00" />
 <meta itemprop="name" content="Raspberry Pi HDMI 连接显示器黑屏问题">
 <meta itemprop="description" content="记录一下解决树莓派连接显示器黑屏的问题。">
-
-
 <meta itemprop="datePublished" content="2018-01-28T22:56:21&#43;08:00" />
 <meta itemprop="dateModified" content="2019-11-12T20:43:21&#43;08:00" />
-<meta itemprop="wordCount" content="274">
+<meta itemprop="wordCount" content="278">
 
 
 
-<meta itemprop="keywords" content="Raspberry Pi," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Raspberry Pi," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Raspberry Pi HDMI 连接显示器黑屏问题"/>
 <meta name="twitter:description" content="记录一下解决树莓派连接显示器黑屏的问题。"/>
 
@@ -140,7 +137,7 @@
       <div class="post-meta">
         <span class="post-time"> 2018-01-28 </span>
         
-        <span class="more-meta"> 约 274 字 </span>
+        <span class="more-meta"> 约 278 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -155,14 +152,12 @@
     
     <div class="post-content">
       <p>记录一下解决树莓派连接显示器黑屏的问题。</p>
-
-<p><strong>树莓派版本：</strong>3<br />
-<strong>显示器：</strong>  4:3的长城显示器，通过 HDMI 转 VGA 的转接头连接。<br />
-<strong>问题描述</strong>：树莓派通过 HDMI 接口连接显示器。只有第一次成功显示，之后再也无法显示。第一次显示的时候也有部分屏幕无法显示。<br />
-<strong>解决方法：</strong><br />
-<strong>修改 SD 卡 boot 分区的 config.txt 文件。</strong><br />
+<p>**树莓派版本：**3<br>
+<strong>显示器：</strong>  4:3的长城显示器，通过 HDMI 转 VGA 的转接头连接。<br>
+<strong>问题描述</strong>：树莓派通过 HDMI 接口连接显示器。只有第一次成功显示，之后再也无法显示。第一次显示的时候也有部分屏幕无法显示。<br>
+<strong>解决方法：</strong><br>
+<strong>修改 SD 卡 boot 分区的 config.txt 文件。</strong><br>
 将 SD 卡插入到电脑中，首先备份 config.txt 文件，然后使用编辑器打开，加入以下几个选项：</p>
-
 <pre><code>hdmi_force_hotplug=1
 config_hdmi_boost=4
 hdmi_group=2
@@ -170,18 +165,13 @@ hdmi_mode=35
 hdmi_drive=2
 hdmi_ignore_edid=0xa5000080
 disable_overscan=1      
-</code></pre>
-
-<p>其中 hdmi_mode 需要根据实际情况修改为正确的数值，具体数值 <a href="https://www.raspberrypi.org/documentation/configuration/config-txt/video.md">在这</a>(搜索 hdmi_mode) 查看。</p>
-
+</code></pre><p>其中 hdmi_mode 需要根据实际情况修改为正确的数值，具体数值 <a href="https://www.raspberrypi.org/documentation/configuration/config-txt/video.md">在这</a>(搜索 hdmi_mode) 查看。</p>
 <p>这里我的显示器分辨率是 1280*1024，所以修改为 hdmi_mode=35。</p>
-
-<p>参考：<br />
-<a href="http://blog.lxx1.com/1706">解决树莓派使用 HDMI-VGA 转换器黑屏的方案</a><br />
-<a href="https://www.raspberrypi.org/documentation/configuration/config-txt/README.md">树莓派配置文件 CONFIG.TXT</a><br />
+<p>参考：<br>
+<a href="http://blog.lxx1.com/1706">解决树莓派使用 HDMI-VGA 转换器黑屏的方案</a><br>
+<a href="https://www.raspberrypi.org/documentation/configuration/config-txt/README.md">树莓派配置文件 CONFIG.TXT</a><br>
 <a href="https://www.raspberrypi.org/documentation/configuration/config-txt/video.md">VIDEO OPTIONS IN CONFIG.TXT</a></p>
-
-<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount"></a></p>
     </div>
 
     
@@ -296,7 +286,7 @@ disable_overscan=1
     &copy; 
     
       2015 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

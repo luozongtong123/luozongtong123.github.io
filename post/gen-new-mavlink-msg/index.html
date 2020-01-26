@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.2" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/gen-new-mavlink-msg/" />
@@ -57,16 +57,13 @@
 <meta property="article:modified_time" content="2019-04-20T10:01:46+08:00" />
 <meta itemprop="name" content="自定义 Mavlink 消息">
 <meta itemprop="description" content="MAVLink 是一个很轻量的应用层通信协议，最初是应用与无人机领域，目前已经在小型机器人无人车无人水下航行器等领域有所应用。本文主要是介绍如何生成自定义的 MAVLink 消息。">
-
-
 <meta itemprop="datePublished" content="2019-04-19T10:23:46&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-20T10:01:46&#43;08:00" />
-<meta itemprop="wordCount" content="1288">
+<meta itemprop="wordCount" content="1283">
 
 
 
-<meta itemprop="keywords" content="MAVLink,mavgen," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="MAVLink,mavgen," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="自定义 Mavlink 消息"/>
 <meta name="twitter:description" content="MAVLink 是一个很轻量的应用层通信协议，最初是应用与无人机领域，目前已经在小型机器人无人车无人水下航行器等领域有所应用。本文主要是介绍如何生成自定义的 MAVLink 消息。"/>
 
@@ -144,7 +141,7 @@
               <a href="/categories/ardupilot/"> Ardupilot </a>
             
           </div>
-        <span class="more-meta"> 约 1288 字 </span>
+        <span class="more-meta"> 约 1283 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -157,22 +154,16 @@
   
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#环境的准备">环境的准备</a></li>
-<li><a href="#消息定义文件">消息定义文件</a></li>
-<li><a href="#添加自定义消息">添加自定义消息</a>
-<ul>
-<li><a href="#补充现有通信协议">补充现有通信协议</a></li>
-<li><a href="#编写你自己的-方言">编写你自己的“方言”</a></li>
-</ul></li>
-<li><a href="#编译到具体语言">编译到具体语言</a>
-<ul>
-<li><a href="#mavgenerate">mavgenerate</a></li>
-<li><a href="#mavgen">mavgen</a></li>
-<li><a href="#update-c-library">update_c_library</a></li>
-</ul></li>
-<li><a href="#参考">参考</a></li>
-</ul>
+  <ul>
+    <li><a href="#补充现有通信协议">补充现有通信协议</a></li>
+    <li><a href="#编写你自己的方言">编写你自己的“方言”</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#mavgenerate">mavgenerate</a></li>
+    <li><a href="#mavgen">mavgen</a></li>
+    <li><a href="#update_c_library">update_c_library</a></li>
+  </ul>
 </nav>
   </div>
 </div>
@@ -183,34 +174,23 @@
     
     <div class="post-content">
       <p>MAVLink 是一个很轻量的应用层通信协议，最初是应用与无人机领域，目前已经在小型机器人无人车无人水下航行器等领域有所应用。本文主要是介绍如何生成自定义的 MAVLink 消息。</p>
-
 <h1 id="环境的准备">环境的准备</h1>
-
 <p>MAVLink tools 需要如下依赖：</p>
-
 <ul>
 <li><a href="https://www.python.org/">Python</a> 2.7+ 或 Python 3.3+ ：工具链是用 Python 写的</li>
-<li>Python <a href="http://python-future.org/">future</a> module：提供 Python <sup>2</sup>&frasl;<sub>3</sub> 的兼容层</li>
+<li>Python <a href="http://python-future.org/">future</a> module：提供 Python 2/3 的兼容层</li>
 <li>(可选) Python <a href="https://wiki.python.org/moin/TkInter">TkInter</a> module：GUI 工具</li>
 <li>(可选) 添加仓库到环境变量：可直接从命令行中调用；也可以 cd 到仓库目录</li>
 </ul>
-
 <p>以 ArchLinux 为例简单说明下依赖的安装：</p>
-
-<pre><code class="language-bash">sudo pacman -S python-pip
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S python-pip
 pip install --user future
 sudo pacman -S python-tk
-</code></pre>
-
-<p>然后克隆 mavlink 仓库：</p>
-
-<pre><code class="language-bash">cd ~
+</code></pre></div><p>然后克隆 mavlink 仓库：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~
 git clone https://github.com/zt-luo/mavlink.git
 git submodule update --init --recursive
-</code></pre>
-
-<p>仓库的结构如下：</p>
-
+</code></pre></div><p>仓库的结构如下：</p>
 <pre><code>.
 ├── cmake
 ├── ...
@@ -251,112 +231,77 @@ git submodule update --init --recursive
     ├── test.sh
     ├── travis_update_generated_repos.sh
     └── update_c_library.sh
-</code></pre>
-
-<h1 id="消息定义文件">消息定义文件</h1>
-
+</code></pre><h1 id="消息定义文件">消息定义文件</h1>
 <p>MAVLink协议中的消息是由XML文件定义的。仓库中的 message_definitions 存放着官方的消息定义文件。每一个XML文件定义了一组受特定系统支持的消息，这每一组消息被称为一种“方言”。受大多数地面站软件和自动驾驶仪支持的消息集合在“common.xml”中定义。Ardupilot的“方言”定义在“ardupilotmega.xml”文件中。</p>
-
 <p>MAVLink XML 语法规则如下：</p>
-
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;mavlink&gt;
-    &lt;include&gt;common.xml&lt;/include&gt;
-    &lt;include&gt;other_dialect.xml&lt;/include&gt;
-    &lt;!-- NOTE: If the included file already contains a version tag, 
-    remove the version tag here, else uncomment to enable. --&gt;
-    &lt;version&gt;6&lt;/version&gt;
-    &lt;dialect&gt;8&lt;/dialect&gt;
-    &lt;enums&gt;
-        &lt;!-- Enums are defined here (optional) --&gt;
-      &lt;enum name=&quot;NAME_OF_ENUM&quot;&gt;
-        &lt;entry value=&quot;1&quot; name=&quot;NAME_OF_ENUM_ENTRY1&quot;/&gt;
-        &lt;entry value=&quot;2&quot; name=&quot;NAME_OF_ENUM_ENTRY2&quot;/&gt;
-        &lt;entry value=&quot;3&quot; name=&quot;NAME_OF_ENUM_ENTRY3&quot;/&gt;
-      &lt;/enum&gt;
-    &lt;/enums&gt;
-    &lt;messages&gt;
-        &lt;!-- Messages are defined here (optional) --&gt;
-      &lt;message id=&quot;11065&quot; name=&quot;DEPTH_HOLD&quot;&gt;
-        &lt;description&gt;Hold desire depth.&lt;/description&gt;
-        &lt;field type=&quot;uint8_t&quot; name=&quot;cmd&quot;&gt;1 for enable, 0 for disable.&lt;/field&gt;
-        &lt;field type=&quot;float&quot; name=&quot;depth&quot; units=&quot;m&quot;&gt;desire depth.&lt;/field&gt;
-      &lt;/message&gt;
-    &lt;/messages&gt;
-&lt;/mavlink&gt;
-</code></pre>
-
-<p>include：包含当前方言需要导入的基础方言，一般会包含 common.xml，现已允许多层嵌套<br />
-version：当前协议的版本，如果 include 的文件中包含版本信息则本文件应该去掉版本信息<br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<span style="color:#f92672">&lt;mavlink</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;include</span><span style="color:#f92672">&gt;</span>common.xml<span style="color:#f92672">&lt;/include&gt;</span>
+    <span style="color:#f92672">&lt;include</span><span style="color:#f92672">&gt;</span>other_dialect.xml<span style="color:#f92672">&lt;/include&gt;</span>
+    <span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> NOTE: If the included file already contains a version tag, 
+</span><span style="color:#75715e">    remove the version tag here, else uncomment to enable. </span><span style="color:#75715e">--&gt;</span>
+    <span style="color:#f92672">&lt;version</span><span style="color:#f92672">&gt;</span>6<span style="color:#f92672">&lt;/version&gt;</span>
+    <span style="color:#f92672">&lt;dialect</span><span style="color:#f92672">&gt;</span>8<span style="color:#f92672">&lt;/dialect&gt;</span>
+    <span style="color:#f92672">&lt;enums</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> Enums are defined here (optional) </span><span style="color:#75715e">--&gt;</span>
+      <span style="color:#f92672">&lt;enum</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;NAME_OF_ENUM&#34;</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;entry</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;NAME_OF_ENUM_ENTRY1&#34;</span><span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;entry</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;2&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;NAME_OF_ENUM_ENTRY2&#34;</span><span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;entry</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;3&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;NAME_OF_ENUM_ENTRY3&#34;</span><span style="color:#f92672">/&gt;</span>
+      <span style="color:#f92672">&lt;/enum&gt;</span>
+    <span style="color:#f92672">&lt;/enums&gt;</span>
+    <span style="color:#f92672">&lt;messages</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> Messages are defined here (optional) </span><span style="color:#75715e">--&gt;</span>
+      <span style="color:#f92672">&lt;message</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;11065&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;DEPTH_HOLD&#34;</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;description</span><span style="color:#f92672">&gt;</span>Hold desire depth.<span style="color:#f92672">&lt;/description&gt;</span>
+        <span style="color:#f92672">&lt;field</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;uint8_t&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;cmd&#34;</span><span style="color:#f92672">&gt;</span>1 for enable, 0 for disable.<span style="color:#f92672">&lt;/field&gt;</span>
+        <span style="color:#f92672">&lt;field</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;float&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;depth&#34;</span> <span style="color:#a6e22e">units=</span><span style="color:#e6db74">&#34;m&#34;</span><span style="color:#f92672">&gt;</span>desire depth.<span style="color:#f92672">&lt;/field&gt;</span>
+      <span style="color:#f92672">&lt;/message&gt;</span>
+    <span style="color:#f92672">&lt;/messages&gt;</span>
+<span style="color:#f92672">&lt;/mavlink&gt;</span>
+</code></pre></div><p>include：包含当前方言需要导入的基础方言，一般会包含 common.xml，现已允许多层嵌套<br>
+version：当前协议的版本，如果 include 的文件中包含版本信息则本文件应该去掉版本信息<br>
 dialect：标志特定方言的 ID
-enums：当前方言定义的枚举类型<br />
+enums：当前方言定义的枚举类型<br>
 messages：当前方言定义的消息</p>
-
 <h1 id="添加自定义消息">添加自定义消息</h1>
-
 <h2 id="补充现有通信协议">补充现有通信协议</h2>
-
 <p>以 Ardupilot 的消息定义文件为例，如果想要添加自定义消息只需要在 “ardupilotmega.xml” 文件中添加消息即可。需要注意的是新添加的消息的 ID 和 name 不能和现有的消息重复，同时消息 ID 大于 255 的消息只支持 MAVLink 2。</p>
-
 <p>一个添加自定义实例如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> ARMs ArduSub messages </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;message</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;11065&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;DEPTH_HOLD&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;description</span><span style="color:#f92672">&gt;</span>Hold desire depth.<span style="color:#f92672">&lt;/description&gt;</span>
+  <span style="color:#f92672">&lt;field</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;uint8_t&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;cmd&#34;</span><span style="color:#f92672">&gt;</span>1 for enable, 0 for disable.<span style="color:#f92672">&lt;/field&gt;</span>
+  <span style="color:#f92672">&lt;field</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;float&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;depth&#34;</span> <span style="color:#a6e22e">units=</span><span style="color:#e6db74">&#34;m&#34;</span><span style="color:#f92672">&gt;</span>desire depth.<span style="color:#f92672">&lt;/field&gt;</span>
+<span style="color:#f92672">&lt;/message&gt;</span>
 
-<pre><code class="language-xml">&lt;!-- ARMs ArduSub messages --&gt;
-&lt;message id=&quot;11065&quot; name=&quot;DEPTH_HOLD&quot;&gt;
-  &lt;description&gt;Hold desire depth.&lt;/description&gt;
-  &lt;field type=&quot;uint8_t&quot; name=&quot;cmd&quot;&gt;1 for enable, 0 for disable.&lt;/field&gt;
-  &lt;field type=&quot;float&quot; name=&quot;depth&quot; units=&quot;m&quot;&gt;desire depth.&lt;/field&gt;
-&lt;/message&gt;
-
-&lt;message id=&quot;11066&quot; name=&quot;ATTITUDE_HOLD&quot;&gt;
-  &lt;description&gt;Hold desire attitude.&lt;/description&gt;
-  &lt;field type=&quot;uint8_t&quot; name=&quot;cmd&quot;&gt;1 for enable, 0 for disable.&lt;/field&gt;
-  &lt;field type=&quot;float&quot; name=&quot;yaw&quot; units=&quot;degree&quot;&gt;desire yaw.&lt;/field&gt;
-  &lt;field type=&quot;float&quot; name=&quot;pitch&quot; units=&quot;degree&quot;&gt;desire pitch.&lt;/field&gt;
-  &lt;field type=&quot;float&quot; name=&quot;roll&quot; units=&quot;roll&quot;&gt;desire roll.&lt;/field&gt;
-&lt;/message&gt;
-</code></pre>
-
-<h2 id="编写你自己的-方言">编写你自己的“方言”</h2>
-
-<p>如果你想创建一个新的方言用于你自己的系统，那么只需要参考现 xml 文件的语法规则编写一个新的 xml 文件即可。<br />
+<span style="color:#f92672">&lt;message</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;11066&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;ATTITUDE_HOLD&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;description</span><span style="color:#f92672">&gt;</span>Hold desire attitude.<span style="color:#f92672">&lt;/description&gt;</span>
+  <span style="color:#f92672">&lt;field</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;uint8_t&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;cmd&#34;</span><span style="color:#f92672">&gt;</span>1 for enable, 0 for disable.<span style="color:#f92672">&lt;/field&gt;</span>
+  <span style="color:#f92672">&lt;field</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;float&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;yaw&#34;</span> <span style="color:#a6e22e">units=</span><span style="color:#e6db74">&#34;degree&#34;</span><span style="color:#f92672">&gt;</span>desire yaw.<span style="color:#f92672">&lt;/field&gt;</span>
+  <span style="color:#f92672">&lt;field</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;float&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;pitch&#34;</span> <span style="color:#a6e22e">units=</span><span style="color:#e6db74">&#34;degree&#34;</span><span style="color:#f92672">&gt;</span>desire pitch.<span style="color:#f92672">&lt;/field&gt;</span>
+  <span style="color:#f92672">&lt;field</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;float&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;roll&#34;</span> <span style="color:#a6e22e">units=</span><span style="color:#e6db74">&#34;roll&#34;</span><span style="color:#f92672">&gt;</span>desire roll.<span style="color:#f92672">&lt;/field&gt;</span>
+<span style="color:#f92672">&lt;/message&gt;</span>
+</code></pre></div><h2 id="编写你自己的方言">编写你自己的“方言”</h2>
+<p>如果你想创建一个新的方言用于你自己的系统，那么只需要参考现 xml 文件的语法规则编写一个新的 xml 文件即可。<br>
 需要注意的是新建的 xml 文件需要放到 <code>message_definitions/v1.0</code> 文件夹中。</p>
-
 <h1 id="编译到具体语言">编译到具体语言</h1>
-
 <h2 id="mavgenerate">mavgenerate</h2>
-
 <p>可以使用 mavgenerate.py 工具生成指定的语言。</p>
-
-<figure class="center">
-    <img src="/img/gen-new-mavlink-msg/mavgenerate.png"
-         alt="mavgenerate"/> <figcaption>
-            <h4>mavgenerate</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <h2 id="mavgen">mavgen</h2>
-
 <p>mavgenerate 只是一个 GUI 的包裹工具，其后端是 mavgen。mavgen 是一个命令行的工具，位于 <code>pymavlink/tools/mavgen.py</code>。其使用方法可以参考<a href="https://mavlink.io/en/getting_started/generate_libraries.html#mavgen">这里</a>。</p>
-
-<pre><code class="language-bash"># 显示帮助信息
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 显示帮助信息</span>
 ./pymavlink/tools/mavgen.py -h
-</code></pre>
-
-<h2 id="update-c-library">update_c_library</h2>
-
+</code></pre></div><h2 id="update_c_library">update_c_library</h2>
 <p>由于我做自定义的消息的时候的主要目的是用于 Ardupilot 的开发，所以为了方便我直接使用 <code>scripts/update_c_library.sh</code> 脚本生成 c 语言的版本并且自动同步到 github 的仓库。update_c_library 同样使用 mavgen 作为后端。</p>
-
-<pre><code class="language-bash">./scripts/update_c_library.sh 2 # MAVLink 2 
-./scripts/update_c_library.sh 1 # MAVLink 1
-</code></pre>
-
-<h1 id="参考">参考</h1>
-
-<p><a href="https://mavlink.io/en/">MAVLink Developer Guide</a><br />
-<a href="https://mavlink.io/en/guide/xml_schema.html#enum">MAVLink XML File Schema / Format</a><br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./scripts/update_c_library.sh <span style="color:#ae81ff">2</span> <span style="color:#75715e"># MAVLink 2</span> 
+./scripts/update_c_library.sh <span style="color:#ae81ff">1</span> <span style="color:#75715e"># MAVLink 1</span>
+</code></pre></div><h1 id="参考">参考</h1>
+<p><a href="https://mavlink.io/en/">MAVLink Developer Guide</a><br>
+<a href="https://mavlink.io/en/guide/xml_schema.html#enum">MAVLink XML File Schema / Format</a><br>
 <a href="https://mavlink.io/en/getting_started/generate_libraries.html">Generating MAVLink Libraries</a></p>
-
-<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount"></a></p>
     </div>
 
     
@@ -473,7 +418,7 @@ messages：当前方言定义的消息</p>
     &copy; 
     
       2015 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.2" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/vs-code-can-do-that/" />
@@ -57,16 +57,13 @@
 <meta property="article:modified_time" content="2018-10-23T10:47:37+08:00" />
 <meta itemprop="name" content="Visual Studio Code Can Do That?!">
 <meta itemprop="description" content="在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。">
-
-
 <meta itemprop="datePublished" content="2018-10-22T15:41:37&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-23T10:47:37&#43;08:00" />
-<meta itemprop="wordCount" content="728">
+<meta itemprop="wordCount" content="712">
 
 
 
-<meta itemprop="keywords" content="Visual Studio Code,Font Ligatures,Microsoft Build," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Visual Studio Code,Font Ligatures,Microsoft Build," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Visual Studio Code Can Do That?!"/>
 <meta name="twitter:description" content="在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。"/>
 
@@ -140,7 +137,7 @@
       <div class="post-meta">
         <span class="post-time"> 2018-10-22 </span>
         
-        <span class="more-meta"> 约 728 字 </span>
+        <span class="more-meta"> 约 712 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -155,81 +152,42 @@
     
     <div class="post-content">
       <p>在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。</p>
-
-<figure class="left">
-    <img src="/img/vs-code-can-do-that/build_ppt.png"
-         alt="build_ppt"/> <figcaption>
-            <h4>Microsoft Build 2018 Keynote</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <p>视频是 Microsoft Build 2018 的录像。</p>
-
 <h1 id="视频">视频</h1>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/x5GzCohd4eo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
+<!-- raw HTML omitted -->
 <p>如果你无法访问 YouTube，B 站的搬运如下：
 <a href="https://www.bilibili.com/video/av34408553">VS Code Can Do That?! VS Code Tips and Tricks</a></p>
-
 <h1 id="主题">主题</h1>
-
 <p>You may know or may not know, VS Code 的主题非常丰富。视频中首先说了一下主题，
 其中提到了 <a href="https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2">Cobalt2</a> 主题。这个主题是一个有助于保护眼睛的主题。</p>
-
 <h1 id="合字">合字</h1>
-
 <p>这是一个非常炫酷的功能。Font Ligatures (合字) 可以将几个符号显示时变成一个符号，其效果如下：</p>
-
-<figure class="center">
-    <img src="/img/vs-code-can-do-that/Fira-Code.png"
-         alt="Fira Code"/> <figcaption>
-            <h4>Fira Code</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <p>要实现这个功能首先需要到 GitHub 上下载安装 <a href="https://github.com/tonsky/FiraCode">Fira Code 字体</a>。
 下载后将压缩包解压，Windows 上，打开 ttf 文件夹，全选字体 &gt; 右键 &gt; 安装。</p>
-
 <p>VS Code 中将下面的语句添加到设置文件夹（可能需要重启才会生效）：</p>
-
-<pre><code class="language-json">&quot;editor.fontFamily&quot;: &quot;'Fira Code'&quot;,
-&quot;editor.fontLigatures&quot;: true
-</code></pre>
-
-<p>需要注意的是，如果你需要在字体中选择多个字体，那么你需要将 <code>'Fira Code'</code> 放到第一的位置。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;editor.fontFamily&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;&#39;Fira Code&#39;&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
+<span style="color:#e6db74">&#34;editor.fontLigatures&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#66d9ef">true</span>
+</code></pre></div><p>需要注意的是，如果你需要在字体中选择多个字体，那么你需要将 <code>'Fira Code'</code> 放到第一的位置。</p>
 <h1 id="一些快捷键">一些快捷键</h1>
-
-<p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> ：调出命令面板;<br />
-<kbd>Ctrl</kbd> + <kbd>P</kbd> + <kbd>P</kbd> ：在最近打开的文件之间切换;<br />
-<kbd>Ctrl</kbd> + <kbd>B</kbd>：开关侧栏;<br />
-<kbd>Ctrl</kbd> + <kbd>`</kbd>：开关终端;<br />
-<kbd>Ctrl</kbd> + <kbd>J</kbd>：开关底栏;</p>
-
+<p><!-- raw HTML omitted -->Ctrl<!-- raw HTML omitted --> + <!-- raw HTML omitted -->Shift<!-- raw HTML omitted --> + <!-- raw HTML omitted -->P<!-- raw HTML omitted --> ：调出命令面板;<br>
+<!-- raw HTML omitted -->Ctrl<!-- raw HTML omitted --> + <!-- raw HTML omitted -->P<!-- raw HTML omitted --> + <!-- raw HTML omitted -->P<!-- raw HTML omitted --> ：在最近打开的文件之间切换;<br>
+<!-- raw HTML omitted -->Ctrl<!-- raw HTML omitted --> + <!-- raw HTML omitted -->B<!-- raw HTML omitted -->：开关侧栏;<br>
+<!-- raw HTML omitted -->Ctrl<!-- raw HTML omitted --> + <!-- raw HTML omitted -->`<!-- raw HTML omitted -->：开关终端;<br>
+<!-- raw HTML omitted -->Ctrl<!-- raw HTML omitted --> + <!-- raw HTML omitted -->J<!-- raw HTML omitted -->：开关底栏;</p>
 <h1 id="一些小技巧">一些小技巧</h1>
-
-<p><kbd>Ctrl</kbd> + <kbd>P</kbd> 然后输入 @ ，就可以在当前文件的大纲(Outline)范围内快速跳转，你甚至可以输入<kbd>：</kbd> 然后过滤你需要的内容;<br />
-<kbd>Ctrl</kbd> + <kbd>P</kbd> 然后输入<kbd>：</kbd>可以快速跳转到特定行号；<br />
-<kbd>Ctrl</kbd> + <kbd>P</kbd> 然后输入<kbd>?</kbd>可以查看帮助；</p>
-
+<p><!-- raw HTML omitted -->Ctrl<!-- raw HTML omitted --> + <!-- raw HTML omitted -->P<!-- raw HTML omitted --> 然后输入 @ ，就可以在当前文件的大纲(Outline)范围内快速跳转，你甚至可以输入<!-- raw HTML omitted -->：<!-- raw HTML omitted --> 然后过滤你需要的内容;<br>
+<!-- raw HTML omitted -->Ctrl<!-- raw HTML omitted --> + <!-- raw HTML omitted -->P<!-- raw HTML omitted --> 然后输入<!-- raw HTML omitted -->：<!-- raw HTML omitted -->可以快速跳转到特定行号；<br>
+<!-- raw HTML omitted -->Ctrl<!-- raw HTML omitted --> + <!-- raw HTML omitted -->P<!-- raw HTML omitted --> 然后输入<!-- raw HTML omitted -->?<!-- raw HTML omitted -->可以查看帮助；</p>
 <h1 id="emmet-和-prettier-formatter">Emmet 和 Prettier formatter</h1>
-
 <p>Emmet (前身为 Zen Coding) 是一个能大幅度提高前端开发效率的一个工具。Emmet 可以自动补全 HTML和CSS等，
 甚至可以直接计算表达式的值和自动填写图片的大小。</p>
-
 <p>Prettier formatter 是一个可以自动美化 JavaScript/TypeScript/CSS 的扩展。</p>
-
 <p>由于我不搞前端，这部分就不细说了。</p>
-
-<h1 id="远程调试-azure-上的-node-js">远程调试 Azure 上的 Node.js</h1>
-
+<h1 id="远程调试-azure-上的-nodejs">远程调试 Azure 上的 Node.js</h1>
 <p>很强大。(不懂 Node.js)</p>
-
 <h1 id="提到的插件">提到的插件</h1>
-
 <ol>
 <li>Hop Light ：Burke Holland 喜欢的颜色主题</li>
 <li>Winter is Coming Theme：John Papa 喜欢的颜色主题</li>
@@ -237,12 +195,10 @@
 <li>Cobalt2 Theme Official：据说是对眼睛更好的一个颜色主题</li>
 <li>Azure Cosmos DB：一个可以管理 MongoDB 数据库的扩展</li>
 </ol>
-
 <blockquote>
 <p>发现视频主要讲的是前端开发相关的。两位讲的很有趣。</p>
 </blockquote>
-
-<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount"></a></p>
     </div>
 
     
@@ -361,7 +317,7 @@
     &copy; 
     
       2015 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

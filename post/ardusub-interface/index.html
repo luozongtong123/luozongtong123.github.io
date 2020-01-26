@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.62.2" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/ardusub-interface/" />
@@ -57,16 +57,13 @@
 <meta property="article:modified_time" content="2018-12-18T14:49:19+08:00" />
 <meta itemprop="name" content="Ardusub 的界面">
 <meta itemprop="description" content="ArduSub 的事情又要捡起来了。这篇博客就写一些 ArduSub 留给我们来与其交互的接口。">
-
-
 <meta itemprop="datePublished" content="2018-12-18T14:49:19&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-18T14:49:19&#43;08:00" />
-<meta itemprop="wordCount" content="1046">
+<meta itemprop="wordCount" content="1033">
 
 
 
-<meta itemprop="keywords" content="ArduSub,Pixhawk,Raspberry Pi," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="ArduSub,Pixhawk,Raspberry Pi," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ardusub 的界面"/>
 <meta name="twitter:description" content="ArduSub 的事情又要捡起来了。这篇博客就写一些 ArduSub 留给我们来与其交互的接口。"/>
 
@@ -144,7 +141,7 @@
               <a href="/categories/ardupilot/"> Ardupilot </a>
             
           </div>
-        <span class="more-meta"> 约 1046 字 </span>
+        <span class="more-meta"> 约 1033 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -156,16 +153,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#远程登陆">远程登陆</a></li>
-<li><a href="#串口连接树莓派">串口连接树莓派</a></li>
-<li><a href="#网页界面">网页界面</a></li>
-<li><a href="#其他网页界面">其他网页界面</a></li>
-<li><a href="#浏览器中的终端">浏览器中的终端</a></li>
-<li><a href="#文件浏览器">文件浏览器</a></li>
-</ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
 
@@ -175,129 +163,45 @@
     
     <div class="post-content">
       <p>ArduSub 的事情又要捡起来了。这篇博客就写一些 ArduSub 留给我们来与其交互的接口。</p>
-
 <h1 id="远程登陆">远程登陆</h1>
-
 <p>这是最基本的交互方式，只要树莓派可以正常运行且连接到了同一个网络，我们就可以远程登陆到树莓派进行一些操作。ArduSub 中树莓派的账户密码如下：</p>
-
-<pre><code class="language-json">{
-  &quot;user&quot;: &quot;pi&quot;,
-  &quot;passward&quot;: &quot;companion&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;user&#34;</span>: <span style="color:#e6db74">&#34;pi&#34;</span>,
+  <span style="color:#f92672">&#34;passward&#34;</span>: <span style="color:#e6db74">&#34;companion&#34;</span>
 }
-</code></pre>
-
-<h1 id="串口连接树莓派">串口连接树莓派</h1>
-
+</code></pre></div><h1 id="串口连接树莓派">串口连接树莓派</h1>
 <p>当树莓派甚至都无法连接到网络时，我们可以通过串口连接到树莓派，从而进行一些操作。关于树莓派你可能需要了解<a href="/tags/raspberry-pi/">这些</a>。</p>
-
 <h1 id="网页界面">网页界面</h1>
-
-<p>ArduSub 提供了一个 Web 界面。这个界面的地址是 ip:2770，默认的地址为 <a href="http://192.168.2.2:2770/">192.168.2.2:2770</a>。<br />
+<p>ArduSub 提供了一个 Web 界面。这个界面的地址是 ip:2770，默认的地址为 <a href="http://192.168.2.2:2770/">192.168.2.2:2770</a>。<br>
 这个界面一共有四个部分，分别是 网络(Network)、系统(System)、摄像头(Camera)、路由(Routing)。</p>
-
 <p>网络页面有如下功能：设置 WiFi、检查 WiFi 和网络状态、设置以太网 IP 地址、测试网络上传下载速度、以太网设置(IP 获取方式：手动、DHCP 服务器、DHCP 客户端，默认的 IP 地址是 192.168.2.2)。</p>
-
-<figure class="center">
-    <img src="/img/ardusub-interface/network.png"
-         alt="Network"/> <figcaption>
-            <h4>Network</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <p>系统页面有如下功能：显示 CPU 和内存状态、显示活动的服务、显示视频音频和串口设备的状态、显示 Companion Software 状态和更新 Companion Software、显示当前飞控中的固件版本、更新恢复飞控固件、下载 Web Interface 日志。</p>
-
-<figure class="center">
-    <img src="/img/ardusub-interface/system.png"
-         alt="System"/> <figcaption>
-            <h4>System</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <p>摄像头页面有如下下功能：设置摄像头的详细的信息、传输视频的设置。</p>
-
-<figure class="center">
-    <img src="/img/ardusub-interface/camera.png"
-         alt="Camera"/> <figcaption>
-            <h4>Camera</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <p>路由页面有如下功能：设置终端节点和路由。</p>
-
-<figure class="center">
-    <img src="/img/ardusub-interface/routing.png"
-         alt="Routeing"/> <figcaption>
-            <h4>Routeing</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <p>如果进行如下的节点和路由设置，则意味着 192.168.1.2:14500 与 飞控的串口连接到了一起。这样就可以通过网络通信与飞控进行信息交互。</p>
-
-<figure class="center">
-    <img src="/img/ardusub-interface/endpoints-and-routes.png"
-         alt="Endpoints and Routes"/> <figcaption>
-            <h4>Endpoints and Routes</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <h1 id="其他网页界面">其他网页界面</h1>
-
 <p>除了上面提到的可以直接在网页中访问的界面，还有几个其他的隐藏界面，需要使用链接才能访问。</p>
-
 <p>MAVProxy 页面，地址是 ip:2770/mavproxy，默认的地址为 <a href="http://192.168.2.2:2770/mavproxy">192.168.2.2:2770/mavproxy</a>。在该页面上可以调整 MAVProxy 的设置和重启 MAVProxy 服务。</p>
-
-<figure class="center">
-    <img src="/img/ardusub-interface/mavproxy.png"
-         alt="MAVProxy"/> <figcaption>
-            <h4>MAVProxy</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <p>Git 页面，地址是 ip:2770/git，默认的地址为<a href="http://192.168.2.2:2770/git">192.168.2.2:2770/git</a>。在该页面可以显示当前树莓派上运行的 Companion Software 的仓库的版本号，可以添加远端仓库，并可以进行本地仓库分支的切换。</p>
-
-<figure class="center">
-    <img src="/img/ardusub-interface/git.png"
-         alt="Git"/> <figcaption>
-            <h4>Git</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <p>Waterlinked 页面，地址是 ip:2770/waterlinked，默认的地址为<a href="http://192.168.2.2:2770/waterlinked">192.168.2.2:2770/waterlinked</a>。在该页面可以进行 Waterlinked 水下 GPS 驱动的设置。</p>
-
-<figure class="center">
-    <img src="/img/ardusub-interface/waterlinked.png"
-         alt="Waterlinked"/> <figcaption>
-            <h4>Waterlinked</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <h1 id="浏览器中的终端">浏览器中的终端</h1>
-
-<p>可以直接在浏览器中使用远程连接的方式连接到树莓派的终端。<br />
+<p>可以直接在浏览器中使用远程连接的方式连接到树莓派的终端。<br>
 终端地址为 ip:8088，默认地址为 <a href="http://192.168.2.2:8088/">192.168.2.2:8088</a>。</p>
-
-<figure class="center">
-    <img src="/img/ardusub-interface/terminal.png"
-         alt="Terminal"/> <figcaption>
-            <h4>Terminal</h4>
-        </figcaption>
-</figure>
-
+<!-- raw HTML omitted -->
 <h1 id="文件浏览器">文件浏览器</h1>
-
 <p>可以使用文件浏览器查看、移动、重命名、上传文件。文件浏览器的地址为 ip:7777，默认地址为 <a href="http://192.168.2.2:7777/">192.168.2.2:7777</a>。</p>
-
-<figure class="center">
-    <img src="/img/ardusub-interface/file-manager.png"
-         alt="File Manager"/> <figcaption>
-            <h4>File Manager</h4>
-        </figcaption>
-</figure>
-
-<p>参考：<br />
+<!-- raw HTML omitted -->
+<p>参考：<br>
 <a href="https://www.ardusub.com/operators-manual/companion-web.html">Companion Web Interface</a></p>
-
-<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount" /></a></p>
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount"></a></p>
     </div>
 
     
@@ -416,7 +320,7 @@
     &copy; 
     
       2015 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
