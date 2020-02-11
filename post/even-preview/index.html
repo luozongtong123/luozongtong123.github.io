@@ -25,7 +25,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.62.2" />
+<meta name="generator" content="Hugo 0.64.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/even-preview/" />
@@ -226,7 +226,7 @@
 <p>行内代码使用反引号标记 → <code>print(&quot;hello world&quot;)</code></p>
 <p>上标 X<!-- raw HTML omitted -->2<!-- raw HTML omitted --> / 下标 X<!-- raw HTML omitted -->2<!-- raw HTML omitted --></p>
 <p>按键 <!-- raw HTML omitted -->Ctrl<!-- raw HTML omitted --></p>
-<p>外链 <a href="https://chekun.me">chekun's blog</a></p>
+<p>外链 <a href="https://chekun.me">chekun&rsquo;s blog</a></p>
 <p>页面内段落 <a href="#section-07">图片</a></p>
 <p><em>注意：你可以通过 <code>{#section-id}</code> 方式自定义段落锚点</em></p>
 <p>参考资料 <!-- raw HTML omitted --><a href="#ref01">[1]</a><!-- raw HTML omitted --><!-- raw HTML omitted --><a href="#ref02">[2]</a><!-- raw HTML omitted --></p>
@@ -620,9 +620,9 @@ c2(no)-&gt;op2-&gt;e
   <span style="color:#a6e22e">enable</span> = <span style="color:#66d9ef">true</span>
   <span style="color:#a6e22e">options</span> = <span style="color:#e6db74">&#34;&#34;</span>
 </code></pre></div><p>Configure for a single post in the front matter (<strong>Params in front matter have higher precedence</strong>):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">flowchartDiagrams:
-  enable: <span style="color:#66d9ef">true</span>
-  options: <span style="color:#e6db74">&#34;{
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">flowchartDiagrams</span>:
+  <span style="color:#66d9ef">enable</span>: <span style="color:#66d9ef">true</span>
+  <span style="color:#66d9ef">options</span>: <span style="color:#e6db74">&#34;{
 </span><span style="color:#e6db74">              &#39;x&#39;: 0,
 </span><span style="color:#e6db74">              &#39;y&#39;: 0,
 </span><span style="color:#e6db74">              &#39;line-width&#39;: 3,
@@ -675,9 +675,9 @@ Andrew-&gt;&gt;China: I am good thanks!
   <span style="color:#a6e22e">enable</span> = <span style="color:#66d9ef">true</span>
   <span style="color:#a6e22e">options</span> = <span style="color:#e6db74">&#34;{theme: &#39;hand&#39;}&#34;</span>
 </code></pre></div><p>Configure for a single post in the front matter (<strong>Params in front matter have higher precedence</strong>):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">sequenceDiagrams: 
-  enable: <span style="color:#66d9ef">true</span>
-  options: <span style="color:#e6db74">&#34;{theme: &#39;hand&#39;}&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">sequenceDiagrams</span>: 
+  <span style="color:#66d9ef">enable</span>: <span style="color:#66d9ef">true</span>
+  <span style="color:#66d9ef">options</span>: <span style="color:#e6db74">&#34;{theme: &#39;hand&#39;}&#34;</span>
 </code></pre></div><p>选项</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {
   <span style="color:#75715e">// Change the styling of the diagram, typically one of &#39;simple&#39;, &#39;hand&#39;. New themes can be registered with registerTheme(...).
