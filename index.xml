@@ -6,7 +6,7 @@
     <description>Recent content on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 23 Nov 2019 21:30:44 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 11 Feb 2020 13:00:35 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.ztluo.dev/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,15 @@
       
       <guid>https://blog.ztluo.dev/about/</guid>
       <description>这是一个记录学习和生活的地方。 待填的坑</description>
+    </item>
+    
+    <item>
+      <title>使用 Caddy 部署博客</title>
+      <link>https://blog.ztluo.dev/post/caddy-my-blog/</link>
+      <pubDate>Tue, 11 Feb 2020 13:00:35 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/caddy-my-blog/</guid>
+      <description>&lt;p&gt;Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let’s Encrypt&lt;/a&gt; 申请证书并续约。&lt;/p&gt;</description>
     </item>
     
     <item>

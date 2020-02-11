@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>开启虚拟机系统中的 3D 加速 - luo Space - Coding and thinking.</title>
+  <title>使用 Caddy 部署博客 - luo Space - Coding and thinking.</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="luo" />
-  <meta name="description" content="在虚拟机上使用 ROS 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。
+  <meta name="description" content="Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 Let’s Encrypt 申请证书并续约。
 " />
 
   <meta name="keywords" content="coding, thinking" />
@@ -30,7 +30,7 @@
 <meta name="generator" content="Hugo 0.64.0" />
 
 
-<link rel="canonical" href="https://blog.ztluo.dev/post/play-ros-on-vm2/" />
+<link rel="canonical" href="https://blog.ztluo.dev/post/caddy-my-blog/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -49,23 +49,23 @@
 
 
 
-<meta property="og:title" content="开启虚拟机系统中的 3D 加速" />
-<meta property="og:description" content="在虚拟机上使用 ROS 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。" />
+<meta property="og:title" content="使用 Caddy 部署博客" />
+<meta property="og:description" content="Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 Let’s Encrypt 申请证书并续约。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.ztluo.dev/post/play-ros-on-vm2/" />
-<meta property="article:published_time" content="2019-11-23T21:30:44+08:00" />
-<meta property="article:modified_time" content="2019-11-24T16:03:44+08:00" />
-<meta itemprop="name" content="开启虚拟机系统中的 3D 加速">
-<meta itemprop="description" content="在虚拟机上使用 ROS 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。">
-<meta itemprop="datePublished" content="2019-11-23T21:30:44&#43;08:00" />
-<meta itemprop="dateModified" content="2019-11-24T16:03:44&#43;08:00" />
-<meta itemprop="wordCount" content="343">
+<meta property="og:url" content="https://blog.ztluo.dev/post/caddy-my-blog/" />
+<meta property="article:published_time" content="2020-02-11T13:00:35+08:00" />
+<meta property="article:modified_time" content="2020-02-11T13:00:35+08:00" />
+<meta itemprop="name" content="使用 Caddy 部署博客">
+<meta itemprop="description" content="Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 Let’s Encrypt 申请证书并续约。">
+<meta itemprop="datePublished" content="2020-02-11T13:00:35&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-11T13:00:35&#43;08:00" />
+<meta itemprop="wordCount" content="440">
 
 
 
-<meta itemprop="keywords" content="Unity 3D,VirtualBox,Xubuntu,Ubuntu," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="开启虚拟机系统中的 3D 加速"/>
-<meta name="twitter:description" content="在虚拟机上使用 ROS 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。"/>
+<meta itemprop="keywords" content="Caddy," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用 Caddy 部署博客"/>
+<meta name="twitter:description" content="Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 Let’s Encrypt 申请证书并续约。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -132,12 +132,16 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">开启虚拟机系统中的 3D 加速</h1>
+      <h1 class="post-title">使用 Caddy 部署博客</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-11-23 </span>
-        
-        <span class="more-meta"> 约 343 字 </span>
+        <span class="post-time"> 2020-02-11 </span>
+        <div class="post-category">
+            
+              <a href="/categories/blog/"> Blog </a>
+            
+          </div>
+        <span class="more-meta"> 约 440 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -145,39 +149,76 @@
 
     
     
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#配置">配置</a>
+      <ul>
+        <li><a href="#添加用户">添加用户</a></li>
+        <li><a href="#必要的文件夹">必要的文件夹</a></li>
+        <li><a href="#修改-candy-配置文件">修改 Candy 配置文件</a></li>
+        <li><a href="#配置开机自动启动">配置开机自动启动</a></li>
+        <li><a href="#启动-caddy">启动 Caddy</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
 
     
     
 
     
     <div class="post-content">
-      <p><a href="/post/play-ros-on-vm/">在虚拟机上使用 ROS</a> 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。</p>
-<h1 id="检查是否已经开启了加速">检查是否已经开启了加速</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install nux-tools
-/usr/lib/nux/unity_support_test -p
-</code></pre></div><p>如果如下图所示，Unity 3D supported 后面显示的是那个可爱的绿色 <!-- raw HTML omitted -->yes<!-- raw HTML omitted --> ，那么恭喜你，可以关掉网页了。如果是讨厌的红色 <!-- raw HTML omitted -->no<!-- raw HTML omitted -->，那么就继续往下看吧。😏</p>
-<!-- raw HTML omitted -->
-<h1 id="准备哈系统">准备哈系统</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt upgrade
-sudo apt install build-essential module-assistant dkms
-sudo m-a prepare
-</code></pre></div><h1 id="重新安装哈-virtualbox-的扩展功能">重新安装哈 VirtualBox 的扩展功能</h1>
-<p>挂载扩展功能的 ISO，具体可参见<a href="/post/play-ros-on-vm/">上篇文章</a>。重新安装下扩展功能。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./autorun
-</code></pre></div><h1 id="在-virtualbox-中开启-3d-加速">在 VirtualBox 中开启 3D 加速</h1>
-<p>首先将虚拟机关机。然后进行如下设置：</p>
-<!-- raw HTML omitted -->
-<h1 id="最后再进入系统测试下">最后再进入系统测试下</h1>
-<!-- raw HTML omitted -->
-<p>唉？怎么又是这张图?🤔</p>
-<!-- raw HTML omitted -->
-<p>虽然帧率仍然并不是很高而且帧率波动还比较大但是总的来说勉强够用。</p>
-<p>大功告成！收工。</p>
-<h1 id="参考">参考</h1>
-<p><a href="https://www.linuxbabe.com/virtualbox/speed-up-ubuntu-virtualbox">How to Speed up Ubuntu 16.04 and 17.04 in VirtualBox
-</a><br>
-<a href="https://ubuntuforums.org/showthread.php?t=1856762">Can&rsquo;t run /usr/lib/nux/unity_support_test -p to see if unity is supported</a></p>
-<!-- raw HTML omitted -->
+      <p>Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 <a href="https://letsencrypt.org/">Let’s Encrypt</a> 申请证书并续约。</p>
+<p>Caddy 和我们常用的 Nginx、Apache 等 Web 服务器相比，最大的特点就是部署简单，它拥有基本的 apache 或者 nginx 有的 web server 模块，同时还有一些很有特色的功能，比如: HTTP/2、Automatic HTTPS、Multi-core、Websockets、Markdown、IPv6 等等。</p>
+<h2 id="安装">安装</h2>
+<p>使用官方脚本安装：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo curl https://getcaddy.com | bash -s personal http.git,dns
+</code></pre></div><h2 id="配置">配置</h2>
+<h3 id="添加用户">添加用户</h3>
+<p>添加 www-data 用户组与用户便于管理 www 文件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo groupadd www-data
+sudo useradd -g www-data www-data
+sudo usermod -a -G root www-data
+</code></pre></div><h3 id="必要的文件夹">必要的文件夹</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkdir /etc/caddy
+sudo touch /etc/caddy/Caddyfile
+sudo chown -R root:www-data /etc/caddy
+
+sudo mkdir /etc/ssl/caddy
+sudo chown -R www-data:root /etc/ssl/caddy
+sudo chmod <span style="color:#ae81ff">0770</span> /etc/ssl/caddy
+
+<span style="color:#75715e"># 克隆博客</span>  
+git clone https://github.com/zt-luo/zt-luo.github.io.git /var/www
+sudo chown www-data:www-data /var/www
+</code></pre></div><h3 id="修改-candy-配置文件">修改 Candy 配置文件</h3>
+<pre><code>www.ztluo.dev
+gzip
+tls me@ztluo.dev
+root /var/www/
+</code></pre><h3 id="配置开机自动启动">配置开机自动启动</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo curl -s https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service -o /etc/systemd/system/caddy.service   <span style="color:#75715e"># 从 github 下载 systemd 配置文件</span>
+sudo systemctl daemon-reload        <span style="color:#75715e"># 重新加载 systemd 配置</span>
+sudo systemctl enable caddy.service <span style="color:#75715e"># 设置 caddy 服务自启动</span>
+sudo systemctl status caddy.service <span style="color:#75715e"># 查看 caddy 状态</span>
+</code></pre></div><h3 id="启动-caddy">启动 Caddy</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 启动</span>
+sudo systemctl start caddy.service
+
+<span style="color:#75715e"># 查看状态</span>
+sudo systemctl status caddy.service
+</code></pre></div><p>如果看到 <code>caddy[xxxx]: Serving HTTPS on port 443</code> 说明成功启动，如果没有启动则根据错误提示查找问题。</p>
+<h2 id="参考">参考</h2>
+<p><a href="https://wzfou.com/caddy/">Caddy 最容易上手的 Web Server - 自动化 HTTPS 一分钟部署网站 \ 网盘</a></p>
+<p><a href="http://hits.dwyl.io/ztluo/post"><img src="http://hits.dwyl.io/ztluo/post.svg" alt="HitCount"></a></p>
     </div>
 
     
@@ -188,11 +229,11 @@ sudo m-a prepare
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-11-24</span>
+    <span class="item-content">2020-02-11</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>
-      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/play-ros-on-vm2/index.md" target="_blank">Markdown 文件</a></span>
+      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/caddy-my-blog/index.md" target="_blank">Markdown 文件</a></span>
     </p>
   <p class="copyright-item">
     <span class="item-title">许可协议</span>
@@ -219,27 +260,16 @@ sudo m-a prepare
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/unity-3d/">Unity 3D</a>
-          
-          <a href="/tags/virtualbox/">VirtualBox</a>
-          
-          <a href="/tags/xubuntu/">Xubuntu</a>
-          
-          <a href="/tags/ubuntu/">Ubuntu</a>
+          <a href="/tags/caddy/">Caddy</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/caddy-my-blog/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">使用 Caddy 部署博客</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/play-ros-on-vm/">
-            <span class="next-text nav-default">在虚拟机上使用 ROS</span>
+          <a class="next" href="/post/play-ros-on-vm2/">
+            <span class="next-text nav-default">开启虚拟机系统中的 3D 加速</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -255,8 +285,8 @@ sudo m-a prepare
     <script src="/lib/gitalk/gitalk.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
-    id: '2019-11-23 21:30:44 \x2b0800 CST',
-    title: '开启虚拟机系统中的 3D 加速',
+    id: '2020-02-11 13:00:35 \x2b0800 CST',
+    title: '使用 Caddy 部署博客',
     clientID: '773448aaf0a387786d40',
     clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
     repo: 'zt-luo.github.io',
