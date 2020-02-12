@@ -47,6 +47,3 @@ raspi-config 是 Raspberry PI 官方 Raspbian 镜像自带的一个系统配置�
 raspi-config :arrow_right: `2 Network Options` :arrow_right: `N2 Wi-fi` ，输入SSID和密码即可。  
 
 
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

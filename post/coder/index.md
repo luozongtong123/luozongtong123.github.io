@@ -98,6 +98,3 @@ update: 2019.03.16
 
 
 
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

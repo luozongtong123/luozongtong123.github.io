@@ -22,7 +22,3 @@
 28天的实习生活将就此开始，期待吧。
 
 
-
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

@@ -95,7 +95,3 @@
 还是那句话，签证千万要提前准备。
 
 
-
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

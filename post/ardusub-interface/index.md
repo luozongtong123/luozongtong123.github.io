@@ -72,5 +72,3 @@ Waterlinked 页面，地址是 ip:2770/waterlinked，默认的地址为[192.168.
 
 
 
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

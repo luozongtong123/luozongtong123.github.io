@@ -659,6 +659,3 @@ Note over A,B: Note over both A and B
 
 
 
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

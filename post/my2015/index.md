@@ -12,7 +12,3 @@
 啊，熄灯了，等哪天有时间的~
 
 
-
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

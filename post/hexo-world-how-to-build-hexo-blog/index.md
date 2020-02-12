@@ -561,6 +561,3 @@ npm install hexo-generator-sitemap
 
 
 
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

@@ -133,5 +133,3 @@ Qt 模块的第一个字母需要大写。
 [linux 给运行程序指定动态库路径](https://blog.csdn.net/hktkfly6/article/details/61922685)
 
 
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

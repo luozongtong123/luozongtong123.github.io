@@ -233,5 +233,4 @@ const AP_Param::GroupInfo GCS_MAVLINK::var_info[] = {
 
 
 
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
 

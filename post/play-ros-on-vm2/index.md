@@ -54,5 +54,3 @@ sudo m-a prepare
 [Can't run /usr/lib/nux/unity_support_test -p to see if unity is supported](https://ubuntuforums.org/showthread.php?t=1856762)  
 
 
-<!-- [![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post) -->
-

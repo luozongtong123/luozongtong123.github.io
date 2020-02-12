@@ -27,7 +27,3 @@ URL:关键词                                        ——检索地址中带有
 关键词后加“domainrg”                              ——查到所有以org为后缀的网站
 
 
-
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

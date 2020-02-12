@@ -33,6 +33,11 @@ sudo mkdir /etc/ssl/caddy
 sudo chown -R www-data:root /etc/ssl/caddy
 sudo chmod 0770 /etc/ssl/caddy
 
+sudo touch /var/log/caddy.log
+sudo chown root:www-data /var/log/caddy.log
+sudo chmod 770 /var/log/caddy.log
+
+
 # 克隆博客  
 git clone https://github.com/zt-luo/zt-luo.github.io.git /var/www
 sudo chown www-data:www-data /var/www
@@ -40,11 +45,15 @@ sudo chown www-data:www-data /var/www
 
 ### 修改 Candy 配置文件  
 
+`nano /etc/caddy/Caddyfile`  
+
 ```
-www.ztluo.dev
-gzip
-tls me@ztluo.dev
-root /var/www/
+www.ztluo.dev {
+  gzip
+  tls me@ztluo.dev
+  root /var/www/
+  log /var/log/caddy.log
+}
 ```
 
 ### 配置开机自动启动  
@@ -70,7 +79,6 @@ sudo systemctl status caddy.service
 
 ## 参考  
 
-[Caddy 最容易上手的 Web Server - 自动化 HTTPS 一分钟部署网站 \ 网盘](https://wzfou.com/caddy/)
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
+[Caddy 最容易上手的 Web Server - 自动化 HTTPS 一分钟部署网站 \ 网盘](https://wzfou.com/caddy/)  
+[systemd Service Unit for Caddy](https://github.com/caddyserver/caddy/tree/master/dist/init/linux-systemd)  
 

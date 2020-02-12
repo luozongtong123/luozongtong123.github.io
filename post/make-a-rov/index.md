@@ -237,7 +237,3 @@ chmod u+x start_video_streaming.sh
 推进器框架选择 Vectored-6DOF。
 
 
-
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

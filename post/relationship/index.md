@@ -85,7 +85,3 @@
 > 现在的我是怎样，都是我对待生活的态度。
 
 
-
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

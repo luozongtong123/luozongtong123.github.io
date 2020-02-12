@@ -135,6 +135,3 @@ for i in range(1, len(s)):  # 产生符合 MarkDown 语法的数据，并 print 
 
 
 
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

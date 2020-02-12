@@ -253,7 +253,3 @@ scoop install <bucket>/<app>
 4. [Scoop - A command-line installer for Windows](https://scoop.sh/)  
 
 
-
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

@@ -163,5 +163,3 @@ git commit -am "Update submodule url."
 
 
 
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

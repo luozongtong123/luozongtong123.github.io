@@ -61,7 +61,3 @@ source ~/.zshrc
 https://linux.cn/article-3288-1.html  
 
 
-
-
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

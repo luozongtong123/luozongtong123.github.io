@@ -168,5 +168,3 @@ mavgenerate 只是一个 GUI 的包裹工具，其后端是 mavgen。mavgen 是�
 
 
 
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

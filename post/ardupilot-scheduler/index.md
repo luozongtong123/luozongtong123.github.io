@@ -477,5 +477,3 @@ chBSemSignal(&_timer_semaphore);
 
 
 
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-

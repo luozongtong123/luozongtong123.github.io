@@ -133,5 +133,3 @@ echo "192.30.253.113  www.github.com" >> /etc/hosts
 ```
 
 
-[![HitCount](http://hits.dwyl.io/ztluo/post.svg)](http://hits.dwyl.io/ztluo/post)
-
