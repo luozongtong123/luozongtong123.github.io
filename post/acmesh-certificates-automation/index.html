@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>使用 Caddy 部署博客 - luo Space - Coding and thinking.</title>
+  <title>使用 acme.sh 进行 ssl 证书自动化管理 - luo Space - Coding and thinking.</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="luo" />
-  <meta name="description" content="Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 Let’s Encrypt 申请证书并续约。
+  <meta name="description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。
 " />
 
   <meta name="keywords" content="coding, thinking" />
@@ -30,7 +30,7 @@
 <meta name="generator" content="Hugo 0.64.0" />
 
 
-<link rel="canonical" href="https://blog.ztluo.dev/post/caddy-my-blog/" />
+<link rel="canonical" href="https://blog.ztluo.dev/post/acmesh-certificates-automation/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -49,23 +49,23 @@
 
 
 
-<meta property="og:title" content="使用 Caddy 部署博客" />
-<meta property="og:description" content="Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 Let’s Encrypt 申请证书并续约。" />
+<meta property="og:title" content="使用 acme.sh 进行 ssl 证书自动化管理" />
+<meta property="og:description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.ztluo.dev/post/caddy-my-blog/" />
-<meta property="article:published_time" content="2020-02-11T13:00:35+08:00" />
-<meta property="article:modified_time" content="2020-02-11T18:35:35+08:00" />
-<meta itemprop="name" content="使用 Caddy 部署博客">
-<meta itemprop="description" content="Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 Let’s Encrypt 申请证书并续约。">
-<meta itemprop="datePublished" content="2020-02-11T13:00:35&#43;08:00" />
-<meta itemprop="dateModified" content="2020-02-11T18:35:35&#43;08:00" />
-<meta itemprop="wordCount" content="462">
+<meta property="og:url" content="https://blog.ztluo.dev/post/acmesh-certificates-automation/" />
+<meta property="article:published_time" content="2020-02-12T11:57:51+08:00" />
+<meta property="article:modified_time" content="2020-02-12T11:57:51+08:00" />
+<meta itemprop="name" content="使用 acme.sh 进行 ssl 证书自动化管理">
+<meta itemprop="description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。">
+<meta itemprop="datePublished" content="2020-02-12T11:57:51&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-12T11:57:51&#43;08:00" />
+<meta itemprop="wordCount" content="170">
 
 
 
-<meta itemprop="keywords" content="Caddy," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="使用 Caddy 部署博客"/>
-<meta name="twitter:description" content="Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 Let’s Encrypt 申请证书并续约。"/>
+<meta itemprop="keywords" content="acme.sh," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用 acme.sh 进行 ssl 证书自动化管理"/>
+<meta name="twitter:description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -132,16 +132,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">使用 Caddy 部署博客</h1>
+      <h1 class="post-title">使用 acme.sh 进行 ssl 证书自动化管理</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-02-11 </span>
-        <div class="post-category">
-            
-              <a href="/categories/blog/"> Blog </a>
-            
-          </div>
-        <span class="more-meta"> 约 462 字 </span>
+        <span class="post-time"> 2020-02-12 </span>
+        
+        <span class="more-meta"> 约 170 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -156,15 +152,9 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#安装">安装</a></li>
-    <li><a href="#配置">配置</a>
-      <ul>
-        <li><a href="#添加用户">添加用户</a></li>
-        <li><a href="#必要的文件夹">必要的文件夹</a></li>
-        <li><a href="#修改-candy-配置文件">修改 Candy 配置文件</a></li>
-        <li><a href="#配置开机自动启动">配置开机自动启动</a></li>
-        <li><a href="#启动-caddy">启动 Caddy</a></li>
-      </ul>
-    </li>
+    <li><a href="#证书签发">证书签发</a></li>
+    <li><a href="#证书安装">证书安装</a></li>
+    <li><a href="#自动更新">自动更新</a></li>
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
@@ -176,57 +166,30 @@
 
     
     <div class="post-content">
-      <p>Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 <a href="https://letsencrypt.org/">Let’s Encrypt</a> 申请证书并续约。</p>
-<p>Caddy 和我们常用的 Nginx、Apache 等 Web 服务器相比，最大的特点就是部署简单，它拥有基本的 apache 或者 nginx 有的 web server 模块，同时还有一些很有特色的功能，比如: HTTP/2、Automatic HTTPS、Multi-core、Websockets、Markdown、IPv6 等等。</p>
+      <p><code>acme.sh</code> 实现了 <code>acme</code> 协议，可以从 <a href="https://letsencrypt.org/">Let’s Encrypt</a> 生成免费的证书。</p>
 <h2 id="安装">安装</h2>
-<p>使用官方脚本安装：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo curl https://getcaddy.com | bash -s personal http.git,dns
-</code></pre></div><h2 id="配置">配置</h2>
-<h3 id="添加用户">添加用户</h3>
-<p>添加 www-data 用户组与用户便于管理 www 文件。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo groupadd www-data
-sudo useradd -g www-data www-data
-sudo usermod -a -G root www-data
-</code></pre></div><h3 id="必要的文件夹">必要的文件夹</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkdir /etc/caddy
-sudo touch /etc/caddy/Caddyfile
-sudo chown -R root:www-data /etc/caddy
-
-sudo mkdir /etc/ssl/caddy
-sudo chown -R www-data:root /etc/ssl/caddy
-sudo chmod <span style="color:#ae81ff">0770</span> /etc/ssl/caddy
-
-sudo touch /var/log/caddy.log
-sudo chown root:www-data /var/log/caddy.log
-sudo chmod <span style="color:#ae81ff">770</span> /var/log/caddy.log
-
-
-<span style="color:#75715e"># 克隆博客</span>  
-git clone https://github.com/zt-luo/zt-luo.github.io.git /var/www
-sudo chown www-data:www-data /var/www
-</code></pre></div><h3 id="修改-candy-配置文件">修改 Candy 配置文件</h3>
-<p><code>nano /etc/caddy/Caddyfile</code></p>
-<pre><code>www.ztluo.dev {
-  gzip
-  tls me@ztluo.dev
-  root /var/www/
-  log /var/log/caddy.log
-}
-</code></pre><h3 id="配置开机自动启动">配置开机自动启动</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo curl -s https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service -o /etc/systemd/system/caddy.service   <span style="color:#75715e"># 从 github 下载 systemd 配置文件</span>
-sudo systemctl daemon-reload        <span style="color:#75715e"># 重新加载 systemd 配置</span>
-sudo systemctl enable caddy.service <span style="color:#75715e"># 设置 caddy 服务自启动</span>
-sudo systemctl status caddy.service <span style="color:#75715e"># 查看 caddy 状态</span>
-</code></pre></div><h3 id="启动-caddy">启动 Caddy</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 启动</span>
-sudo systemctl start caddy.service
-
-<span style="color:#75715e"># 查看状态</span>
-sudo systemctl status caddy.service
-</code></pre></div><p>如果看到 <code>caddy[xxxx]: Serving HTTPS on port 443</code> 说明成功启动，如果没有启动则根据错误提示查找问题。</p>
-<h2 id="参考">参考</h2>
-<p><a href="https://wzfou.com/caddy/">Caddy 最容易上手的 Web Server - 自动化 HTTPS 一分钟部署网站 \ 网盘</a><br>
-<a href="https://github.com/caddyserver/caddy/tree/master/dist/init/linux-systemd">systemd Service Unit for Caddy</a></p>
+<p>为了使用 standalone 模式，需要首先安装 socat 工具。在 standalone 模式下 acme.sh 会在 80 端口上创建一个 web 服务器进行验证，进而完成证书的签发。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay socat
+<span style="color:#75715e"># or</span> 
+yum install socat
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/acmesh-official/acme.sh.git ~/acme.sh
+cd acme.sh
+./acme.sh --install --accountemail <span style="color:#e6db74">&#34;me@ztluo.dev&#34;</span>
+</code></pre></div><h2 id="证书签发">证书签发</h2>
+<p>standalone 模式下签发证书。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --issue --domain blog.ztluo.dev --standalone
+</code></pre></div><p>http 方式，依赖已有的 Caddy 服务器。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --issue --domain blog.ztluo.dev --webroot /var/www/
+</code></pre></div><h2 id="证书安装">证书安装</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /etc/ssl/acmesh/blog.ztluo.dev
+acme.sh --installcert  --domain blog.ztluo.dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        --key-file /etc/ssl/acmesh/blog.ztluo.dev/blog.ztluo.dev.key <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        --fullchain-file /etc/ssl/acmesh/blog.ztluo.dev/blog.ztluo.dev.crt <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        --reloadcmd <span style="color:#e6db74">&#34;service nginx force-reload&#34;</span>
+</code></pre></div><h2 id="自动更新">自动更新</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --upgrade --auto-upgrade
+</code></pre></div><h2 id="参考">参考</h2>
+<p><a href="https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E">acme.sh - 说明</a></p>
     </div>
 
     
@@ -237,11 +200,11 @@ sudo systemctl status caddy.service
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2020-02-11</span>
+    <span class="item-content">2020-02-12</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>
-      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/caddy-my-blog/index.md" target="_blank">Markdown 文件</a></span>
+      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/acmesh-certificates-automation/index.md" target="_blank">Markdown 文件</a></span>
     </p>
   <p class="copyright-item">
     <span class="item-title">许可协议</span>
@@ -268,21 +231,16 @@ sudo systemctl status caddy.service
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/caddy/">Caddy</a>
+          <a href="/tags/acme.sh/">acme.sh</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/acmesh-certificates-automation/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">使用 acme.sh 进行 ssl 证书自动化管理</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/play-ros-on-vm2/">
-            <span class="next-text nav-default">开启虚拟机系统中的 3D 加速</span>
+          <a class="next" href="/post/caddy-my-blog/">
+            <span class="next-text nav-default">使用 Caddy 部署博客</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -298,8 +256,8 @@ sudo systemctl status caddy.service
     <script src="/lib/gitalk/gitalk.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
-    id: '2020-02-11 13:00:35 \x2b0800 CST',
-    title: '使用 Caddy 部署博客',
+    id: '2020-02-12 11:57:51 \x2b0800 CST',
+    title: '使用 acme.sh 进行 ssl 证书自动化管理',
     clientID: '773448aaf0a387786d40',
     clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
     repo: 'zt-luo.github.io',

@@ -6,7 +6,7 @@
     <description>Recent content on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 11 Feb 2020 13:00:35 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 12 Feb 2020 11:57:51 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.ztluo.dev/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,15 @@
       
       <guid>https://blog.ztluo.dev/about/</guid>
       <description>这是一个记录学习和生活的地方。 待填的坑</description>
+    </item>
+    
+    <item>
+      <title>使用 acme.sh 进行 ssl 证书自动化管理</title>
+      <link>https://blog.ztluo.dev/post/acmesh-certificates-automation/</link>
+      <pubDate>Wed, 12 Feb 2020 11:57:51 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/acmesh-certificates-automation/</guid>
+      <description>&lt;p&gt;&lt;code&gt;acme.sh&lt;/code&gt; 实现了 &lt;code&gt;acme&lt;/code&gt; 协议，可以从 &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let’s Encrypt&lt;/a&gt; 生成免费的证书。&lt;/p&gt;</description>
     </item>
     
     <item>
