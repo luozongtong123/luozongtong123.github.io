@@ -56,10 +56,13 @@ www.ztluo.dev {
   root /var/www/blog
   git {
     repo https://github.com/zt-luo/zt-luo.github.io.git
-    hook /webhook "blog/webhook2github"
+    hook /webhook "Secret"
+  }
   log /var/log/caddy.log
 }
 ```
+
+git 选项可以自动拉取 git 仓库的内容，此处配置了 webhook，用来在仓库有 push 时快速地更新网页。hook 选项格式 `hook path secret`。在仓库的设置选项中添加 webhook，其中 `Payload URL` 填写 `blog.ztluo.dev/webhook`，`Content type` 选择 `json`，`Secret` 填写设置的 Secret。
 
 ### 配置开机自动启动  
 
@@ -86,4 +89,5 @@ sudo systemctl status caddy.service
 
 [Caddy 最容易上手的 Web Server - 自动化 HTTPS 一分钟部署网站 \ 网盘](https://wzfou.com/caddy/)  
 [systemd Service Unit for Caddy](https://github.com/caddyserver/caddy/tree/master/dist/init/linux-systemd)  
+[http.git - Caddy User Guide](https://caddyserver.com/v1/docs/http.git)  
 

@@ -59,7 +59,7 @@
 <meta itemprop="description" content="Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 Let’s Encrypt 申请证书并续约。">
 <meta itemprop="datePublished" content="2020-02-11T13:00:35&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-12T23:05:35&#43;08:00" />
-<meta itemprop="wordCount" content="478">
+<meta itemprop="wordCount" content="627">
 
 
 
@@ -141,7 +141,7 @@
               <a href="/categories/blog/"> Blog </a>
             
           </div>
-        <span class="more-meta"> 约 478 字 </span>
+        <span class="more-meta"> 约 627 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -214,10 +214,12 @@ sudo chown -R www-data:www-data /var/www/blog
   root /var/www/blog
   git {
     repo https://github.com/zt-luo/zt-luo.github.io.git
-    hook /webhook &quot;blog/webhook2github&quot;
+    hook /webhook &quot;Secret&quot;
+  }
   log /var/log/caddy.log
 }
-</code></pre><h3 id="配置开机自动启动">配置开机自动启动</h3>
+</code></pre><p>git 选项可以自动拉取 git 仓库的内容，此处配置了 webhook，用来在仓库有 push 时快速地更新网页。hook 选项格式 <code>hook path secret</code>。在仓库的设置选项中添加 webhook，其中 <code>Payload URL</code> 填写 <code>blog.ztluo.dev/webhook</code>，<code>Content type</code> 选择 <code>json</code>，<code>Secret</code> 填写设置的 Secret。</p>
+<h3 id="配置开机自动启动">配置开机自动启动</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo curl -s https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service -o /etc/systemd/system/caddy.service   <span style="color:#75715e"># 从 github 下载 systemd 配置文件</span>
 sudo systemctl daemon-reload        <span style="color:#75715e"># 重新加载 systemd 配置</span>
 sudo systemctl enable caddy.service <span style="color:#75715e"># 设置 caddy 服务自启动</span>
@@ -231,7 +233,8 @@ sudo systemctl status caddy.service
 </code></pre></div><p>如果看到 <code>caddy[xxxx]: Serving HTTPS on port 443</code> 说明成功启动，如果没有启动则根据错误提示查找问题。</p>
 <h2 id="参考">参考</h2>
 <p><a href="https://wzfou.com/caddy/">Caddy 最容易上手的 Web Server - 自动化 HTTPS 一分钟部署网站 \ 网盘</a><br>
-<a href="https://github.com/caddyserver/caddy/tree/master/dist/init/linux-systemd">systemd Service Unit for Caddy</a></p>
+<a href="https://github.com/caddyserver/caddy/tree/master/dist/init/linux-systemd">systemd Service Unit for Caddy</a><br>
+<a href="https://caddyserver.com/v1/docs/http.git">http.git - Caddy User Guide</a></p>
     </div>
 
     
