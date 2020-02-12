@@ -30,7 +30,7 @@ sudo touch /etc/caddy/Caddyfile
 sudo chown -R root:www-data /etc/caddy
 
 sudo mkdir /etc/ssl/caddy
-sudo chown -R www-data:root /etc/ssl/caddy
+sudo chown -R root:www-data /etc/ssl/caddy
 sudo chmod 0770 /etc/ssl/caddy
 
 sudo touch /var/log/caddy.log
@@ -39,8 +39,10 @@ sudo chmod 770 /var/log/caddy.log
 
 
 # 克隆博客  
-git clone https://github.com/zt-luo/zt-luo.github.io.git /var/www
+sudo mkdir /var/www
 sudo chown www-data:www-data /var/www
+sudo git clone https://github.com/zt-luo/zt-luo.github.io.git /var/www/blog
+sudo chown -R www-data:www-data /var/www/blog
 ```
 
 ### 修改 Candy 配置文件  
@@ -51,7 +53,10 @@ sudo chown www-data:www-data /var/www
 www.ztluo.dev {
   gzip
   tls me@ztluo.dev
-  root /var/www/
+  root /var/www/blog
+  git {
+    repo https://github.com/zt-luo/zt-luo.github.io.git
+    hook /webhook "blog/webhook2github"
   log /var/log/caddy.log
 }
 ```
