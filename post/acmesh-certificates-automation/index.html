@@ -54,12 +54,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.ztluo.dev/post/acmesh-certificates-automation/" />
 <meta property="article:published_time" content="2020-02-12T11:57:51+08:00" />
-<meta property="article:modified_time" content="2020-02-12T11:57:51+08:00" />
+<meta property="article:modified_time" content="2020-02-15T18:51:51+08:00" />
 <meta itemprop="name" content="使用 acme.sh 进行 ssl 证书自动化管理">
 <meta itemprop="description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。">
 <meta itemprop="datePublished" content="2020-02-12T11:57:51&#43;08:00" />
-<meta itemprop="dateModified" content="2020-02-12T11:57:51&#43;08:00" />
-<meta itemprop="wordCount" content="182">
+<meta itemprop="dateModified" content="2020-02-15T18:51:51&#43;08:00" />
+<meta itemprop="wordCount" content="292">
 
 
 
@@ -137,7 +137,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-02-12 </span>
         
-        <span class="more-meta"> 约 182 字 </span>
+        <span class="more-meta"> 约 292 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -155,6 +155,7 @@
     <li><a href="#证书签发">证书签发</a></li>
     <li><a href="#证书安装">证书安装</a></li>
     <li><a href="#自动更新">自动更新</a></li>
+    <li><a href="#dns-caa">DNS CAA</a></li>
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
@@ -188,9 +189,12 @@ acme.sh --installcert  --domain blog.ztluo.dev <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>        --reloadcmd <span style="color:#e6db74">&#34;service nginx force-reload&#34;</span>
 </code></pre></div><h2 id="自动更新">自动更新</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --upgrade --auto-upgrade
-</code></pre></div><h2 id="参考">参考</h2>
+</code></pre></div><h2 id="dns-caa">DNS CAA</h2>
+<p>CAA 记录可以告诉浏览器域名的证书是由谁签发的进而防止证书伪造。具体 DNS 记录的构造可以使用 <a href="https://sslmate.com/caa/">CAA Record Helper</a>。填入域名后选择 “Auto-Generate”，即可以根据当前域名对应的网站自动生成相应的策略。</p>
+<h2 id="参考">参考</h2>
 <p><a href="https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E">acme.sh - 说明</a><br>
-<a href="https://letsencrypt.org/zh-cn/docs/">文档 - Let&rsquo;s Encrypt - 免费的 SSL_TLS 证书</a></p>
+<a href="https://letsencrypt.org/zh-cn/docs/">文档 - Let&rsquo;s Encrypt - 免费的 SSL_TLS 证书</a><br>
+<a href="https://cjk.aiao.today/dns-caa-setting-step-by-step/">超快速 DNS CAA 设定 Step by Step</a></p>
     </div>
 
     
@@ -201,7 +205,7 @@ acme.sh --installcert  --domain blog.ztluo.dev <span style="color:#ae81ff">\
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2020-02-12</span>
+    <span class="item-content">2020-02-15</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>

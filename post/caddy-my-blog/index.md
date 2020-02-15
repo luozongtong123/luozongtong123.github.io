@@ -50,7 +50,7 @@ sudo chown -R www-data:www-data /var/www/blog
 `nano /etc/caddy/Caddyfile`  
 
 ```
-www.ztluo.dev {
+blog.ztluo.dev {
   gzip
   tls me@ztluo.dev
   root /var/www/blog
