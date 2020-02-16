@@ -65,7 +65,7 @@ acme.sh --upgrade --auto-upgrade
 
 ## DNS CAA  
 
-CAA 记录可以告诉浏览器域名的证书是由谁签发的进而防止证书伪造。具体 DNS 记录的构造可以使用 [CAA Record Helper](https://sslmate.com/caa/)。填入域名后选择 “Auto-Generate”，即可以根据当前域名对应的网站自动生成相应的策略。
+CAA 记录可以防止伪造证书，其基本原理是当用户在证书签发机构为其域名申请证书时，证书签发机构会检查相应域名的 CAA 记录，如果记录中不信任当前证书签发机构则拒绝签发证书。具体 DNS 记录的构造可以使用 [CAA Record Helper](https://sslmate.com/caa/)。填入域名后选择 “Auto-Generate”，即可以根据当前域名对应的网站自动生成相应的策略。
 
 ## 参考  
 [acme.sh - 说明](https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E)  

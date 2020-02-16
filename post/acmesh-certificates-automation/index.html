@@ -59,7 +59,7 @@
 <meta itemprop="description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。">
 <meta itemprop="datePublished" content="2020-02-12T11:57:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-15T18:51:51&#43;08:00" />
-<meta itemprop="wordCount" content="376">
+<meta itemprop="wordCount" content="426">
 
 
 
@@ -137,7 +137,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-02-12 </span>
         
-        <span class="more-meta"> 约 376 字 </span>
+        <span class="more-meta"> 约 426 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -201,7 +201,7 @@ sudo chmod g+r /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.key
 </code></pre></div><h2 id="自动更新">自动更新</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --upgrade --auto-upgrade
 </code></pre></div><h2 id="dns-caa">DNS CAA</h2>
-<p>CAA 记录可以告诉浏览器域名的证书是由谁签发的进而防止证书伪造。具体 DNS 记录的构造可以使用 <a href="https://sslmate.com/caa/">CAA Record Helper</a>。填入域名后选择 “Auto-Generate”，即可以根据当前域名对应的网站自动生成相应的策略。</p>
+<p>CAA 记录可以防止伪造证书，其基本原理是当用户在证书签发机构为其域名申请证书时，证书签发机构会检查相应域名的 CAA 记录，如果记录中不信任当前证书签发机构则拒绝签发证书。具体 DNS 记录的构造可以使用 <a href="https://sslmate.com/caa/">CAA Record Helper</a>。填入域名后选择 “Auto-Generate”，即可以根据当前域名对应的网站自动生成相应的策略。</p>
 <h2 id="参考">参考</h2>
 <p><a href="https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E">acme.sh - 说明</a><br>
 <a href="https://letsencrypt.org/zh-cn/docs/">文档 - Let&rsquo;s Encrypt - 免费的 SSL_TLS 证书</a><br>
