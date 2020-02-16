@@ -6,7 +6,7 @@
     <description>Recent content on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Feb 2020 11:57:51 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 16 Feb 2020 09:45:26 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.ztluo.dev/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,15 @@
       
       <guid>https://blog.ztluo.dev/about/</guid>
       <description>这是一个记录学习和生活的地方。 待填的坑</description>
+    </item>
+    
+    <item>
+      <title>服务器安全加固</title>
+      <link>https://blog.ztluo.dev/post/server-security-hardening/</link>
+      <pubDate>Sun, 16 Feb 2020 09:45:26 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/server-security-hardening/</guid>
+      <description>&lt;p&gt;前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。&lt;/p&gt;</description>
     </item>
     
     <item>

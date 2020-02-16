@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>使用 acme.sh 进行 ssl 证书自动化管理 - luo Space - Coding and thinking.</title>
+  <title>服务器安全加固 - luo Space - Coding and thinking.</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="luo" />
-  <meta name="description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。
+  <meta name="description" content="前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。
 " />
 
   <meta name="keywords" content="coding, thinking" />
@@ -30,7 +30,7 @@
 <meta name="generator" content="Hugo 0.64.0" />
 
 
-<link rel="canonical" href="https://blog.ztluo.dev/post/acmesh-certificates-automation/" />
+<link rel="canonical" href="https://blog.ztluo.dev/post/server-security-hardening/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -49,23 +49,23 @@
 
 
 
-<meta property="og:title" content="使用 acme.sh 进行 ssl 证书自动化管理" />
-<meta property="og:description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。" />
+<meta property="og:title" content="服务器安全加固" />
+<meta property="og:description" content="前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.ztluo.dev/post/acmesh-certificates-automation/" />
-<meta property="article:published_time" content="2020-02-12T11:57:51+08:00" />
-<meta property="article:modified_time" content="2020-02-15T18:51:51+08:00" />
-<meta itemprop="name" content="使用 acme.sh 进行 ssl 证书自动化管理">
-<meta itemprop="description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。">
-<meta itemprop="datePublished" content="2020-02-12T11:57:51&#43;08:00" />
-<meta itemprop="dateModified" content="2020-02-15T18:51:51&#43;08:00" />
-<meta itemprop="wordCount" content="376">
+<meta property="og:url" content="https://blog.ztluo.dev/post/server-security-hardening/" />
+<meta property="article:published_time" content="2020-02-16T09:45:26+08:00" />
+<meta property="article:modified_time" content="2020-02-16T09:45:26+08:00" />
+<meta itemprop="name" content="服务器安全加固">
+<meta itemprop="description" content="前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。">
+<meta itemprop="datePublished" content="2020-02-16T09:45:26&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-16T09:45:26&#43;08:00" />
+<meta itemprop="wordCount" content="526">
 
 
 
-<meta itemprop="keywords" content="acme.sh," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="使用 acme.sh 进行 ssl 证书自动化管理"/>
-<meta name="twitter:description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="服务器安全加固"/>
+<meta name="twitter:description" content="前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -132,12 +132,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">使用 acme.sh 进行 ssl 证书自动化管理</h1>
+      <h1 class="post-title">服务器安全加固</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-02-12 </span>
+        <span class="post-time"> 2020-02-16 </span>
         
-        <span class="more-meta"> 约 376 字 </span>
+        <span class="more-meta"> 约 526 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -151,13 +151,14 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#准备用户和文件夹">准备用户和文件夹</a></li>
-    <li><a href="#安装">安装</a></li>
-    <li><a href="#证书签发">证书签发</a></li>
-    <li><a href="#证书安装">证书安装</a></li>
-    <li><a href="#自动更新">自动更新</a></li>
-    <li><a href="#dns-caa">DNS CAA</a></li>
-    <li><a href="#参考">参考</a></li>
+    <li><a href="#远程登录">远程登录</a>
+      <ul>
+        <li><a href="#创建非-root-用户">创建非 root 用户</a></li>
+        <li><a href="#防止密码被爆破">防止密码被爆破</a></li>
+        <li><a href="#远程登录加固">远程登录加固</a></li>
+        <li><a href="#创建服务账户">创建服务账户</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -168,44 +169,53 @@
 
     
     <div class="post-content">
-      <p><code>acme.sh</code> 实现了 <code>acme</code> 协议，可以从 <a href="https://letsencrypt.org/">Let’s Encrypt</a> 生成免费的证书。</p>
-<h2 id="准备用户和文件夹">准备用户和文件夹</h2>
-<p>创建 certusers 用户组，该用户组成员可以访问证书文件：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo groupadd certusers
-sudo useradd -m -r -s /bin/bash -g certusers acme
-sudo mkdir -p /usr/local/etc/certfiles/acmesh
-sudo chown -R acme:certusers /usr/local/etc/certfiles/acmesh/
-</code></pre></div><h2 id="安装">安装</h2>
-<p>为了使用 standalone 模式，需要首先安装 socat 工具。在 standalone 模式下 acme.sh 会在 80 端口上创建一个 web 服务器进行验证，进而完成证书的签发。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay socat
-<span style="color:#75715e"># or</span> 
-yum install socat cronie
-</code></pre></div><p>切换到 acme 账户：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo su -l acme
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/acmesh-official/acme.sh.git
-cd acme.sh
-./acme.sh --install --accountemail <span style="color:#e6db74">&#34;me@ztluo.dev&#34;</span>
-</code></pre></div><h2 id="证书签发">证书签发</h2>
-<p>standalone 模式下签发证书。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 首先在有 root 权限的账户下赋予 socat 监听 80 端口的权限</span>
-sudo setcap CAP_NET_BIND_SERVICE<span style="color:#f92672">=</span>+eip /usr/bin/socat
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --issue --domain blog.ztluo.dev --standalone
-</code></pre></div><h2 id="证书安装">证书安装</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /usr/local/etc/certfiles/acmesh/blog.ztluo.dev
-acme.sh --installcert  --domain blog.ztluo.dev <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        --key-file /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.key <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        --fullchain-file /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.crt <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        --reloadcmd <span style="color:#e6db74">&#34;service nginx force-reload&#34;</span>
-<span style="color:#75715e"># 允许同组用户读取私钥</span>
-sudo chmod g+r /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.key
-</code></pre></div><h2 id="自动更新">自动更新</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --upgrade --auto-upgrade
-</code></pre></div><h2 id="dns-caa">DNS CAA</h2>
-<p>CAA 记录可以告诉浏览器域名的证书是由谁签发的进而防止证书伪造。具体 DNS 记录的构造可以使用 <a href="https://sslmate.com/caa/">CAA Record Helper</a>。填入域名后选择 “Auto-Generate”，即可以根据当前域名对应的网站自动生成相应的策略。</p>
-<h2 id="参考">参考</h2>
-<p><a href="https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E">acme.sh - 说明</a><br>
-<a href="https://letsencrypt.org/zh-cn/docs/">文档 - Let&rsquo;s Encrypt - 免费的 SSL_TLS 证书</a><br>
-<a href="https://cjk.aiao.today/dns-caa-setting-step-by-step/">超快速 DNS CAA 设定 Step by Step</a></p>
+      <p>前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。</p>
+<h2 id="远程登录">远程登录</h2>
+<h3 id="创建非-root-用户">创建非 root 用户</h3>
+<p>首先第一件事就是要创建非 root 用户，使用 root 用户进行日常的操作是非常危险的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo useradd -m -r -s /bin/bash user
+sudo passwd user
+
+<span style="color:#75715e"># 为用户添加 sudo 权限</span>
+sudo usermod -aG sudo user 
+<span style="color:#75715e"># 或</span>
+sudo usermod -aG wheel user 
+<span style="color:#75715e"># 或</span>
+sudo tee /etc/sudoers.d/user <span style="color:#f92672">&lt;&lt;&lt;</span> <span style="color:#e6db74">&#39;user ALL=(ALL) ALL&#39;</span>
+sudo chmod <span style="color:#ae81ff">440</span> /etc/sudoers.d/user
+
+<span style="color:#75715e"># 切换到 user</span>
+su -l user
+</code></pre></div><h3 id="防止密码被爆破">防止密码被爆破</h3>
+<p>为了防止密码被爆破限制登录密码错误 3 次后锁定账户。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo nano /etc/pam.d/login
+sudo nano /etc/pam.d/remote
+sudo nano /etc/pam.d/sshd
+<span style="color:#75715e"># 在 #%PAM-1.0 下添加下面一行</span>
+auth required pam_tally2.so deny<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> unlock_time<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span> even_deny_root root_unlock_time<span style="color:#f92672">=</span><span style="color:#ae81ff">600</span>
+</code></pre></div><h3 id="远程登录加固">远程登录加固</h3>
+<p>使用 <code>sudo nano /etc/ssh/sshd_config</code> 编辑 sshd 配置文件。</p>
+<p>使用私钥远程登录服务器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 生成私钥</span>
+ssh_keygen
+<span style="color:#75715e"># 添加公钥</span>  
+echo &lt;主机 id_rsa.pub&gt; &gt;&gt; .ssh/authorized_keys
+<span style="color:#75715e"># 修改权限</span>  
+chmod <span style="color:#ae81ff">600</span> .ssh/authorized_keys
+</code></pre></div><ol>
+<li>修改默认端口号：默认端口号 22，默认的端口号会导致过多登录尝试，将其改为不常用的端口，选项名称为 <code>Port</code>；</li>
+<li>禁止空口令登录：<code>PermitEmptyPasswords no</code>；</li>
+<li>禁用密码登录：<code>PasswordAuthentication no</code>，要注意一定要在确认可以通过私钥登录后才修改此项配置，否则会导致无法远程登录。</li>
+</ol>
+<h3 id="创建服务账户">创建服务账户</h3>
+<p>每个服务使用单独自己的账户，这样就不会因为某个服务遭到攻破而导致 root 权限被拿到。</p>
+<p>创建带有 home 目录的 acme 帐号：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo useradd -m -r -s /bin/bash acme
+sudo su -l acme
+</code></pre></div><p>创建不带有 home 目录的 acme 帐号：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo useradd -r -s /bin/bash acme
+sudo su -l acme
+</code></pre></div>
     </div>
 
     
@@ -216,11 +226,11 @@ sudo chmod g+r /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.key
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2020-02-15</span>
+    <span class="item-content">2020-02-16</span>
   </p>
   <p class="copyright-item">
       <span class="item-title">原始文档</span>
-      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/acmesh-certificates-automation/index.md" target="_blank">Markdown 文件</a></span>
+      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/server-security-hardening/index.md" target="_blank">Markdown 文件</a></span>
     </p>
   <p class="copyright-item">
     <span class="item-title">许可协议</span>
@@ -245,23 +255,14 @@ sudo chmod g+r /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.key
 </div>
 
     <footer class="post-footer">
-      <div class="post-tags">
-          
-          <a href="/tags/acme.sh/">acme.sh</a>
-          
-        </div>
+      
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/server-security-hardening/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">服务器安全加固</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/caddy-my-blog/">
-            <span class="next-text nav-default">使用 Caddy 部署博客</span>
+          <a class="next" href="/post/acmesh-certificates-automation/">
+            <span class="next-text nav-default">使用 acme.sh 进行 ssl 证书自动化管理</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -277,8 +278,8 @@ sudo chmod g+r /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.key
     <script src="/lib/gitalk/gitalk.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
-    id: '2020-02-12 11:57:51 \x2b0800 CST',
-    title: '使用 acme.sh 进行 ssl 证书自动化管理',
+    id: '2020-02-16 09:45:26 \x2b0800 CST',
+    title: '服务器安全加固',
     clientID: '773448aaf0a387786d40',
     clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
     repo: 'zt-luo.github.io',
