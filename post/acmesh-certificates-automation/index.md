@@ -1,6 +1,16 @@
 `acme.sh` 实现了 `acme` 协议，可以从 [Let’s Encrypt](https://letsencrypt.org/) 生成免费的证书。
 <!--more-->
 
+## 准备用户和文件夹
+创建 certusers 用户组，该用户组成员可以访问证书文件：
+
+``` bash
+sudo groupadd certusers
+sudo useradd -m -r -s /bin/bash -g certusers acme
+sudo mkdir -p /usr/local/etc/certfiles/acmesh
+sudo chown -R acme:certusers /usr/local/etc/certfiles/acmesh/
+```
+
 ## 安装  
 
 为了使用 standalone 模式，需要首先安装 socat 工具。在 standalone 模式下 acme.sh 会在 80 端口上创建一个 web 服务器进行验证，进而完成证书的签发。
@@ -8,11 +18,16 @@
 ``` bash
 yay socat
 # or 
-yum install socat
+yum install socat cronie
+```
+
+切换到 acme 账户：
+``` bash
+sudo su -l acme
 ```
 
 ``` bash
-git clone https://github.com/acmesh-official/acme.sh.git ~/acme.sh
+git clone https://github.com/acmesh-official/acme.sh.git
 cd acme.sh
 ./acme.sh --install --accountemail "me@ztluo.dev"
 ```
@@ -20,23 +35,26 @@ cd acme.sh
 ## 证书签发  
 
 standalone 模式下签发证书。
+
 ``` bash
-acme.sh --issue --domain blog.ztluo.dev --standalone
+# 首先在有 root 权限的账户下赋予 socat 监听 80 端口的权限
+sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/socat
 ```
 
-http 方式，依赖已有的 Caddy 服务器。
 ``` bash
-acme.sh --issue --domain blog.ztluo.dev --webroot /var/www/
+acme.sh --issue --domain blog.ztluo.dev --standalone
 ```
 
 ## 证书安装 
 
 ``` bash
-mkdir -p /etc/ssl/acmesh/blog.ztluo.dev
+mkdir -p /usr/local/etc/certfiles/acmesh/blog.ztluo.dev
 acme.sh --installcert  --domain blog.ztluo.dev \
-        --key-file /etc/ssl/acmesh/blog.ztluo.dev/blog.ztluo.dev.key \
-        --fullchain-file /etc/ssl/acmesh/blog.ztluo.dev/blog.ztluo.dev.crt \
+        --key-file /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.key \
+        --fullchain-file /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.crt \
         --reloadcmd "service nginx force-reload"
+# 允许同组用户读取私钥
+sudo chmod g+r /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.key
 ```
 
 ## 自动更新  

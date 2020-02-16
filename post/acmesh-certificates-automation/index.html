@@ -59,7 +59,7 @@
 <meta itemprop="description" content="acme.sh 实现了 acme 协议，可以从 Let’s Encrypt 生成免费的证书。">
 <meta itemprop="datePublished" content="2020-02-12T11:57:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-15T18:51:51&#43;08:00" />
-<meta itemprop="wordCount" content="292">
+<meta itemprop="wordCount" content="376">
 
 
 
@@ -137,7 +137,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-02-12 </span>
         
-        <span class="more-meta"> 约 292 字 </span>
+        <span class="more-meta"> 约 376 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -151,6 +151,7 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#准备用户和文件夹">准备用户和文件夹</a></li>
     <li><a href="#安装">安装</a></li>
     <li><a href="#证书签发">证书签发</a></li>
     <li><a href="#证书安装">证书安装</a></li>
@@ -168,25 +169,35 @@
     
     <div class="post-content">
       <p><code>acme.sh</code> 实现了 <code>acme</code> 协议，可以从 <a href="https://letsencrypt.org/">Let’s Encrypt</a> 生成免费的证书。</p>
-<h2 id="安装">安装</h2>
+<h2 id="准备用户和文件夹">准备用户和文件夹</h2>
+<p>创建 certusers 用户组，该用户组成员可以访问证书文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo groupadd certusers
+sudo useradd -m -r -s /bin/bash -g certusers acme
+sudo mkdir -p /usr/local/etc/certfiles/acmesh
+sudo chown -R acme:certusers /usr/local/etc/certfiles/acmesh/
+</code></pre></div><h2 id="安装">安装</h2>
 <p>为了使用 standalone 模式，需要首先安装 socat 工具。在 standalone 模式下 acme.sh 会在 80 端口上创建一个 web 服务器进行验证，进而完成证书的签发。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay socat
 <span style="color:#75715e"># or</span> 
-yum install socat
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/acmesh-official/acme.sh.git ~/acme.sh
+yum install socat cronie
+</code></pre></div><p>切换到 acme 账户：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo su -l acme
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/acmesh-official/acme.sh.git
 cd acme.sh
 ./acme.sh --install --accountemail <span style="color:#e6db74">&#34;me@ztluo.dev&#34;</span>
 </code></pre></div><h2 id="证书签发">证书签发</h2>
 <p>standalone 模式下签发证书。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --issue --domain blog.ztluo.dev --standalone
-</code></pre></div><p>http 方式，依赖已有的 Caddy 服务器。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --issue --domain blog.ztluo.dev --webroot /var/www/
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 首先在有 root 权限的账户下赋予 socat 监听 80 端口的权限</span>
+sudo setcap CAP_NET_BIND_SERVICE<span style="color:#f92672">=</span>+eip /usr/bin/socat
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --issue --domain blog.ztluo.dev --standalone
 </code></pre></div><h2 id="证书安装">证书安装</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /etc/ssl/acmesh/blog.ztluo.dev
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /usr/local/etc/certfiles/acmesh/blog.ztluo.dev
 acme.sh --installcert  --domain blog.ztluo.dev <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        --key-file /etc/ssl/acmesh/blog.ztluo.dev/blog.ztluo.dev.key <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        --fullchain-file /etc/ssl/acmesh/blog.ztluo.dev/blog.ztluo.dev.crt <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        --key-file /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.key <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        --fullchain-file /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.crt <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>        --reloadcmd <span style="color:#e6db74">&#34;service nginx force-reload&#34;</span>
+<span style="color:#75715e"># 允许同组用户读取私钥</span>
+sudo chmod g+r /usr/local/etc/certfiles/acmesh/blog.ztluo.dev/blog.ztluo.dev.key
 </code></pre></div><h2 id="自动更新">自动更新</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --upgrade --auto-upgrade
 </code></pre></div><h2 id="dns-caa">DNS CAA</h2>
