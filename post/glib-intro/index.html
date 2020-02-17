@@ -61,7 +61,7 @@
 一时惊为天人，想着这不就是我一直想要的 C 语言的跨平台的库了吗。所以就花了一些时间研究了一下。">
 <meta itemprop="datePublished" content="2018-10-17T22:06:31&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-18T14:55:31&#43;08:00" />
-<meta itemprop="wordCount" content="1682">
+<meta itemprop="wordCount" content="1641">
 
 
 
@@ -144,7 +144,7 @@
               <a href="/categories/glib/"> GLib </a>
             
           </div>
-        <span class="more-meta"> 约 1682 字 </span>
+        <span class="more-meta"> 约 1641 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -160,31 +160,39 @@
     <div class="post-content">
       <p>最近在翻 《C 程序设计新思维（第2版）》这本书的时候，看到了 GLib 这么一个现代化的 C 语言第三方库，
 一时惊为天人，想着这不就是我一直想要的 C 语言的跨平台的库了吗。所以就花了一些时间研究了一下。</p>
+
 <h1 id="简介">简介</h1>
+
 <p>GLib 是一个在 Linux 平台下应用非常广泛的 C 语言函数库。GLib 库具有很好的可移植性和实用性。 GLib 是
 Gtk+ 的基础库，最早是 Gtk+ 的一部分。GLib 可以在多个平台下使用，比如 Linux、Unix、Windows等。
 GLib 由基础类型、核心应用支持、实用功能、数据类型和对象系统五个部分组成。其中核心应用支持包括线程、线程池、
 同步队列、内存管理、 socket 等的支持。实用工具包括字符串函数、数据校验、定时器、测试框架等功能。GLib 功能
 非常丰富，可以称的上 C 语言的 Boost 库了。</p>
+
 <h1 id="依赖">依赖</h1>
+
 <p>GLib 的依赖很少。其中一个是 <a href="http://www.gnu.org/software/libiconv/">GNU libiconv library</a>，这个库是用来
 转换文字编码用的，如果你的系统提供 <code>iconv()</code> 函数的话，那么这个库则不是必须的。另一个库是 <a href="http://www.gnu.org/software/gettext">GNU gettext package</a>，如果你的系统提供 <code>gettext()</code> 这个函数的话，那么这个库也不是必须的。
 除了以上两个库以外还要求系统提供多线程的实现。基本上任何一个现代操作系统都会提供多线程的实现。GLib 支
 持 <code>POSIX threads</code> 和 <code>win32 threads</code>。</p>
+
 <h1 id="安装">安装</h1>
+
 <p>Linux 上的安装就不必多讲了，直接上包管理器就好了。对于 Windows 而言有多种选择，最方便的方法是
 用 <a href="https://www.msys2.org/">msys2</a>，直接在 MINGW64 或 MINGW32 环境中安装 GLib 库和 pkg-config 即可。
 如果不想安装 msys2，也可以自己使用 Visual Studio 编译库，具体编译的方法就不多说了，Google 一下即可。
 如果既不想自己编译有不想安装 msys2 ，那么我这有一个比较好的方法。
 首先，你需要一个 gcc 编译器，推荐使用 <a href="/tags/scoop/">scoop</a> 安装。然后到 <a href="https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/">msys2</a> 清华镜像源上下载编译好的 GLib 库，直达连接如下 <a href="https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64/mingw-w64-x86_64-glib2-2.58.1-1-any.pkg.tar.xz">GLib binary</a>。
 将压缩包解压到合适的位置即可。</p>
+
 <h1 id="编译">编译</h1>
+
 <p><strong>如果你是 Linux 或者使用 msys2</strong>，那么编译使用 GLib 的程序就很简单了。只需要根据情况添加如下编译选项即可：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">`</span>pkg-config --cflags --libs glib-2.0<span style="color:#e6db74">`</span>               <span style="color:#75715e"># 只使用了 glib</span>
 <span style="color:#e6db74">`</span>pkg-config --cflags --libs gobject-2.0<span style="color:#e6db74">`</span>            <span style="color:#75715e"># 使用了 gobject</span>
 <span style="color:#e6db74">`</span>pkg-config --cflags --libs gmodule-2.0<span style="color:#e6db74">`</span>            <span style="color:#75715e"># 使用了 gmodule</span>
-<span style="color:#e6db74">`</span>pkg-config --cflags --libs gmodule-no-export-2.0<span style="color:#e6db74">`</span>  <span style="color:#75715e">#- -export-dynamic</span>
-</code></pre></div><p>例如，如果你想编译一个如下一个 hello word 程序：</p>
+<span style="color:#e6db74">`</span>pkg-config --cflags --libs gmodule-no-export-2.0<span style="color:#e6db74">`</span>  <span style="color:#75715e">#- -export-dynamic</span></code></pre></div>
+<p>例如，如果你想编译一个如下一个 hello word 程序：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/**
 </span><span style="color:#75715e"> * @file hello_world.c
 </span><span style="color:#75715e"> * @author Zongtong Luo (me@ztluo.dev)
@@ -230,12 +238,13 @@ GLib 由基础类型、核心应用支持、实用功能、数据类型和对象
     g_print(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-</code></pre></div><p>只需要在 shell 里面输入下面一行命令即可：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcc hello_world.c <span style="color:#e6db74">`</span>pkg-config --cflags --libs glib-2.0<span style="color:#e6db74">`</span> -o hello_world -g -Wall -O0
-</code></pre></div><p>上面的命令中利用了 shell 的反引号特性。被反引号包围的命令会在执行整条指令之前先执行，并将执行的结果嵌入到
+}</code></pre></div>
+<p>只需要在 shell 里面输入下面一行命令即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcc hello_world.c <span style="color:#e6db74">`</span>pkg-config --cflags --libs glib-2.0<span style="color:#e6db74">`</span> -o hello_world -g -Wall -O0</code></pre></div>
+<p>上面的命令中利用了 shell 的反引号特性。被反引号包围的命令会在执行整条指令之前先执行，并将执行的结果嵌入到
 整条命令中。反引号在 shell 中被广泛支持，除了反引号外，还可以使用 <code>$(...)</code>，但是需要注意的是 <code>$(...)</code> 格式受到 POSIX 标准支持，但是并不是所有 shell 都支持。</p>
-<p>**如果你是自己编译 GLib 或者下载别人编译好的 GLib，**那么你可以直接将 GLib 添加到你的工程项目里。<br>
+
+<p><strong>如果你是自己编译 GLib 或者下载别人编译好的 GLib，</strong>那么你可以直接将 GLib 添加到你的工程项目里。<br />
 编译时需要手动添加 include 目录和链接的 lib 目录和 lib 的名字。下面给出一个 CMake 的例子。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmake" data-lang="cmake"><span style="color:#75715e"># CMakeLists.txt
 </span><span style="color:#75715e"></span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.0.0</span>)<span style="color:#960050;background-color:#1e0010">
@@ -252,37 +261,41 @@ GLib 由基础类型、核心应用支持、实用功能、数据类型和对象
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CPACK_PROJECT_NAME</span> <span style="color:#f92672">${</span>PROJECT_NAME<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CPACK_PROJECT_VERSION</span> <span style="color:#f92672">${</span>PROJECT_VERSION<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>include(<span style="color:#e6db74">CPack</span>)<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><h1 id="运行">运行</h1>
+</span><span style="color:#960050;background-color:#1e0010"></span>include(<span style="color:#e6db74">CPack</span>)</code></pre></div>
+<h1 id="运行">运行</h1>
+
 <p>同样，如果你是 Linux 或者使用 msys2 的用户，那么这一步就简单的很 ———— 直接跳过，唯一需要注意的是，如果你需要将
 编译好的程序分发到没有安装 GLib 库的用户哪里的话，你需要拷贝程序依赖的动态链接库（使用了动态链接库）。</p>
+
 <p>如果你是将 GLib 库直接添加到了项目中，你的程序在调试的运行的时候会报缺少库的错误。解决这个问题只需要将需要的库
 拷贝到程序的当前目录即可。除了你编译程序时手动添加的链接库，还有可能需要如下两个动态链接
 库 <code>libiconv-2.dll</code> 和 <code>libintl-8.dll</code>。这两个库在之前的依赖那部分谈到过。我使用的是从 msys2 上下载的编译好
 的二进制文件，程序运行时提示需要这两个库，如果你也需要这两个库只需要将这两个文件从 msys2 中拷贝出来即可。</p>
+
 <blockquote>
-<p>另外，<br>
+<p>另外，<br />
 文中提到的那本书的译者是 <a href="http://zhaoyan.website/blog/">赵岩</a>，近期在看他写的另一本书 《C语言点滴》。
 这本书的语言非常生动活泼，看起来非常有趣，同时作为一本 2012 年写的书来讲一点都不过时。等书看完了会写一篇读书笔记。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>另另外，<br>
+
+<hr />
+
+<p>另另外，<br />
 文中 GLib 会新开一个专题，专门记录关于 GLib 学习的内容。除了 GLib 文中提到的 scoop ，也需要写一篇博客。
-感觉自己开了一万个新坑，上次 RT-thread 的内容才更新了一章。</p>
-<!-- raw HTML omitted -->
+感觉自己开了一万个新坑，上次 RT-thread 的内容才更新了一章。<br />
+<figure class="center">
+    <img src="/img/glib-intro/smile.jpg"
+         alt="smile"/> <figcaption>
+            <h4>Smile</h4>
+        </figcaption>
+</figure></p>
 </blockquote>
-<pre><code>&lt;img src=&quot;/img/glib-intro/smile.jpg&quot;
-     alt=&quot;smile&quot;/&gt; &lt;figcaption&gt;
-        &lt;h4&gt;Smile&lt;/h4&gt;
-    &lt;/figcaption&gt;
-</code></pre>
-<!-- raw HTML omitted -->
+
 <h1 id="参考资料">参考资料</h1>
+
 <ol>
-<li><a href="https://developer.gnome.org/glib/">GLib Reference Manual</a></li>
-<li><a href="https://www.ibm.com/developerworks/cn/linux/l-glib/index.html">浅析 GLib</a></li>
-<li><a href="https://blog.csdn.net/if9600/article/details/74221548">Linux：shell 脚本之命令替换（eval，反引号和 $()）</a></li>
+<li><a href="https://developer.gnome.org/glib/">GLib Reference Manual</a><br /></li>
+<li><a href="https://www.ibm.com/developerworks/cn/linux/l-glib/index.html">浅析 GLib</a><br /></li>
+<li><a href="https://blog.csdn.net/if9600/article/details/74221548">Linux：shell 脚本之命令替换（eval，反引号和 $()）</a><br /></li>
 </ol>
     </div>
 

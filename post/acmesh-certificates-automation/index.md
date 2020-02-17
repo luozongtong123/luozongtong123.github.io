@@ -18,7 +18,9 @@ sudo chown -R acme:certusers /usr/local/etc/certfiles/acmesh/
 ``` bash
 yay socat
 # or 
-yum install socat cronie
+sudo yum install socat cronie
+# 在有 root 权限的账户下赋予 socat 监听 80 端口的权限
+sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/socat
 ```
 
 切换到 acme 账户：
@@ -35,11 +37,6 @@ cd acme.sh
 ## 证书签发  
 
 standalone 模式下签发证书。
-
-``` bash
-# 首先在有 root 权限的账户下赋予 socat 监听 80 端口的权限
-sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/socat
-```
 
 ``` bash
 acme.sh --issue --domain blog.ztluo.dev --standalone

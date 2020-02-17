@@ -61,7 +61,7 @@
 为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。">
 <meta itemprop="datePublished" content="2018-10-28T11:48:09&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-28T11:48:09&#43;08:00" />
-<meta itemprop="wordCount" content="2105">
+<meta itemprop="wordCount" content="2146">
 
 
 
@@ -144,7 +144,7 @@
               <a href="/categories/blog/"> Blog </a>
             
           </div>
-        <span class="more-meta"> 约 2105 字 </span>
+        <span class="more-meta"> 约 2146 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -156,7 +156,17 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#修改主题颜色">修改主题颜色</a></li>
+<li><a href="#使用-fira-code-字体">使用 Fira Code 字体</a></li>
+<li><a href="#完善代码高亮配置">完善代码高亮配置</a></li>
+<li><a href="#更新-gitalk">更新 Gitalk</a></li>
+<li><a href="#添加-admonition">添加 admonition</a></li>
+<li><a href="#build">Build</a></li>
+<li><a href="#admonition-演示">admonition 演示</a></li>
+</ul>
+</nav>
   </div>
 </div>
 
@@ -167,7 +177,9 @@
     <div class="post-content">
       <p>当前博客的主题是 <a href="https://github.com/zt-luo/hugo-theme-even">even</a>。
 为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。</p>
+
 <h1 id="修改主题颜色">修改主题颜色</h1>
+
 <p>在 <code>src\css\_variables.scss</code> 文件中添加需要的颜色，并通过修改颜色配置修改的主题颜色。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">diff --git &#34;a/..\\Temp\\TortoiseGit\\_variables-2c7773b.000.scss&#34; &#34;b/..\\even\\src\\css\\_variables.scss&#34;
 index 06d7507..39bdf23 100644
@@ -191,12 +203,23 @@ index 06d7507..39bdf23 100644
 </span><span style="color:#a6e22e"></span>   &#39;Hot Pink&#39;: #FF69B4 #f8f5f5,
    &#39;Dark Violet&#39;: #9932CC #f5f4fa
  );
-</code></pre></div><h1 id="使用-fira-code-字体">使用 Fira Code 字体</h1>
+</code></pre></div>
+<h1 id="使用-fira-code-字体">使用 Fira Code 字体</h1>
+
 <p>前文有提到过这个字体，这是一个支持连字的等宽字体，非常适合码代码。</p>
+
 <p>还是修改 <code>src\css\_variables.scss</code> 文件。</p>
-<!-- raw HTML omitted -->
-<p>此处只是将默认字体改为 <code>Fira Code</code>，如果用户的电脑上没有安装这个字体的话就会使用其他备选的字体。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-note">
+    <p class="admonition-note-title">
+        Note
+    </p>
+    <p>
+
+此处只是将默认字体改为 `Fira Code`，如果用户的电脑上没有安装这个字体的话就会使用其他备选的字体。
+
+</p>
+</div>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#75715e">@@ -193,7 +206,7 @@ $code-color: #c7254e !default;
 </span><span style="color:#75715e"></span> $code-font-size: 13px !default;
  
@@ -206,7 +229,9 @@ index 06d7507..39bdf23 100644
 </span><span style="color:#a6e22e"></span> 
  // Color of code highlight, solarized.
  $code-highlight-color: (
-</code></pre></div><p>接下来我们需要将字体文件打包到网站上。</p>
+</code></pre></div>
+<p>接下来我们需要将字体文件打包到网站上。</p>
+
 <p>首先修改 <code>src\css\_variables.scss</code> ，添加 <code>Fira Code</code> 字体家族。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#75715e">@@ -91,11 +92,23 @@ $header-padding: 20px 20px !default;
 </span><span style="color:#75715e"></span>   font-style: normal;
@@ -226,7 +251,8 @@ index 06d7507..39bdf23 100644
 </span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+
 </span><span style="color:#a6e22e"></span> // Font size of the logo.
  $logo-font-size: 48px !default;
-</code></pre></div><p>然后，修改 <code>src\\webpack.config.js</code> 将字体文件打包到 <code>static</code> 文件夹。</p>
+</code></pre></div>
+<p>然后，修改 <code>src\\webpack.config.js</code> 将字体文件打包到 <code>static</code> 文件夹。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">diff --git &#34;a/..\\Temp\\TortoiseGit\\webpack.config-eb3dafd.000.js&#34; &#34;b/..\\even\\src\\webpack.config.js&#34;
 index f2218be..d96c24a 100644
 <span style="color:#f92672">--- &#34;..\\Temp\\TortoiseGit\\webpack.config-eb3dafd.000.js&#34;
@@ -242,10 +268,14 @@ index f2218be..d96c24a 100644
 </span><span style="color:#a6e22e"></span>       }
      ]
    },
-</code></pre></div><h1 id="完善代码高亮配置">完善代码高亮配置</h1>
+</code></pre></div>
+<h1 id="完善代码高亮配置">完善代码高亮配置</h1>
+
 <p>原作主题的代码高亮只启用了一小部分，接下来添加一些我需要的代码高亮，去掉一些不需要的高亮，同时把使用的 <code>highlightjs</code> 升级一下。</p>
-<p>到官网的<a href="https://highlightjs.org/download/">下载</a>页面，勾选需要的高亮的语言，下载。。。<br>
+
+<p>到官网的<a href="https://highlightjs.org/download/">下载</a>页面，勾选需要的高亮的语言，下载。。。<br />
 替换掉 <code>static\lib\highlight\highlight.pack.js</code>  文件。</p>
+
 <p>修改 <code>src\css\_variables.scss</code> 文件中的 <code>$code-type-list</code>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss"><span style="color:#75715e">// Code type list.
 </span><span style="color:#75715e"></span>$code-type-list<span style="color:#f92672">:</span> (
@@ -286,13 +316,15 @@ index f2218be..d96c24a 100644
   language-yml<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">YAML</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">,</span>
   language-yaml<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">YAML</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">,</span>
   language-toml<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">TOML</span><span style="color:#e6db74">&#34;</span>
-) !default;
-</code></pre></div><p>改用 <code>highlightjs</code> 官方默认的 CSS 样式渲染。将 <code>default.css</code> 文件中的内容复制到 <code>src\css\_partial\_post\_code.scss</code> 中的如下位置。</p>
+) !default;</code></pre></div>
+<p>改用 <code>highlightjs</code> 官方默认的 CSS 样式渲染。将 <code>default.css</code> 文件中的内容复制到 <code>src\css\_partial\_post\_code.scss</code> 中的如下位置。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scss" data-lang="scss">    <span style="color:#a6e22e">.</span><span style="color:#a6e22e">code</span> {
       <span style="color:#75715e">// 复制到这
-</span><span style="color:#75715e"></span>    }
-</code></pre></div><h1 id="更新-gitalk">更新 Gitalk</h1>
+</span><span style="color:#75715e"></span>    }</code></pre></div>
+<h1 id="更新-gitalk">更新 Gitalk</h1>
+
 <p>主题自带的 Gitalk 版本较低，不支持评论预览，更新到最新版。</p>
+
 <p>到 <a href="https://github.com/gitalk/gitalk/tree/master/dist">Github</a> 上下载最新的 CSS 和 JS 文件，
 替换 <code>static\lib\gitalk</code> 里的文件，并相应修改 <code>layouts\partials\comments.html</code> 中的语句。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"> {{- else -}}
@@ -301,16 +333,36 @@ index f2218be..d96c24a 100644
 </span><span style="color:#f92672"></span><span style="color:#a6e22e">+  &lt;link rel=&#34;stylesheet&#34; href=&#34;{{ &#34;lib/gitalk/gitalk.css&#34; | relURL }}&#34;&gt;
 </span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+  &lt;script src=&#34;{{ &#34;lib/gitalk/gitalk.min.js&#34; | relURL }}&#34;&gt;&lt;/script&gt;
 </span><span style="color:#a6e22e"></span> {{- end }}
-</code></pre></div><h1 id="添加-admonition">添加 admonition</h1>
+</code></pre></div>
+<h1 id="添加-admonition">添加 admonition</h1>
+
 <p>在浏览 <a href="https://blog.olowolo.com/">olOwOlo</a> 的<a href="https://blog.olowolo.com/post/generate-json-api-and-graphql-api-by-elide-and-spring/">博文</a>时候发现，博客中的 <code>admonition</code>  非常漂亮。在博文下面询问是怎么实现的，无奈作者好像消失了一样。所以只能自己实现一套了。看了一下 Hugo 的<a href="https://gohugo.io/templates/introduction/">模版系统</a>，抄了<a href="https://blog.olowolo.com/">olOwOlo</a> 的 <code>CSS</code>，实现了如下的 <code>admonition</code> 。自我感觉效果还不错。</p>
-<p>具体实现就不详细讲了，想要了解的话直接去看我的<a href="https://github.com/zt-luo/hugo-theme-even/commit/24840c633e9fb54a188012965d62ae94e087fa71">代码</a>就行。<br>
+
+<p>具体实现就不详细讲了，想要了解的话直接去看我的<a href="https://github.com/zt-luo/hugo-theme-even/commit/24840c633e9fb54a188012965d62ae94e087fa71">代码</a>就行。<br />
 想要使用的直接 Fork 我的<a href="https://github.com/zt-luo/hugo-theme-even">仓库</a>即可。</p>
-<!-- raw HTML omitted -->
-<p>这是一个 <code>admonition</code> 示例的第一行。<br>
-这是一个 <code>admonition</code> 示例的第二行。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-tip">
+    <p class="admonition-tip-title">
+        Tip
+    </p>
+    <p>
+
+这是一个 `admonition` 示例的第一行。  
+这是一个 `admonition` 示例的第二行。  
+
+</p>
+</div>
+
 <h1 id="build">Build</h1>
-<!-- raw HTML omitted -->
+
+<div class="admonition-attention">
+    <p class="admonition-attention-title">
+        Attention
+    </p>
+    <p>
+上述所有修改 `src` 文件夹下文件的操作都需要重新编译才能实际生效。  
+</p>
+</div>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># 使用 scoop 安装 Node.js LTS </span>
 scoop install nodejs-lts
 <span style="color:#75715e"># 查看 Node.js 版本号</span>
@@ -321,50 +373,120 @@ cd src
 <span style="color:#75715e"># 安装依赖</span>
 npm install
 <span style="color:#75715e"># 编译文件</span>
-npm run build
-</code></pre></div><h1 id="admonition-演示">admonition 演示</h1>
+npm run build</code></pre></div>
+<h1 id="admonition-演示">admonition 演示</h1>
+
 <p>tip</p>
-<!-- raw HTML omitted -->
-<p>这是一个 <code>admonition</code> 示例的第一行。<br>
-这是一个 <code>admonition</code> 示例的第二行。</p>
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-tip">
+    <p class="admonition-tip-title">
+        Tip
+    </p>
+    <p>
+
+这是一个 `admonition` 示例的第一行。  
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
+</p>
+</div>
+
 <p>note、hint</p>
-<!-- raw HTML omitted -->
-<p>这是一个 <code>admonition</code> 示例的第一行。<br>
-这是一个 <code>admonition</code> 示例的第二行。</p>
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-note">
+    <p class="admonition-note-title">
+        Note
+    </p>
+    <p>
+
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
+</p>
+</div>
+
 <p>warning、important</p>
-<!-- raw HTML omitted -->
-<p>这是一个 <code>admonition</code> 示例的第一行。<br>
-这是一个 <code>admonition</code> 示例的第二行。</p>
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-warning">
+    <p class="admonition-warning-title">
+        Warning
+    </p>
+    <p>
+
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
+</p>
+</div>
+
 <p>question</p>
-<!-- raw HTML omitted -->
-<p>这是一个 <code>admonition</code> 示例的第一行。<br>
-这是一个 <code>admonition</code> 示例的第二行。</p>
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-question">
+    <p class="admonition-question-title">
+        Question
+    </p>
+    <p>
+
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
+</p>
+</div>
+
 <p>conclusion</p>
-<!-- raw HTML omitted -->
-<p>这是一个 <code>admonition</code> 示例的第一行。<br>
-这是一个 <code>admonition</code> 示例的第二行。</p>
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-conclusion">
+    <p class="admonition-conclusion-title">
+        Conclusion
+    </p>
+    <p>
+
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
+</p>
+</div>
+
 <p>bullshit</p>
-<!-- raw HTML omitted -->
-<p>这是一个 <code>admonition</code> 示例的第一行。<br>
-这是一个 <code>admonition</code> 示例的第二行。</p>
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-bullshit">
+    <p class="admonition-bullshit-title">
+        Bullshit
+    </p>
+    <p>
+
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
+</p>
+</div>
+
 <p>attention、caution、danger、error</p>
-<!-- raw HTML omitted -->
-<p>这是一个 <code>admonition</code> 示例的第一行。<br>
-这是一个 <code>admonition</code> 示例的第二行。</p>
-<p>这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-attention">
+    <p class="admonition-attention-title">
+        Caution
+    </p>
+    <p>
+
+这是一个 `admonition` 示例的第一行。   
+这是一个 `admonition` 示例的第二行。  
+
+这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+
+</p>
+</div>
     </div>
 
     

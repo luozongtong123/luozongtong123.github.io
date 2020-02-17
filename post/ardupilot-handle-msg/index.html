@@ -59,7 +59,7 @@
 <meta itemprop="description" content="由于目前需要实现自定义的功能，这要求可以对 Ardupilot 中的通信进行干预，包括接收处理消息和发送消息。为了达成这个目的，阅读了通信相关的代码，看一下 Ardupilot 是怎样处理 Mavlink 消息的。">
 <meta itemprop="datePublished" content="2019-03-15T20:00:37&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-21T16:28:37&#43;08:00" />
-<meta itemprop="wordCount" content="1792">
+<meta itemprop="wordCount" content="1809">
 
 
 
@@ -141,7 +141,7 @@
               <a href="/categories/ardupilot/"> Ardupilot </a>
             
           </div>
-        <span class="more-meta"> 约 1792 字 </span>
+        <span class="more-meta"> 约 1809 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -154,10 +154,15 @@
   
   <div class="post-toc-content">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#接收消息任务">接收消息任务</a></li>
-    <li><a href="#发送消息任务">发送消息任务</a></li>
-  </ul>
+<ul>
+<li><a href="#gcs初始化">GCS初始化</a></li>
+<li><a href="#接收发送任务">接收发送任务</a>
+<ul>
+<li><a href="#接收消息任务">接收消息任务</a></li>
+<li><a href="#发送消息任务">发送消息任务</a></li>
+</ul></li>
+<li><a href="#添加自定义消息"><del>添加自定义消息</del></a></li>
+</ul>
 </nav>
   </div>
 </div>
@@ -168,10 +173,22 @@
     
     <div class="post-content">
       <p>由于目前需要实现自定义的功能，这要求可以对 Ardupilot 中的通信进行干预，包括接收处理消息和发送消息。为了达成这个目的，阅读了通信相关的代码，看一下 Ardupilot 是怎样处理 Mavlink 消息的。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-note">
+    <p class="admonition-note-title">
+        Note
+    </p>
+    <p>
+`GCS_Sub->GCS` 是指 `GCS_Sub` 的基类是 `GCS`。
+</p>
+</div>
+
 <p>Ardupilot 对 Mavlink 消息的处理，主要实现在 <code>GCS_Sub-&gt;GCS</code> 和 <code>GCS_MAVLINK_Sub-&gt;GCS_MAVLINK</code> 这两个类中。</p>
+
 <p><code>GCS_Sub</code> 中包含多个 MAVLink 通道。</p>
+
 <h1 id="gcs初始化">GCS初始化</h1>
+
 <p>初始化的执行在 <code>void Sub::init_ardupilot()</code> 中，相关代码如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">GCS_Sub <span style="color:#f92672">&amp;</span>Sub<span style="color:#f92672">:</span><span style="color:#f92672">:</span>gcs()
 
@@ -197,13 +214,19 @@
   <span style="color:#75715e">// 在 begin 中创建了串口线程
 </span><span style="color:#75715e"></span>  uart<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>begin(<span style="color:#ae81ff">115200</span>);
 }
-</code></pre></div><h1 id="接收发送任务">接收发送任务</h1>
+</code></pre></div>
+<h1 id="接收发送任务">接收发送任务</h1>
+
 <p>在主线程 <code>scheduler_tasks[]</code> 中有如下两个任务，这两个任务是用来处理 GCS 消息的接收和处理需要周期性发送的消息。两个任务的执行频率都是 400 Hz。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">SCHED_TASK_CLASS(GCS, (GCS<span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>sub._gcs, update_receive,     <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">180</span>),
 SCHED_TASK_CLASS(GCS, (GCS<span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>sub._gcs, update_send,        <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">550</span>),
-</code></pre></div><h2 id="接收消息任务">接收消息任务</h2>
+</code></pre></div>
+<h2 id="接收消息任务">接收消息任务</h2>
+
 <p>先来看 <code>update_receive()</code> 任务，基类 <code>GCS</code> 实现了该函数，在该函数中，调用每个 <code>GCS_MAVLINK</code> 通道的 <code>update_receive()</code>。</p>
+
 <p><code>GCS::update_receive() =&gt; GCS_MAVLINK::update_receive()</code></p>
+
 <p><code>GCS_MAVLINK::update_receive()</code> 接收到一个完整的消息包后调用 <code>packetReceived()</code>，检查消息，如果消息需要我们做处理则调用 <code>handleMessage()</code>。基类 <code>GCS_MAVLINK</code> 中定义的 <code>handleMessage()</code> 是纯虚函数，该函数在 <code>GCS_MAVLINK_Sub</code> 中进行了重写。在重写的函数中首先处理航行器特定的消息，然后调用 <code>void GCS_MAVLINK::handle_common_message(mavlink_message_t *msg)</code> 处理一些通用的不需要特定航行器数据的消息。所以整个消息的接收我们只需要关注 <code>void GCS_MAVLINK_Sub::handleMessage(mavlink_message_t* msg)</code>  的实现即可。其实现结构如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// file: ArduSub/GCS_Mavlink.cpp
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> GCS_MAVLINK_Sub<span style="color:#f92672">:</span><span style="color:#f92672">:</span>handleMessage(mavlink_message_t<span style="color:#f92672">*</span> msg)
@@ -228,11 +251,17 @@ SCHED_TASK_CLASS(GCS, (GCS<span style="color:#f92672">*</span>)<span style="colo
 
   }  <span style="color:#75715e">// end switch
 </span><span style="color:#75715e"></span>}    <span style="color:#75715e">// end handle mavlink
-</span></code></pre></div><p>如果我们需要添加自己的消息只需要在 <code>handleMessage()</code> 的最开始的地方先对消息进行处理，如果是我们自己定义的消息就直接将函数返回，如果不是自定义的函数则再进入 switch 进行消息的处理。</p>
+</span></code></pre></div>
+<p>如果我们需要添加自己的消息只需要在 <code>handleMessage()</code> 的最开始的地方先对消息进行处理，如果是我们自己定义的消息就直接将函数返回，如果不是自定义的函数则再进入 switch 进行消息的处理。</p>
+
 <p>添加自定义消息的处理函数，详见 Github <a href="https://github.com/zt-luo/ardupilot/commit/471326c92979c284a7a9a1b5a8ebf68636394e8f">commit</a>。</p>
+
 <h2 id="发送消息任务">发送消息任务</h2>
+
 <p>接下来看 <code>update_send</code> 任务，同样是基类 <code>GCS</code> 实现了该函数，在该函数中，调用每个 <code>GCS_MAVLINK</code> 通道的 <code>update_send()</code>。</p>
+
 <p><code>GCS::update_send() =&gt; GCS_MAVLINK::update_send()</code></p>
+
 <p><code>GCS_MAVLINK::update_send()</code> 中调用 <code>do_try_send_message()</code>，之后调用 <code>try_send_message()</code>。实际的消息的发送是在 <code>try_send_message()</code> 中处理的，<code>GCS_MAVLINK_Sub</code> 重新实现了该函数：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">bool</span> GCS_MAVLINK_Sub<span style="color:#f92672">:</span><span style="color:#f92672">:</span>try_send_message(<span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">ap_message</span> id)
 {
@@ -254,7 +283,8 @@ SCHED_TASK_CLASS(GCS, (GCS<span style="color:#f92672">*</span>)<span style="colo
 
     <span style="color:#66d9ef">return</span> true;
 }
-</code></pre></div><p><code>try_send_message()</code> 根据不同的消息 <code>msg_id</code> 发送不同的消息。<code>*_try_send_message()</code> 需要提供消息的 ID 来发送指定的消息。有一个 <code>deferred_message</code> 用来指定不同的待发送的消息。<code>deferred_message</code> 是一个 <code>deferred_message_t</code> 如下的结构体：</p>
+</code></pre></div>
+<p><code>try_send_message()</code> 根据不同的消息 <code>msg_id</code> 发送不同的消息。<code>*_try_send_message()</code> 需要提供消息的 ID 来发送指定的消息。有一个 <code>deferred_message</code> 用来指定不同的待发送的消息。<code>deferred_message</code> 是一个 <code>deferred_message_t</code> 如下的结构体：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// outbound (&#34;deferred message&#34;) queue.
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">// &#34;special&#34; messages such as heartbeat, next_param etc are stored
@@ -273,7 +303,9 @@ SCHED_TASK_CLASS(GCS, (GCS<span style="color:#f92672">*</span>)<span style="colo
 <span style="color:#75715e">// returns index of a message in deferred_message[] which should
 </span><span style="color:#75715e"></span><span style="color:#75715e">// be sent (or -1 if none to send at the moment)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">int8_t</span> <span style="color:#a6e22e">deferred_message_to_send_index</span>();
-</code></pre></div><p>通过 <code>deferred_message_to_send_index()</code> 确定需要发送的消息。<code>enum ap_message</code> 中包含了所有的消息类型，其定义在 <code>libraries/GCS_MAVLink/GCS.h</code> 中，添加自定义的消息类型需要更改 <code>enum ap_message</code>。</p>
+</code></pre></div>
+<p>通过 <code>deferred_message_to_send_index()</code> 确定需要发送的消息。<code>enum ap_message</code> 中包含了所有的消息类型，其定义在 <code>libraries/GCS_MAVLink/GCS.h</code> 中，添加自定义的消息类型需要更改 <code>enum ap_message</code>。</p>
+
 <p>消息的发送是分组的，分组的信息由 <code>GCS_MAVLINK::all_stream_entries[]</code> ，其在 ArduSub 中的定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">GCS_MAVLINK</span><span style="color:#f92672">:</span><span style="color:#f92672">:</span>stream_entries GCS_MAVLINK<span style="color:#f92672">:</span><span style="color:#f92672">:</span>all_stream_entries[] <span style="color:#f92672">=</span> {
     MAV_STREAM_ENTRY(STREAM_RAW_SENSORS),
@@ -286,7 +318,8 @@ SCHED_TASK_CLASS(GCS, (GCS<span style="color:#f92672">*</span>)<span style="colo
     MAV_STREAM_ENTRY(STREAM_PARAMS),
     MAV_STREAM_TERMINATOR <span style="color:#75715e">// must have this at end of stream_entries
 </span><span style="color:#75715e"></span>};
-</code></pre></div><p>共有 8 个分组，每个分组分别包含不同的消息。一个分组的示意如下：</p>
+</code></pre></div>
+<p>共有 8 个分组，每个分组分别包含不同的消息。一个分组的示意如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> ap_message STREAM_EXTRA1_msgs[] <span style="color:#f92672">=</span> {
     MSG_ATTITUDE,
     MSG_SIMSTATE,
@@ -294,17 +327,20 @@ SCHED_TASK_CLASS(GCS, (GCS<span style="color:#f92672">*</span>)<span style="colo
     MSG_AHRS3,
     MSG_PID_TUNING
 };
-</code></pre></div><p>通过跟踪 <code>all_stream_entries</code> 的引用发现，Ardupilot 是通过不同的分组来确定消息发送的频率。在第一次调用 <code>void GCS_MAVLINK::update_send()</code> 时会进行初始化消息的发送频率。在确定消息的发送频率时有如下的调用关系：</p>
+</code></pre></div>
+<p>通过跟踪 <code>all_stream_entries</code> 的引用发现，Ardupilot 是通过不同的分组来确定消息发送的频率。在第一次调用 <code>void GCS_MAVLINK::update_send()</code> 时会进行初始化消息的发送频率。在确定消息的发送频率时有如下的调用关系：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// file: libaries/GCS_MAVLink/GCS_Common.cpp
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> GCS_MAVLINK<span style="color:#f92672">:</span><span style="color:#f92672">:</span>initialise_message_intervals_from_streamrates();
 <span style="color:#75715e">// -&gt;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> GCS_MAVLINK<span style="color:#f92672">:</span><span style="color:#f92672">:</span>initialise_message_intervals_for_stream(GCS_MAVLINK<span style="color:#f92672">:</span><span style="color:#f92672">:</span>streams id);
 <span style="color:#75715e">// -&gt;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">uint16_t</span> GCS_MAVLINK<span style="color:#f92672">:</span><span style="color:#f92672">:</span>get_interval_for_stream(GCS_MAVLINK<span style="color:#f92672">:</span><span style="color:#f92672">:</span>streams id);
-</code></pre></div><p>最后发现实际的发送频率是由下面一组可由地面站修改并可以保存在闪存中的参数决定的。</p>
+</code></pre></div>
+<p>最后发现实际的发送频率是由下面一组可由地面站修改并可以保存在闪存中的参数决定的。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// saveable rate of each stream
 </span><span style="color:#75715e"></span>AP_Int16 streamRates[NUM_STREAMS];
-</code></pre></div><p>一个参数的示例：</p>
+</code></pre></div>
+<p>一个参数的示例：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">const</span> AP_Param<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GroupInfo GCS_MAVLINK<span style="color:#f92672">:</span><span style="color:#f92672">:</span>var_info[] <span style="color:#f92672">=</span> {
     <span style="color:#75715e">// @Param: RAW_SENS
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// @DisplayName: Raw sensor stream rate
@@ -316,22 +352,44 @@ SCHED_TASK_CLASS(GCS, (GCS<span style="color:#f92672">*</span>)<span style="colo
 </span><span style="color:#75715e"></span>    AP_GROUPINFO(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">RAW_SENS</span><span style="color:#e6db74">&#34;</span>, <span style="color:#ae81ff">0</span>, GCS_MAVLINK, streamRates[STREAM_RAW_SENSORS],  <span style="color:#ae81ff">0</span>),
     AP_GROUPEND
 };
-</code></pre></div><p>在 Mission Planner 中的参数截图如下：</p>
-<!-- raw HTML omitted -->
+</code></pre></div>
+<p>在 Mission Planner 中的参数截图如下：</p>
+
+<figure class="center">
+    <img src="/img/ardupilot-handle-msg/GCS_MAVLINK_Param-Mission-Planner.png"
+         alt="GCS_MAVLINK_Param"/> <figcaption>
+            <h4>GCS_MAVLINK_Param</h4>
+        </figcaption>
+</figure>
+
 <p><strong>如我我们需要修改某条现有的消息的发送频率只需要调整这条消息的分组或者调整消息分组的发送频率。</strong></p>
+
 <p><strong>如果我们要添加一条自定义的消息到周期性发送的任务中则需要做一下几点：</strong></p>
+
 <ol>
-<li>在 <code>enum ap_message</code> 添加自定义的消息类型；</li>
-<li>在消息分组中添加自定义的消息；</li>
-<li>在 <code>try_send_message()</code> 中发送自定义的消息；</li>
+<li>在 <code>enum ap_message</code> 添加自定义的消息类型；<br /></li>
+<li>在消息分组中添加自定义的消息；<br /></li>
+<li>在 <code>try_send_message()</code> 中发送自定义的消息；<br /></li>
 </ol>
+
 <p>如果只是需要发送一条消息的话可以直接调用 <code>mavlink_ms_*_send()</code> 这一系列函数。</p>
+
 <h1 id="添加自定义消息"><del>添加自定义消息</del></h1>
+
 <p>添加自定义消息需要修改 <code>modules/mavlink/message_definitions/v1.0/common.xml</code> 文件，而这个文件位于 <code>mavlink</code> 子模块，这就意味着如果要修改这个子模块中的文件就要再另外维护一个子模块仓库，所以暂时不考虑做这一操作。</p>
+
 <p>为了达成相似的功能，使用 <a href="https://mavlink.io/en/messages/common.html#NAMED_VALUE_FLOAT">NAMED_VALUE_FLOAT (#251)</a>  和 <a href="https://mavlink.io/en/messages/common.html#NAMED_VALUE_INT">NAMED_VALUE_INT (#252)</a> 两个消息可以完成单个数据的传递的功能。<a href="https://mavlink.io/en/messages/common.html#RC_CHANNELS_OVERRIDE">RC_CHANNELS_OVERRIDE (#70)</a> 可以一次完成多个数据的传递。</p>
-<!-- raw HTML omitted -->
-<p>通过阅读这部分代码，发现可以通过类的继承添加自己的代码到现有的代码中，这样组织代码会比较合理。打算添加 <code>GCS_Sub_lab-&gt;GCS_Sub</code> 和  <code>GCS_MAVLINK_Sub_lab-&gt;GCS_MAVLINK_Sub</code> 这两个子类来添加通信相关的代码。相关实现见这个 <a href="https://github.com/zt-luo/ardupilot/commit/e00726b691ce8a1ab2217c3961391d39f7dcb7ca">commit</a> 。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-note">
+    <p class="admonition-note-title">
+        Note
+    </p>
+    <p>
+
+通过阅读这部分代码，发现可以通过类的继承添加自己的代码到现有的代码中，这样组织代码会比较合理。打算添加 `GCS_Sub_lab->GCS_Sub` 和  `GCS_MAVLINK_Sub_lab->GCS_MAVLINK_Sub` 这两个子类来添加通信相关的代码。相关实现见这个 [commit](https://github.com/zt-luo/ardupilot/commit/e00726b691ce8a1ab2217c3961391d39f7dcb7ca) 。
+
+</p>
+</div>
     </div>
 
     

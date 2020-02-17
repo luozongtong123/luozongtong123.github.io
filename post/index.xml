@@ -374,8 +374,8 @@
       
       <guid>https://blog.ztluo.dev/post/relationship/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;当我沉默着的时候，我觉得充实；我将开口，同时觉得空虚。&lt;br&gt;
-&lt;!-- raw HTML omitted --&gt;&amp;ndash; 鲁迅 &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;当我沉默着的时候，我觉得充实；我将开口，同时觉得空虚。&lt;br /&gt;
+&lt;cite&gt;&amp;ndash; 鲁迅 &lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</description>
     </item>
     

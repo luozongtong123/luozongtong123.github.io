@@ -58,7 +58,7 @@
 <meta itemprop="description" content="">
 <meta itemprop="datePublished" content="2018-03-12T15:19:00&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-18T15:44:00&#43;08:00" />
-<meta itemprop="wordCount" content="415">
+<meta itemprop="wordCount" content="433">
 
 
 
@@ -136,7 +136,7 @@
       <div class="post-meta">
         <span class="post-time"> 2018-03-12 </span>
         
-        <span class="more-meta"> 约 415 字 </span>
+        <span class="more-meta"> 约 433 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -148,7 +148,17 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#烧录镜像">烧录镜像</a></li>
+<li><a href="#开启-ssh">开启 SSH</a></li>
+<li><a href="#连接显示器">连接显示器</a></li>
+<li><a href="#修改主机名">修改主机名</a></li>
+<li><a href="#修改软件源并更新软件">修改软件源并更新软件</a></li>
+<li><a href="#使用-raspi-config">使用 raspi-config</a></li>
+<li><a href="#连接-wifi">连接 WiFi</a></li>
+</ul>
+</nav>
   </div>
 </div>
 
@@ -158,18 +168,35 @@
     
     <div class="post-content">
       <h1 id="烧录镜像">烧录镜像</h1>
+
 <p>拿到树莓派后第一步是将系统镜像烧录到存储卡。镜像下载：<a href="https://www.raspberrypi.org/downloads/raspbian/">地址</a>。这里选择没有桌面的 Raspbian Lite。烧录工具使用 <a href="https://sourceforge.net/projects/win32diskimager/">Win32 Disk Imager</a>。</p>
+
 <h1 id="开启-ssh">开启 SSH</h1>
+
 <p>Raspbian 默认关闭 SSH，在第一次开机前需要设置为开启。方法为：在烧录完成的内存卡的 boot 分区的根目录下创建一个名为 ssh 的文件。</p>
-<!-- raw HTML omitted -->
+
+<div class="admonition-warning">
+    <p class="admonition-warning-title">
+        Warning
+    </p>
+    <p>
+这个名为 `ssh` 的文件不应含任何扩展名。
+</p>
+</div>
+
 <h1 id="连接显示器">连接显示器</h1>
+
 <p>如果想直接连接显示器使用，则需要对显示器相关的设置进行更改。具体方法见：<a href="/post/raspberrypi-hdmi/">树莓派连接显示器的问题</a></p>
+
 <h1 id="修改主机名">修改主机名</h1>
+
 <p>方法一：直接修改文件
 $ sudo nano /etc/hostname   #将 raspberrypi 修改为合适的名称
 $ sudo nano /etc/hosts           #将 raspberrypi 修改为合适的名称</p>
+
 <p>方法二：
 raspi-config -&gt; 2 Network Options -&gt; N1 Hostname</p>
+
 <h1 id="修改软件源并更新软件">修改软件源并更新软件</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak  <span style="color:#75715e">#备份为 sources.list.bak</span>
 sudo nano /etc/apt/sources.list 
@@ -179,14 +206,17 @@ deb https://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free 
 <span style="color:#75715e">#deb-src https://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi</span> 
 
 sudo apt-get update
-sudo apt-get upgrade
-</code></pre></div><h1 id="使用-raspi-config">使用 raspi-config</h1>
-<p>raspi-config 是 Raspberry PI 官方 Raspbian 镜像自带的一个系统配置工具。它可以用来进行更改密码等设置。<br>
+sudo apt-get upgrade</code></pre></div>
+<h1 id="使用-raspi-config">使用 raspi-config</h1>
+
+<p>raspi-config 是 Raspberry PI 官方 Raspbian 镜像自带的一个系统配置工具。它可以用来进行更改密码等设置。<br />
 参考：<a href="http://www.shumeipaiba.com/wanpai/jiaocheng/3.html">树莓派官方设置工具 raspi-config</a></p>
+
 <h1 id="连接-wifi">连接 WiFi</h1>
-<p>这里有两种方法：<br>
-方法一：直接修改文件，具体操作参考：<a href="/post/raspberrypi-wifi/">树莓派连接 WiFi</a><br>
-方法二：借助 raspi-config 进行设置。<br>
+
+<p>这里有两种方法：<br />
+方法一：直接修改文件，具体操作参考：<a href="/post/raspberrypi-wifi/">树莓派连接 WiFi</a><br />
+方法二：借助 raspi-config 进行设置。<br />
 raspi-config ➡ <code>2 Network Options</code> ➡ <code>N2 Wi-fi</code> ，输入SSID和密码即可。</p>
     </div>
 

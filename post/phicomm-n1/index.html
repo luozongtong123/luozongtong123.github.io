@@ -150,16 +150,20 @@
   
   <div class="post-toc-content">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#替换-dtb-解决负载不正常的问题">替换 dtb 解决负载不正常的问题</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#启用-bbr">启用 bbr</a></li>
-    <li><a href="#解决-sudo-慢的问题">解决 sudo 慢的问题</a></li>
-    <li><a href="#ntp-时间自动更新">NTP 时间自动更新</a></li>
-    <li><a href="#oh-my-zsh">oh-my-zsh</a></li>
-  </ul>
+<ul>
+<li><a href="#刷机">刷机</a>
+<ul>
+<li><a href="#替换-dtb-解决负载不正常的问题">替换 dtb 解决负载不正常的问题</a></li>
+</ul></li>
+<li><a href="#armbian-相关">Armbian 相关</a>
+<ul>
+<li><a href="#启用-bbr">启用 bbr</a></li>
+<li><a href="#解决-sudo-慢的问题">解决 sudo 慢的问题</a></li>
+<li><a href="#ntp-时间自动更新">NTP 时间自动更新</a></li>
+<li><a href="#oh-my-zsh">oh-my-zsh</a></li>
+</ul></li>
+<li><a href="#启用测试版软件仓库">启用测试版软件仓库</a></li>
+</ul>
 </nav>
   </div>
 </div>
@@ -170,28 +174,37 @@
     
     <div class="post-content">
       <p>前几天发现了 斐讯 N1 这个好东西，买了一个拿来玩玩。记录一下折腾过程。</p>
+
 <h1 id="刷机">刷机</h1>
-<p>首先需要需要刷 webpad 的固件。<br>
-<a href="https://www.mivm.cn/phicomm-n1-linux/">https://www.mivm.cn/phicomm-n1-linux/</a><br>
+
+<p>首先需要需要刷 webpad 的固件。<br />
+<a href="https://www.mivm.cn/phicomm-n1-linux/">https://www.mivm.cn/phicomm-n1-linux/</a><br />
 <a href="https://www.zrj96.com/post-1159.html">https://www.zrj96.com/post-1159.html</a></p>
+
 <h2 id="替换-dtb-解决负载不正常的问题">替换 dtb 解决负载不正常的问题</h2>
+
 <p>替换 5.0.0 dtb</p>
-<p><a href="https://github.com/yangxuan8282/phicomm-n1/issues/15#issuecomment-473663722">dtb 链接</a><br>
+
+<p><a href="https://github.com/yangxuan8282/phicomm-n1/issues/15#issuecomment-473663722">dtb 链接</a><br />
 <a href="/zip/phicomm-n1/meson-gxl-s905d-phicomm-n1.7z">直接下载</a></p>
+
 <h1 id="armbian-相关">Armbian 相关</h1>
+
 <h2 id="启用-bbr">启用 bbr</h2>
+
 <p><a href="https://sb.sb/blog/debian-ubuntu-tcp-bbr/">参考</a></p>
+
 <h2 id="解决-sudo-慢的问题">解决 sudo 慢的问题</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查看 hostname</span>
 hostname
 <span style="color:#75715e"># 将 hostname 添加到 host 的第一和第二行</span>
-sudo nano /etc/hosts
-</code></pre></div><h2 id="ntp-时间自动更新">NTP 时间自动更新</h2>
+sudo nano /etc/hosts</code></pre></div>
+<h2 id="ntp-时间自动更新">NTP 时间自动更新</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install ntpdate
 sudo crontab -e
 <span style="color:#75715e"># 添加如下一行</span>
-<span style="color:#ae81ff">00</span> <span style="color:#ae81ff">10</span> * * * /usr/sbin/ntpdate -u cn.pool.ntp.org &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span>
-</code></pre></div><h2 id="oh-my-zsh">oh-my-zsh</h2>
+<span style="color:#ae81ff">00</span> <span style="color:#ae81ff">10</span> * * * /usr/sbin/ntpdate -u cn.pool.ntp.org &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span></code></pre></div>
+<h2 id="oh-my-zsh">oh-my-zsh</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 安装</span>
 sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 
@@ -202,8 +215,9 @@ ZSH_THEME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ys
 source ~/.zshrc
 
 <span style="color:#75715e"># 添加插件</span>
-...
-</code></pre></div><h1 id="启用测试版软件仓库">启用测试版软件仓库</h1>
+...</code></pre></div>
+<h1 id="启用测试版软件仓库">启用测试版软件仓库</h1>
+
 <p><a href="https://linux.cn/article-3288-1.html">https://linux.cn/article-3288-1.html</a></p>
     </div>
 

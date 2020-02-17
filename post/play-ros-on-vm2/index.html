@@ -59,7 +59,7 @@
 <meta itemprop="description" content="在虚拟机上使用 ROS 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。">
 <meta itemprop="datePublished" content="2019-11-23T21:30:44&#43;08:00" />
 <meta itemprop="dateModified" content="2019-11-24T16:03:44&#43;08:00" />
-<meta itemprop="wordCount" content="343">
+<meta itemprop="wordCount" content="345">
 
 
 
@@ -137,7 +137,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-11-23 </span>
         
-        <span class="more-meta"> 约 343 字 </span>
+        <span class="more-meta"> 约 345 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -152,30 +152,67 @@
     
     <div class="post-content">
       <p><a href="/post/play-ros-on-vm/">在虚拟机上使用 ROS</a> 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。</p>
+
 <h1 id="检查是否已经开启了加速">检查是否已经开启了加速</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install nux-tools
-/usr/lib/nux/unity_support_test -p
-</code></pre></div><p>如果如下图所示，Unity 3D supported 后面显示的是那个可爱的绿色 <!-- raw HTML omitted -->yes<!-- raw HTML omitted --> ，那么恭喜你，可以关掉网页了。如果是讨厌的红色 <!-- raw HTML omitted -->no<!-- raw HTML omitted -->，那么就继续往下看吧。😏</p>
-<!-- raw HTML omitted -->
+/usr/lib/nux/unity_support_test -p</code></pre></div>
+<p>如果如下图所示，Unity 3D supported 后面显示的是那个可爱的绿色 <font color="green">yes</font> ，那么恭喜你，可以关掉网页了。如果是讨厌的红色 <font color="red">no</font>，那么就继续往下看吧。😏</p>
+
+<figure class="center">
+    <img src="/img/play-ros-on-vm2/unity_support_test.png"
+         alt="unity_support_test"/> <figcaption>
+            <h4>unity_support_test</h4>
+        </figcaption>
+</figure>
+  
+
 <h1 id="准备哈系统">准备哈系统</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt upgrade
 sudo apt install build-essential module-assistant dkms
-sudo m-a prepare
-</code></pre></div><h1 id="重新安装哈-virtualbox-的扩展功能">重新安装哈 VirtualBox 的扩展功能</h1>
+sudo m-a prepare</code></pre></div>
+<h1 id="重新安装哈-virtualbox-的扩展功能">重新安装哈 VirtualBox 的扩展功能</h1>
+
 <p>挂载扩展功能的 ISO，具体可参见<a href="/post/play-ros-on-vm/">上篇文章</a>。重新安装下扩展功能。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./autorun
-</code></pre></div><h1 id="在-virtualbox-中开启-3d-加速">在 VirtualBox 中开启 3D 加速</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./autorun</code></pre></div>
+<h1 id="在-virtualbox-中开启-3d-加速">在 VirtualBox 中开启 3D 加速</h1>
+
 <p>首先将虚拟机关机。然后进行如下设置：</p>
-<!-- raw HTML omitted -->
+
+<figure class="center">
+    <img src="/img/play-ros-on-vm2/3d-acceleration.png"
+         alt="3d-acceleration"/> <figcaption>
+            <h4>3d-acceleration</h4>
+        </figcaption>
+</figure>
+
 <h1 id="最后再进入系统测试下">最后再进入系统测试下</h1>
-<!-- raw HTML omitted -->
+
+<figure class="center">
+    <img src="/img/play-ros-on-vm2/unity_support_test.png"
+         alt="unity_support_test"/> <figcaption>
+            <h4>unity_support_test</h4>
+        </figcaption>
+</figure>
+  
+
 <p>唉？怎么又是这张图?🤔</p>
-<!-- raw HTML omitted -->
+
+<figure class="center">
+    <img src="/img/play-ros-on-vm2/gazebo.png"
+         alt="gazebo"/> <figcaption>
+            <h4>gazebo</h4>
+        </figcaption>
+</figure>
+  
+
 <p>虽然帧率仍然并不是很高而且帧率波动还比较大但是总的来说勉强够用。</p>
+
 <p>大功告成！收工。</p>
+
 <h1 id="参考">参考</h1>
+
 <p><a href="https://www.linuxbabe.com/virtualbox/speed-up-ubuntu-virtualbox">How to Speed up Ubuntu 16.04 and 17.04 in VirtualBox
-</a><br>
+</a><br />
 <a href="https://ubuntuforums.org/showthread.php?t=1856762">Can&rsquo;t run /usr/lib/nux/unity_support_test -p to see if unity is supported</a></p>
     </div>
 

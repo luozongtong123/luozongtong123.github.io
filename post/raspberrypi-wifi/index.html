@@ -152,31 +152,37 @@
     
     <div class="post-content">
       <p>树莓派连接 Wifi，HOW。</p>
-<h1 id="修改-etcnetworkinterfaces-文件">修改 /etc/network/interfaces 文件</h1>
+
+<h1 id="修改-etc-network-interfaces-文件">修改 /etc/network/interfaces 文件</h1>
+
 <p>添加或将原来的设置替换成如下所示：</p>
 <pre><code>iface wlan0 inet dhcp
-wpa_conf /etc/wpa_supplicant/wpa_supplicant.conf
-</code></pre><h1 id="修改-etcwpa_supplicantwpa_supplicantconf-文件">修改 /etc/wpa_supplicant/wpa_supplicant.conf 文件</h1>
+wpa_conf /etc/wpa_supplicant/wpa_supplicant.conf</code></pre>
+<h1 id="修改-etc-wpa-supplicant-wpa-supplicant-conf-文件">修改 /etc/wpa_supplicant/wpa_supplicant.conf 文件</h1>
+
 <p>按照如下格式添加无线网络配置：
 <strong>最常用的配置。WPA-PSK 加密方式。</strong></p>
 <pre><code>network={
-ssid=&quot;WiFi-name1&quot;
-psk=&quot;WiFi-password1&quot;
+ssid="WiFi-name1"
+psk="WiFi-password1"
 priority=5
 }
  
 network={
-ssid=&quot;WiFi-name2&quot;
-psk=&quot;WiFi-password2&quot;
+ssid="WiFi-name2"
+psk="WiFi-password2"
 priority=4
-}
-</code></pre><p>优先级数字越大优先级越高。</p>
+}</code></pre>
+<p>优先级数字越大优先级越高。</p>
+
 <h1 id="启用wifi">启用WiFi</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ifup wlan0
-</code></pre></div><p>注意： 如果本来已经启用WiFi，可能需要先停用然后再次启用才可以连接WiFi。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ifup wlan0</code></pre></div>
+<p>注意： 如果本来已经启用WiFi，可能需要先停用然后再次启用才可以连接WiFi。</p>
+
 <h1 id="停用wifi">停用WiFi</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ifdown wlan0
-</code></pre></div><h1 id="自动重连wifi"><del>自动重连WiFi</del></h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ifdown wlan0</code></pre></div>
+<h1 id="自动重连wifi"><del>自动重连WiFi</del></h1>
+
 <p><code>可能没有作用</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/zt-luo/WiFi_Check.git  
 cd WiFi_Check
@@ -184,9 +190,9 @@ chmod +x WiFi_Check
 sudo nano /etc/crontab
 <span style="color:#75715e"># 添加如下两行</span>
 */1 * * * * root /home/pi/WiFi_Check/WiFi_Check
-*/1 * * * * root /home/pi/WiFi_Check/WiFi_Check1
-</code></pre></div><p>参考：<br>
-<a href="https://www.cmgine.com/archives/11053.html">树莓派连接 WiFi（最稳定的方法）</a><br>
+*/1 * * * * root /home/pi/WiFi_Check/WiFi_Check1</code></pre></div>
+<p>参考：<br />
+<a href="https://www.cmgine.com/archives/11053.html">树莓派连接 WiFi（最稳定的方法）</a><br />
 <a href="http://movesan.me/2017/02/07/raspberry/">树莓派 3 代从 0 到连接 WIFI 访问（无显示器）</a></p>
     </div>
 

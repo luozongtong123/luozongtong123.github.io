@@ -150,16 +150,18 @@
   
   <div class="post-toc-content">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#远程登录">远程登录</a>
-      <ul>
-        <li><a href="#创建非-root-用户">创建非 root 用户</a></li>
-        <li><a href="#防止密码被爆破">防止密码被爆破</a></li>
-        <li><a href="#远程登录加固">远程登录加固</a></li>
-        <li><a href="#创建服务账户">创建服务账户</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#远程登录">远程登录</a>
+<ul>
+<li><a href="#创建非-root-用户">创建非 root 用户</a></li>
+<li><a href="#防止密码被爆破">防止密码被爆破</a></li>
+<li><a href="#远程登录加固">远程登录加固</a></li>
+<li><a href="#创建服务账户">创建服务账户</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
   </div>
 </div>
@@ -170,8 +172,11 @@
     
     <div class="post-content">
       <p>前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。</p>
+
 <h2 id="远程登录">远程登录</h2>
+
 <h3 id="创建非-root-用户">创建非 root 用户</h3>
+
 <p>首先第一件事就是要创建非 root 用户，使用 root 用户进行日常的操作是非常危险的。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo useradd -m -r -s /bin/bash user
 sudo passwd user
@@ -185,37 +190,42 @@ sudo tee /etc/sudoers.d/user <span style="color:#f92672">&lt;&lt;&lt;</span> <sp
 sudo chmod <span style="color:#ae81ff">440</span> /etc/sudoers.d/user
 
 <span style="color:#75715e"># 切换到 user</span>
-su -l user
-</code></pre></div><h3 id="防止密码被爆破">防止密码被爆破</h3>
+su -l user</code></pre></div>
+<h3 id="防止密码被爆破">防止密码被爆破</h3>
+
 <p>为了防止密码被爆破限制登录密码错误 3 次后锁定账户。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo nano /etc/pam.d/login
 sudo nano /etc/pam.d/remote
 sudo nano /etc/pam.d/sshd
 <span style="color:#75715e"># 在 #%PAM-1.0 下添加下面一行</span>
-auth required pam_tally2.so deny<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> unlock_time<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span> even_deny_root root_unlock_time<span style="color:#f92672">=</span><span style="color:#ae81ff">600</span>
-</code></pre></div><h3 id="远程登录加固">远程登录加固</h3>
+auth required pam_tally2.so deny<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> unlock_time<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span> even_deny_root root_unlock_time<span style="color:#f92672">=</span><span style="color:#ae81ff">600</span></code></pre></div>
+<h3 id="远程登录加固">远程登录加固</h3>
+
 <p>使用 <code>sudo nano /etc/ssh/sshd_config</code> 编辑 sshd 配置文件。</p>
+
 <p>使用私钥远程登录服务器：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 生成私钥</span>
 ssh_keygen
 <span style="color:#75715e"># 添加公钥</span>  
 echo &lt;主机 id_rsa.pub&gt; &gt;&gt; .ssh/authorized_keys
 <span style="color:#75715e"># 修改权限</span>  
-chmod <span style="color:#ae81ff">600</span> .ssh/authorized_keys
-</code></pre></div><ol>
+chmod <span style="color:#ae81ff">600</span> .ssh/authorized_keys</code></pre></div>
+<ol>
 <li>修改默认端口号：默认端口号 22，默认的端口号会导致过多登录尝试，将其改为不常用的端口，选项名称为 <code>Port</code>；</li>
 <li>禁止空口令登录：<code>PermitEmptyPasswords no</code>；</li>
 <li>禁用密码登录：<code>PasswordAuthentication no</code>，要注意一定要在确认可以通过私钥登录后才修改此项配置，否则会导致无法远程登录。</li>
 </ol>
+
 <h3 id="创建服务账户">创建服务账户</h3>
+
 <p>每个服务使用单独自己的账户，这样就不会因为某个服务遭到攻破而导致 root 权限被拿到。</p>
+
 <p>创建带有 home 目录的 acme 帐号：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo useradd -m -r -s /bin/bash acme
-sudo su -l acme
-</code></pre></div><p>创建不带有 home 目录的 acme 帐号：</p>
+sudo su -l acme</code></pre></div>
+<p>创建不带有 home 目录的 acme 帐号：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo useradd -r -s /bin/bash acme
-sudo su -l acme
-</code></pre></div>
+sudo su -l acme</code></pre></div>
     </div>
 
     

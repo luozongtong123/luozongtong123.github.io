@@ -154,19 +154,21 @@
   
   <div class="post-toc-content">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#安装">安装</a></li>
-    <li><a href="#配置">配置</a>
-      <ul>
-        <li><a href="#添加用户">添加用户</a></li>
-        <li><a href="#必要的文件夹">必要的文件夹</a></li>
-        <li><a href="#修改-candy-配置文件">修改 Candy 配置文件</a></li>
-        <li><a href="#配置开机自动启动">配置开机自动启动</a></li>
-        <li><a href="#启动-caddy">启动 Caddy</a></li>
-      </ul>
-    </li>
-    <li><a href="#参考">参考</a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#安装">安装</a></li>
+<li><a href="#配置">配置</a>
+<ul>
+<li><a href="#添加用户">添加用户</a></li>
+<li><a href="#必要的文件夹">必要的文件夹</a></li>
+<li><a href="#修改-candy-配置文件">修改 Candy 配置文件</a></li>
+<li><a href="#配置开机自动启动">配置开机自动启动</a></li>
+<li><a href="#启动-caddy">启动 Caddy</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
 </nav>
   </div>
 </div>
@@ -177,17 +179,22 @@
     
     <div class="post-content">
       <p>Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 <a href="https://letsencrypt.org/">Let’s Encrypt</a> 申请证书并续约。</p>
+
 <p>Caddy 和我们常用的 Nginx、Apache 等 Web 服务器相比，最大的特点就是部署简单，它拥有基本的 apache 或者 nginx 有的 web server 模块，同时还有一些很有特色的功能，比如: HTTP/2、Automatic HTTPS、Multi-core、Websockets、Markdown、IPv6 等等。</p>
+
 <h2 id="安装">安装</h2>
+
 <p>使用官方脚本安装：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo curl https://getcaddy.com | bash -s personal http.git,dns
-</code></pre></div><h2 id="配置">配置</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo curl https://getcaddy.com | bash -s personal http.git,dns</code></pre></div>
+<h2 id="配置">配置</h2>
+
 <h3 id="添加用户">添加用户</h3>
+
 <p>添加 www-data 用户组与用户便于管理 www 文件。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo groupadd www-data
 sudo useradd -g www-data www-data
-sudo usermod -a -G root www-data
-</code></pre></div><h3 id="必要的文件夹">必要的文件夹</h3>
+sudo usermod -a -G root www-data</code></pre></div>
+<h3 id="必要的文件夹">必要的文件夹</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkdir /etc/caddy
 sudo touch /etc/caddy/Caddyfile
 sudo chown -R root:www-data /etc/caddy
@@ -205,8 +212,9 @@ sudo chmod <span style="color:#ae81ff">770</span> /var/log/caddy.log
 sudo mkdir /var/www
 sudo chown www-data:www-data /var/www
 sudo git clone https://github.com/zt-luo/zt-luo.github.io.git /var/www/blog
-sudo chown -R www-data:www-data /var/www/blog
-</code></pre></div><h3 id="修改-candy-配置文件">修改 Candy 配置文件</h3>
+sudo chown -R www-data:www-data /var/www/blog</code></pre></div>
+<h3 id="修改-candy-配置文件">修改 Candy 配置文件</h3>
+
 <p><code>nano /etc/caddy/Caddyfile</code></p>
 <pre><code>blog.ztluo.dev {
   gzip
@@ -214,26 +222,29 @@ sudo chown -R www-data:www-data /var/www/blog
   root /var/www/blog
   git {
     repo https://github.com/zt-luo/zt-luo.github.io.git
-    hook /webhook &quot;Secret&quot;
+    hook /webhook "Secret"
   }
   log /var/log/caddy.log
-}
-</code></pre><p>git 选项可以自动拉取 git 仓库的内容，此处配置了 webhook，用来在仓库有 push 时快速地更新网页。hook 选项格式 <code>hook path secret</code>。在仓库的设置选项中添加 webhook，其中 <code>Payload URL</code> 填写 <code>blog.ztluo.dev/webhook</code>，<code>Content type</code> 选择 <code>json</code>，<code>Secret</code> 填写设置的 Secret。</p>
+}</code></pre>
+<p>git 选项可以自动拉取 git 仓库的内容，此处配置了 webhook，用来在仓库有 push 时快速地更新网页。hook 选项格式 <code>hook path secret</code>。在仓库的设置选项中添加 webhook，其中 <code>Payload URL</code> 填写 <code>blog.ztluo.dev/webhook</code>，<code>Content type</code> 选择 <code>json</code>，<code>Secret</code> 填写设置的 Secret。</p>
+
 <h3 id="配置开机自动启动">配置开机自动启动</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo curl -s https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service -o /etc/systemd/system/caddy.service   <span style="color:#75715e"># 从 github 下载 systemd 配置文件</span>
 sudo systemctl daemon-reload        <span style="color:#75715e"># 重新加载 systemd 配置</span>
 sudo systemctl enable caddy.service <span style="color:#75715e"># 设置 caddy 服务自启动</span>
-sudo systemctl status caddy.service <span style="color:#75715e"># 查看 caddy 状态</span>
-</code></pre></div><h3 id="启动-caddy">启动 Caddy</h3>
+sudo systemctl status caddy.service <span style="color:#75715e"># 查看 caddy 状态</span></code></pre></div>
+<h3 id="启动-caddy">启动 Caddy</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 启动</span>
 sudo systemctl start caddy.service
 
 <span style="color:#75715e"># 查看状态</span>
-sudo systemctl status caddy.service
-</code></pre></div><p>如果看到 <code>caddy[xxxx]: Serving HTTPS on port 443</code> 说明成功启动，如果没有启动则根据错误提示查找问题。</p>
+sudo systemctl status caddy.service</code></pre></div>
+<p>如果看到 <code>caddy[xxxx]: Serving HTTPS on port 443</code> 说明成功启动，如果没有启动则根据错误提示查找问题。</p>
+
 <h2 id="参考">参考</h2>
-<p><a href="https://wzfou.com/caddy/">Caddy 最容易上手的 Web Server - 自动化 HTTPS 一分钟部署网站 \ 网盘</a><br>
-<a href="https://github.com/caddyserver/caddy/tree/master/dist/init/linux-systemd">systemd Service Unit for Caddy</a><br>
+
+<p><a href="https://wzfou.com/caddy/">Caddy 最容易上手的 Web Server - 自动化 HTTPS 一分钟部署网站 \ 网盘</a><br />
+<a href="https://github.com/caddyserver/caddy/tree/master/dist/init/linux-systemd">systemd Service Unit for Caddy</a><br />
 <a href="https://caddyserver.com/v1/docs/http.git">http.git - Caddy User Guide</a></p>
     </div>
 
