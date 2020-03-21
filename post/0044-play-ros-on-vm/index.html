@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>在虚拟机上使用 ROS - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="最近想研究一下 uuv_simulator 怎么使用，可能的话作为我毕业论文的一部分。uuv_simulator 是基于 ROS 的， ROS 官方支持的系统是 Ubuntu ，而我机器上跑得是 Manjaro，如果在新分区或着是在新硬盘上安装 Ubuntu 则需要高一整套的学习和工具链，思来想去还是安装虚拟机吧。于是就有了这篇博文。
+" />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+<meta name="baidu-site-verification" content="8SYIFLvIPQ" />
+<meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
+
+
+<meta name="generator" content="Hugo 0.66.0" />
+
+
+<link rel="canonical" href="https://blog.ztluo.dev/post/0044-play-ros-on-vm/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="在虚拟机上使用 ROS" />
+<meta property="og:description" content="最近想研究一下 uuv_simulator 怎么使用，可能的话作为我毕业论文的一部分。uuv_simulator 是基于 ROS 的， ROS 官方支持的系统是 Ubuntu ，而我机器上跑得是 Manjaro，如果在新分区或着是在新硬盘上安装 Ubuntu 则需要高一整套的学习和工具链，思来想去还是安装虚拟机吧。于是就有了这篇博文。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ztluo.dev/post/0044-play-ros-on-vm/" />
+<meta property="article:published_time" content="2019-11-22T10:31:17+08:00" />
+<meta property="article:modified_time" content="2019-11-22T10:31:17+08:00" />
+<meta itemprop="name" content="在虚拟机上使用 ROS">
+<meta itemprop="description" content="最近想研究一下 uuv_simulator 怎么使用，可能的话作为我毕业论文的一部分。uuv_simulator 是基于 ROS 的， ROS 官方支持的系统是 Ubuntu ，而我机器上跑得是 Manjaro，如果在新分区或着是在新硬盘上安装 Ubuntu 则需要高一整套的学习和工具链，思来想去还是安装虚拟机吧。于是就有了这篇博文。">
+<meta itemprop="datePublished" content="2019-11-22T10:31:17&#43;08:00" />
+<meta itemprop="dateModified" content="2019-11-22T10:31:17&#43;08:00" />
+<meta itemprop="wordCount" content="1049">
+
+
+
+<meta itemprop="keywords" content="ROS,uuv_simulator,VirtualBox,Xubuntu,Ubuntu," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在虚拟机上使用 ROS"/>
+<meta name="twitter:description" content="最近想研究一下 uuv_simulator 怎么使用，可能的话作为我毕业论文的一部分。uuv_simulator 是基于 ROS 的， ROS 官方支持的系统是 Ubuntu ，而我机器上跑得是 Manjaro，如果在新分区或着是在新硬盘上安装 Ubuntu 则需要高一整套的学习和工具链，思来想去还是安装虚拟机吧。于是就有了这篇博文。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/project/">
+        <li class="mobile-menu-item">项目</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/project/">项目</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">在虚拟机上使用 ROS</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-11-22 </span>
+        
+        <span class="more-meta"> 约 1049 字 </span>
+        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#虚拟机管理软件">虚拟机管理软件</a></li>
+<li><a href="#客户端-linux-发行版选择">客户端 Linux 发行版选择</a></li>
+<li><a href="#系统配置">系统配置</a></li>
+<li><a href="#安装-ros-及-uuv-simulator">安装 ROS 及 <code>uuv_simulator</code></a>
+<ul>
+<li><a href="#勾选-restricted-universe-and-multiverse">勾选 &ldquo;restricted&rdquo; &ldquo;universe&rdquo; and &ldquo;multiverse&rdquo;</a></li>
+<li><a href="#选择-ros-源">选择 ROS 源</a></li>
+<li><a href="#设置密钥">设置密钥</a></li>
+<li><a href="#安装">安装</a></li>
+</ul></li>
+<li><a href="#quick-start">Quick start</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>最近想研究一下 <code>uuv_simulator</code> 怎么使用，可能的话作为我毕业论文的一部分。<code>uuv_simulator</code> 是基于 ROS 的， ROS 官方支持的系统是 Ubuntu ，而我机器上跑得是 Manjaro，如果在新分区或着是在新硬盘上安装 Ubuntu 则需要高一整套的学习和工具链，思来想去还是安装虚拟机吧。于是就有了这篇博文。</p>
+
+<h1 id="虚拟机管理软件">虚拟机管理软件</h1>
+
+<p>刚开始接触 Linux 的时候就是从虚拟机开始玩的，那个时候也是用的这台电脑，当时还是 4G 内存和机械硬盘， Windows 上再开个虚拟机整得比较卡，体验很差。现在已经内存升级到 8G + 固态硬盘，同时也是在 Manjaro 下开虚拟机，想来应该不会太卡。虚拟机管理软件的话其实很容易选择。在 Windows 平台下可能还有 VMware 的选择，但是在 Linux 下 <a href="https://www.virtualbox.org/">VirtualBox</a> 是最好的选择。下载安装就直接在用 <code>yay</code> 了 (还好不用忍受 VirtualBox 官网那乌龟爬的速度)。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay virtualbox</code></pre></div>
+<h1 id="客户端-linux-发行版选择">客户端 Linux 发行版选择</h1>
+
+<p><code>uuv_simulator</code> 本身支持 <code>kinetic</code> <code>lunar</code> <code>melodic</code> 三个 ROS 的发行版本。按照我的喜好的话当然选择最新的 <code>melodic</code> 用。<code>melodic</code> 支持 Ubuntu 18.04 版本，18.04 其实已经不太新了，我使用的 Guake 在 Manjaro 上都更新到 3.6 了，而在 18.04 上才到 3.0，连开机自启动都没有。话说回来，使用 <code>melodic</code> 最好还是用 18.04，长期支持版更靠谱一些。</p>
+
+<p>Ubuntu 默认的桌面要臃肿一些，为了虚拟机不那么卡，同时也为了和我的 Manjaro 的使用习惯保持一致，我选择使用以 Xfce 作为默认桌面系统的 <a href="https://xubuntu.org/">Xubuntu</a>。</p>
+
+<p>安装的话也比较简单，直接在 VirtualBox 中新建虚拟机以及相应的虚拟硬盘，然后把下载好的 Xubuntu 镜像挂载就可以。然后顺着安装向导一步步安装即可。</p>
+
+<h1 id="系统配置">系统配置</h1>
+
+<p>稍微等一会系统就安装好了，进入系统的第一件事是安装 VirtualBox 的增强功能，安装了增强功能就可以让虚拟机的分辨率跟随窗口大小，并可以共享剪贴板。VirtualBox 中直接下载经常下载失败，速度也是及其感人，在此提供一个下载好的包，直接下载好添加到光驱文件即可，<a href="/zip/play-ros-on-vm/VBoxGuestAdditions_6.0.14.7z">下载连接</a>，版本号是 6.0.14，如果想用其他版本的就自己到官网上下载把，官网<a href="https://download.virtualbox.org/virtualbox">下载链接</a>。</p>
+
+<p>安装增强功能之前需要安装编译的工具，直接通过一行命令搞定: <code>sudo apt install build-essential</code>。啊，还有件事情忘了，如果 Ubuntu 默认的源速度不快的话可以到 <code>Settings &gt; Software &amp; Update &gt; Download from &gt; Other...</code> 中选择你想要的源，我的话直接选择了 <code>Select Best Server</code> ，系统帮我选择了南京邮电大学的源。</p>
+
+<h1 id="安装-ros-及-uuv-simulator">安装 ROS 及 <code>uuv_simulator</code></h1>
+
+<h2 id="勾选-restricted-universe-and-multiverse">勾选 &ldquo;restricted&rdquo; &ldquo;universe&rdquo; and &ldquo;multiverse&rdquo;</h2>
+
+<p>位置是 <code>Settings &gt; Software &amp; Update</code> 。</p>
+
+<h2 id="选择-ros-源">选择 ROS 源</h2>
+
+<p>官方源：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sh -c <span style="color:#e6db74">&#39;echo &#34;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&#34; &gt; /etc/apt/sources.list.d/ros-latest.list&#39;</span></code></pre></div>
+<p>国内源：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo sh -c <span style="color:#e6db74">&#39;. /etc/lsb-release &amp;&amp; echo &#34;deb http://mirrors.ustc.edu.cn/ros/ubuntu/ `lsb_release -cs` main&#34; &gt; /etc/apt/sources.list.d/ros-latest.list&#39;</span>
+<span style="color:#75715e"># 或者</span>
+sudo sh -c <span style="color:#e6db74">&#39;. /etc/lsb-release &amp;&amp; echo &#34;deb http://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/ `lsb_release -cs` main&#34; &gt; /etc/apt/sources.list.d/ros-latest.list&#39;</span></code></pre></div>
+<h2 id="设置密钥">设置密钥</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-key adv --keyserver <span style="color:#e6db74">&#39;hkp://keyserver.ubuntu.com:80&#39;</span> --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+<span style="color:#75715e"># 或者</span>
+curl -sSL <span style="color:#e6db74">&#39;http://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654&#39;</span> | sudo apt-key add -</code></pre></div>
+<h2 id="安装">安装</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update
+sudo apt install ros-melodic-desktop-full
+sudo apt install ros-melodic-uuv-simulator
+
+<span style="color:#75715e"># 环境变量</span>
+echo <span style="color:#e6db74">&#34;source /opt/ros/melodic/setup.bash&#34;</span> &gt;&gt; ~/.bashrc
+source ~/.bashrc</code></pre></div>
+<h1 id="quick-start">Quick start</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">roslaunch uuv_gazebo_worlds empty_underwater_world.launch
+roslaunch uuv_descriptions upload_rexrov.launch mode:<span style="color:#f92672">=</span>default x:<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> y:<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> z:<span style="color:#f92672">=</span>-20 namespace:<span style="color:#f92672">=</span>rexrov</code></pre></div>
+<p>简单启动试了一下。</p>
+
+<figure class="center">
+    <img src="/img/play-ros-on-vm/gazebo.png"
+         alt="gazebo"/> <figcaption>
+            <h4>gazebo</h4>
+        </figcaption>
+</figure>
+
+<p>有一个报错如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">libcurl: <span style="color:#f92672">(</span>51<span style="color:#f92672">)</span> SSL: no alternative certificate subject name matches target host name <span style="color:#e6db74">&#39;api.ignitionfuel.org&#39;</span></code></pre></div>
+<p>将 <code>~/.ignition/fuel/config.yaml</code> 中 <code>url: https://api.ignitionfuel.org</code> 替换成 <code>url: https://api.ignitionrobotics.org</code> 即可。</p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-11-22</span>
+  </p>
+  <p class="copyright-item">
+      <span class="item-title">原始文档</span>
+      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/0044-play-ros-on-vm/index.md" target="_blank">Markdown 文件</a></span>
+    </p>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC 署名 4.0 国际</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/wechat_reward_qr-code.png">
+        <span>微信长按/扫码打赏</span>
+      </label>
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/ros/">ROS</a>
+          
+          <a href="/tags/uuv_simulator/">uuv_simulator</a>
+          
+          <a href="/tags/virtualbox/">VirtualBox</a>
+          
+          <a href="/tags/xubuntu/">Xubuntu</a>
+          
+          <a href="/tags/ubuntu/">Ubuntu</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/0045-play-ros-on-vm2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">开启虚拟机系统中的 3D 加速</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/0043-qt-coding-in-vscode/">
+            <span class="next-text nav-default">在 Visual Studio Code 中编写 Qt 代码</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2019-11-22 10:31:17 \x2b0800 CST',
+    title: '在虚拟机上使用 ROS',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'zt-luo.github.io',
+    owner: 'zt-luo',
+    admin: ['zt-luo'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:me@ztluo.dev" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zt-luo" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.ztluo.dev/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/zt-luo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?3e7571b3a1c0f5c99ed01cf3b15b4b46";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

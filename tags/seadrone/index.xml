@@ -13,19 +13,19 @@
     
     <item>
       <title>SeaDrone 硬件构成</title>
-      <link>https://blog.ztluo.dev/post/seadrone-hardware/</link>
+      <link>https://blog.ztluo.dev/post/0014-seadrone-hardware/</link>
       <pubDate>Fri, 29 Dec 2017 11:03:22 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/seadrone-hardware/</guid>
+      <guid>https://blog.ztluo.dev/post/0014-seadrone-hardware/</guid>
       <description>&lt;p&gt;ROV 因为固件升级出错需要拆机恢复固件，趁此机会把硬件结构摸了一下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SeaDrone 拆装注意事项</title>
-      <link>https://blog.ztluo.dev/post/seadrone-disassemble-reassemble/</link>
+      <link>https://blog.ztluo.dev/post/0013-seadrone-disassemble-reassemble/</link>
       <pubDate>Tue, 26 Dec 2017 18:35:27 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/seadrone-disassemble-reassemble/</guid>
+      <guid>https://blog.ztluo.dev/post/0013-seadrone-disassemble-reassemble/</guid>
       <description>&lt;p&gt;参考 YouTube 上 SeaDrone 官方的推进器更换视频，总结了一下 SeaDrone 拆卸注意事项。&lt;/p&gt;</description>
     </item>
     

@@ -44,7 +44,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/server-security-hardening/</loc>
+    <loc>https://blog.ztluo.dev/post/0049-server-security-hardening/</loc>
     <lastmod>2020-02-16T09:45:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -58,7 +58,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/acmesh-certificates-automation/</loc>
+    <loc>https://blog.ztluo.dev/post/0048-acmesh-certificates-automation/</loc>
     <lastmod>2020-02-15T18:51:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -86,7 +86,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/caddy-my-blog/</loc>
+    <loc>https://blog.ztluo.dev/post/0046-caddy-my-blog/</loc>
     <lastmod>2020-02-12T23:05:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -121,7 +121,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/play-ros-on-vm2/</loc>
+    <loc>https://blog.ztluo.dev/post/0045-play-ros-on-vm2/</loc>
     <lastmod>2019-11-24T16:03:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -142,7 +142,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/play-ros-on-vm/</loc>
+    <loc>https://blog.ztluo.dev/post/0044-play-ros-on-vm/</loc>
     <lastmod>2019-11-22T10:31:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -170,7 +170,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/qt-coding-in-vscode/</loc>
+    <loc>https://blog.ztluo.dev/post/0043-qt-coding-in-vscode/</loc>
     <lastmod>2019-11-11T17:30:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -198,14 +198,14 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/qmlglsink-in-qquickwidget/</loc>
+    <loc>https://blog.ztluo.dev/post/0042-qmlglsink-in-qquickwidget/</loc>
     <lastmod>2019-11-09T21:25:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/huawei-cloud-service-from-nowcoder/</loc>
+    <loc>https://blog.ztluo.dev/post/0041-huawei-cloud-service-from-nowcoder/</loc>
     <lastmod>2019-11-06T09:51:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -233,14 +233,14 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/gen-new-mavlink-msg/</loc>
+    <loc>https://blog.ztluo.dev/post/0040-gen-new-mavlink-msg/</loc>
     <lastmod>2019-04-20T10:01:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/ardupilot-handle-msg/</loc>
+    <loc>https://blog.ztluo.dev/post/0039-ardupilot-handle-msg/</loc>
     <lastmod>2019-03-21T16:28:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -289,28 +289,28 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/ardupilot-dev-on-coder/</loc>
+    <loc>https://blog.ztluo.dev/post/0038-ardupilot-dev-on-coder/</loc>
     <lastmod>2019-03-19T09:30:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/my-auv18/</loc>
+    <loc>https://blog.ztluo.dev/post/0037-my-auv18/</loc>
     <lastmod>2019-03-12T19:52:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/coder/</loc>
+    <loc>https://blog.ztluo.dev/post/0036-coder/</loc>
     <lastmod>2019-03-16T09:28:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/ardupilot-scheduler/</loc>
+    <loc>https://blog.ztluo.dev/post/0034-ardupilot-scheduler/</loc>
     <lastmod>2019-03-12T16:20:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -324,21 +324,21 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/change-domain/</loc>
+    <loc>https://blog.ztluo.dev/post/0033-change-domain/</loc>
     <lastmod>2019-03-09T15:36:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/phicomm-n1/</loc>
+    <loc>https://blog.ztluo.dev/post/0032-phicomm-n1/</loc>
     <lastmod>2019-03-18T16:39:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/ardusub-interface/</loc>
+    <loc>https://blog.ztluo.dev/post/0031-ardusub-interface/</loc>
     <lastmod>2018-12-18T14:49:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -359,7 +359,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/even-theme-tweak/</loc>
+    <loc>https://blog.ztluo.dev/post/0030-even-theme-tweak/</loc>
     <lastmod>2018-10-28T11:48:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -373,7 +373,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/fsharp-tutorial/</loc>
+    <loc>https://blog.ztluo.dev/post/0029-fsharp-tutorial/</loc>
     <lastmod>2018-10-26T23:57:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -394,7 +394,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/vs-code-can-do-that/</loc>
+    <loc>https://blog.ztluo.dev/post/0028-vs-code-can-do-that/</loc>
     <lastmod>2018-10-23T10:47:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -415,7 +415,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/scoop-intro/</loc>
+    <loc>https://blog.ztluo.dev/post/0027-scoop-intro/</loc>
     <lastmod>2018-10-22T21:34:15+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -429,7 +429,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/glib-intro/</loc>
+    <loc>https://blog.ztluo.dev/post/0026-glib-intro/</loc>
     <lastmod>2018-10-18T14:55:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -450,7 +450,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/busuanzi-domain/</loc>
+    <loc>https://blog.ztluo.dev/post/0025-busuanzi-domain/</loc>
     <lastmod>2018-10-10T22:20:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -471,7 +471,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/portugal-visa-cultural/</loc>
+    <loc>https://blog.ztluo.dev/post/0024-portugal-visa-cultural/</loc>
     <lastmod>2018-11-14T10:15:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -492,7 +492,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/git-submodule/</loc>
+    <loc>https://blog.ztluo.dev/post/0023-git-submodule/</loc>
     <lastmod>2018-10-05T10:02:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -506,7 +506,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/rt-thread-learning01/</loc>
+    <loc>https://blog.ztluo.dev/post/0022-rt-thread-learning-01/</loc>
     <lastmod>2018-10-14T22:00:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -527,7 +527,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/even-preview/</loc>
+    <loc>https://blog.ztluo.dev/post/0021-even-theme-preview/</loc>
     <lastmod>2018-09-22T14:40:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -541,7 +541,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/build-environment-for-ardusub/</loc>
+    <loc>https://blog.ztluo.dev/post/0020-build-environment-for-ardusub/</loc>
     <lastmod>2018-12-19T20:53:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -562,14 +562,14 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/make-a-rov/</loc>
+    <loc>https://blog.ztluo.dev/post/0019-make-a-rov/</loc>
     <lastmod>2018-09-22T11:28:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/raspberrypi-tutorial/</loc>
+    <loc>https://blog.ztluo.dev/post/0018-raspberrypi-tutorial/</loc>
     <lastmod>2018-12-18T15:44:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -590,7 +590,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/lede-phicomm-k2/</loc>
+    <loc>https://blog.ztluo.dev/post/0017-lede-phicomm-k2/</loc>
     <lastmod>2018-09-13T21:50:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -604,14 +604,14 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/raspberrypi-hdmi/</loc>
+    <loc>https://blog.ztluo.dev/post/0016-raspberrypi-hdmi/</loc>
     <lastmod>2019-11-12T20:43:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/raspberrypi-wifi/</loc>
+    <loc>https://blog.ztluo.dev/post/0015-raspberrypi-wifi/</loc>
     <lastmod>2018-12-18T16:11:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -625,14 +625,14 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/seadrone-hardware/</loc>
+    <loc>https://blog.ztluo.dev/post/0014-seadrone-hardware/</loc>
     <lastmod>2018-01-08T22:36:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/seadrone-disassemble-reassemble/</loc>
+    <loc>https://blog.ztluo.dev/post/0013-seadrone-disassemble-reassemble/</loc>
     <lastmod>2017-12-30T18:35:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -653,7 +653,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/using-of-xsens-mti-300-ahrs/</loc>
+    <loc>https://blog.ztluo.dev/post/0012-using-of-xsens-mti-300-ahrs/</loc>
     <lastmod>2018-09-13T21:42:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -667,14 +667,14 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/postgraduate/</loc>
+    <loc>https://blog.ztluo.dev/post/0011-postgraduate/</loc>
     <lastmod>2018-02-06T17:05:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/my2015/</loc>
+    <loc>https://blog.ztluo.dev/post/0010-my2015/</loc>
     <lastmod>2016-01-03T21:40:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -688,21 +688,21 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/yukun-first-two-day/</loc>
+    <loc>https://blog.ztluo.dev/post/0009-yukun-first-two-day/</loc>
     <lastmod>2015-09-20T07:33:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/relationship/</loc>
+    <loc>https://blog.ztluo.dev/post/0008-relationship/</loc>
     <lastmod>2015-05-30T17:36:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/something-about-association/</loc>
+    <loc>https://blog.ztluo.dev/post/0007-something-about-association/</loc>
     <lastmod>2015-05-17T12:54:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -723,7 +723,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/python-in-life/</loc>
+    <loc>https://blog.ztluo.dev/post/0006-python-in-life-format-output/</loc>
     <lastmod>2015-04-06T09:58:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -744,14 +744,14 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/rebuilt-envirenment/</loc>
+    <loc>https://blog.ztluo.dev/post/0005-rebuilt-blog-envirenment-with-cloud9/</loc>
     <lastmod>2015-03-14T16:33:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/how-to-write/</loc>
+    <loc>https://blog.ztluo.dev/post/0004-how-to-write-with-luocman-theme/</loc>
     <lastmod>2018-09-22T11:08:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -772,14 +772,14 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/search-engine-skills/</loc>
+    <loc>https://blog.ztluo.dev/post/0003-search-engine-skills/</loc>
     <lastmod>2015-02-27T20:55:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/something-about-git/</loc>
+    <loc>https://blog.ztluo.dev/post/0002-something-about-git/</loc>
     <lastmod>2018-09-22T11:15:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -793,7 +793,7 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/hexo-world-how-to-build-hexo-blog/</loc>
+    <loc>https://blog.ztluo.dev/post/0001-hexo-world-how-to-build-hexo-blog/</loc>
     <lastmod>2018-09-22T10:56:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

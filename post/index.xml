@@ -13,191 +13,191 @@
     
     <item>
       <title>服务器安全加固</title>
-      <link>https://blog.ztluo.dev/post/server-security-hardening/</link>
+      <link>https://blog.ztluo.dev/post/0049-server-security-hardening/</link>
       <pubDate>Sun, 16 Feb 2020 09:45:26 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/server-security-hardening/</guid>
+      <guid>https://blog.ztluo.dev/post/0049-server-security-hardening/</guid>
       <description>&lt;p&gt;前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 acme.sh 进行 ssl 证书自动化管理</title>
-      <link>https://blog.ztluo.dev/post/acmesh-certificates-automation/</link>
+      <link>https://blog.ztluo.dev/post/0048-acmesh-certificates-automation/</link>
       <pubDate>Wed, 12 Feb 2020 11:57:51 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/acmesh-certificates-automation/</guid>
+      <guid>https://blog.ztluo.dev/post/0048-acmesh-certificates-automation/</guid>
       <description>&lt;p&gt;&lt;code&gt;acme.sh&lt;/code&gt; 实现了 &lt;code&gt;acme&lt;/code&gt; 协议，可以从 &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let’s Encrypt&lt;/a&gt; 生成免费的证书。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 Caddy 部署博客</title>
-      <link>https://blog.ztluo.dev/post/caddy-my-blog/</link>
+      <link>https://blog.ztluo.dev/post/0046-caddy-my-blog/</link>
       <pubDate>Tue, 11 Feb 2020 13:00:35 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/caddy-my-blog/</guid>
+      <guid>https://blog.ztluo.dev/post/0046-caddy-my-blog/</guid>
       <description>&lt;p&gt;Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let’s Encrypt&lt;/a&gt; 申请证书并续约。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>开启虚拟机系统中的 3D 加速</title>
-      <link>https://blog.ztluo.dev/post/play-ros-on-vm2/</link>
+      <link>https://blog.ztluo.dev/post/0045-play-ros-on-vm2/</link>
       <pubDate>Sat, 23 Nov 2019 21:30:44 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/play-ros-on-vm2/</guid>
+      <guid>https://blog.ztluo.dev/post/0045-play-ros-on-vm2/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://blog.ztluo.dev/post/play-ros-on-vm/&#34;&gt;在虚拟机上使用 ROS&lt;/a&gt; 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>在虚拟机上使用 ROS</title>
-      <link>https://blog.ztluo.dev/post/play-ros-on-vm/</link>
+      <link>https://blog.ztluo.dev/post/0044-play-ros-on-vm/</link>
       <pubDate>Fri, 22 Nov 2019 10:31:17 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/play-ros-on-vm/</guid>
+      <guid>https://blog.ztluo.dev/post/0044-play-ros-on-vm/</guid>
       <description>&lt;p&gt;最近想研究一下 &lt;code&gt;uuv_simulator&lt;/code&gt; 怎么使用，可能的话作为我毕业论文的一部分。&lt;code&gt;uuv_simulator&lt;/code&gt; 是基于 ROS 的， ROS 官方支持的系统是 Ubuntu ，而我机器上跑得是 Manjaro，如果在新分区或着是在新硬盘上安装 Ubuntu 则需要高一整套的学习和工具链，思来想去还是安装虚拟机吧。于是就有了这篇博文。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>在 Visual Studio Code 中编写 Qt 代码</title>
-      <link>https://blog.ztluo.dev/post/qt-coding-in-vscode/</link>
+      <link>https://blog.ztluo.dev/post/0043-qt-coding-in-vscode/</link>
       <pubDate>Mon, 11 Nov 2019 17:30:25 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/qt-coding-in-vscode/</guid>
+      <guid>https://blog.ztluo.dev/post/0043-qt-coding-in-vscode/</guid>
       <description>&lt;p&gt;对 Qt Creator 的界面是在是不能忍受，所以萌生了改用 Visual Studio Code 的想法，探索一番，成功实现 Qt 代码在 VSCode 中的代码提示和调试的功能。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>在 QQuickWidget 中使用 qmlglsink 播放视频</title>
-      <link>https://blog.ztluo.dev/post/qmlglsink-in-qquickwidget/</link>
+      <link>https://blog.ztluo.dev/post/0042-qmlglsink-in-qquickwidget/</link>
       <pubDate>Fri, 08 Nov 2019 11:06:22 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/qmlglsink-in-qquickwidget/</guid>
+      <guid>https://blog.ztluo.dev/post/0042-qmlglsink-in-qquickwidget/</guid>
       <description>&lt;p&gt;在 &lt;a href=&#34;https://github.com/zt-luo/SubControl&#34;&gt;SubControl&lt;/a&gt; 地面站软件中视频流最初使用的是 &lt;a href=&#34;https://github.com/vlc-qt/vlc-qt&#34;&gt;vlc-qt&lt;/a&gt; 插件，但由于在调试时发现一个在有视频播放时软件无法正常退出，同时友考虑到 vlc-qt 不够灵活，所以花了点时间探索了下使用 gst-plugins-good 中的 qmlglsink 播放视频。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>牛客福利 - 华为云服务器体验</title>
-      <link>https://blog.ztluo.dev/post/huawei-cloud-service-from-nowcoder/</link>
+      <link>https://blog.ztluo.dev/post/0041-huawei-cloud-service-from-nowcoder/</link>
       <pubDate>Wed, 06 Nov 2019 08:51:05 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/huawei-cloud-service-from-nowcoder/</guid>
+      <guid>https://blog.ztluo.dev/post/0041-huawei-cloud-service-from-nowcoder/</guid>
       <description>&lt;p&gt;活动链接：&lt;a href=&#34;https://www.nowcoder.com/discuss/306554?type=0&amp;amp;order=0&amp;amp;pos=2&amp;amp;page=1&#34;&gt;点这里&lt;/a&gt;，具体的购买方式也不多说了，具体&lt;a href=&#34;https://www.nowcoder.com/discuss/330402&#34;&gt;点这里&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>自定义 Mavlink 消息</title>
-      <link>https://blog.ztluo.dev/post/gen-new-mavlink-msg/</link>
+      <link>https://blog.ztluo.dev/post/0040-gen-new-mavlink-msg/</link>
       <pubDate>Fri, 19 Apr 2019 10:23:46 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/gen-new-mavlink-msg/</guid>
+      <guid>https://blog.ztluo.dev/post/0040-gen-new-mavlink-msg/</guid>
       <description>&lt;p&gt;MAVLink 是一个很轻量的应用层通信协议，最初是应用与无人机领域，目前已经在小型机器人无人车无人水下航行器等领域有所应用。本文主要是介绍如何生成自定义的 MAVLink 消息。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Ardupilot 如何处理 MAVLink 消息</title>
-      <link>https://blog.ztluo.dev/post/ardupilot-handle-msg/</link>
+      <link>https://blog.ztluo.dev/post/0039-ardupilot-handle-msg/</link>
       <pubDate>Fri, 15 Mar 2019 20:00:37 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/ardupilot-handle-msg/</guid>
+      <guid>https://blog.ztluo.dev/post/0039-ardupilot-handle-msg/</guid>
       <description>&lt;p&gt;由于目前需要实现自定义的功能，这要求可以对 Ardupilot 中的通信进行干预，包括接收处理消息和发送消息。为了达成这个目的，阅读了通信相关的代码，看一下 Ardupilot 是怎样处理 Mavlink 消息的。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>在 Coder 上开发 Ardupilot</title>
-      <link>https://blog.ztluo.dev/post/ardupilot-dev-on-coder/</link>
+      <link>https://blog.ztluo.dev/post/0038-ardupilot-dev-on-coder/</link>
       <pubDate>Thu, 14 Mar 2019 11:14:41 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/ardupilot-dev-on-coder/</guid>
+      <guid>https://blog.ztluo.dev/post/0038-ardupilot-dev-on-coder/</guid>
       <description>&lt;p&gt;本地 WSL 编译太慢了，同时又由于 WSL 和原本文件系统之间的一些问题，在 Windows 上的 VSCode 中的代码提醒无法正常工作，这对理解代码非常不友好。所以就向尝试在 Coder 上进行 Ardupilot 的开发。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>My AUV18</title>
-      <link>https://blog.ztluo.dev/post/my-auv18/</link>
+      <link>https://blog.ztluo.dev/post/0037-my-auv18/</link>
       <pubDate>Tue, 12 Mar 2019 19:52:28 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/my-auv18/</guid>
+      <guid>https://blog.ztluo.dev/post/0037-my-auv18/</guid>
       <description>&lt;p&gt;去年去波尔图参加了一个 AUV 的学术会议，回来之后一直也没有写点总结，趁着这次参加学术沙龙做分享，就写点总结吧。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Coder online IDE!</title>
-      <link>https://blog.ztluo.dev/post/coder/</link>
+      <link>https://blog.ztluo.dev/post/0036-coder/</link>
       <pubDate>Sun, 10 Mar 2019 15:52:18 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/coder/</guid>
+      <guid>https://blog.ztluo.dev/post/0036-coder/</guid>
       <description>&lt;p&gt;Coder 是一个基于 Visual Studio Code 的开源的远程开发环境。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Ardupilot Scheduler</title>
-      <link>https://blog.ztluo.dev/post/ardupilot-scheduler/</link>
+      <link>https://blog.ztluo.dev/post/0034-ardupilot-scheduler/</link>
       <pubDate>Sat, 09 Mar 2019 16:54:22 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/ardupilot-scheduler/</guid>
+      <guid>https://blog.ztluo.dev/post/0034-ardupilot-scheduler/</guid>
       <description>&lt;p&gt;参考 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>更换了谷歌的 .dev 域名</title>
-      <link>https://blog.ztluo.dev/post/change-domain/</link>
+      <link>https://blog.ztluo.dev/post/0033-change-domain/</link>
       <pubDate>Sat, 09 Mar 2019 15:36:44 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/change-domain/</guid>
+      <guid>https://blog.ztluo.dev/post/0033-change-domain/</guid>
       <description>&lt;p&gt;更换新域名了🎉🎉🎉。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Phicomm N1</title>
-      <link>https://blog.ztluo.dev/post/phicomm-n1/</link>
+      <link>https://blog.ztluo.dev/post/0032-phicomm-n1/</link>
       <pubDate>Thu, 07 Feb 2019 18:27:39 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/phicomm-n1/</guid>
+      <guid>https://blog.ztluo.dev/post/0032-phicomm-n1/</guid>
       <description>&lt;p&gt;前几天发现了 斐讯 N1 这个好东西，买了一个拿来玩玩。记录一下折腾过程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Ardusub 的界面</title>
-      <link>https://blog.ztluo.dev/post/ardusub-interface/</link>
+      <link>https://blog.ztluo.dev/post/0031-ardusub-interface/</link>
       <pubDate>Tue, 18 Dec 2018 14:49:19 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/ardusub-interface/</guid>
+      <guid>https://blog.ztluo.dev/post/0031-ardusub-interface/</guid>
       <description>&lt;p&gt;ArduSub 的事情又要捡起来了。这篇博客就写一些 ArduSub 留给我们来与其交互的接口。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Even Theme Tweak</title>
-      <link>https://blog.ztluo.dev/post/even-theme-tweak/</link>
+      <link>https://blog.ztluo.dev/post/0030-even-theme-tweak/</link>
       <pubDate>Sun, 28 Oct 2018 11:48:09 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/even-theme-tweak/</guid>
+      <guid>https://blog.ztluo.dev/post/0030-even-theme-tweak/</guid>
       <description>&lt;p&gt;当前博客的主题是 &lt;a href=&#34;https://github.com/zt-luo/hugo-theme-even&#34;&gt;even&lt;/a&gt;。
 为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>F# Tutorial</title>
-      <link>https://blog.ztluo.dev/post/fsharp-tutorial/</link>
+      <link>https://blog.ztluo.dev/post/0029-fsharp-tutorial/</link>
       <pubDate>Fri, 26 Oct 2018 23:57:57 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/fsharp-tutorial/</guid>
+      <guid>https://blog.ztluo.dev/post/0029-fsharp-tutorial/</guid>
       <description>&lt;p&gt;This is a F# Tutorial.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Visual Studio Code Can Do That?!</title>
-      <link>https://blog.ztluo.dev/post/vs-code-can-do-that/</link>
+      <link>https://blog.ztluo.dev/post/0028-vs-code-can-do-that/</link>
       <pubDate>Mon, 22 Oct 2018 15:41:37 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/vs-code-can-do-that/</guid>
+      <guid>https://blog.ztluo.dev/post/0028-vs-code-can-do-that/</guid>
       <description>&lt;p&gt;在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Scoop 助力 PowerShell</title>
-      <link>https://blog.ztluo.dev/post/scoop-intro/</link>
+      <link>https://blog.ztluo.dev/post/0027-scoop-intro/</link>
       <pubDate>Thu, 18 Oct 2018 15:35:15 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/scoop-intro/</guid>
+      <guid>https://blog.ztluo.dev/post/0027-scoop-intro/</guid>
       <description>&lt;p&gt;Windows 上的命令行工具 cmd 是一个有三十多年历史的古老程序。在 Windows 上 cmd 的竞争者的是 PowerShell，
 它功能更强大，用起来更方便，早在其版本号为 1.0 的时候我就尝试过，然而其异常缓慢的冷启动速度让人无法接受，
 尝试了几次后便无奈放弃。最近，一个偶然的机会，了解到了 &lt;a href=&#34;https://scoop.sh/&#34;&gt;Scoop&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/PowerShell/PowerShell&#34;&gt;PowerShell Core&lt;/a&gt;。一番研究之后，最终放弃了 cmd ，开始使用 PowerShell。&lt;/p&gt;</description>
@@ -205,174 +205,174 @@
     
     <item>
       <title>GLib 简介</title>
-      <link>https://blog.ztluo.dev/post/glib-intro/</link>
+      <link>https://blog.ztluo.dev/post/0026-glib-intro/</link>
       <pubDate>Wed, 17 Oct 2018 22:06:31 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/glib-intro/</guid>
+      <guid>https://blog.ztluo.dev/post/0026-glib-intro/</guid>
       <description>&lt;p&gt;最近在翻 《C 程序设计新思维（第2版）》这本书的时候，看到了 GLib 这么一个现代化的 C 语言第三方库，
 一时惊为天人，想着这不就是我一直想要的 C 语言的跨平台的库了吗。所以就花了一些时间研究了一下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>不蒜子域名更新</title>
-      <link>https://blog.ztluo.dev/post/busuanzi-domain/</link>
+      <link>https://blog.ztluo.dev/post/0025-busuanzi-domain/</link>
       <pubDate>Wed, 10 Oct 2018 22:20:04 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/busuanzi-domain/</guid>
+      <guid>https://blog.ztluo.dev/post/0025-busuanzi-domain/</guid>
       <description>&lt;p&gt;前天发现不蒜子网页访问计数一直是正在加载状态，没法正常工作。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>葡萄牙签证 国际学术会议</title>
-      <link>https://blog.ztluo.dev/post/portugal-visa-cultural/</link>
+      <link>https://blog.ztluo.dev/post/0024-portugal-visa-cultural/</link>
       <pubDate>Wed, 10 Oct 2018 20:00:47 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/portugal-visa-cultural/</guid>
+      <guid>https://blog.ztluo.dev/post/0024-portugal-visa-cultural/</guid>
       <description>&lt;p&gt;前天刚到签证中心递交签证材料，过程比较坎坷，但总算是把材料交上去了，今天把相关经验总结一下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 Git 子模块管理 hugo 博客</title>
-      <link>https://blog.ztluo.dev/post/git-submodule/</link>
+      <link>https://blog.ztluo.dev/post/0023-git-submodule/</link>
       <pubDate>Fri, 05 Oct 2018 10:02:56 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/git-submodule/</guid>
+      <guid>https://blog.ztluo.dev/post/0023-git-submodule/</guid>
       <description>&lt;p&gt;使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>RT-Thread 0x01：线程与线程的切换</title>
-      <link>https://blog.ztluo.dev/post/rt-thread-learning01/</link>
+      <link>https://blog.ztluo.dev/post/0022-rt-thread-learning-01/</link>
       <pubDate>Sat, 29 Sep 2018 09:37:14 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/rt-thread-learning01/</guid>
+      <guid>https://blog.ztluo.dev/post/0022-rt-thread-learning-01/</guid>
       <description>&lt;p&gt;野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>hugo 博客系统 even 主题预览</title>
-      <link>https://blog.ztluo.dev/post/even-preview/</link>
+      <link>https://blog.ztluo.dev/post/0021-even-theme-preview/</link>
       <pubDate>Mon, 17 Sep 2018 22:11:40 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/even-preview/</guid>
+      <guid>https://blog.ztluo.dev/post/0021-even-theme-preview/</guid>
       <description>&lt;p&gt;这篇文章集中说明 even 主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些样式，可以去修改 css/ 文件夹下的 .scss 文件。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>搭建 Pixhawk 飞控固件编译环境</title>
-      <link>https://blog.ztluo.dev/post/build-environment-for-ardusub/</link>
+      <link>https://blog.ztluo.dev/post/0020-build-environment-for-ardusub/</link>
       <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/build-environment-for-ardusub/</guid>
+      <guid>https://blog.ztluo.dev/post/0020-build-environment-for-ardusub/</guid>
       <description>&lt;p&gt;ArduSub 官方的程序无法直接给电机发送指令，这个功能需要自己实现。为了实现这个功能首先需要搭建 Pixhawk 的编译环境。
 下面将简要介绍一下环境的搭建步骤。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>制作一个 ROV  </title>
-      <link>https://blog.ztluo.dev/post/make-a-rov/</link>
+      <link>https://blog.ztluo.dev/post/0019-make-a-rov/</link>
       <pubDate>Tue, 28 Aug 2018 09:30:26 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/make-a-rov/</guid>
+      <guid>https://blog.ztluo.dev/post/0019-make-a-rov/</guid>
       <description>&lt;p&gt;一步一步做自己的 ROV。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Raspberry Pi: 从开箱到吃灰</title>
-      <link>https://blog.ztluo.dev/post/raspberrypi-tutorial/</link>
+      <link>https://blog.ztluo.dev/post/0018-raspberrypi-tutorial/</link>
       <pubDate>Mon, 12 Mar 2018 15:19:00 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/raspberrypi-tutorial/</guid>
+      <guid>https://blog.ztluo.dev/post/0018-raspberrypi-tutorial/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Phicomm K2 刷 LEDE </title>
-      <link>https://blog.ztluo.dev/post/lede-phicomm-k2/</link>
+      <link>https://blog.ztluo.dev/post/0017-lede-phicomm-k2/</link>
       <pubDate>Sun, 04 Feb 2018 04:06:48 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/lede-phicomm-k2/</guid>
+      <guid>https://blog.ztluo.dev/post/0017-lede-phicomm-k2/</guid>
       <description>&lt;p&gt;最近买了个斐讯的路由器，总结一下刷机过程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Raspberry Pi HDMI 连接显示器黑屏问题</title>
-      <link>https://blog.ztluo.dev/post/raspberrypi-hdmi/</link>
+      <link>https://blog.ztluo.dev/post/0016-raspberrypi-hdmi/</link>
       <pubDate>Sun, 28 Jan 2018 22:56:21 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/raspberrypi-hdmi/</guid>
+      <guid>https://blog.ztluo.dev/post/0016-raspberrypi-hdmi/</guid>
       <description>&lt;p&gt;记录一下解决树莓派连接显示器黑屏的问题。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Raspberry Pi 连接 Wifi</title>
-      <link>https://blog.ztluo.dev/post/raspberrypi-wifi/</link>
+      <link>https://blog.ztluo.dev/post/0015-raspberrypi-wifi/</link>
       <pubDate>Sun, 28 Jan 2018 22:25:00 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/raspberrypi-wifi/</guid>
+      <guid>https://blog.ztluo.dev/post/0015-raspberrypi-wifi/</guid>
       <description>&lt;p&gt;树莓派连接 Wifi，HOW。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SeaDrone 硬件构成</title>
-      <link>https://blog.ztluo.dev/post/seadrone-hardware/</link>
+      <link>https://blog.ztluo.dev/post/0014-seadrone-hardware/</link>
       <pubDate>Fri, 29 Dec 2017 11:03:22 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/seadrone-hardware/</guid>
+      <guid>https://blog.ztluo.dev/post/0014-seadrone-hardware/</guid>
       <description>&lt;p&gt;ROV 因为固件升级出错需要拆机恢复固件，趁此机会把硬件结构摸了一下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SeaDrone 拆装注意事项</title>
-      <link>https://blog.ztluo.dev/post/seadrone-disassemble-reassemble/</link>
+      <link>https://blog.ztluo.dev/post/0013-seadrone-disassemble-reassemble/</link>
       <pubDate>Tue, 26 Dec 2017 18:35:27 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/seadrone-disassemble-reassemble/</guid>
+      <guid>https://blog.ztluo.dev/post/0013-seadrone-disassemble-reassemble/</guid>
       <description>&lt;p&gt;参考 YouTube 上 SeaDrone 官方的推进器更换视频，总结了一下 SeaDrone 拆卸注意事项。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Xsens MTi-300 AHRS 的使用</title>
-      <link>https://blog.ztluo.dev/post/using-of-xsens-mti-300-ahrs/</link>
+      <link>https://blog.ztluo.dev/post/0012-using-of-xsens-mti-300-ahrs/</link>
       <pubDate>Sat, 16 Dec 2017 06:51:58 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/using-of-xsens-mti-300-ahrs/</guid>
+      <guid>https://blog.ztluo.dev/post/0012-using-of-xsens-mti-300-ahrs/</guid>
       <description>&lt;p&gt;今天实验室来交流的泰国老师给我讲解了一下 Xsens MTi-300 AHRS 的使用，现在稍稍总结一下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>研究生生涯</title>
-      <link>https://blog.ztluo.dev/post/postgraduate/</link>
+      <link>https://blog.ztluo.dev/post/0011-postgraduate/</link>
       <pubDate>Thu, 17 Aug 2017 17:05:37 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/postgraduate/</guid>
+      <guid>https://blog.ztluo.dev/post/0011-postgraduate/</guid>
       <description>&lt;p&gt;记录一下研究生生涯。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>2015年总结</title>
-      <link>https://blog.ztluo.dev/post/my2015/</link>
+      <link>https://blog.ztluo.dev/post/0010-my2015/</link>
       <pubDate>Sun, 03 Jan 2016 21:40:21 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/my2015/</guid>
+      <guid>https://blog.ztluo.dev/post/0010-my2015/</guid>
       <description>&lt;p&gt;2015年就这么悄悄过去了，看到别人都写了总结，想想也该来总结一下了。原来的域名过期了，偶然看到万网的域名4块一年索性就买了，想来也是一个新的开始。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>二十八天的实习生活开始了</title>
-      <link>https://blog.ztluo.dev/post/yukun-first-two-day/</link>
+      <link>https://blog.ztluo.dev/post/0009-yukun-first-two-day/</link>
       <pubDate>Sun, 20 Sep 2015 07:33:00 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/yukun-first-two-day/</guid>
+      <guid>https://blog.ztluo.dev/post/0009-yukun-first-two-day/</guid>
       <description>&lt;p&gt;两年前，我羡慕大三学长到育鲲轮实习，现在我就在育鲲轮上，和着育鲲摇晃的节奏，写下这些文字。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>生活就是这样，走着走着，人就散了</title>
-      <link>https://blog.ztluo.dev/post/relationship/</link>
+      <link>https://blog.ztluo.dev/post/0008-relationship/</link>
       <pubDate>Sat, 30 May 2015 17:36:47 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/relationship/</guid>
+      <guid>https://blog.ztluo.dev/post/0008-relationship/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;当我沉默着的时候，我觉得充实；我将开口，同时觉得空虚。&lt;br /&gt;
 &lt;cite&gt;&amp;ndash; 鲁迅 &lt;/cite&gt;&lt;/p&gt;
@@ -381,64 +381,64 @@
     
     <item>
       <title>关于社团生活的一些总结</title>
-      <link>https://blog.ztluo.dev/post/something-about-association/</link>
+      <link>https://blog.ztluo.dev/post/0007-something-about-association/</link>
       <pubDate>Sun, 17 May 2015 12:54:53 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/something-about-association/</guid>
+      <guid>https://blog.ztluo.dev/post/0007-something-about-association/</guid>
       <description>&lt;p&gt;当天中午激动的没睡着觉，心想官微啊这么高大上的组织竟然选择了我，我是有多么了不起，说不定马上我就能登上人生巅峰了。。。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>利用 Python 解决问题了一个小问题</title>
-      <link>https://blog.ztluo.dev/post/python-in-life/</link>
+      <link>https://blog.ztluo.dev/post/0006-python-in-life-format-output/</link>
       <pubDate>Mon, 06 Apr 2015 09:58:26 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/python-in-life/</guid>
+      <guid>https://blog.ztluo.dev/post/0006-python-in-life-format-output/</guid>
       <description>&lt;p&gt;前几天接了一个活，需要把 Excel 表格中的数据做成可以在微信内置浏览器中访问并且体验要好。我的选择是利用 Hexo 和 coding 搭一个博客用来展示。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 cloud9 重建 Hexo 博客写作环境</title>
-      <link>https://blog.ztluo.dev/post/rebuilt-envirenment/</link>
+      <link>https://blog.ztluo.dev/post/0005-rebuilt-blog-envirenment-with-cloud9/</link>
       <pubDate>Sat, 14 Mar 2015 16:33:52 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/rebuilt-envirenment/</guid>
+      <guid>https://blog.ztluo.dev/post/0005-rebuilt-blog-envirenment-with-cloud9/</guid>
       <description>&lt;p&gt;在 cloud9 上写博客。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Hexo luocman 主题的文章书写规范</title>
-      <link>https://blog.ztluo.dev/post/how-to-write/</link>
+      <link>https://blog.ztluo.dev/post/0004-how-to-write-with-luocman-theme/</link>
       <pubDate>Sat, 28 Feb 2015 13:51:42 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/how-to-write/</guid>
+      <guid>https://blog.ztluo.dev/post/0004-how-to-write-with-luocman-theme/</guid>
       <description>&lt;p&gt;将一些 Hexo luocman 主题的文章的书写规范和技巧总结一下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>搜索引擎使用技巧</title>
-      <link>https://blog.ztluo.dev/post/search-engine-skills/</link>
+      <link>https://blog.ztluo.dev/post/0003-search-engine-skills/</link>
       <pubDate>Fri, 27 Feb 2015 20:55:21 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/search-engine-skills/</guid>
+      <guid>https://blog.ztluo.dev/post/0003-search-engine-skills/</guid>
       <description>&lt;p&gt;将一些搜索引擎的使用技巧总结一下，备忘。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>简单的 Git 入门</title>
-      <link>https://blog.ztluo.dev/post/something-about-git/</link>
+      <link>https://blog.ztluo.dev/post/0002-something-about-git/</link>
       <pubDate>Fri, 13 Feb 2015 22:31:00 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/something-about-git/</guid>
+      <guid>https://blog.ztluo.dev/post/0002-something-about-git/</guid>
       <description>&lt;p&gt;在使用 Hexo 作为博客程序的过程中使用了 Git 这个分布式版本控制系统。现在已经初步入门了。之前一直都没有深入去研究，但是今天上午突然想要把所有的东西都同步到某网盘上以免本地数据出现差错导致博客从头再来。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Hexo world ！—— Hexo 博客搭建教程</title>
-      <link>https://blog.ztluo.dev/post/hexo-world-how-to-build-hexo-blog/</link>
+      <link>https://blog.ztluo.dev/post/0001-hexo-world-how-to-build-hexo-blog/</link>
       <pubDate>Tue, 27 Jan 2015 21:11:00 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/hexo-world-how-to-build-hexo-blog/</guid>
+      <guid>https://blog.ztluo.dev/post/0001-hexo-world-how-to-build-hexo-blog/</guid>
       <description>&lt;p&gt;博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去。&lt;/p&gt;</description>
     </item>
     

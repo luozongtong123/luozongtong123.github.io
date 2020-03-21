@@ -13,10 +13,10 @@
     
     <item>
       <title>使用 Git 子模块管理 hugo 博客</title>
-      <link>https://blog.ztluo.dev/post/git-submodule/</link>
+      <link>https://blog.ztluo.dev/post/0023-git-submodule/</link>
       <pubDate>Fri, 05 Oct 2018 10:02:56 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/git-submodule/</guid>
+      <guid>https://blog.ztluo.dev/post/0023-git-submodule/</guid>
       <description>&lt;p&gt;使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。&lt;/p&gt;</description>
     </item>
     

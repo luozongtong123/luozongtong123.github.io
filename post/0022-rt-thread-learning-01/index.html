@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>RT-Thread 0x01：线程与线程的切换 - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。
+" />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+<meta name="baidu-site-verification" content="8SYIFLvIPQ" />
+<meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
+
+
+<meta name="generator" content="Hugo 0.66.0" />
+
+
+<link rel="canonical" href="https://blog.ztluo.dev/post/0022-rt-thread-learning-01/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="RT-Thread 0x01：线程与线程的切换" />
+<meta property="og:description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ztluo.dev/post/0022-rt-thread-learning-01/" />
+<meta property="article:published_time" content="2018-09-29T09:37:14+08:00" />
+<meta property="article:modified_time" content="2018-10-14T22:00:14+08:00" />
+<meta itemprop="name" content="RT-Thread 0x01：线程与线程的切换">
+<meta itemprop="description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。">
+<meta itemprop="datePublished" content="2018-09-29T09:37:14&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-14T22:00:14&#43;08:00" />
+<meta itemprop="wordCount" content="9260">
+
+
+
+<meta itemprop="keywords" content="Thread,Stack," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="RT-Thread 0x01：线程与线程的切换"/>
+<meta name="twitter:description" content="野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/project/">
+        <li class="mobile-menu-item">项目</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/project/">项目</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">RT-Thread 0x01：线程与线程的切换</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-29 </span>
+        <div class="post-category">
+            
+              <a href="/categories/rt-thread/"> RT-Thread </a>
+            
+          </div>
+        <span class="more-meta"> 约 9260 字 </span>
+        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#裸机与多线程">裸机与多线程</a>
+<ul>
+<li><a href="#裸机系统">裸机系统</a></li>
+<li><a href="#多线程系统">多线程系统</a></li>
+</ul></li>
+<li><a href="#线程与线程的创建">线程与线程的创建</a>
+<ul>
+<li><a href="#定义线程栈">定义线程栈</a></li>
+<li><a href="#定义线程函数">定义线程函数</a></li>
+<li><a href="#定义线程控制块">定义线程控制块</a></li>
+<li><a href="#section-rt_thread_init">线程创建函数的实现</a></li>
+</ul></li>
+<li><a href="#实现就绪列表">实现就绪列表</a></li>
+<li><a href="#实现调度器">实现调度器</a>
+<ul>
+<li><a href="#第一次线程切换">第一次线程切换</a></li>
+<li><a href="#系统调度">系统调度</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>野火出了本书 ————《RT-Thread 内核实现与应用开发实战指南》，这本书基于 STM32 讲解了 RT-Thread 内核的实现以及 RT-Thread 内核应用开发。现在结合这本书学习一下 RT-Thread。这是这一系列学习笔记的第一篇。</p>
+
+<p>电子版的书和工程源文件以及参考资料下载链接如下：</p>
+
+<p>链接: <a href="https://pan.baidu.com/s/1VxToy8wi6Lg5ozhrNqgXRA">点击直达</a>  提取码: mqrb</p>
+
+<h1 id="裸机与多线程">裸机与多线程</h1>
+
+<p>最开始学习单片机的时候大家都是直接跑裸机不使用操作系统，裸机的优势是不需要学习操作系统的知识，当实现一个简单的程序时裸机简单快捷。当系统的 Flash 和 ROM 资源紧张时，裸机可以节省一部分资源。</p>
+
+<h2 id="裸机系统">裸机系统</h2>
+
+<p>裸机程序分为轮询系统和加入中断的前后台系统。轮询系统就是程序在主函数中有一个死循环不断执行某些任务。轮询系统只能被动有延时地处理外界对系统的影响无法主动实时地对外界变化多处反应。为了提供系统的响应实时性，引入了中断机制。</p>
+
+<p>回顾一下中断机制：CPU 在执行每一条指令后会确认刚才执行指令期间是否有中断请求过来，如果有中断请求则 CPU 会中断当前程序的执行，保存程序的现场（一些寄存器压栈 push），然后跳转到对应的中断服务函数并执行中断服务函数，中断服务函数执行完毕后出栈，恢复程序的执行。</p>
+
+<p>引入了中断机制的轮询系统称为前后台系统，其中中断执行的过程为前台，主函数中的轮询为后台。前后台系统确保了外部事件不会丢失并能够得到及时的响应。在大多数中小型系统中前后台系统应用的得当的话可以得到堪比加入了操作系统的效果。</p>
+
+<p>相比于前后台系统，多线程系统对外部事件的响应也是在中断中完成的，但是事件的处理是在线程中完成的。在多线程系统中，线程跟中断一样，也具有优先级，优先级高的线程会被优先执行。当一个紧急的事件在中断被标记之后，如果事件对应的线程的优先级足够高，就会立马得到响应。相比前后台系统，多线程系统的实时性又被提高了。</p>
+
+<h2 id="多线程系统">多线程系统</h2>
+
+<p>在多线程系统中，我们根据不同的功能将程序分为多个小的独立的无限循环的任务，这个任务称为线程。每个线程独立、互不干扰、且拥有自己的优先级，线程由实时操作系统进行调度的管理。加入操作系统后我们就不需要精心设计程序流，只需要设计好各个进行的逻辑和不同进程间的通信即可，对大型系统而言，加入了操作系统会使系统的可维护性更好。</p>
+
+<p>关于上不上操作系统从来就不是一个确定的问题，这需要根据实际的需求来决定。如果只是一个简单的系统，强行加入操作系统只会增加开发和维护的难度。</p>
+
+<h1 id="线程与线程的创建">线程与线程的创建</h1>
+
+<p>前面讲到，在裸机系统中，系统的主体就是 main 函数里面顺序执行的无限循环，这个无限循环里面 CPU 按照顺序完成各种事情。在多线程系统中，我们根据功能的不同，把整个系统分割成一个个独立的且无法返回的函数，这个函数我们称为线程。</p>
+
+<h2 id="定义线程栈">定义线程栈</h2>
+
+<p>在裸机系统中，自动局部变量是存储在栈上的，栈的管理是由 C 语言编译器来完成的，栈的初始化一般是在启动文件中或者是在链接命中指定，然后由 C 语言的 <code>_main</code>来完成初始化的操作。逻辑系统中，整个程序只有一个栈，多个函数调用的过程中就对这个栈进行压栈和出栈操作。对于有 RTOS 的系统来言，我们要实现线程间的隔离就需要为每个线程创建独立的栈，在该线程内的函数调用只需要对线程自己的栈进行操作。</p>
+
+<p>这个由进程使用的栈一般是一个预先定义的一个全局数组或者一段动态分配的内存。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 设置字节对齐 */</span>
+ALIGN(RT_ALIGN_SIZE) (<span style="color:#ae81ff">2</span>)
+<span style="color:#75715e">/* 定义线程栈 */</span>
+rt_uint8_t rt_flag1_thread_stack[<span style="color:#ae81ff">512</span>];
+rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];</code></pre></div>
+<p><code>rt_uint8_t</code>是在 <code>rtdef.h</code> 中定义的类型，其他会用到的数据类型详见<a href="/src/rt-thread-learning01/rtdef.h">这里</a>。</p>
+
+<h2 id="定义线程函数">定义线程函数</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 软件延时 */</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delay</span> (uint32_t count)
+{
+    <span style="color:#66d9ef">for</span>(; count<span style="color:#f92672">!=</span><span style="color:#ae81ff">0</span>; count<span style="color:#f92672">--</span>);
+}
+
+<span style="color:#75715e">/* 线程1 */</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">flag1_thread_entry</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>p_arg )
+{
+    <span style="color:#66d9ef">for</span>( ;; )
+    {
+        flag1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        delay( <span style="color:#ae81ff">100</span> );
+        flag1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        delay( <span style="color:#ae81ff">100</span> );
+  
+        <span style="color:#75715e">/* 线程切换，这里是手动切换 */</span>
+        rt_schedule();
+    }
+}
+
+<span style="color:#75715e">/* 线程2 */</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">flag2_thread_entry</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>p_arg )
+{
+    <span style="color:#66d9ef">for</span>( ;; )
+    {
+        flag2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        delay( <span style="color:#ae81ff">100</span> );
+        flag2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        delay( <span style="color:#ae81ff">100</span> );
+  
+        <span style="color:#75715e">/* 线程切换，这里是手动切换 */</span>
+        rt_schedule();
+    }
+}</code></pre></div>
+<p>如前文所述，线程是一个独立的、无限循环且不能返回的函数。</p>
+
+<h2 id="定义线程控制块">定义线程控制块</h2>
+
+<p>线程控制块是一个线程的标识，线程调度器通过现称快隋朝块识别调度线程，线程控制块的定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> rt_thread
+{
+    <span style="color:#66d9ef">void</span>        <span style="color:#f92672">*</span>sp;              <span style="color:#75715e">/* 线程栈指针 */</span>
+    <span style="color:#66d9ef">void</span>        <span style="color:#f92672">*</span>entry;              <span style="color:#75715e">/* 线程入口地址 */</span>
+    <span style="color:#66d9ef">void</span>        <span style="color:#f92672">*</span>parameter;          <span style="color:#75715e">/* 线程形参 */</span>
+    <span style="color:#66d9ef">void</span>        <span style="color:#f92672">*</span>stack_addr;      <span style="color:#75715e">/* 线程起始地址 */</span>
+    rt_uint32_t stack_size;       <span style="color:#75715e">/* 线程栈大小，单位为字节 */</span>
+  
+    rt_list_t   tlist;            <span style="color:#75715e">/* 线程链表节点 */</span>
+};
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> rt_thread <span style="color:#f92672">*</span>rt_thread_t;</code></pre></div>
+<p>在 RT-Thread 中，都会给新声明的数据结构重新定义一个指针。往后如果要定义线程控制块变量就使用  <code>struct rt_thread xxx</code> 的形式，定义线程控制块指针就使用 <code>rt_thread_t xxx</code> 的形式。</p>
+
+<h2 id="section-rt_thread_init">线程创建函数的实现</h2>
+
+<p>创建线程就是根据给出的参数如线程的名称、线程栈的大小等完成线程栈的初始化和线程控制块的初始化。线程的创建由函数 <code>rt_thread_init()</code> 来实现，该函数在 <code>thread.c</code> 中定义在 <code>rthread.h</code> 中声明。该函数的实现如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">rt_err_t <span style="color:#a6e22e">rt_thread_init</span>(<span style="color:#66d9ef">struct</span> rt_thread <span style="color:#f92672">*</span><span style="color:#66d9ef">thread</span>,        <span style="color:#75715e">// 线程控制块
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>entry)(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>parameter),  <span style="color:#75715e">// 线程函数名即线程入口
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">void</span>             <span style="color:#f92672">*</span>parameter,     <span style="color:#75715e">// 线程形参
+</span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">void</span>             <span style="color:#f92672">*</span>stack_start,   <span style="color:#75715e">// 线程栈起始地址
+</span><span style="color:#75715e"></span>                        rt_uint32_t       stack_size)    <span style="color:#75715e">// 线程栈大小
+</span><span style="color:#75715e"></span>{
+    rt_list_init(<span style="color:#f92672">&amp;</span>(<span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>tlist));                      <span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span>  
+    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>entry <span style="color:#f92672">=</span> (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)entry;    <span style="color:#75715e">// 将线程入口保存到线程控制块的 entry成员中
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>parameter <span style="color:#f92672">=</span> parameter;    <span style="color:#75715e">// 将线程入口形参保存到线程控制块的 parameter 成员中
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>stack_addr <span style="color:#f92672">=</span> stack_start; <span style="color:#75715e">// 将线程栈起始地址保存到线程控制块的 stack_start 成员中
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>stack_size <span style="color:#f92672">=</span> stack_size;  <span style="color:#75715e">// 将线程栈起大小保存到线程控制块的 stack_size成员中
+</span><span style="color:#75715e"></span>  
+    <span style="color:#75715e">/* 初始化线程栈，并返回线程栈指针 */</span>
+    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>sp <span style="color:#f92672">=</span> (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)rt_hw_stack_init( <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>entry, 
+                                           <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>parameter,
+                                           (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>stack_addr <span style="color:#f92672">+</span> <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>stack_size <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span>) );
+  
+    <span style="color:#66d9ef">return</span> RT_EOK;
+}</code></pre></div>
+<p>标号为 (1) 的代码对线程控制块的线程链表节点 <code>tlist</code> 进行初始化，链表节点可以插入到不同的链表，线程调度器通过链表调度线程。<code>tlist</code> 的数据原型是 <code>rt_list_t</code> 。</p>
+
+<blockquote>
+<p><strong>此处有个问题，线程控制块链表节点初始化的目的是什么？</strong></p>
+</blockquote>
+
+<p>双向链表节点数据类型定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> rt_list_node
+{
+  <span style="color:#66d9ef">struct</span> rt_list_node <span style="color:#f92672">*</span>next;   <span style="color:#75715e">/* 指向后一个节点 */</span>
+  <span style="color:#66d9ef">struct</span> rt_list_node <span style="color:#f92672">*</span>prev;   <span style="color:#75715e">/* 指向前一个节点 */</span>
+};
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> rt_list_node rt_list_t;</code></pre></div>
+<p>节点中包含两个数据第一个是指向下一个节点的指针，第二个是指向上一个节点的指针。</p>
+
+<p>关于这个节点的作用书中在此处没有说明，他的作用是在后面讲的，我们把这部分拿到前面来。前面讲到我们可以把 <code>tlist</code> 这个线程控制块的成员插入到不同的链表中，例如就绪列表等。线程调度器再根据列表中的节点切换不同的线程，那么问题来了，我们如何利用这个节点找到线程控制块呢？ RT-Thread 中有一个宏可以通过 <code>tlist</code> 来找到线程控制块的起始地址，这个宏是 <code>rt_list_entry()</code> ，其定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 已知一个结构体里面的成员的地址，反推出该结构体的首地址 */</span>
+<span style="color:#75715e">#define rt_container_of(ptr, type, member)
+</span><span style="color:#75715e"></span>    ((type <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)(ptr) <span style="color:#f92672">-</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)(<span style="color:#f92672">&amp;</span>((type <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0</span>)<span style="color:#f92672">-&gt;</span>member)))
+
+<span style="color:#75715e">#define rt_list_entry(node, type, member)
+</span><span style="color:#75715e"></span>    rt_container_of(node, type, member)</code></pre></div>
+<p><code>rt_list_entry()</code> 调用了 <code>rt_container_of()</code> 宏，这个宏可以已知结构体中的成员找到结构体的首地址。上述代码中， <code>prt</code> 是指向结构体成员的地址， <code>type</code> 是结构体的类型， <code>member</code> 是结构体成员的名字。我们来看一下这个宏函数。</p>
+
+<figure class="center">
+    <img src="/img/rt-thread-learning01/rt_container_of.jpg"
+         alt="rt_container_of() 宏的实现"/> <figcaption>
+            <h4>rt_container_of() 宏的实现</h4>
+        </figcaption>
+</figure>
+
+<p>如上图左半边图所示，我们已知 <code>prt</code> 要求 <code>f_struct_prt</code> ，显然只要知道深色部分标注为<strong>偏移</strong>的大小即可。那么如何才能求出偏移量的大小呢，这需要借助于 <strong>0 地址</strong>。</p>
+
+<ol>
+<li><p>首先，将 0 地址强制转换为 <code>type</code> 类型的结构体： <code>((type *)0)</code>，</p></li>
+
+<li><p>然后，获取到这个结构体的成员 <code>member</code> 的地址： <code>(&amp;((type *)0)-&gt;member))</code>，</p></li>
+
+<li><p>最后，因为这个结构体的起始地址是 0 ，所以只要将这个成员的地址强制转换成无符号长整型数就是我们要求的偏移： <code>(unsigned long)(&amp;((type *)0)-&gt;member))</code>。</p></li>
+</ol>
+
+<p>再回到 <code>(char *)(ptr)</code> ，这里将指针强制转换为 <code>char</code> 的目的是为了在后面加减偏移量时以一个字节为单位。最后的最后，再将减去偏移量的地址强制转换为结构体类型的指针。至于 <code>rt_list_entry()</code> ，则可以非常容易的理解为，已知节点地址 <code>node</code> 、线程控制块结构体类型 <code>type</code> 、节点名称（tlist） <code>member</code> ，求线程控制块的地址。</p>
+
+<p>讲完了节点的作用下面我们来看一下节点双向列表的一些操作。</p>
+
+<p>由上面给出的节点的定义可知，由节点构成的链表可以表示成下图：</p>
+
+<figure class="center">
+    <img src="/img/rt-thread-learning01/list_of_rt_list_t.jpg"
+         alt="rt_list_t列表"/> <figcaption>
+            <h4>rt_list_t列表</h4>
+        </figcaption>
+</figure>
+
+<p>链表的操作包括初始化链表节点、在双向链表表头前面插入一个节点、在双向链表表头后面插入一个节点、从双向链表中删除一个节点。相关函数的实现在 <code>rtservice.h</code> 。</p>
+
+<p><strong>初始化链表节点</strong></p>
+
+<p>rt_list_t 类型的节点的初始化，就是将节点里面的 next 和 prev 这两个节点指针指向节点本身。代码实现如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_list_init</span>(rt_list_t <span style="color:#f92672">*</span>l)
+{
+    l<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> l<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> l;
+}</code></pre></div>
+<figure class="center">
+    <img src="/img/rt-thread-learning01/list_op_1.jpg"
+         alt="初始化链表节点"/> <figcaption>
+            <h4>初始化链表节点</h4>
+        </figcaption>
+</figure>
+  
+
+<p><strong>在双向链表表头后面插入一个节点</strong></p>
+
+<blockquote>
+<p>此处的表头的表述是否有问题，因为从双向链表的结构来看，双向链表没有所谓的表头？</p>
+
+<p>是否应该说 向双向链表的 <code>l</code> 节点后插入 <code>n</code> ？</p>
+</blockquote>
+
+<p>插入节点一共需要四步操作，即图示四个红色箭头的操作，将这四步操作转换为代码则是下面的代码中四步。仔细观察这四步操作，不难发现，如果要保证代码完成我们想要的操作，代码执行的前后顺序是有要求的。即：第三步对 <code>l-&gt;next</code> 的赋值操作要在第一步和第二部对其引用之后。只要保证这个前后关系满足要求即可。</p>
+
+<p>代码中采用这种顺序实现起来更加 <del>优雅</del> 并不。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 在双向链表头部插入一个节点 */</span>
+rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_list_insert_after</span>(rt_list_t <span style="color:#f92672">*</span>l, rt_list_t <span style="color:#f92672">*</span>n)
+{
+    l<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> n;   <span style="color:#75715e">/* 第1步 */</span>
+    n<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> l<span style="color:#f92672">-&gt;</span>next;   <span style="color:#75715e">/* 第2步 */</span>
+  
+    l<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> n;         <span style="color:#75715e">/* 第3步 */</span>
+    n<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> l;         <span style="color:#75715e">/* 第4步 */</span>
+}</code></pre></div>
+<figure class="center">
+    <img src="/img/rt-thread-learning01/list_op_2.jpg"
+         alt="在双向链表表头后面插入一个节点"/> <figcaption>
+            <h4>在双向链表表头后面插入一个节点</h4>
+        </figcaption>
+</figure>
+  
+
+<p><strong>在双向链表表头前面插入一个节点</strong></p>
+
+<p>不难理解只需要将后插操作代码中的的 <code>prev</code> 和 <code>next</code> 调换一下就可以完成前插操作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_list_insert_before</span>(rt_list_t <span style="color:#f92672">*</span>l, rt_list_t <span style="color:#f92672">*</span>n)
+{
+    l<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> n;   <span style="color:#75715e">/* 第1步 */</span>
+    n<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> l<span style="color:#f92672">-&gt;</span>prev;   <span style="color:#75715e">/* 第2步 */</span>
+  
+    l<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> n;         <span style="color:#75715e">/* 第3步 */</span>
+    n<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> l;         <span style="color:#75715e">/* 第4步 */</span>
+}</code></pre></div>
+<figure class="center">
+    <img src="/img/rt-thread-learning01/list_op_3.jpg"
+         alt="在双向链表表头前面插入一个节点"/> <figcaption>
+            <h4>在双向链表表头前面插入一个节点</h4>
+        </figcaption>
+</figure>
+  
+
+<p><strong>从双向链表删除一个节点</strong></p>
+
+<p>删除操作较插入操作要简单一些，只需要注意第三步在前两步之后即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_list_remove</span>(rt_list_t <span style="color:#f92672">*</span>n)
+{
+    n<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> n<span style="color:#f92672">-&gt;</span>prev;  <span style="color:#75715e">/* 第1步 */</span>
+    n<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> n<span style="color:#f92672">-&gt;</span>next;  <span style="color:#75715e">/* 第2步 */</span>
+  
+    n<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> n<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> n;    <span style="color:#75715e">/* 第3步 */</span>
+}</code></pre></div>
+<figure class="center">
+    <img src="/img/rt-thread-learning01/list_op_4.jpg"
+         alt="从双向链表删除一个节点"/> <figcaption>
+            <h4>从双向链表删除一个节点</h4>
+        </figcaption>
+</figure>
+  
+
+<p><strong>rt_hw_stack_init()函数</strong></p>
+
+<p><a href="#section-rt_thread_init">rt_thread_init() 函数</a> 中还用到了 <code>rt_hw_stack_init()</code> 函数 ，该函数对线程栈进行初始化，其代码实现如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 线程栈初始化 */</span>
+rt_uint8_t <span style="color:#f92672">*</span><span style="color:#a6e22e">rt_hw_stack_init</span>(<span style="color:#66d9ef">void</span>       <span style="color:#f92672">*</span>tentry,      <span style="color:#75715e">// 线程入口
+</span><span style="color:#75715e"></span>                             <span style="color:#66d9ef">void</span>       <span style="color:#f92672">*</span>parameter,   <span style="color:#75715e">// 线程形参
+</span><span style="color:#75715e"></span>                             rt_uint8_t <span style="color:#f92672">*</span>stack_addr)  <span style="color:#75715e">// 线程栈顶地址
+</span><span style="color:#75715e"></span>{
+  
+    <span style="color:#66d9ef">struct</span> stack_frame <span style="color:#f92672">*</span>stack_frame;                  <span style="color:#75715e">// (1)
+</span><span style="color:#75715e"></span>    rt_uint8_t         <span style="color:#f92672">*</span>stk;
+    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>       i;
+  
+  
+    <span style="color:#75715e">/* 获取栈顶指针 rt_hw_stack_init 在调用的时候，传给stack_addr的是(栈顶指针)*/</span>
+    stk  <span style="color:#f92672">=</span> stack_addr <span style="color:#f92672">+</span> <span style="color:#66d9ef">sizeof</span>(rt_uint32_t);
+  
+    <span style="color:#75715e">/* 让stk指针向下8字节对齐 */</span>
+    stk  <span style="color:#f92672">=</span> (rt_uint8_t <span style="color:#f92672">*</span>)RT_ALIGN_DOWN((rt_uint32_t)stk, <span style="color:#ae81ff">8</span>);
+  
+    <span style="color:#75715e">/* stk指针继续向下移动sizeof(struct stack_frame)个偏移 */</span>
+    stk <span style="color:#f92672">-=</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> stack_frame);
+  
+    <span style="color:#75715e">/* 将stk指针强制转化为stack_frame类型后存到stack_frame */</span>
+    stack_frame <span style="color:#f92672">=</span> (<span style="color:#66d9ef">struct</span> stack_frame <span style="color:#f92672">*</span>)stk;
+  
+    <span style="color:#75715e">/* 以stack_frame为起始地址，将栈空间里面的 sizeof(struct stack_frame) 个内存初始化为0xdeadbeef */</span>
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> stack_frame) <span style="color:#f92672">/</span> <span style="color:#66d9ef">sizeof</span>(rt_uint32_t); i <span style="color:#f92672">++</span>)
+    {
+            ((rt_uint32_t <span style="color:#f92672">*</span>)stack_frame)[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xdeadbeef</span>;
+    }
+  
+    <span style="color:#75715e">/* 初始化异常发生时自动保存的寄存器 */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.r0  <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)parameter; <span style="color:#75715e">/* r0 : argument */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.r1  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r1 */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.r2  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r2 */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.r3  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r3 */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.r12 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r12 */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.lr  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* lr */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.pc  <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)tentry;    <span style="color:#75715e">/* entry point, pc */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.psr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01000000L</span>;              <span style="color:#75715e">/* PSR */</span>
+  
+    <span style="color:#75715e">/* 返回线程栈指针 */</span>
+    <span style="color:#66d9ef">return</span> stk;
+}</code></pre></div>
+<p>代码 <code>(1)</code> 处定义了一个 <code>struct stack_frame</code> 类型的结构体指针 <code>stack_frame</code>，该结构体类型在 <code>cpuport.c</code> 中定义，具体代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> exception_stack_frame
+{
+    <span style="color:#75715e">/* 异常发生时自动保存的寄存器 */</span>
+    rt_uint32_t r0;
+    rt_uint32_t r1;
+    rt_uint32_t r2;
+    rt_uint32_t r3;
+    rt_uint32_t r12;
+    rt_uint32_t lr;
+    rt_uint32_t pc;
+    rt_uint32_t psr;
+};
+
+<span style="color:#66d9ef">struct</span> stack_frame
+{
+    <span style="color:#75715e">/* r4 ~ r11 register 异常发生时需手动保存的寄存器 */</span>
+    rt_uint32_t r4;
+    rt_uint32_t r5;
+    rt_uint32_t r6;
+    rt_uint32_t r7;
+    rt_uint32_t r8;
+    rt_uint32_t r9;
+    rt_uint32_t r10;
+    rt_uint32_t r11;
+
+    <span style="color:#66d9ef">struct</span> exception_stack_frame exception_stack_frame;
+};</code></pre></div>
+<p>为了看懂栈的初始化过程，我们首先要明确一个问题：栈是从高地址向低地址生长的，在线程初始化时传进初始化函数的参数是栈的起始地址，即<strong>栈尾地址</strong>，栈的初始化首先需要根据栈尾地址和栈的大小确定<strong>栈首地址</strong>。计算栈首地址在线程初始化函数中调用栈初始化函数时计算并传给了栈初始化函数。线程控制块中的<strong>栈顶地址</strong>是当前栈的位置。</p>
+
+<blockquote>
+<p><strong>有一点不明白的是调用栈初始化函数时减掉了 4，在栈初始化函数中又加了回去，不明白这样处理的意义。</strong></p>
+</blockquote>
+
+<p>接着来看栈初始化函数，得到栈顶地址后，首先进行了向下 8 字节对齐。8 字节对齐的目的是为了后续实现浮点数的运算支持。向下是指当不满足 8 字节对齐时向下移动栈顶指针使其满足对齐要求，例如如果对齐前栈顶地址是 33 ，则对齐后的栈顶地址为 32，即空出一个 33 地址的位置不用。</p>
+
+<figure class="center">
+    <img src="/img/rt-thread-learning01/stk-stack.jpg"
+         alt="完成栈地址字节对齐后的栈空间"/> <figcaption>
+            <h4>完成栈地址字节对齐后的栈空间</h4>
+        </figcaption>
+</figure>
+  
+
+<p>完成栈地址对齐后，接下来要<strong>对首次线程切换时用到的栈中的数据进行初始化</strong>。将栈地址向下移动 <code>sizeof(struct stack_frame)</code> 个地址，将 <code>stk</code> 指针强制转化为 <code>stack_frame</code> 类型后存到指针变量
+<code>stack_frame</code> 中，这个时候 <code>stack_frame</code> 在线程栈里面的指向具体见下图：</p>
+
+<figure class="center">
+    <img src="/img/rt-thread-learning01/stack_frame-stack.jpg"
+         alt="stack_frame 的栈空间"/> <figcaption>
+            <h4>stack_frame 的栈空间</h4>
+        </figcaption>
+</figure>
+  
+
+<p>接下来以 <code>stack_frame</code> 为起始地址，将栈空间里面的 <code>sizeof(struct stack_frame)</code> 个内存初始化为  <code>0xdeadbeef</code> 。将内存初始化为 <code>0xdeadbeef</code> 的原因是，这个数字是一个在嵌入式领域常用的魔力数，只是用来标识未使用的内存。接下来，设置线程初次运行时加载到 CPU 寄存器的环境参数。从栈顶开始，初始化的顺序固定，首先是异常发生时自动保存的 8 个寄存器，即 xPSR、R15、R14、R12、R3、R2、R1和 R0。其中 xPSR 寄存器的位 24 必须是 1，R15 PC 指针必须存的是线程的入口地址，R0 必须是线程形参，剩下的 R14、R12、R3、R2、 R1我们初始化为 0。完成初始化的栈空间如下图所示：</p>
+
+<figure class="center">
+    <img src="/img/rt-thread-learning01/inited-stack.jpg"
+         alt="初始化完成后的栈空间"/> <figcaption>
+            <h4>初始化完成后的栈空间</h4>
+        </figcaption>
+</figure>
+  
+
+<p>最后栈初始化函数返回线程栈顶指针 <code>stk</code> ，线程初始化函数返回线程创建成功的错误码。关于错误码，其定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* RT-Thread 错误码重定义 */</span>
+<span style="color:#75715e">#define RT_EOK                          0               </span><span style="color:#75715e">/**&lt; There is no error */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_ERROR                        1               </span><span style="color:#75715e">/**&lt; A generic error happens */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_ETIMEOUT                     2               </span><span style="color:#75715e">/**&lt; Timed out */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EFULL                        3               </span><span style="color:#75715e">/**&lt; The resource is full */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EEMPTY                       4               </span><span style="color:#75715e">/**&lt; The resource is empty */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_ENOMEM                       5               </span><span style="color:#75715e">/**&lt; No memory */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_ENOSYS                       6               </span><span style="color:#75715e">/**&lt; No system */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EBUSY                        7               </span><span style="color:#75715e">/**&lt; Busy */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EIO                          8               </span><span style="color:#75715e">/**&lt; IO error */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EINTR                        9               </span><span style="color:#75715e">/**&lt; Interrupted system call */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EINVAL                       10              </span><span style="color:#75715e">/**&lt; Invalid argument */</span></code></pre></div>
+<p>最后，回顾一下主函数中，调用线程初始化函数进行线程初始化的代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+{
+    <span style="color:#75715e">/* 硬件初始化 */</span>
+    <span style="color:#75715e">/* 将硬件相关的初始化放在这里，如果是软件仿真则没有相关初始化代码 */</span>
+
+    <span style="color:#75715e">/* 初始化线程 */</span>
+    rt_thread_init( <span style="color:#f92672">&amp;</span>rt_flag1_thread,                 <span style="color:#75715e">/* 线程控制块 */</span>
+                    flag1_thread_entry,               <span style="color:#75715e">/* 线程入口地址 */</span>
+                    RT_NULL,                          <span style="color:#75715e">/* 线程形参 */</span>
+                    <span style="color:#f92672">&amp;</span>rt_flag1_thread_stack[<span style="color:#ae81ff">0</span>],        <span style="color:#75715e">/* 线程栈起始地址 */</span>
+                    <span style="color:#66d9ef">sizeof</span>(rt_flag1_thread_stack) );  <span style="color:#75715e">/* 线程栈大小，单位为字节 */</span>
+
+
+    <span style="color:#75715e">/* 初始化线程 */</span>
+    rt_thread_init( <span style="color:#f92672">&amp;</span>rt_flag2_thread,                 <span style="color:#75715e">/* 线程控制块 */</span>
+                    flag2_thread_entry,               <span style="color:#75715e">/* 线程入口地址 */</span>
+                    RT_NULL,                          <span style="color:#75715e">/* 线程形参 */</span>
+                    <span style="color:#f92672">&amp;</span>rt_flag2_thread_stack[<span style="color:#ae81ff">0</span>],        <span style="color:#75715e">/* 线程栈起始地址 */</span>
+                    <span style="color:#66d9ef">sizeof</span>(rt_flag2_thread_stack) );  <span style="color:#75715e">/* 线程栈大小，单位为字节 */</span>
+
+}</code></pre></div>
+<h1 id="实现就绪列表">实现就绪列表</h1>
+
+<p><strong>定义就绪列表</strong></p>
+
+<p>线程创建完成之后，我们需要把线程添加到就序列表，表示线程已经就绪，系统随时可以调度。就绪列表在 <code>scheduler.c</code> 中定义，其定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">rt_list_t rt_thread_priority_table[RT_THREAD_PRIORITY_MAX]; </code></pre></div>
+<p>就绪列表实际上就是一个 rt_list_t 类型的数组，数组的大小由决定最大线程优先级的宏 <code>RT_THREAD_PRIORITY_MAX</code> 决定 ，<code>RT_THREAD_PRIORITY_MAX</code> 在 rtconfig.h 中默认定义为 32。数组的下标对应了线程的优先级，同一优先级的线程统一插入到就绪列表的同一条链表中。一个空的就绪列表图下图：</p>
+
+<figure class="center">
+    <img src="/img/rt-thread-learning01/priority_table.jpg"
+         alt="一个空的就序列表"/> <figcaption>
+            <h4>一个空的就序列表</h4>
+        </figcaption>
+</figure>
+  
+
+<p><strong>将线程插入到就绪列表</strong></p>
+
+<p>线程控制块中有一个类型为 <code>rt_list_t</code> 的成员 <code>tlist</code> ，将线程插入到就绪列表就是利用之前实现的链表操作函数将 <code>tlist</code> 插入到就序列表里面。具体实现代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 初始化线程 */</span>
+rt_thread_init( <span style="color:#f92672">&amp;</span>rt_flag1_thread,                 <span style="color:#75715e">/* 线程控制块 */</span>
+                flag1_thread_entry,               <span style="color:#75715e">/* 线程入口地址 */</span>
+                RT_NULL,                          <span style="color:#75715e">/* 线程形参 */</span>
+                <span style="color:#f92672">&amp;</span>rt_flag1_thread_stack[<span style="color:#ae81ff">0</span>],        <span style="color:#75715e">/* 线程栈起始地址 */</span>
+                <span style="color:#66d9ef">sizeof</span>(rt_flag1_thread_stack) );  <span style="color:#75715e">/* 线程栈大小，单位为字节 */</span>
+<span style="color:#75715e">/* 将线程插入到就绪列表 */</span>
+rt_list_insert_before( <span style="color:#f92672">&amp;</span>(rt_thread_priority_table[<span style="color:#ae81ff">0</span>]),<span style="color:#f92672">&amp;</span>(rt_flag1_thread.tlist) );
+    
+<span style="color:#75715e">/* 初始化线程 */</span>
+rt_thread_init( <span style="color:#f92672">&amp;</span>rt_flag2_thread,                 <span style="color:#75715e">/* 线程控制块 */</span>
+                flag2_thread_entry,               <span style="color:#75715e">/* 线程入口地址 */</span>
+                RT_NULL,                          <span style="color:#75715e">/* 线程形参 */</span>
+                <span style="color:#f92672">&amp;</span>rt_flag2_thread_stack[<span style="color:#ae81ff">0</span>],        <span style="color:#75715e">/* 线程栈起始地址 */</span>
+                <span style="color:#66d9ef">sizeof</span>(rt_flag2_thread_stack) );  <span style="color:#75715e">/* 线程栈大小，单位为字节 */</span>
+<span style="color:#75715e">/* 将线程插入到就绪列表 */</span>
+rt_list_insert_before( <span style="color:#f92672">&amp;</span>(rt_thread_priority_table[<span style="color:#ae81ff">1</span>]),<span style="color:#f92672">&amp;</span>(rt_flag2_thread.tlist) );</code></pre></div>
+<p>就绪列表的下标就是线程的优先级，目前还没有实现优先级，有关优先级的内容后面会讲到。目前，只是将 flag1 的线程插入到下标为 0 的链表，将 falsg2 的线程插入到下标为 1 的链表。具体的示意图如下：</p>
+
+<figure class="center">
+    <img src="/img/rt-thread-learning01/priority_table_insert.jpg"
+         alt="插入线程的就序列表"/> <figcaption>
+            <h4>插入线程的就序列表</h4>
+        </figcaption>
+</figure>
+  
+
+<h1 id="实现调度器">实现调度器</h1>
+
+<p>线程调度器是实时操作的核心，其主要功能就是从就序列表中找到优先级最高的线程并切换到这个线程。从代码上来看，线程调度器是由一些全局变量和一些可以实现线程切换的函数组成。线程调度器的代码在 <code>scheduler.c</code> 文件中实现。</p>
+
+<p><strong>调度器初始化函数</strong></p>
+
+<p>调度器在使用前需要初始化，具体代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 初始化系统调度器 */</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_system_scheduler_init</span>(<span style="color:#66d9ef">void</span>)
+{
+    <span style="color:#66d9ef">register</span> rt_base_t offset;      <span style="color:#75715e">// register 修饰变量，防止被编译器优化
+</span><span style="color:#75715e"></span>  
+    <span style="color:#75715e">/* 线程就绪列表初始化 */</span>
+    <span style="color:#66d9ef">for</span> (offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; offset <span style="color:#f92672">&lt;</span> RT_THREAD_PRIORITY_MAX; offset <span style="color:#f92672">++</span>)
+    {
+            rt_list_init(<span style="color:#f92672">&amp;</span>rt_thread_priority_table[offset]);
+    }
+  
+    <span style="color:#75715e">/* 初始化当前线程控制块指针 */</span>
+    rt_current_thread <span style="color:#f92672">=</span> RT_NULL;  <span style="color:#75715e">//(1)
+</span><span style="color:#75715e"></span>  
+    <span style="color:#75715e">/* 初始化线程休眠列表，当线程创建好没有启动之前会被放入到这个列表 */</span>
+    rt_list_init(<span style="color:#f92672">&amp;</span>rt_thread_defunct);
+}</code></pre></div>
+<p>(1)处代码，初始化当前线程控制块指针为空。<code>rt_current_thread</code> 是在 <code>scheduler.c</code> 中定义的一个 <code>struct rt_thread</code> 类型的全局指针，用于指向当前正在运行的线程的线程控制块。</p>
+
+<p><strong>启动调度器</strong></p>
+
+<p>调度器启动由函数 <code>rt_system_scheduler_start()</code> 来完成，具体实现如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 启动系统调度器 */</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_system_scheduler_start</span>(<span style="color:#66d9ef">void</span>)
+{
+    <span style="color:#66d9ef">register</span> <span style="color:#66d9ef">struct</span> rt_thread <span style="color:#f92672">*</span>to_thread;
+
+
+    <span style="color:#75715e">/* 手动指定第一个运行的线程 */</span>
+    to_thread <span style="color:#f92672">=</span> rt_list_entry(rt_thread_priority_table[<span style="color:#ae81ff">0</span>].next,
+                              <span style="color:#66d9ef">struct</span> rt_thread,
+                              tlist);
+    rt_current_thread <span style="color:#f92672">=</span> to_thread;
+
+    <span style="color:#75715e">/* 切换到第一个线程，该函数在context_rvds.S中实现，在rthw.h声明，
+</span><span style="color:#75715e">       用于实现第一次任务切换。当一个汇编函数在C文件中调用的时候，
+</span><span style="color:#75715e">       如果有形参，则执行的时候会将形参传人到CPU寄存器r0。*/</span>
+    rt_hw_context_switch_to((rt_uint32_t)<span style="color:#f92672">&amp;</span>to_thread<span style="color:#f92672">-&gt;</span>sp);
+}</code></pre></div>
+<p><code>rt_list_entry()</code> 宏前面提到过，作用就是找出线程控制块的起始地址。</p>
+
+<h2 id="第一次线程切换">第一次线程切换</h2>
+
+<p><strong>rt_hw_context_switch_to() 函数</strong></p>
+
+<p>这个函数在 <code>context_rvds.S</code> 中实现，用于进行第一次线程切换。</p>
+
+<p>需要注意的是，当一个汇编函数在 C 语言中被调用时，如果只有一个形参，这个形参会被传入 R0 寄存器，如果有第二个形参，第二形参会被传入 R1 寄存器。</p>
+
+<p>该函数的实现如下：</p>
+<pre><code class="language-arm" data-lang="arm">;*************************************************************************
+;                                 全局变量
+;*************************************************************************
+;使用 IMPORT 导入全局变量
+    IMPORT rt_thread_switch_interrupt_flag    ; PendSV 中断服务函数执行标志
+    IMPORT rt_interrupt_from_thread           ; 上一个线程栈的 sp 指针
+    IMPORT rt_interrupt_to_thread             ; 下一个线程栈的 sp 指针
+
+;*************************************************************************
+;                                 常量
+;*************************************************************************
+;-------------------------------------------------------------------------
+;有关内核外设寄存器定义可参考官方文档：STM32F10xxx Cortex-M3 programming manual
+;系统控制块外设SCB地址范围：0xE000ED00-0xE000ED3F
+;-------------------------------------------------------------------------
+SCB_VTOR        EQU     0xE000ED08     ; 向量表偏移寄存器
+NVIC_INT_CTRL   EQU     0xE000ED04     ; 中断控制状态寄存器
+NVIC_SYSPRI2    EQU     0xE000ED20     ; 系统优先级寄存器(2)
+NVIC_PENDSV_PRI EQU     0x00FF0000     ; PendSV 优先级值 (lowest)
+NVIC_PENDSVSET  EQU     0x10000000     ; 触发PendSV exception的值
+
+;*************************************************************************
+;                              代码产生指令
+;*************************************************************************
+; 当我们新建一个汇编文件写代码时，必须包含类似的指令。
+
+    AREA |.text|, CODE, READONLY, ALIGN=2  ; 汇编 .text 只读代码段， 2^2 字节对齐
+    THUMB                                  ; THUMB 指令集
+    REQUIRE8                               ; 前文件的栈按照 8字节对齐
+    PRESERVE8                              ; 前文件的栈按照 8字节对齐
+
+
+;/*
+; *-----------------------------------------------------------------------
+; * 函数原型：void rt_hw_context_switch_to(rt_uint32 to);
+; * r0 --&gt; to
+; * 该函数用于开启第一次线程切换
+; *-----------------------------------------------------------------------
+; */
+
+; PROC 用于定义子程序，与 ENDP 成对使用，表示子程序的开始和结束
+; rt_hw_context_switch_to 在汇编中称为标号，可以用于程序的跳转
+rt_hw_context_switch_to    PROC
+
+    ; 导出 rt_hw_context_switch_to 标号，让其具有全局属性，可以在C文件调用
+    EXPORT rt_hw_context_switch_to
+
+    ; 设置 rt_interrupt_to_thread 指针指向的值
+    ; 此时 r0 中存储的是从 C 语言中调用子程序时的第一个参数，即第一次线程切换的目标线程
+    ; rt_hw_context_switch_to((rt_uint32_t)&amp;to_thread-&gt;sp)
+    LDR     r1, =rt_interrupt_to_thread           ;将 rt_interrupt_to_thread 加载到r1
+    STR     r0, [r1]                              ;将r0的值存储到 rt_interrupt_to_thread 指向的地址
+
+    ; 设置 rt_interrupt_from_thread 指针指向的值为0，表示启动第一次线程切换
+    LDR     r1, =rt_interrupt_from_thread         ;将 rt_interrupt_from_thread 加载到r1
+    MOV     r0, #0x0                              ;配置 r0 等于 0
+    STR     r0, [r1]                              ;将 r0 的值存储到 rt_interrupt_from_thread
+
+    ; 设置中断标志位 rt_thread_switch_interrupt_flag 的值为 1 ，表示 PendSV 中断服务函数正在执行
+    LDR     r1, =rt_thread_switch_interrupt_flag  ;将 rt_thread_switch_interrupt_flag 加载到r1
+    MOV     r0, #1                                ;配置 r0 等于1
+    STR     r0, [r1]                              ;将r0的值存储到 rt_thread_switch_interrupt_flag
+
+    ; 设置 PendSV 异常的优先级
+    LDR     r0, =NVIC_SYSPRI2
+    LDR     r1, =NVIC_PENDSV_PRI
+    LDR.W   r2, [r0,#0x00]       ; 读
+    ORR     r1,r1,r2             ; 改
+    STR     r1, [r0]             ; 写
+
+    ; 触发 PendSV 异常 (产生上下文切换)
+    LDR     r0, =NVIC_INT_CTRL
+    LDR     r1, =NVIC_PENDSVSET
+    STR     r1, [r0]
+
+    ; 开中断，中断打开后 cpu 就会跳转执行 PendSV 异常中断服务函数
+    CPSIE   F
+    CPSIE   I
+
+    ; 永远不会到达这里
+    ENDP</code></pre>
+<p><strong>PendSV_Handler()函数</strong></p>
+
+<p>PendSV_Handler()函数是真正实现线程上下文切换的地方，具体实现见代码：</p>
+<pre><code class="language-arm" data-lang="arm">;/*
+; *-----------------------------------------------------------------------
+; * void PendSV_Handler(void);
+; * r0 --&gt; switch from thread stack
+; * r1 --&gt; switch to thread stack
+; * psr, pc, lr, r12, r3, r2, r1, r0 are pushed into [from] stack
+; *-----------------------------------------------------------------------
+; */
+
+PendSV_Handler   PROC
+    EXPORT PendSV_Handler
+
+    ; 失能中断，为了保护上下文切换不被中断
+    MRS     r2, PRIMASK
+    CPSID   I
+
+    ; 获取中断标志位，看看是否为0
+    LDR     r0, =rt_thread_switch_interrupt_flag     ; 加载rt_thread_switch_interrupt_flag的地址到r0
+    LDR     r1, [r0]                                 ; 加载rt_thread_switch_interrupt_flag的值到r1
+    CBZ     r1, pendsv_exit                          ; 判断r1是否为0，为0则跳转到pendsv_exit
+
+    ; r1不为0则清0
+    MOV     r1, #0x00
+    STR     r1, [r0]                                 ; 将r1的值存储到rt_thread_switch_interrupt_flag，即清0
+
+    ; 判断rt_interrupt_from_thread的值是否为0
+    LDR     r0, =rt_interrupt_from_thread            ; 加载rt_interrupt_from_thread的地址到r0
+    LDR     r1, [r0]                                 ; 加载rt_interrupt_from_thread的值到r1
+    CBZ     r1, switch_to_thread                     ; 判断r1是否为0，为0则跳转到switch_to_thread
+                                                     ; 第一次线程切换时rt_interrupt_from_thread肯定为0，则跳转到switch_to_thread
+
+; ========================== 上文保存 ==============================
+    ; 当进入PendSVC Handler时，上一个线程运行的环境即：
+     ; xPSR，PC（线程入口地址），R14，R12，R3，R2，R1，R0（线程的形参）
+     ; 这些CPU寄存器的值会自动保存到线程的栈中，剩下的r4~r11需要手动保存
+
+
+    MRS     r1, psp                                  ; 获取线程栈指针到r1
+    STMFD   r1!, {r4 - r11}                          ;将CPU寄存器r4~r11的值存储到r1指向的地址(每操作一次地址将递减一次)
+    LDR     r0, [r0]                                 ; 加载r0指向值到r0，即r0=rt_interrupt_from_thread
+    STR     r1, [r0]                                 ; 将r1的值存储到r0，即更新线程栈sp
+
+; ========================== 下文切换 ==============================
+switch_to_thread
+    LDR     r1, =rt_interrupt_to_thread               ; 加载rt_interrupt_to_thread的地址到r1
+                                                      ; rt_interrupt_to_thread是一个全局变量，里面存的是线程栈指针SP的指针
+    LDR     r1, [r1]                                  ; 加载rt_interrupt_to_thread的值到r1，即sp指针的指针
+    LDR     r1, [r1]                                  ; 加载rt_interrupt_to_thread的值到r1，即sp
+
+    LDMFD   r1!, {r4 - r11}                           ;将线程栈指针r1(操作之前先递减)指向的内容加载到CPU寄存器r4~r11
+    MSR     psp, r1                                   ;将线程栈指针更新到PSP
+
+pendsv_exit
+    ; 恢复中断
+    MSR     PRIMASK, r2
+
+    ORR     lr, lr, #0x04                             ; 确保异常返回使用的堆栈指针是PSP，即LR寄存器的位2要为1
+    BX      lr                                        ; 异常返回，这个时候任务堆栈中的剩下内容将会自动加载
+                                                      ; 到xPSR，PC（任务入口地址），R14，R12，R3，R2，
+                                                      ; R1，R0（任务的形参）
+                                                      ; 同时PSP的值也将更新，即指向任务堆栈的栈顶。在ARMC3中，堆是由高地址向低地址生长的。
+    ; PendSV_Handler 子程序结束
+    ENDP
+
+
+    ALIGN   4
+
+    END</code></pre>
+<h2 id="系统调度">系统调度</h2>
+
+<p><strong>rt_schedule()函数</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 系统调度 */</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_schedule</span>(<span style="color:#66d9ef">void</span>)
+{
+    <span style="color:#66d9ef">struct</span> rt_thread <span style="color:#f92672">*</span>to_thread;
+    <span style="color:#66d9ef">struct</span> rt_thread <span style="color:#f92672">*</span>from_thread;
+  
+  
+  
+    <span style="color:#75715e">/* 两个线程轮流切换 */</span>
+    <span style="color:#66d9ef">if</span>( rt_current_thread <span style="color:#f92672">==</span> rt_list_entry( rt_thread_priority_table[<span style="color:#ae81ff">0</span>].next,
+                                                                   <span style="color:#66d9ef">struct</span> rt_thread,
+                                                                   tlist) )
+    {
+        from_thread <span style="color:#f92672">=</span> rt_current_thread;
+        to_thread <span style="color:#f92672">=</span> rt_list_entry( rt_thread_priority_table[<span style="color:#ae81ff">1</span>].next,
+                                                                   <span style="color:#66d9ef">struct</span> rt_thread,
+                                                                   tlist);
+      rt_current_thread <span style="color:#f92672">=</span> to_thread;
+    }
+    <span style="color:#66d9ef">else</span>
+    {
+        from_thread <span style="color:#f92672">=</span> rt_current_thread;
+        to_thread <span style="color:#f92672">=</span> rt_list_entry( rt_thread_priority_table[<span style="color:#ae81ff">0</span>].next,
+                                                                         <span style="color:#66d9ef">struct</span> rt_thread,
+                                                                         tlist);
+      rt_current_thread <span style="color:#f92672">=</span> to_thread;
+
+    }
+
+    <span style="color:#75715e">/* 产生上下文切换 */</span>
+    rt_hw_context_switch((rt_uint32_t)<span style="color:#f92672">&amp;</span>from_thread<span style="color:#f92672">-&gt;</span>sp,(rt_uint32_t)<span style="color:#f92672">&amp;</span>to_thread<span style="color:#f92672">-&gt;</span>sp);    
+
+}</code></pre></div>
+<p><strong>rt_hw_contex_switch()函数</strong><br />
+rt_hw_contex_switch()函数用于产生上下文切换。</p>
+<pre><code class="language-arm" data-lang="arm">;/*
+; *-----------------------------------------------------------------------
+; * void rt_hw_context_switch(rt_uint32 from, rt_uint32 to);
+; * r0 --&gt; from
+; * r1 --&gt; to
+; *-----------------------------------------------------------------------
+; */
+;rt_hw_context_switch_interrupt
+    ;EXPORT rt_hw_context_switch_interrupt
+
+rt_hw_context_switch    PROC
+    EXPORT rt_hw_context_switch
+
+    ; 设置中断标志位rt_thread_switch_interrupt_flag为1
+    LDR     r2, =rt_thread_switch_interrupt_flag          ; 加载rt_thread_switch_interrupt_flag的地址到r2
+    LDR     r3, [r2]                                      ; 加载rt_thread_switch_interrupt_flag的值到r3
+    CMP     r3, #1                                        ; r3与1比较，相等则执行BEQ指令，否则不执行
+    BEQ     _reswitch
+    MOV     r3, #1                                        ; 设置r3的值为1
+    STR     r3, [r2]                                      ; 将r3的值存储到rt_thread_switch_interrupt_flag，即置1
+
+    ; 设置rt_interrupt_from_thread的值
+    LDR     r2, =rt_interrupt_from_thread                 ; 加载rt_interrupt_from_thread的地址到r2
+    STR     r0, [r2]                                      ; 存储r0的值到rt_interrupt_from_thread，即上一个线程栈指针sp的指针
+
+_reswitch
+    ; 设置rt_interrupt_to_thread的值
+    LDR     r2, =rt_interrupt_to_thread                   ; 加载rt_interrupt_from_thread的地址到r2
+    STR     r1, [r2]                                      ; 存储r1的值到rt_interrupt_from_thread，即下一个线程栈指针sp的指针
+
+    ; 触发PendSV异常，实现上下文切换
+    LDR     r0, =NVIC_INT_CTRL
+    LDR     r1, =NVIC_PENDSVSET
+    STR     r1, [r0]
+
+    ; 子程序返回
+    BX      LR
+
+    ; 子程序结束
+    ENDP</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/**
+</span><span style="color:#75715e">  ************************************************************************
+</span><span style="color:#75715e">  * @file    main.c
+</span><span style="color:#75715e">  * @author  fire
+</span><span style="color:#75715e">  * @version V1.0
+</span><span style="color:#75715e">  * @date    2018-xx-xx
+</span><span style="color:#75715e">  * @brief   《RT-Thread内核实现与应用开发实战指南》书籍例程
+</span><span style="color:#75715e">  *           
+</span><span style="color:#75715e">  ************************************************************************
+</span><span style="color:#75715e">  * @attention
+</span><span style="color:#75715e">  *
+</span><span style="color:#75715e">  * 实验平台:野火 STM32 M3系列开发板
+</span><span style="color:#75715e">  * 
+</span><span style="color:#75715e">  * 官网    :www.embedfire.com  
+</span><span style="color:#75715e">  * 论坛    :http://www.firebbs.cn
+</span><span style="color:#75715e">  * 淘宝    :https://fire-stm32.taobao.com
+</span><span style="color:#75715e">  *
+</span><span style="color:#75715e">  ************************************************************************
+</span><span style="color:#75715e">  */</span>
+
+
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">*************************************************************************
+</span><span style="color:#75715e">*                             包含的头文件
+</span><span style="color:#75715e">*************************************************************************
+</span><span style="color:#75715e">*/</span>
+
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;rtthread.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ARMCM3.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">*************************************************************************
+</span><span style="color:#75715e">*                              全局变量
+</span><span style="color:#75715e">*************************************************************************
+</span><span style="color:#75715e">*/</span>
+rt_uint8_t flag1;
+rt_uint8_t flag2;
+
+<span style="color:#66d9ef">extern</span> rt_list_t rt_thread_priority_table[RT_THREAD_PRIORITY_MAX];
+
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">*************************************************************************
+</span><span style="color:#75715e">*                      线程控制块 &amp; STACK &amp; 线程声明
+</span><span style="color:#75715e">*************************************************************************
+</span><span style="color:#75715e">*/</span>
+
+
+<span style="color:#75715e">/* 定义线程控制块 */</span>
+<span style="color:#66d9ef">struct</span> rt_thread rt_flag1_thread;
+<span style="color:#66d9ef">struct</span> rt_thread rt_flag2_thread;
+
+ALIGN(RT_ALIGN_SIZE)
+<span style="color:#75715e">/* 定义线程栈 */</span>
+rt_uint8_t rt_flag1_thread_stack[<span style="color:#ae81ff">512</span>];
+rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];
+
+<span style="color:#75715e">/* 线程声明 */</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">flag1_thread_entry</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>p_arg);
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">flag2_thread_entry</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>p_arg);
+
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">*************************************************************************
+</span><span style="color:#75715e">*                               函数声明
+</span><span style="color:#75715e">*************************************************************************
+</span><span style="color:#75715e">*/</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delay</span>(uint32_t count);
+
+<span style="color:#75715e">/************************************************************************
+</span><span style="color:#75715e">  * @brief  main函数
+</span><span style="color:#75715e">  * @param  无
+</span><span style="color:#75715e">  * @retval 无
+</span><span style="color:#75715e">  *
+</span><span style="color:#75715e">  * @attention
+</span><span style="color:#75715e">  *********************************************************************** 
+</span><span style="color:#75715e">  */</span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+{
+    <span style="color:#75715e">/* 硬件初始化 */</span>
+    <span style="color:#75715e">/* 将硬件相关的初始化放在这里，如果是软件仿真则没有相关初始化代码 */</span>
+
+    <span style="color:#75715e">/* 调度器初始化 */</span>
+    rt_system_scheduler_init();
+
+
+    <span style="color:#75715e">/* 初始化线程 */</span>
+    rt_thread_init( <span style="color:#f92672">&amp;</span>rt_flag1_thread,                 <span style="color:#75715e">/* 线程控制块 */</span>
+                    flag1_thread_entry,               <span style="color:#75715e">/* 线程入口地址 */</span>
+                    RT_NULL,                          <span style="color:#75715e">/* 线程形参 */</span>
+                    <span style="color:#f92672">&amp;</span>rt_flag1_thread_stack[<span style="color:#ae81ff">0</span>],        <span style="color:#75715e">/* 线程栈起始地址 */</span>
+                    <span style="color:#66d9ef">sizeof</span>(rt_flag1_thread_stack) );  <span style="color:#75715e">/* 线程栈大小，单位为字节 */</span>
+    <span style="color:#75715e">/* 将线程插入到就绪列表 */</span>
+    rt_list_insert_before( <span style="color:#f92672">&amp;</span>(rt_thread_priority_table[<span style="color:#ae81ff">0</span>]),<span style="color:#f92672">&amp;</span>(rt_flag1_thread.tlist) );
+
+    <span style="color:#75715e">/* 初始化线程 */</span>
+    rt_thread_init( <span style="color:#f92672">&amp;</span>rt_flag2_thread,                 <span style="color:#75715e">/* 线程控制块 */</span>
+                    flag2_thread_entry,               <span style="color:#75715e">/* 线程入口地址 */</span>
+                    RT_NULL,                          <span style="color:#75715e">/* 线程形参 */</span>
+                    <span style="color:#f92672">&amp;</span>rt_flag2_thread_stack[<span style="color:#ae81ff">0</span>],        <span style="color:#75715e">/* 线程栈起始地址 */</span>
+                    <span style="color:#66d9ef">sizeof</span>(rt_flag2_thread_stack) );  <span style="color:#75715e">/* 线程栈大小，单位为字节 */</span>
+    <span style="color:#75715e">/* 将线程插入到就绪列表 */</span>
+    rt_list_insert_before( <span style="color:#f92672">&amp;</span>(rt_thread_priority_table[<span style="color:#ae81ff">1</span>]),<span style="color:#f92672">&amp;</span>(rt_flag2_thread.tlist) );
+
+    <span style="color:#75715e">/* 启动系统调度器 */</span>
+    rt_system_scheduler_start(); 
+}
+
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">*************************************************************************
+</span><span style="color:#75715e">*                               函数实现
+</span><span style="color:#75715e">*************************************************************************
+</span><span style="color:#75715e">*/</span>
+<span style="color:#75715e">/* 软件延时 */</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delay</span> (uint32_t count)
+{
+    <span style="color:#66d9ef">for</span>(; count<span style="color:#f92672">!=</span><span style="color:#ae81ff">0</span>; count<span style="color:#f92672">--</span>);
+}
+
+<span style="color:#75715e">/* 线程1 */</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">flag1_thread_entry</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>p_arg )
+{
+    <span style="color:#66d9ef">for</span>( ;; )
+    {
+        flag1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        delay( <span style="color:#ae81ff">100</span> );
+        flag1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        delay( <span style="color:#ae81ff">100</span> );
+
+        <span style="color:#75715e">/* 线程切换，这里是手动切换 */</span>
+        rt_schedule();
+    }
+}
+
+<span style="color:#75715e">/* 线程2 */</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">flag2_thread_entry</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>p_arg )
+{
+    <span style="color:#66d9ef">for</span>( ;; )
+    {
+        flag2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        delay( <span style="color:#ae81ff">100</span> );
+        flag2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        delay( <span style="color:#ae81ff">100</span> );
+
+        <span style="color:#75715e">/* 线程切换，这里是手动切换 */</span>
+        rt_schedule();
+    }
+}</code></pre></div>
+<p><strong>注：文中所有图片均来自《RT-Thread 内核实现与应用开发实战指南》。</strong></p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-10-14</span>
+  </p>
+  <p class="copyright-item">
+      <span class="item-title">原始文档</span>
+      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/0022-rt-thread-learning-01/index.md" target="_blank">Markdown 文件</a></span>
+    </p>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC 署名 4.0 国际</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/wechat_reward_qr-code.png">
+        <span>微信长按/扫码打赏</span>
+      </label>
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/thread/">Thread</a>
+          
+          <a href="/tags/stack/">Stack</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/0023-git-submodule/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">使用 Git 子模块管理 hugo 博客</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/0021-even-theme-preview/">
+            <span class="next-text nav-default">hugo 博客系统 even 主题预览</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-09-29 09:37:14 \x2b0800 CST',
+    title: 'RT-Thread 0x01：线程与线程的切换',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'zt-luo.github.io',
+    owner: 'zt-luo',
+    admin: ['zt-luo'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:me@ztluo.dev" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zt-luo" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.ztluo.dev/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/zt-luo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?3e7571b3a1c0f5c99ed01cf3b15b4b46";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

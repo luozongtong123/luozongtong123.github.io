@@ -13,37 +13,37 @@
     
     <item>
       <title>Ardupilot 如何处理 MAVLink 消息</title>
-      <link>https://blog.ztluo.dev/post/ardupilot-handle-msg/</link>
+      <link>https://blog.ztluo.dev/post/0039-ardupilot-handle-msg/</link>
       <pubDate>Fri, 15 Mar 2019 20:00:37 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/ardupilot-handle-msg/</guid>
+      <guid>https://blog.ztluo.dev/post/0039-ardupilot-handle-msg/</guid>
       <description>&lt;p&gt;由于目前需要实现自定义的功能，这要求可以对 Ardupilot 中的通信进行干预，包括接收处理消息和发送消息。为了达成这个目的，阅读了通信相关的代码，看一下 Ardupilot 是怎样处理 Mavlink 消息的。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Ardupilot Scheduler</title>
-      <link>https://blog.ztluo.dev/post/ardupilot-scheduler/</link>
+      <link>https://blog.ztluo.dev/post/0034-ardupilot-scheduler/</link>
       <pubDate>Sat, 09 Mar 2019 16:54:22 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/ardupilot-scheduler/</guid>
+      <guid>https://blog.ztluo.dev/post/0034-ardupilot-scheduler/</guid>
       <description>&lt;p&gt;参考 Ardupilot 官方开发文档中关于 Threading 的文档，把 Ardupilot 中关于调度器和线程相关的代码阅读了一下，做了点笔记。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Ardusub 的界面</title>
-      <link>https://blog.ztluo.dev/post/ardusub-interface/</link>
+      <link>https://blog.ztluo.dev/post/0031-ardusub-interface/</link>
       <pubDate>Tue, 18 Dec 2018 14:49:19 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/ardusub-interface/</guid>
+      <guid>https://blog.ztluo.dev/post/0031-ardusub-interface/</guid>
       <description>&lt;p&gt;ArduSub 的事情又要捡起来了。这篇博客就写一些 ArduSub 留给我们来与其交互的接口。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>搭建 Pixhawk 飞控固件编译环境</title>
-      <link>https://blog.ztluo.dev/post/build-environment-for-ardusub/</link>
+      <link>https://blog.ztluo.dev/post/0020-build-environment-for-ardusub/</link>
       <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/build-environment-for-ardusub/</guid>
+      <guid>https://blog.ztluo.dev/post/0020-build-environment-for-ardusub/</guid>
       <description>&lt;p&gt;ArduSub 官方的程序无法直接给电机发送指令，这个功能需要自己实现。为了实现这个功能首先需要搭建 Pixhawk 的编译环境。
 下面将简要介绍一下环境的搭建步骤。&lt;/p&gt;</description>
     </item>

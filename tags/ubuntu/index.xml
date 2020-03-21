@@ -13,28 +13,28 @@
     
     <item>
       <title>开启虚拟机系统中的 3D 加速</title>
-      <link>https://blog.ztluo.dev/post/play-ros-on-vm2/</link>
+      <link>https://blog.ztluo.dev/post/0045-play-ros-on-vm2/</link>
       <pubDate>Sat, 23 Nov 2019 21:30:44 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/play-ros-on-vm2/</guid>
+      <guid>https://blog.ztluo.dev/post/0045-play-ros-on-vm2/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://blog.ztluo.dev/post/play-ros-on-vm/&#34;&gt;在虚拟机上使用 ROS&lt;/a&gt; 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>在虚拟机上使用 ROS</title>
-      <link>https://blog.ztluo.dev/post/play-ros-on-vm/</link>
+      <link>https://blog.ztluo.dev/post/0044-play-ros-on-vm/</link>
       <pubDate>Fri, 22 Nov 2019 10:31:17 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/play-ros-on-vm/</guid>
+      <guid>https://blog.ztluo.dev/post/0044-play-ros-on-vm/</guid>
       <description>&lt;p&gt;最近想研究一下 &lt;code&gt;uuv_simulator&lt;/code&gt; 怎么使用，可能的话作为我毕业论文的一部分。&lt;code&gt;uuv_simulator&lt;/code&gt; 是基于 ROS 的， ROS 官方支持的系统是 Ubuntu ，而我机器上跑得是 Manjaro，如果在新分区或着是在新硬盘上安装 Ubuntu 则需要高一整套的学习和工具链，思来想去还是安装虚拟机吧。于是就有了这篇博文。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>搭建 Pixhawk 飞控固件编译环境</title>
-      <link>https://blog.ztluo.dev/post/build-environment-for-ardusub/</link>
+      <link>https://blog.ztluo.dev/post/0020-build-environment-for-ardusub/</link>
       <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/build-environment-for-ardusub/</guid>
+      <guid>https://blog.ztluo.dev/post/0020-build-environment-for-ardusub/</guid>
       <description>&lt;p&gt;ArduSub 官方的程序无法直接给电机发送指令，这个功能需要自己实现。为了实现这个功能首先需要搭建 Pixhawk 的编译环境。
 下面将简要介绍一下环境的搭建步骤。&lt;/p&gt;</description>
     </item>

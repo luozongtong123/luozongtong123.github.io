@@ -13,92 +13,92 @@
     
     <item>
       <title>使用 Caddy 部署博客</title>
-      <link>https://blog.ztluo.dev/post/caddy-my-blog/</link>
+      <link>https://blog.ztluo.dev/post/0046-caddy-my-blog/</link>
       <pubDate>Tue, 11 Feb 2020 13:00:35 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/caddy-my-blog/</guid>
+      <guid>https://blog.ztluo.dev/post/0046-caddy-my-blog/</guid>
       <description>&lt;p&gt;Caddy 号称最容易上手的 Web Server，他有一个非常显著的特点 —— 默认开启 HTTPS，自动使用 &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let’s Encrypt&lt;/a&gt; 申请证书并续约。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>更换了谷歌的 .dev 域名</title>
-      <link>https://blog.ztluo.dev/post/change-domain/</link>
+      <link>https://blog.ztluo.dev/post/0033-change-domain/</link>
       <pubDate>Sat, 09 Mar 2019 15:36:44 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/change-domain/</guid>
+      <guid>https://blog.ztluo.dev/post/0033-change-domain/</guid>
       <description>&lt;p&gt;更换新域名了🎉🎉🎉。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Even Theme Tweak</title>
-      <link>https://blog.ztluo.dev/post/even-theme-tweak/</link>
+      <link>https://blog.ztluo.dev/post/0030-even-theme-tweak/</link>
       <pubDate>Sun, 28 Oct 2018 11:48:09 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/even-theme-tweak/</guid>
+      <guid>https://blog.ztluo.dev/post/0030-even-theme-tweak/</guid>
       <description>&lt;p&gt;当前博客的主题是 &lt;a href=&#34;https://github.com/zt-luo/hugo-theme-even&#34;&gt;even&lt;/a&gt;。
 为了满足我刁钻的口味，有一些主题的小细节需要修改一下。折腾过程做了点总结。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>不蒜子域名更新</title>
-      <link>https://blog.ztluo.dev/post/busuanzi-domain/</link>
+      <link>https://blog.ztluo.dev/post/0025-busuanzi-domain/</link>
       <pubDate>Wed, 10 Oct 2018 22:20:04 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/busuanzi-domain/</guid>
+      <guid>https://blog.ztluo.dev/post/0025-busuanzi-domain/</guid>
       <description>&lt;p&gt;前天发现不蒜子网页访问计数一直是正在加载状态，没法正常工作。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 Git 子模块管理 hugo 博客</title>
-      <link>https://blog.ztluo.dev/post/git-submodule/</link>
+      <link>https://blog.ztluo.dev/post/0023-git-submodule/</link>
       <pubDate>Fri, 05 Oct 2018 10:02:56 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/git-submodule/</guid>
+      <guid>https://blog.ztluo.dev/post/0023-git-submodule/</guid>
       <description>&lt;p&gt;使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>hugo 博客系统 even 主题预览</title>
-      <link>https://blog.ztluo.dev/post/even-preview/</link>
+      <link>https://blog.ztluo.dev/post/0021-even-theme-preview/</link>
       <pubDate>Mon, 17 Sep 2018 22:11:40 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/even-preview/</guid>
+      <guid>https://blog.ztluo.dev/post/0021-even-theme-preview/</guid>
       <description>&lt;p&gt;这篇文章集中说明 even 主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些样式，可以去修改 css/ 文件夹下的 .scss 文件。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 cloud9 重建 Hexo 博客写作环境</title>
-      <link>https://blog.ztluo.dev/post/rebuilt-envirenment/</link>
+      <link>https://blog.ztluo.dev/post/0005-rebuilt-blog-envirenment-with-cloud9/</link>
       <pubDate>Sat, 14 Mar 2015 16:33:52 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/rebuilt-envirenment/</guid>
+      <guid>https://blog.ztluo.dev/post/0005-rebuilt-blog-envirenment-with-cloud9/</guid>
       <description>&lt;p&gt;在 cloud9 上写博客。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Hexo luocman 主题的文章书写规范</title>
-      <link>https://blog.ztluo.dev/post/how-to-write/</link>
+      <link>https://blog.ztluo.dev/post/0004-how-to-write-with-luocman-theme/</link>
       <pubDate>Sat, 28 Feb 2015 13:51:42 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/how-to-write/</guid>
+      <guid>https://blog.ztluo.dev/post/0004-how-to-write-with-luocman-theme/</guid>
       <description>&lt;p&gt;将一些 Hexo luocman 主题的文章的书写规范和技巧总结一下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>简单的 Git 入门</title>
-      <link>https://blog.ztluo.dev/post/something-about-git/</link>
+      <link>https://blog.ztluo.dev/post/0002-something-about-git/</link>
       <pubDate>Fri, 13 Feb 2015 22:31:00 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/something-about-git/</guid>
+      <guid>https://blog.ztluo.dev/post/0002-something-about-git/</guid>
       <description>&lt;p&gt;在使用 Hexo 作为博客程序的过程中使用了 Git 这个分布式版本控制系统。现在已经初步入门了。之前一直都没有深入去研究，但是今天上午突然想要把所有的东西都同步到某网盘上以免本地数据出现差错导致博客从头再来。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Hexo world ！—— Hexo 博客搭建教程</title>
-      <link>https://blog.ztluo.dev/post/hexo-world-how-to-build-hexo-blog/</link>
+      <link>https://blog.ztluo.dev/post/0001-hexo-world-how-to-build-hexo-blog/</link>
       <pubDate>Tue, 27 Jan 2015 21:11:00 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/hexo-world-how-to-build-hexo-blog/</guid>
+      <guid>https://blog.ztluo.dev/post/0001-hexo-world-how-to-build-hexo-blog/</guid>
       <description>&lt;p&gt;博客刚刚搭好，总结一下这两天的成果。本教程着重介绍我在搭建这个博客时所犯的一些错误。同时也尽量将所能涉及的东西全部写进去。&lt;/p&gt;</description>
     </item>
     

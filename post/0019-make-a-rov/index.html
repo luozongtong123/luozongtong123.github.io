@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>制作一个 ROV   - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="一步一步做自己的 ROV。
+" />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+<meta name="baidu-site-verification" content="8SYIFLvIPQ" />
+<meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
+
+
+<meta name="generator" content="Hugo 0.66.0" />
+
+
+<link rel="canonical" href="https://blog.ztluo.dev/post/0019-make-a-rov/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="制作一个 ROV  " />
+<meta property="og:description" content="一步一步做自己的 ROV。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ztluo.dev/post/0019-make-a-rov/" />
+<meta property="article:published_time" content="2018-08-28T09:30:26+08:00" />
+<meta property="article:modified_time" content="2018-09-22T11:28:26+08:00" />
+<meta itemprop="name" content="制作一个 ROV  ">
+<meta itemprop="description" content="一步一步做自己的 ROV。">
+<meta itemprop="datePublished" content="2018-08-28T09:30:26&#43;08:00" />
+<meta itemprop="dateModified" content="2018-09-22T11:28:26&#43;08:00" />
+<meta itemprop="wordCount" content="3834">
+
+
+
+<meta itemprop="keywords" content="ArduSub,ROV,QGC," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="制作一个 ROV  "/>
+<meta name="twitter:description" content="一步一步做自己的 ROV。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/project/">
+        <li class="mobile-menu-item">项目</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/project/">项目</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">制作一个 ROV  </h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-28 </span>
+        <div class="post-category">
+            
+              <a href="/categories/ardupilot/"> Ardupilot </a>
+            
+          </div>
+        <span class="more-meta"> 约 3834 字 </span>
+        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#一-概述">一、概述</a>
+<ul>
+<li><a href="#1-推进器配置">1、推进器配置</a></li>
+<li><a href="#2-控制系统">2、控制系统</a></li>
+</ul></li>
+<li><a href="#二-供电方案">二、供电方案</a>
+<ul>
+<li><a href="#1-供电电池">1、供电电池</a></li>
+<li><a href="#2-dc-dc-降压模块">2、DC-DC 降压模块</a></li>
+<li><a href="#3-水密接插件">3、水密接插件</a></li>
+<li><a href="#4-电流计">4、电流计</a></li>
+</ul></li>
+<li><a href="#三-推进器连接">三、推进器连接</a>
+<ul>
+<li><a href="#1-推进器介绍">1、推进器介绍</a></li>
+<li><a href="#2-推进器测试">2、推进器测试</a></li>
+<li><a href="#3-推进器的接线">3、推进器的接线</a></li>
+</ul></li>
+<li><a href="#四-各种设备与飞控的连接">四、各种设备与飞控的连接</a>
+<ul>
+<li><a href="#1-飞控简介">1、飞控简介</a></li>
+<li><a href="#2-main-output-和-auxiliary-output-的连接">2、Main output 和 Auxiliary output 的连接</a></li>
+<li><a href="#3-其他设备的连接">3、其他设备的连接</a></li>
+</ul></li>
+<li><a href="#五-各种设备和树莓派的连接">五、各种设备和树莓派的连接</a></li>
+<li><a href="#六-电力线载波通信测试">六、电力线载波通信测试</a></li>
+<li><a href="#八-各软件的安装">八、各软件的安装</a></li>
+<li><a href="#九-视频流调试">九、视频流调试</a></li>
+<li><a href="#十-qgroundcontrol-的设置">十、QGroundControl 的设置</a>
+<ul>
+<li><a href="#1-加速度计校准">1、加速度计校准</a></li>
+<li><a href="#3-深度传感器的校准">3、深度传感器的校准</a></li>
+<li><a href="#4-推进器及推进器布置设置">4、推进器及推进器布置设置</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>一步一步做自己的 ROV。</p>
+
+<h1 id="一-概述">一、概述</h1>
+
+<p>注：ROV 的结构设计和密封舱的设计是一个复杂的问题，本文将直接略过这个问题的讨论，直接给出如下的 ROV。本文将着重与 ROV 舱内的电子元件的组装以及程序的设置等。</p>
+
+<p><img src="/img/make-a-rov/轴测图.jpg" width="60%" height="60%"></p>
+
+<p><img src="/img/make-a-rov/俯视图.jpg" width="60%" height="60%"></p>
+
+<p><img src="/img/make-a-rov/主视图.jpg" width="60%" height="60%"></p>
+
+<h2 id="1-推进器配置">1、推进器配置</h2>
+
+<p>如上面给出的图所示，ROV 一共有 8 个推进器，其中 4 个推进器在水平面上呈对角布置，可以为 ROV 在水平面上的各种运动（包括，平移和原地转动）提供推力。这四个推进器标号为 1-4 。还有四个推进器布置在垂直方向，这四个推进器除了可以为 ROV 提供上浮和下潜的推力外还可以使 ROV 进行俯仰和横滚运动。这四个推进器标号 5-8 。应当注意到，为了防止 ROV 由于推进器的转动而产生的反向的转矩对 ROV 的姿态造成影响，推进器是正反浆对称布置的。其中绿色的为 CCW （逆时针）浆，蓝色的为 CW （顺时针）桨。</p>
+
+<p><img src="/img/make-a-rov/frame-numberings.jpg" width="60%" height="60%"></p>
+
+<h2 id="2-控制系统">2、控制系统</h2>
+
+<p>控制系统采用开源项目 <a href="https://www.ardusub.com/">ArduSub</a> 的方案。其控制核心是 Pixhawk ，配合树莓派完成控制数据和视频数据的传输。系统的硬件框图如下所示：</p>
+
+<p><img src="/img/make-a-rov/hardware-diagram.png" alt="hardware-diagram" /></p>
+
+<h1 id="二-供电方案">二、供电方案</h1>
+
+<h2 id="1-供电电池">1、供电电池</h2>
+
+<p>推进器使用的是 ROVMAKER 家的<a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.72f42e8dvns4rT&amp;id=553255419051&amp;_u=n1krgas19c88">动力总成</a>。该推进器的推荐的供电电压是 6S。前面给出的 ROV 的结构和密封舱制作完成后，我们对它进行了浮力测定，最终测得浮力为 7341g。为了避免 ROV 制成后安装过多的配重块，选用了两块 16000mah 的航模电池，每块电池重约 2kg 。</p>
+
+<h2 id="2-dc-dc-降压模块">2、DC-DC 降压模块</h2>
+
+<p>使用多个 <a href="https://detail.tmall.com/item.htm?spm=a1z0d.6639537.1997196601.44.251174844ayKY5&amp;id=558664731724">DC-DC 降压模块</a>，为除了推进器外的所有其他部件供电。该模块的输出电压默认可调。在模块背面切断 ADJ 的那段铜箔并用焊锡连接其他标有不同电压的焊盘即可快速获得不同的常用电压等级。该模块还有一个使能端口，高电平有效，默认内部上拉，若想断掉这一路供电只需要给一个低电平即可。</p>
+
+<p>使用到的电压包括一下几个部分：</p>
+
+<ul>
+<li>5.0V：树莓派供电；</li>
+<li>5.3V：飞控 MAIN 、AUX 输出端口供电；</li>
+<li>12.V：电力线载波通信模块供电；</li>
+<li>9.0V：LED灯带供电；</li>
+<li>12.V：LED高亮补光灯供电；</li>
+<li>7.4V：舱外水下舵机供电；</li>
+<li>5.0V：继电器控制端供电；</li>
+</ul>
+
+<h2 id="3-水密接插件">3、水密接插件</h2>
+
+<p>水密接插件使用 8 芯的<a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.49ab2e8dbytuPm&amp;id=570101069120&amp;_u=n1krgas16f03">水密接插件</a>，该接插件的单芯额定电流为5A，接插件的芯线定义（从母头方向看）如下图所示：</p>
+
+<p><img src="/img/make-a-rov/waterproof_plug.jpg" width="30%" height="30%"></p>
+
+<ul>
+<li>线号 1：1#电池充电，正极；</li>
+<li>线号 2：2#电池充电，正极；</li>
+<li>线号 3：载波通信 L 线（白色）；</li>
+<li>线号 4：开关 1 ；</li>
+<li>线号 5：载波通信 N 线（黑色）；</li>
+<li>线号 6：2#电池充电，负极；</li>
+<li>线号 7：1#电池充电，负极；</li>
+<li>线号 8：开关2；</li>
+</ul>
+
+<p><strong>ROV 上电：</strong></p>
+
+<p>线缆盘插头使用了线号 3、5 和 4、8 的芯线，线号 3、5 连接通信线缆，线号 4、8 短接。在 ROV 内部，线号4、8 连接到继电器控制端，当线缆盘插头插到 ROV 上时，插头将线号 4、8 短接，接通继电器， ROV 上电。</p>
+
+<p><strong>ROV 充电：</strong></p>
+
+<p>由于我们使用的是没有保护板的航模锂电池，所以不能直接对锂电池充电，必须借助平衡充电器。我们的方案是为航模电池安装<a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.49ab2e8dbytuPm&amp;id=563723443594&amp;_u=n1krgas12c24">锂电池保护板</a>。直接将两块锂电池的平衡充电头并联后连接到充电保护板，保护板的 P+ 和 P- 引出，作为充电接口。线号 1、2 并联，连接到 P+；线号 6、7 并联，连接到 P- 。（并联的目的是增强过流能力）</p>
+
+<p>这样就可以直接使用两线的<a href="https://item.taobao.com/item.htm?spm=a1z2k.11010449.931864.16.4f24509de8yP9Y&amp;scm=1007.13982.82927.0&amp;id=571402510404&amp;last_time=1534992375">充电器</a>对 ROV 进行充电了。</p>
+
+<p>充电时注意：应该先将 ROV 与充电器连接后再将充电器连接 220V 电源；充电器和 ROV 连接后充电器会有一个灯变亮；充电器连接 220V 电源后会有两个红灯亮，充电完成后一个红灯会变绿。</p>
+
+<h2 id="4-电流计">4、电流计</h2>
+
+<p>ROV上安装的<a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.49ab2e8dbytuPm&amp;id=520582169727&amp;_u=n1krgas1ee11">电流计</a>可以测量电池电压和通过的电流大小。同时电流计的接口还可以同时为飞控提供电源供电。电流计和飞控 MAIN 、AUX 输出端口供电组成双路供电，使飞控运行更加可靠。需要注意的的是电流计安装在继电器之后。</p>
+
+<h1 id="三-推进器连接">三、推进器连接</h1>
+
+<h2 id="1-推进器介绍">1、推进器介绍</h2>
+
+<p>推进器使用的是 ROVMAKER 家的<a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.72f42e8dvns4rT&amp;id=553255419051&amp;_u=n1krgas19c88">动力总成</a>。该推进器使用的是开放式的电机，电子绕组做好防水防腐蚀处理后可以直接与水接触，没有密封舱，不存在密封问题，使用的深度可达几百米。电调集成在了推进器上。电调灌封在一个密闭的容器中，从容器中引出三条线，颜色分别为红色、黑色、黄色。红色为推进器供电正极，黑色为推进器供电负极，黄色为推进器控制转速的 PWM 的信号线。</p>
+
+<p>推进器的性能参数介绍如下：</p>
+
+<ul>
+<li>电调最大电流：30A</li>
+<li>电压：3S~6S（推荐6S）</li>
+<li>KV值：350</li>
+<li>电调 PWM 范围：1000（翻转最高）-2000（正转最高） 中位是1500</li>
+<li>频率：50Hz</li>
+</ul>
+
+<h2 id="2-推进器测试">2、推进器测试</h2>
+
+<p>推进器安装前可能需要对推进器进行测试以确定推进器可以正常工作。测试工具是<a href="https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-17373907211.61.28d740abz1qAF0&amp;id=547409965763">舵机测试仪</a>。推进器和舵机测试仪连接好电源线（注意共地）和 PWM 信号线。线路连接好后还无法直接控制推进器转动，需要进行性初始化。初始化方法如下：</p>
+
+<ol>
+<li>接线，上电 哔-哔-哔 三声，表示电调开机正常；</li>
+<li>给电调 2000 或 1000 最高转速信号， 哔 一声；</li>
+<li>给电调 1500 停转信号， 哔 一声；</li>
+<li>初始化完成后就可以开始调速控制</li>
+</ol>
+
+<h2 id="3-推进器的接线">3、推进器的接线</h2>
+
+<p>由于推进器较多，为了方便进行推进器的拆装的理线，我们使用接线端子连接推进器。在接线端子上将所有推进器的正负极并联到一起，所有的 PWM 信号线标号（标号参考前文推进器配置）并引出。推进器的 PWM 信号线安按照 1-8 的顺序连接到飞控的 Main output 1-8。</p>
+
+<h1 id="四-各种设备与飞控的连接">四、各种设备与飞控的连接</h1>
+
+<h2 id="1-飞控简介">1、飞控简介</h2>
+
+<p>飞控是整个系统的控制核心。其所有端口的 <a href="https://docs.px4.io/en/flight_controller/pixhawk.html">Pinouts</a> 如下图所示：</p>
+
+<p><img src="/img/make-a-rov/pixhawk_connectors.png" alt="pixhawk_connectors" /></p>
+
+<h2 id="2-main-output-和-auxiliary-output-的连接">2、Main output 和 Auxiliary output 的连接</h2>
+
+<p>Main output（主通道） 的连接前文已经有所叙述，即编号为 1-8 的推进器的 PWM 信号线分别与 主通道的 1-8 连接。</p>
+
+<p>舱内摄像头俯仰云台的舵机的三根线（舵机供电由连接到主通道的 DC-DC降压模块负责）连接到 Auxiliary output（辅助通道）的 1号通道。舱外机械爪防水舵机的 PWM 信号线连接到辅助通道的 2 号通道，该舵机由独立的 DC-DC 降压模块供电。漏水传感器的数字输出端口与辅助通道的 3 号通道连接。</p>
+
+<p><a href="https://item.taobao.com/item.htm?spm=a1z0k.6846577.0.0.55c67c29FccocN&amp;id=545593288189&amp;_u=t2dmg8j26111">漏水传感器</a>的探头和数据采集板相连，数据采集板的供电直接由辅助通道的电源提供。实际使用的效果来看，这款漏水传感器的灵敏度高，没有误报，使用效果很好。</p>
+
+<p>高亮 LED 补光灯供电 DC-DC 降压模块的使能端口与辅助通道的 4 号通道相连，LED 灯带供电 DC-DC 降压模块的使能端口与辅助通道的 5 号通道相连，舱外两个内窥镜摄像头的 LED 灯与辅助通道的 6 号通道相连。</p>
+
+<h2 id="3-其他设备的连接">3、其他设备的连接</h2>
+
+<p>深度传感器与飞控的 I2C 接口相连；电流计与 POWER 端口相连；蜂鸣器和 BUZZER 端口相连；按钮和 SWITCH 相连；GPS 模块与 GPS 端口相连。</p>
+
+<p>GPS 端口的<a href="https://docs.px4.io/en/flight_controller/pixhawk.html">线号</a>定义如下：</p>
+
+<p><img src="/img/make-a-rov/GPS_port.jpg" width="80%" height="80%"></p>
+
+<p>注：线的颜色是官方标注，实际的线的颜色可能会有不同。在使用时可以将飞控上印刷的文字摆正，从左到右依次为 1-6。</p>
+
+<p>我们使用的 GPS 模块没有罗盘功能，只需要连接供电以及 RX、TX。</p>
+
+<h1 id="五-各种设备和树莓派的连接">五、各种设备和树莓派的连接</h1>
+
+<p>树莓派的供电是通过 DC-DC 降压模块完成的，降压模块得到的 5V 电压直接和树莓派的 5V 供电相连。</p>
+
+<p><img src="/img/make-a-rov/pi_pinouts.png" width="80%" height="80%"></p>
+
+<p>飞控通过 USB 接口直接和树莓派相连；一个舱内摄像头和两个舱外摄像头连接到 USB 接口；电力线载波模块通过以太网线和树莓派相连。</p>
+
+<h1 id="六-电力线载波通信测试">六、电力线载波通信测试</h1>
+
+<p>选用的<a href="https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-17373907211.27.6fc422e6NUC6ET&amp;id=538928813306">电力线载波通信模块</a>使用非常方便，不需要做复杂的初始化设置。两块电力线载波通信模块的接线方法如下图所示。</p>
+
+<p><img src="/img/make-a-rov/PLC.jpg" width="80%" height="80%"></p>
+
+<p>电力线载波通信模块的测试方法很简单，把两块模块当作一段网线，直接将这段网线接入路由器测试网络是否连通即可。</p>
+
+<p>#七、线缆盘</p>
+
+<p>线缆盘使用 220V 交流电线缆盘改造而成。原缆盘的面板拆除不用，自行设计并 3D 打印了用于安装开关等元件的面板。面板上包含开关、缆盘内电量指示、线缆盘充电口、网线插口。内部集成有 4 节 18650 锂电池，充放电保护板以及电力线载波通信模块。</p>
+
+<p>另外，线缆盘配有专用的 4S 锂电池充电器。</p>
+
+<h1 id="八-各软件的安装">八、各软件的安装</h1>
+
+<p>软件包括三部分，首先是飞控的固件 <a href="https://github.com/ArduPilot/ardupilot">ArduSub</a>，地面站软件 <a href="https://github.com/bluerobotics/qgroundcontrol">QGroundControl</a>，树莓派上运行的辅助程序 <a href="https://github.com/bluerobotics/companion">Companion</a>。下载链接分别列出：QGroundControl <a href="https://s3.amazonaws.com/downloads.bluerobotics.com/QGC/QGroundControl-installer.exe">Windows</a>、<a href="https://s3.amazonaws.com/downloads.bluerobotics.com/QGC/QGroundControl.dmg">Mac</a>、<a href="https://s3.amazonaws.com/downloads.bluerobotics.com/QGC/QGroundControl.AppImage">Linux</a>；ArduSub Firmware Files <a href="http://firmware.ardupilot.org/Sub/stable/PX4/ArduSub-v2.px4">ArduSub V3.5</a>；Raspberry Pi Images <a href="https://s3.amazonaws.com/downloads.bluerobotics.com/Pi/stable/ardusub-raspbian.img.zip">Latest Ardusub-Raspbian Image</a>。</p>
+
+<p>各软件的安装步骤可以参考<a href="https://www.ardusub.com/getting-started/installation.html">这里</a>。</p>
+
+<h1 id="九-视频流调试">九、视频流调试</h1>
+
+<p>机械爪安装在 ROV 底部，舱内摄像头无法观察到 ROV 底部情况，ArduSub 官方没有多摄像头支持，为了观察到 ROV 底部情况，增加独立的视频流传输系统。视频传输软件用的是 <a href="https://github.com/jacksonliam/mjpg-streamer">mjpg-streamer</a>，摄像头使用的是提供 mjpg 格式的摄像头。</p>
+
+<p>树莓派上安装  mjpg-streamer 的步骤如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 首先 SSH 登陆到树莓派</span>
+<span style="color:#75715e"># 用户名：pi 密码：companion</span>
+
+<span style="color:#75715e">#将代码库克隆到本地</span>
+git clone https://github.com/jacksonliam/mjpg-streamer.git
+<span style="color:#75715e">#安装依赖</span>
+sudo apt-get install cmake libjpeg8-dev
+<span style="color:#75715e"># 编译代码</span>
+cd mjpg-streamer-experimental
+make
+sudo make install
+<span style="color:#75715e"># 查看摄像头的设备符</span> 
+<span style="color:#75715e">#一般来讲舱内摄像头会占用两个摄像头设备符，video0 是mjpg格式的，video1 是h.264格式的</span>
+ls /dev
+<span style="color:#75715e">#启动视频流传输</span>
+cd mjpg_streamer
+mjpg_streamer -i <span style="color:#e6db74">&#39;input_uvc.so -d /dev/video2 -r 1280x720&#39;</span> -o <span style="color:#e6db74">&#39;./output_http.so -p 8092 -w ./www&#39;</span>
+<span style="color:#75715e"># 在浏览器上输入如下网址，即可以观看视频流</span>
+<span style="color:#75715e"># http://192.168.2.2:8092/?action=stream</span>
+
+<span style="color:#75715e">#为了方便启动视频流，在用户的 home 目录建立脚本，启动视频流时只需运行此脚本</span>
+cd
+touch start_video_streaming.sh
+nano start_video_streaming.sh
+<span style="color:#75715e">#将如下内容复制到 nano 中，Ctrl + x 保存</span>
+cd mjpg_streamer
+mjpg_streamer -i <span style="color:#e6db74">&#39;input_uvc.so -d /dev/video2 -r 1280x720&#39;</span> -o <span style="color:#e6db74">&#39;./output_http.so -p 8092 -w ./www&#39;</span>
+<span style="color:#75715e">#增加执行权限</span>
+chmod u+x start_video_streaming.sh
+<span style="color:#75715e">#此后，如果需要启动视频流则只需要登陆到树莓派并执行如下命令</span>
+./start_video_streaming.sh
+<span style="color:#75715e">#也可以将脚本设置为开机自动执行</span>
+<span style="color:#75715e">#修改/etc/rc.local文件</span>
+<span style="color:#75715e">#在 exit 0 之前添加如下命令</span>
+./home/pi/start_video_streaming.sh &amp;</code></pre></div>
+<h1 id="十-qgroundcontrol-的设置">十、QGroundControl 的设置</h1>
+
+<h2 id="1-加速度计校准">1、加速度计校准</h2>
+
+<p><img src="/img/make-a-rov/calibrate_accelermeter.jpg" alt="calibrate_accelermeter" /></p>
+
+<p>在如上图的界面中点击 Accelrmeter 并在 Autopilot Orientation 下拉选项中选择 None，确认后按照指示将飞控按照不同的方向摆放，直到校准完成。</p>
+
+<p>##2、罗盘校准</p>
+
+<p><img src="/img/make-a-rov/calibrate_compass.jpg" alt="calibrate_compass" /></p>
+
+<p>在如上图的界面中点击 Accelrmeter 并在 Autopilot Orientation 下拉选项中选择 None，确认后按照指示将飞控随机地转动，直到校准完成。</p>
+
+<p>加速度计和罗盘校准完成后可以进行 Level Horizon 校准，只需要将飞控水平放置，电机按钮并保持一段时间的水平放置即可。</p>
+
+<h2 id="3-深度传感器的校准">3、深度传感器的校准</h2>
+
+<p>由于压力传感器的安装位置以及由于传感器的误差，当 ROV 浮在水面上时，深度计的度数可能不为零。此时便可以进行深度传感器的零位校准。当 ROV 浮在水面上时，单击 Calibrate Pressure ，确认，等待片刻便可完成压力传感器的零位校准。</p>
+
+<h2 id="4-推进器及推进器布置设置">4、推进器及推进器布置设置</h2>
+
+<p><img src="/img/make-a-rov/frame.jpg" alt="frame" /></p>
+
+<p>推进器框架选择 Vectored-6DOF。</p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-09-22</span>
+  </p>
+  <p class="copyright-item">
+      <span class="item-title">原始文档</span>
+      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/0019-make-a-rov/index.md" target="_blank">Markdown 文件</a></span>
+    </p>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC 署名 4.0 国际</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/wechat_reward_qr-code.png">
+        <span>微信长按/扫码打赏</span>
+      </label>
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/ardusub/">ArduSub</a>
+          
+          <a href="/tags/rov/">ROV</a>
+          
+          <a href="/tags/qgc/">QGC</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/0020-build-environment-for-ardusub/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">搭建 Pixhawk 飞控固件编译环境</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/0018-raspberrypi-tutorial/">
+            <span class="next-text nav-default">Raspberry Pi: 从开箱到吃灰</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-08-28 09:30:26 \x2b0800 CST',
+    title: '制作一个 ROV  ',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'zt-luo.github.io',
+    owner: 'zt-luo',
+    admin: ['zt-luo'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:me@ztluo.dev" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zt-luo" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.ztluo.dev/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/zt-luo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?3e7571b3a1c0f5c99ed01cf3b15b4b46";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

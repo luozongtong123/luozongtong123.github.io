@@ -13,10 +13,10 @@
     
     <item>
       <title>利用 Python 解决问题了一个小问题</title>
-      <link>https://blog.ztluo.dev/post/python-in-life/</link>
+      <link>https://blog.ztluo.dev/post/0006-python-in-life-format-output/</link>
       <pubDate>Mon, 06 Apr 2015 09:58:26 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/python-in-life/</guid>
+      <guid>https://blog.ztluo.dev/post/0006-python-in-life-format-output/</guid>
       <description>&lt;p&gt;前几天接了一个活，需要把 Excel 表格中的数据做成可以在微信内置浏览器中访问并且体验要好。我的选择是利用 Hexo 和 coding 搭一个博客用来展示。&lt;/p&gt;</description>
     </item>
     

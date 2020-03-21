@@ -13,10 +13,10 @@
     
     <item>
       <title>在 QQuickWidget 中使用 qmlglsink 播放视频</title>
-      <link>https://blog.ztluo.dev/post/qmlglsink-in-qquickwidget/</link>
+      <link>https://blog.ztluo.dev/post/0042-qmlglsink-in-qquickwidget/</link>
       <pubDate>Fri, 08 Nov 2019 11:06:22 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/qmlglsink-in-qquickwidget/</guid>
+      <guid>https://blog.ztluo.dev/post/0042-qmlglsink-in-qquickwidget/</guid>
       <description>&lt;p&gt;在 &lt;a href=&#34;https://github.com/zt-luo/SubControl&#34;&gt;SubControl&lt;/a&gt; 地面站软件中视频流最初使用的是 &lt;a href=&#34;https://github.com/vlc-qt/vlc-qt&#34;&gt;vlc-qt&lt;/a&gt; 插件，但由于在调试时发现一个在有视频播放时软件无法正常退出，同时友考虑到 vlc-qt 不够灵活，所以花了点时间探索了下使用 gst-plugins-good 中的 qmlglsink 播放视频。&lt;/p&gt;</description>
     </item>
     

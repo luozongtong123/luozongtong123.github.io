@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>使用 Git 子模块管理 hugo 博客 - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。
+" />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+<meta name="baidu-site-verification" content="8SYIFLvIPQ" />
+<meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
+
+
+<meta name="generator" content="Hugo 0.66.0" />
+
+
+<link rel="canonical" href="https://blog.ztluo.dev/post/0023-git-submodule/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="使用 Git 子模块管理 hugo 博客" />
+<meta property="og:description" content="使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ztluo.dev/post/0023-git-submodule/" />
+<meta property="article:published_time" content="2018-10-05T10:02:56+08:00" />
+<meta property="article:modified_time" content="2018-10-05T10:02:56+08:00" />
+<meta itemprop="name" content="使用 Git 子模块管理 hugo 博客">
+<meta itemprop="description" content="使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。">
+<meta itemprop="datePublished" content="2018-10-05T10:02:56&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-05T10:02:56&#43;08:00" />
+<meta itemprop="wordCount" content="1153">
+
+
+
+<meta itemprop="keywords" content="Git,Submodule," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用 Git 子模块管理 hugo 博客"/>
+<meta name="twitter:description" content="使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/project/">
+        <li class="mobile-menu-item">项目</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/project/">项目</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">使用 Git 子模块管理 hugo 博客</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-10-05 </span>
+        <div class="post-category">
+            
+              <a href="/categories/blog/"> Blog </a>
+            
+          </div>
+        <span class="more-meta"> 约 1153 字 </span>
+        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#初次使用">初次使用</a></li>
+<li><a href="#使用脚本部署博客">使用脚本部署博客</a></li>
+<li><a href="#在另一台电脑上使用">在另一台电脑上使用</a></li>
+<li><a href="#关于子模块">关于子模块</a></li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+  <div class="post-outdated">
+    <div class="warn">
+      <p>【注意】最后更新于 <span class="timeago" datetime="2018-10-05T10:02:56" title="October 5, 2018">October 5, 2018</span>，文中内容可能已过时，请谨慎使用。</p>
+    </div>
+  </div>
+
+    
+    <div class="post-content">
+      <p>使用 Git 的 Submodule 来管理 hugo 静态博客非常方便。</p>
+
+<blockquote>
+<p>使用前提：</p>
+
+<p>已经在 Gituhb 上创建了 <code>username.github.io</code> 的仓库，可以正常使用 hugo 生成静态博客文件，使用 Git 上传到 Github Pages 后可以正常创建博客。</p>
+</blockquote>
+
+<h2 id="初次使用">初次使用</h2>
+
+<p>首先，在 Github 上创建一个用于存放博客根目录的仓库。 将仓库 clone 到合适的位置。把博客根目录中的所有文件拷贝到本地仓库中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/username/yourrepo.git</code></pre></div>
+<p><strong>注：如果你在添加 hugo 主题的时候用的是 Submodule ，那么下一步可以略过。</strong></p>
+
+<p>以将主题添加为 Submodule ，如果之前添加过主题需要删除整个主题文件夹。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 在博客根目录下</span>
+git submodule add https://github.com/username/themename.git themes/themename</code></pre></div>
+<p>然后，将 <code>public</code> 文件夹删除，把 用于创建 Github Pages 的仓库以 <code>Submodule</code> 的形式添加到本地仓库。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git submodule add https://github.com/username/username.github.io.git public
+<span style="color:#75715e"># 这行命令会将博客静态文件仓库克隆到本地的 public 文件夹，并同时将该仓库添加为附仓库的子模块</span></code></pre></div>
+<p>运行 <code>git status</code> 后可以发现本地仓库的根目录中多了一个名为 <code>.gitmodules</code> 的文件，这个文件用于存放和子模块相关的的配置。</p>
+
+<h2 id="使用脚本部署博客">使用脚本部署博客</h2>
+
+<p>接下来当我们需要更新部署博客的时候只需要运行下面的 bat 脚本即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bat" data-lang="bat">:<span style="color:#75715e">:cmd </span>
+:<span style="color:#75715e">:deploy.bat </span>
+@<span style="color:#66d9ef">echo</span> off 
+hugo 
+
+:<span style="color:#75715e">: public </span>
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> cd to public... 
+<span style="color:#66d9ef">cd</span> public 
+
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> add all files... 
+git add . 
+
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> print status of Git Submodle... 
+git status 
+
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> commit files... 
+git commit -m <span style="color:#e6db74">&#34;update blog&#34;</span> 
+
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> push Submodle to GitHub... 
+git push 
+
+:<span style="color:#75715e">: father repo </span>
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> back to repo... 
+<span style="color:#66d9ef">cd</span> .. 
+
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> add all files... 
+git add . 
+
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> print status of Git repo... 
+git status 
+
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> commit files... 
+git commit -m <span style="color:#e6db74">&#34;update blog&#34;</span> 
+
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> push repo to GitHub... 
+git push 
+
+:<span style="color:#75715e">: finsh </span>
+<span style="color:#66d9ef">echo</span>. 
+<span style="color:#66d9ef">echo</span> deploy finished. </code></pre></div>
+<p>hugo 生成的文件是 LF 换行符，git 添加文件的时候会显示将 LF 替换为 CRLF 的警告，使用如下命令可以关闭这个警告。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git config --global core.safecrlf false</code></pre></div>
+<h2 id="在另一台电脑上使用">在另一台电脑上使用</h2>
+
+<p>当我们需要在一台新的电脑上更新博客的时候只需要将 Github 上博客的仓库递归克隆下来即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/username/yourblog.git yourblog --recursive 
+cd yourblog/public 
+git checkout master </code></pre></div>
+<p>注意：更新子模块后 Git 检出项目的指定版本，但是不在分支内。为了跟踪变更你需要检出 <code>master</code></p>
+
+<p>分支，或者创建一个新的分支，为了简化操作我们直接检出 <code>master</code> 分支。<sup><a href="#ref01">[1]</a></sup></p>
+
+<h2 id="关于子模块">关于子模块</h2>
+
+<p>子模块的应用场景是这样的：项目一依赖项目二，项目一由你来维护，项目二可能不由你维护或者由你维护但是你想保持两个项目的相互的独立性。这时你可以将项目二添加为项目一的子模块。</p>
+
+<p>Git 子模块的一些常规操作：<sup><a href="#ref02">[2]</a></sup><sup><a href="#ref03">[3]</a></sup></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 添加子模块</span>
+git submodule add https://github.com/username/gitname.git gitname 
+
+<span style="color:#75715e"># 递归克隆带有子模块的仓库</span>
+git clone https://github.com/username/yourblog.git yourblog --recursive 
+<span style="color:#75715e"># 上面递归克隆的命令等同于下面几行代码</span>
+git clone https://github.com/username/yourblog.git yourblog 
+git submodule init    <span style="color:#75715e"># 初始化子模块</span>
+git submodule update  <span style="color:#75715e"># 更新子模块</span>
+<span style="color:#75715e"># 此处要注意，如果你需要对子模块做出更改，需要创建或检出一个分支，Git默认不在任何分支上</span>
+
+<span style="color:#75715e"># 删除子模块</span>
+<span style="color:#75715e"># 逆初始化模块，其中{MOD_NAME}为模块目录，执行后可发现模块目录被清空</span>
+git submodule deinit <span style="color:#f92672">{</span>MOD_NAME<span style="color:#f92672">}</span> 
+<span style="color:#75715e"># 删除.gitmodules中记录的模块信息（--cached选项清除.git/modules中的缓存）</span>
+git rm --cached <span style="color:#f92672">{</span>MOD_NAME<span style="color:#f92672">}</span> 
+<span style="color:#75715e"># 提交更改到代码库，可观察到&#39;.gitmodules&#39;内容发生变更</span>
+git commit -am <span style="color:#e6db74">&#34;Remove a submodule.&#34;</span>
+
+<span style="color:#75715e"># 修改某子模块的远程库(url)</span>
+<span style="color:#75715e"># 首先手动修改&#39;.gitmodules&#39;文件中对应模块的”url“属性</span> 
+<span style="color:#75715e"># 更新子模块的 url</span> 
+git submodule sync 
+<span style="color:#75715e"># 提交变更</span> 
+git commit -am <span style="color:#e6db74">&#34;Update submodule url.&#34;</span> </code></pre></div>
+<h2 id="参考资料">参考资料</h2>
+
+<ol>
+<li><a id="ref01"><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97">Git 工具 - 子模块</a></a></li>
+<li><a id="ref02"><a href="https://www.jianshu.com/p/9000cd49822c">Git submodule 子模块的管理和使用</a></a></li>
+<li><a id="ref02"><a href="https://www.jianshu.com/p/ed0cb6c75e25">如何优雅的删除子模块 (submodule) 或修改 Submodule URL</a></a></li>
+</ol>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-10-05</span>
+  </p>
+  <p class="copyright-item">
+      <span class="item-title">原始文档</span>
+      <span class="item-content"><a class="link-to-markdown" href="https://blog.ztluo.dev/post/0023-git-submodule/index.md" target="_blank">Markdown 文件</a></span>
+    </p>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank">CC 署名 4.0 国际</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/wechat_reward_qr-code.png">
+        <span>微信长按/扫码打赏</span>
+      </label>
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/git/">Git</a>
+          
+          <a href="/tags/submodule/">Submodule</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/0024-portugal-visa-cultural/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">葡萄牙签证 国际学术会议</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/0022-rt-thread-learning-01/">
+            <span class="next-text nav-default">RT-Thread 0x01：线程与线程的切换</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-10-05 10:02:56 \x2b0800 CST',
+    title: '使用 Git 子模块管理 hugo 博客',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'zt-luo.github.io',
+    owner: 'zt-luo',
+    admin: ['zt-luo'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:me@ztluo.dev" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zt-luo" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.ztluo.dev/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/zt-luo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+  <script type="text/javascript" src="/lib/timeago/timeago-3.0.2.min.js"></script>
+  <script type="text/javascript" src="/lib/timeago/timeago.locales-3.0.2.min.js"></script>
+<script>  
+  var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+  timeago().render(document.querySelectorAll('.timeago'), languageCode);
+  timeago.cancel();  
+</script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?3e7571b3a1c0f5c99ed01cf3b15b4b46";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

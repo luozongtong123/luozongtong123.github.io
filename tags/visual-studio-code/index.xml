@@ -13,28 +13,28 @@
     
     <item>
       <title>在 Visual Studio Code 中编写 Qt 代码</title>
-      <link>https://blog.ztluo.dev/post/qt-coding-in-vscode/</link>
+      <link>https://blog.ztluo.dev/post/0043-qt-coding-in-vscode/</link>
       <pubDate>Mon, 11 Nov 2019 17:30:25 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/qt-coding-in-vscode/</guid>
+      <guid>https://blog.ztluo.dev/post/0043-qt-coding-in-vscode/</guid>
       <description>&lt;p&gt;对 Qt Creator 的界面是在是不能忍受，所以萌生了改用 Visual Studio Code 的想法，探索一番，成功实现 Qt 代码在 VSCode 中的代码提示和调试的功能。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Coder online IDE!</title>
-      <link>https://blog.ztluo.dev/post/coder/</link>
+      <link>https://blog.ztluo.dev/post/0036-coder/</link>
       <pubDate>Sun, 10 Mar 2019 15:52:18 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/coder/</guid>
+      <guid>https://blog.ztluo.dev/post/0036-coder/</guid>
       <description>&lt;p&gt;Coder 是一个基于 Visual Studio Code 的开源的远程开发环境。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Visual Studio Code Can Do That?!</title>
-      <link>https://blog.ztluo.dev/post/vs-code-can-do-that/</link>
+      <link>https://blog.ztluo.dev/post/0028-vs-code-can-do-that/</link>
       <pubDate>Mon, 22 Oct 2018 15:41:37 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/vs-code-can-do-that/</guid>
+      <guid>https://blog.ztluo.dev/post/0028-vs-code-can-do-that/</guid>
       <description>&lt;p&gt;在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。&lt;/p&gt;</description>
     </item>
     

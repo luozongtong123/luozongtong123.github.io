@@ -13,10 +13,10 @@
     
     <item>
       <title>搭建 Pixhawk 飞控固件编译环境</title>
-      <link>https://blog.ztluo.dev/post/build-environment-for-ardusub/</link>
+      <link>https://blog.ztluo.dev/post/0020-build-environment-for-ardusub/</link>
       <pubDate>Sat, 08 Sep 2018 20:36:46 +0800</pubDate>
       
-      <guid>https://blog.ztluo.dev/post/build-environment-for-ardusub/</guid>
+      <guid>https://blog.ztluo.dev/post/0020-build-environment-for-ardusub/</guid>
       <description>&lt;p&gt;ArduSub 官方的程序无法直接给电机发送指令，这个功能需要自己实现。为了实现这个功能首先需要搭建 Pixhawk 的编译环境。
 下面将简要介绍一下环境的搭建步骤。&lt;/p&gt;</description>
     </item>
