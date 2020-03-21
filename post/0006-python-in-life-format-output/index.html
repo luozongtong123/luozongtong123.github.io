@@ -59,7 +59,7 @@
 <meta itemprop="description" content="前几天接了一个活，需要把 Excel 表格中的数据做成可以在微信内置浏览器中访问并且体验要好。我的选择是利用 Hexo 和 coding 搭一个博客用来展示。">
 <meta itemprop="datePublished" content="2015-04-06T09:58:26&#43;08:00" />
 <meta itemprop="dateModified" content="2015-04-06T09:58:26&#43;08:00" />
-<meta itemprop="wordCount" content="1714">
+<meta itemprop="wordCount" content="1710">
 
 
 
@@ -133,7 +133,7 @@
       <div class="post-meta">
         <span class="post-time"> 2015-04-06 </span>
         
-        <span class="more-meta"> 约 1714 字 </span>
+        <span class="more-meta"> 约 1710 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -170,8 +170,7 @@
 
 <p>前几天接了一个活，需要把 Excel 表格中的数据做成可以在微信内置浏览器中访问并且体验要好。我的选择是利用 Hexo 和 coding 搭一个博客用来展示。</p>
 
-<p>拿到表格后我就震惊了，尼玛，这么多的数据怎么才能放到小小的手机屏幕上。经过反复的挑选主题，最终选择了跟本博客相同的主题。这个主题在移动端的体验非常好。
-<img src="http://7u2qla.com1.z0.glb.clouddn.com/000.jpg" alt="表格一" /></p>
+<p>拿到表格后我就震惊了，尼玛，这么多的数据怎么才能放到小小的手机屏幕上。经过反复的挑选主题，最终选择了跟本博客相同的主题。这个主题在移动端的体验非常好。</p>
 
 <p>拿到的表格如图。为了让小小的屏幕装下这么长这么宽的表格，我将表格重新排列，原来的列变成行，原来的行变成列，并且每行只展示五个省份的数据。那么问题来了。这么多数据让我怎么写到文件里，简单的复制粘贴还不行，要命的是还需要遵守 MarkDown 的语法才行。</p>
 
@@ -181,9 +180,7 @@
 
 <p>于是我再也不能淡定了，这要是全部手动去弄是要干到猴年马月啊。于是我想起了刚刚学的半斤八两的 Python ，东西学来不就是用的吗。于是就决定用 Python 来处理这些数据。于是就有了如下的解决方法。</p>
 
-<p>首先把数据复制到一个文件里，像这样。</p>
-
-<p><img src="http://7u2qla.com1.z0.glb.clouddn.com/003.jpg" alt="数据文件" /></p>
+<p>首先把数据复制到一个文件里。</p>
 
 <p>然后是这样的代码</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;input.txt&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf-8&#39;</span>) <span style="color:#66d9ef">as</span> f:  <span style="color:#75715e"># 打开文件是要注意编码问题，编码问题是个大坑(-?-;)</span>
@@ -270,17 +267,13 @@ scours <span style="color:#f92672">=</span> []
                             <span style="color:#66d9ef">print</span>(str2)</code></pre></div>
 <p>处理后的数据就是下面这个样子。</p>
 
-<p><img src="http://7u2qla.com1.z0.glb.clouddn.com/004.jpg" alt="处理后" /></p>
-
 <p>至于其他那两个表格也只是取出其最高最低分数。只需要把控制取出数据的那行代码改成如下就可以了。</p>
 <pre><code>    for j in range(1, len(s[i]), 3):  # 控制取出数据的那行代码
         scour.append(s[i][j] + &#39; &#39; + s[i][j+2])</code></pre>
 <p>和</p>
 <pre><code>    for j in range(1, len(s[i]), 4):  # 控制取出数据的那行代码
         scour.append(s[i][j] + &#39; &#39; + s[i][j+1])</code></pre>
-<p><img src="http://7u2qla.com1.z0.glb.clouddn.com/001.jpg" alt="表格二" />
-<img src="http://7u2qla.com1.z0.glb.clouddn.com/002.jpg" alt="表格三" />
-到此为止，数据就处理完了。利用程序处理后的数据去跟手动打的数据一比较，尼玛果然手动不行有那么多地方都有差错。</p>
+<p>到此为止，数据就处理完了。利用程序处理后的数据去跟手动打的数据一比较，尼玛果然手动不行有那么多地方都有差错。</p>
 
 <p>总结一下，利用所学解决问题这真是好爽啊啊啊。
 另外，代码写得丑望见谅。还有一点写文件没有搞定，当时赶时间就没有弄，得找个时间解决一下。</p>

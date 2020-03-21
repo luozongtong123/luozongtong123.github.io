@@ -9,7 +9,8 @@
 ### 下载并安装 Git
 [下载地址](http://git-scm.com/download/)
 ### 配置 SSH Key
-* 检查 SSH Key
+检查 SSH Key  
+
 在任意文件夹右键，找到 Git Bash ,打开 Git Bash ，输入如下命令
 
 ```
