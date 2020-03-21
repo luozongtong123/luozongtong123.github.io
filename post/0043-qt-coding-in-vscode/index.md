@@ -132,4 +132,3 @@ Qt 模块的第一个字母需要大写。
 [qt 的 moc,uic,rcc 命令的使用](https://www.cnblogs.com/xiangism/p/4621108.html)  
 [linux 给运行程序指定动态库路径](https://blog.csdn.net/hktkfly6/article/details/61922685)
 
-

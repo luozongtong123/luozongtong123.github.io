@@ -60,4 +60,3 @@ source ~/.zshrc
 
 https://linux.cn/article-3288-1.html  
 
-

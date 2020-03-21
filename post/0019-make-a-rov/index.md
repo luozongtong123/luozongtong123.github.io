@@ -236,4 +236,3 @@ chmod u+x start_video_streaming.sh
 
 推进器框架选择 Vectored-6DOF。
 
-

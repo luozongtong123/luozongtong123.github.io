@@ -905,4 +905,3 @@ void flag2_thread_entry( void *p_arg )
 
 **注：文中所有图片均来自《RT-Thread 内核实现与应用开发实战指南》。**  
 
-

@@ -252,4 +252,3 @@ scoop install <bucket>/<app>
 3. [用 Scoop 改善 Windows Powershell](https://h404bi.com/blog/2015/08/23/use-scoop-to-enhance-windows-powershell.html)  
 4. [Scoop - A command-line installer for Windows](https://scoop.sh/)  
 
-

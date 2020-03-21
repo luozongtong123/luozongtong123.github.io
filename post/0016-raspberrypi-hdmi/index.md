@@ -28,4 +28,3 @@ disable_overscan=1
 [树莓派配置文件 CONFIG.TXT](https://www.raspberrypi.org/documentation/configuration/config-txt/README.md)  
 [VIDEO OPTIONS IN CONFIG.TXT](https://www.raspberrypi.org/documentation/configuration/config-txt/video.md)  
 
-

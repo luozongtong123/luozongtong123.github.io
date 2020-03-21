@@ -53,4 +53,3 @@ chmod 644 /etc/hotplug.d/iface/90-ipv6
 [LEDE 配置 IPv6 NAT](https://blog.blacate.me/2017/04/09/ipv6-nat-on-openert-lede/)
 
 
-

@@ -146,4 +146,3 @@ qQuickWindows->scheduleRenderJob(new SetPlaying(pipeline),
 
 最后，完整的 Demo 见 GitHub [链接](https://github.com/zt-luo/QuickWidgetPlayer)。
 
-

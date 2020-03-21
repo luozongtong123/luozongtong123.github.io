@@ -132,4 +132,3 @@ echo "192.30.253.112  github.com" >> /etc/hosts
 echo "192.30.253.113  www.github.com" >> /etc/hosts
 ```
 
-

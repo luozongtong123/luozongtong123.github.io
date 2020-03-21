@@ -103,4 +103,3 @@ IMU使用的是MPU9250，与树莓派的通信接口应该是I2C。MPU9250包含
 
 {{% figure class="center" src="/img/0014-seadrone-hardware/6.jpg" alt="电池端子" title="电池端子" %}}   
 
-

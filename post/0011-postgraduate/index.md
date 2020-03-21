@@ -22,4 +22,3 @@ SeaDrone ROV 的漏水传感器加装。首先是拆解ROV，摸清了ROV的硬�
 关键词：树莓派、Python、UDP通信、串口通信、C语言   
 
 
-

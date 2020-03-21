@@ -68,4 +68,3 @@ CAA 记录可以防止伪造证书，其基本原理是当用户在证书签发�
 [acme.sh - 说明](https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E)  
 [文档 - Let's Encrypt - 免费的 SSL_TLS 证书](https://letsencrypt.org/zh-cn/docs/)  
 [超快速 DNS CAA 设定 Step by Step](https://cjk.aiao.today/dns-caa-setting-step-by-step/)  
-

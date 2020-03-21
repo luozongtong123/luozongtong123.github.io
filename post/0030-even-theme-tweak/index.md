@@ -39,7 +39,7 @@ index 06d7507..39bdf23 100644
 
 {{% admonition note %}}
 
-此处只是将默认字体改为 `Fira Code`，如果用户的电脑上没有安装这个字体的话就会使用其他备选的字体。
+此处只是将默认字体改为 "Fira Code"，如果用户的电脑上没有安装这个字体的话就会使用其他备选的字体。
 
 {{% /admonition %}}
 
@@ -185,8 +185,7 @@ $code-type-list: (
 
 {{% admonition tip %}}
 
-这是一个 `admonition` 示例的第一行。  
-这是一个 `admonition` 示例的第二行。  
+admonition 内无法手动换行和进行 Markdown 渲染。
 
 {{% /admonition %}}
 
@@ -194,7 +193,7 @@ $code-type-list: (
 # Build
 
 {{% admonition attention %}}
-上述所有修改 `src` 文件夹下文件的操作都需要重新编译才能实际生效。  
+上述所有修改 src 文件夹下文件的操作都需要重新编译才能实际生效。  
 {{% /admonition %}}
 
 ``` powershell
@@ -216,72 +215,50 @@ npm run build
 tip
 {{% admonition tip %}}
 
-这是一个 `admonition` 示例的第一行。  
-这是一个 `admonition` 示例的第二行。  
-
-这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+admonition 内无法手动换行和进行 Markdown 渲染。
 
 {{% /admonition %}}
 
 note、hint
 {{% admonition note %}}
 
-这是一个 `admonition` 示例的第一行。   
-这是一个 `admonition` 示例的第二行。  
-
-这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+admonition 内无法手动换行和进行 Markdown 渲染。
 
 {{% /admonition %}}
 
 warning、important
 {{% admonition warning %}}
 
-这是一个 `admonition` 示例的第一行。   
-这是一个 `admonition` 示例的第二行。  
-
-这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+admonition 内无法手动换行和进行 Markdown 渲染。
 
 {{% /admonition %}}
 
 question
 {{% admonition question %}}
 
-这是一个 `admonition` 示例的第一行。   
-这是一个 `admonition` 示例的第二行。  
-
-这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+admonition 内无法手动换行和进行 Markdown 渲染。
 
 {{% /admonition %}}
 
 conclusion
 {{% admonition conclusion %}}
 
-这是一个 `admonition` 示例的第一行。   
-这是一个 `admonition` 示例的第二行。  
-
-这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+admonition 内无法手动换行和进行 Markdown 渲染。
 
 {{% /admonition %}}
 
 bullshit
 {{% admonition bullshit %}}
 
-这是一个 `admonition` 示例的第一行。   
-这是一个 `admonition` 示例的第二行。  
-
-这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+admonition 内无法手动换行和进行 Markdown 渲染。
 
 {{% /admonition %}}
 
 attention、caution、danger、error
 {{% admonition caution %}}
 
-这是一个 `admonition` 示例的第一行。   
-这是一个 `admonition` 示例的第二行。  
-
-这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行，这是一个长行。
+admonition 内无法手动换行和进行 Markdown 渲染。
 
 {{% /admonition %}}
-
 
 

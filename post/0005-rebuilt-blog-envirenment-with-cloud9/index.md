@@ -45,4 +45,3 @@ npm install hexo-generator-feed --save
 npm install hexo-generator-sitemap --save
 ```
 
-

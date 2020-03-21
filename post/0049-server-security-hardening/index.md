@@ -107,4 +107,3 @@ sudo ufw delete allow http
 # 开启 log
 sudo ufw logging low
 ```
-

@@ -82,4 +82,3 @@ libcurl: (51) SSL: no alternative certificate subject name matches target host n
 
 将 `~/.ignition/fuel/config.yaml` 中 `url: https://api.ignitionfuel.org` 替换成 `url: https://api.ignitionrobotics.org` 即可。
 
-

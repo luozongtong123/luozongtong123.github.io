@@ -117,4 +117,3 @@ Manager to determine the best results in your specific application.
 
 其他需要 **注意**的地方：当选择使用 vru_general 滤波配置时**要**勾选 Active Heading Stabilization（AHS），同时保证在不使用 vru_general 滤波配置时**不要**勾选 AHS。
 
-
