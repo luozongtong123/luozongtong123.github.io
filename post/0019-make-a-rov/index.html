@@ -201,23 +201,23 @@
 
 <p>注：ROV 的结构设计和密封舱的设计是一个复杂的问题，本文将直接略过这个问题的讨论，直接给出如下的 ROV。本文将着重与 ROV 舱内的电子元件的组装以及程序的设置等。</p>
 
-<p><img src="/img/make-a-rov/轴测图.jpg" width="60%" height="60%"></p>
+<p><img src="/img/0019-make-a-rov/轴测图.jpg" width="60%" height="60%"></p>
 
-<p><img src="/img/make-a-rov/俯视图.jpg" width="60%" height="60%"></p>
+<p><img src="/img/0019-make-a-rov/俯视图.jpg" width="60%" height="60%"></p>
 
-<p><img src="/img/make-a-rov/主视图.jpg" width="60%" height="60%"></p>
+<p><img src="/img/0019-make-a-rov/主视图.jpg" width="60%" height="60%"></p>
 
 <h2 id="1-推进器配置">1、推进器配置</h2>
 
 <p>如上面给出的图所示，ROV 一共有 8 个推进器，其中 4 个推进器在水平面上呈对角布置，可以为 ROV 在水平面上的各种运动（包括，平移和原地转动）提供推力。这四个推进器标号为 1-4 。还有四个推进器布置在垂直方向，这四个推进器除了可以为 ROV 提供上浮和下潜的推力外还可以使 ROV 进行俯仰和横滚运动。这四个推进器标号 5-8 。应当注意到，为了防止 ROV 由于推进器的转动而产生的反向的转矩对 ROV 的姿态造成影响，推进器是正反浆对称布置的。其中绿色的为 CCW （逆时针）浆，蓝色的为 CW （顺时针）桨。</p>
 
-<p><img src="/img/make-a-rov/frame-numberings.jpg" width="60%" height="60%"></p>
+<p><img src="/img/0019-make-a-rov/frame-numberings.jpg" width="60%" height="60%"></p>
 
 <h2 id="2-控制系统">2、控制系统</h2>
 
 <p>控制系统采用开源项目 <a href="https://www.ardusub.com/">ArduSub</a> 的方案。其控制核心是 Pixhawk ，配合树莓派完成控制数据和视频数据的传输。系统的硬件框图如下所示：</p>
 
-<p><img src="/img/make-a-rov/hardware-diagram.png" alt="hardware-diagram" /></p>
+<p><img src="/img/0019-make-a-rov/hardware-diagram.png" alt="hardware-diagram" /></p>
 
 <h1 id="二-供电方案">二、供电方案</h1>
 
@@ -245,7 +245,7 @@
 
 <p>水密接插件使用 8 芯的<a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.49ab2e8dbytuPm&amp;id=570101069120&amp;_u=n1krgas16f03">水密接插件</a>，该接插件的单芯额定电流为5A，接插件的芯线定义（从母头方向看）如下图所示：</p>
 
-<p><img src="/img/make-a-rov/waterproof_plug.jpg" width="30%" height="30%"></p>
+<p><img src="/img/0019-make-a-rov/waterproof_plug.jpg" width="30%" height="30%"></p>
 
 <ul>
 <li>线号 1：1#电池充电，正极；</li>
@@ -311,7 +311,7 @@
 
 <p>飞控是整个系统的控制核心。其所有端口的 <a href="https://docs.px4.io/en/flight_controller/pixhawk.html">Pinouts</a> 如下图所示：</p>
 
-<p><img src="/img/make-a-rov/pixhawk_connectors.png" alt="pixhawk_connectors" /></p>
+<p><img src="/img/0019-make-a-rov/pixhawk_connectors.png" alt="pixhawk_connectors" /></p>
 
 <h2 id="2-main-output-和-auxiliary-output-的连接">2、Main output 和 Auxiliary output 的连接</h2>
 
@@ -329,7 +329,7 @@
 
 <p>GPS 端口的<a href="https://docs.px4.io/en/flight_controller/pixhawk.html">线号</a>定义如下：</p>
 
-<p><img src="/img/make-a-rov/GPS_port.jpg" width="80%" height="80%"></p>
+<p><img src="/img/0019-make-a-rov/GPS_port.jpg" width="80%" height="80%"></p>
 
 <p>注：线的颜色是官方标注，实际的线的颜色可能会有不同。在使用时可以将飞控上印刷的文字摆正，从左到右依次为 1-6。</p>
 
@@ -339,7 +339,7 @@
 
 <p>树莓派的供电是通过 DC-DC 降压模块完成的，降压模块得到的 5V 电压直接和树莓派的 5V 供电相连。</p>
 
-<p><img src="/img/make-a-rov/pi_pinouts.png" width="80%" height="80%"></p>
+<p><img src="/img/0019-make-a-rov/pi_pinouts.png" width="80%" height="80%"></p>
 
 <p>飞控通过 USB 接口直接和树莓派相连；一个舱内摄像头和两个舱外摄像头连接到 USB 接口；电力线载波模块通过以太网线和树莓派相连。</p>
 
@@ -347,7 +347,7 @@
 
 <p>选用的<a href="https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-17373907211.27.6fc422e6NUC6ET&amp;id=538928813306">电力线载波通信模块</a>使用非常方便，不需要做复杂的初始化设置。两块电力线载波通信模块的接线方法如下图所示。</p>
 
-<p><img src="/img/make-a-rov/PLC.jpg" width="80%" height="80%"></p>
+<p><img src="/img/0019-make-a-rov/PLC.jpg" width="80%" height="80%"></p>
 
 <p>电力线载波通信模块的测试方法很简单，把两块模块当作一段网线，直接将这段网线接入路由器测试网络是否连通即可。</p>
 
@@ -407,13 +407,13 @@ chmod u+x start_video_streaming.sh
 
 <h2 id="1-加速度计校准">1、加速度计校准</h2>
 
-<p><img src="/img/make-a-rov/calibrate_accelermeter.jpg" alt="calibrate_accelermeter" /></p>
+<p><img src="/img/0019-make-a-rov/calibrate_accelermeter.jpg" alt="calibrate_accelermeter" /></p>
 
 <p>在如上图的界面中点击 Accelrmeter 并在 Autopilot Orientation 下拉选项中选择 None，确认后按照指示将飞控按照不同的方向摆放，直到校准完成。</p>
 
 <p>##2、罗盘校准</p>
 
-<p><img src="/img/make-a-rov/calibrate_compass.jpg" alt="calibrate_compass" /></p>
+<p><img src="/img/0019-make-a-rov/calibrate_compass.jpg" alt="calibrate_compass" /></p>
 
 <p>在如上图的界面中点击 Accelrmeter 并在 Autopilot Orientation 下拉选项中选择 None，确认后按照指示将飞控随机地转动，直到校准完成。</p>
 
@@ -425,7 +425,7 @@ chmod u+x start_video_streaming.sh
 
 <h2 id="4-推进器及推进器布置设置">4、推进器及推进器布置设置</h2>
 
-<p><img src="/img/make-a-rov/frame.jpg" alt="frame" /></p>
+<p><img src="/img/0019-make-a-rov/frame.jpg" alt="frame" /></p>
 
 <p>推进器框架选择 Vectored-6DOF。</p>
     </div>

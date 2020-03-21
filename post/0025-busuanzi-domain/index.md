@@ -3,7 +3,7 @@
 
 <!--more-->
 
-{{% figure class="center" src="/img/busuanzi-domain/busuanzi.png" alt="不蒜子" title="不蒜子" %}}  
+{{% figure class="center" src="/img/0025-busuanzi-domain/busuanzi.png" alt="不蒜子" title="不蒜子" %}}  
 
 本站的访问量计数用的是<a href="https://busuanzi.ibruce.info//" rel="noopener" target="_blank">不蒜子</a>。  
 

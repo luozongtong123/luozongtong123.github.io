@@ -141,7 +141,7 @@ messages：当前方言定义的消息
 ## mavgenerate
 可以使用 mavgenerate.py 工具生成指定的语言。
 
-{{% figure class="center" src="/img/gen-new-mavlink-msg/mavgenerate.png" alt="mavgenerate" title="mavgenerate" %}}
+{{% figure class="center" src="/img/0040-gen-new-mavlink-msg/mavgenerate.png" alt="mavgenerate" title="mavgenerate" %}}
 
 ## mavgen  
 

@@ -12,7 +12,7 @@ https://www.zrj96.com/post-1159.html
 替换 5.0.0 dtb  
 
 [dtb 链接](https://github.com/yangxuan8282/phicomm-n1/issues/15#issuecomment-473663722)  
-[直接下载](/zip/phicomm-n1/meson-gxl-s905d-phicomm-n1.7z)
+[直接下载](/zip/0032-phicomm-n1/meson-gxl-s905d-phicomm-n1.7z)
 
 # Armbian 相关  
 

@@ -247,7 +247,7 @@ void AP_Scheduler::loop()
 
 基本流程是首先等待 IMU 数据，有了数据后执行 `fast_loop()`，然后开始执行任务表中的任务。一个简单的流程图如下所示：
 
-{{% figure class="center" src="/img/ardupilot-scheduler/ap-scheduler-flowchart.png" alt="AP_Scheduler" title="AP_Scheduler" %}}
+{{% figure class="center" src="/img/0034-ardupilot-scheduler/ap-scheduler-flowchart.png" alt="AP_Scheduler" title="AP_Scheduler" %}}
 
 ## fast_loop  
 

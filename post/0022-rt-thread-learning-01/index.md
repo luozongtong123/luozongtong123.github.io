@@ -44,7 +44,7 @@ rt_uint8_t rt_flag1_thread_stack[512];
 rt_uint8_t rt_flag2_thread_stack[512];
 ```
 
-`rt_uint8_t`是在 `rtdef.h` 中定义的类型，其他会用到的数据类型详见[这里](/src/rt-thread-learning01/rtdef.h)。  
+`rt_uint8_t`是在 `rtdef.h` 中定义的类型，其他会用到的数据类型详见[这里](/src/0022-rt-thread-learning-01/rtdef.h)。  
 
 ## 定义线程函数
 
@@ -167,7 +167,7 @@ typedef struct rt_list_node rt_list_t;
 
 `rt_list_entry()` 调用了 `rt_container_of()` 宏，这个宏可以已知结构体中的成员找到结构体的首地址。上述代码中， `prt` 是指向结构体成员的地址， `type` 是结构体的类型， `member` 是结构体成员的名字。我们来看一下这个宏函数。
 
-{{% figure class="center" src="/img/rt-thread-learning01/rt_container_of.jpg" alt="rt_container_of() 宏的实现" title="rt_container_of() 宏的实现" %}}
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/rt_container_of.jpg" alt="rt_container_of() 宏的实现" title="rt_container_of() 宏的实现" %}}
 
 如上图左半边图所示，我们已知 `prt` 要求 `f_struct_prt` ，显然只要知道深色部分标注为**偏移**的大小即可。那么如何才能求出偏移量的大小呢，这需要借助于 **0 地址**。
 
@@ -182,7 +182,7 @@ typedef struct rt_list_node rt_list_t;
 
 由上面给出的节点的定义可知，由节点构成的链表可以表示成下图：
 
-{{% figure class="center" src="/img/rt-thread-learning01/list_of_rt_list_t.jpg" alt="rt_list_t列表" title="rt_list_t列表" %}}
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/list_of_rt_list_t.jpg" alt="rt_list_t列表" title="rt_list_t列表" %}}
 
 链表的操作包括初始化链表节点、在双向链表表头前面插入一个节点、在双向链表表头后面插入一个节点、从双向链表中删除一个节点。相关函数的实现在 `rtservice.h` 。  
 
@@ -197,7 +197,7 @@ rt_inline void rt_list_init(rt_list_t *l)
 }
 ```
 
-{{% figure class="center" src="/img/rt-thread-learning01/list_op_1.jpg" alt="初始化链表节点" title="初始化链表节点" %}}  
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/list_op_1.jpg" alt="初始化链表节点" title="初始化链表节点" %}}  
 
 **在双向链表表头后面插入一个节点**  
 
@@ -221,7 +221,7 @@ rt_inline void rt_list_insert_after(rt_list_t *l, rt_list_t *n)
 }
 ```
 
-{{% figure class="center" src="/img/rt-thread-learning01/list_op_2.jpg" alt="在双向链表表头后面插入一个节点" title="在双向链表表头后面插入一个节点" %}}  
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/list_op_2.jpg" alt="在双向链表表头后面插入一个节点" title="在双向链表表头后面插入一个节点" %}}  
 
 **在双向链表表头前面插入一个节点**  
 
@@ -238,7 +238,7 @@ rt_inline void rt_list_insert_before(rt_list_t *l, rt_list_t *n)
 }
 ```
 
-{{% figure class="center" src="/img/rt-thread-learning01/list_op_3.jpg" alt="在双向链表表头前面插入一个节点" title="在双向链表表头前面插入一个节点" %}}  
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/list_op_3.jpg" alt="在双向链表表头前面插入一个节点" title="在双向链表表头前面插入一个节点" %}}  
 
 **从双向链表删除一个节点**  
 
@@ -254,7 +254,7 @@ rt_inline void rt_list_remove(rt_list_t *n)
 }
 ```
 
-{{% figure class="center" src="/img/rt-thread-learning01/list_op_4.jpg" alt="从双向链表删除一个节点" title="从双向链表删除一个节点" %}}  
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/list_op_4.jpg" alt="从双向链表删除一个节点" title="从双向链表删除一个节点" %}}  
 
 **rt_hw_stack_init()函数**  
 
@@ -343,16 +343,16 @@ struct stack_frame
 
 接着来看栈初始化函数，得到栈顶地址后，首先进行了向下 8 字节对齐。8 字节对齐的目的是为了后续实现浮点数的运算支持。向下是指当不满足 8 字节对齐时向下移动栈顶指针使其满足对齐要求，例如如果对齐前栈顶地址是 33 ，则对齐后的栈顶地址为 32，即空出一个 33 地址的位置不用。
 
-{{% figure class="center" src="/img/rt-thread-learning01/stk-stack.jpg" alt="完成栈地址字节对齐后的栈空间" title="完成栈地址字节对齐后的栈空间" %}}  
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/stk-stack.jpg" alt="完成栈地址字节对齐后的栈空间" title="完成栈地址字节对齐后的栈空间" %}}  
 
 完成栈地址对齐后，接下来要**对首次线程切换时用到的栈中的数据进行初始化**。将栈地址向下移动 `sizeof(struct stack_frame)` 个地址，将 `stk` 指针强制转化为 `stack_frame` 类型后存到指针变量
 `stack_frame` 中，这个时候 `stack_frame` 在线程栈里面的指向具体见下图：
 
-{{% figure class="center" src="/img/rt-thread-learning01/stack_frame-stack.jpg" alt="stack_frame 的栈空间" title="stack_frame 的栈空间" %}}  
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/stack_frame-stack.jpg" alt="stack_frame 的栈空间" title="stack_frame 的栈空间" %}}  
 
 接下来以 `stack_frame` 为起始地址，将栈空间里面的 `sizeof(struct stack_frame)` 个内存初始化为  `0xdeadbeef` 。将内存初始化为 `0xdeadbeef` 的原因是，这个数字是一个在嵌入式领域常用的魔力数，只是用来标识未使用的内存。接下来，设置线程初次运行时加载到 CPU 寄存器的环境参数。从栈顶开始，初始化的顺序固定，首先是异常发生时自动保存的 8 个寄存器，即 xPSR、R15、R14、R12、R3、R2、R1和 R0。其中 xPSR 寄存器的位 24 必须是 1，R15 PC 指针必须存的是线程的入口地址，R0 必须是线程形参，剩下的 R14、R12、R3、R2、 R1我们初始化为 0。完成初始化的栈空间如下图所示：
 
-{{% figure class="center" src="/img/rt-thread-learning01/inited-stack.jpg" alt="初始化完成后的栈空间" title="初始化完成后的栈空间" %}}  
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/inited-stack.jpg" alt="初始化完成后的栈空间" title="初始化完成后的栈空间" %}}  
 
 最后栈初始化函数返回线程栈顶指针 `stk` ，线程初始化函数返回线程创建成功的错误码。关于错误码，其定义如下：
 
@@ -410,7 +410,7 @@ rt_list_t rt_thread_priority_table[RT_THREAD_PRIORITY_MAX];
 
 就绪列表实际上就是一个 rt_list_t 类型的数组，数组的大小由决定最大线程优先级的宏 `RT_THREAD_PRIORITY_MAX` 决定 ，`RT_THREAD_PRIORITY_MAX` 在 rtconfig.h 中默认定义为 32。数组的下标对应了线程的优先级，同一优先级的线程统一插入到就绪列表的同一条链表中。一个空的就绪列表图下图：
 
-{{% figure class="center" src="/img/rt-thread-learning01/priority_table.jpg" alt="一个空的就序列表" title="一个空的就序列表" %}}  
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/priority_table.jpg" alt="一个空的就序列表" title="一个空的就序列表" %}}  
 
 **将线程插入到就绪列表**  
 
@@ -438,7 +438,7 @@ rt_list_insert_before( &(rt_thread_priority_table[1]),&(rt_flag2_thread.tlist) )
 
 就绪列表的下标就是线程的优先级，目前还没有实现优先级，有关优先级的内容后面会讲到。目前，只是将 flag1 的线程插入到下标为 0 的链表，将 falsg2 的线程插入到下标为 1 的链表。具体的示意图如下：
 
-{{% figure class="center" src="/img/rt-thread-learning01/priority_table_insert.jpg" alt="插入线程的就序列表" title="插入线程的就序列表" %}}  
+{{% figure class="center" src="/img/0022-rt-thread-learning-01/priority_table_insert.jpg" alt="插入线程的就序列表" title="插入线程的就序列表" %}}  
 
 # 实现调度器
 

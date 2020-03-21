@@ -9,7 +9,7 @@ ssh root@ip
 ```
 OK!
 
-{{% figure class="center" src="/img/huawei-cloud-service-from-nowcoder/hw1.png" alt="SSH登录界面" title="SSH登录界面" %}}
+{{% figure class="center" src="/img/0041-huawei-cloud-service-from-nowcoder/hw1.png" alt="SSH登录界面" title="SSH登录界面" %}}
 
 首次登录之后最好添加一个账户，平常的操作还是不要使用 root 账户为好：
 ``` shell
@@ -34,7 +34,7 @@ ssh [username]@hw
 # 我们来康康这个服务器咋样
 哦或，竟然自带 htop
 
-{{% figure class="center" src="/img/huawei-cloud-service-from-nowcoder/hw2.png" alt="htop" title="htop" %}}
+{{% figure class="center" src="/img/0041-huawei-cloud-service-from-nowcoder/hw2.png" alt="htop" title="htop" %}}
 
 ``` shell
 uname -a

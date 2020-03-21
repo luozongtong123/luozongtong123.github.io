@@ -6,7 +6,7 @@
 
 ## 1.标题
 
-{{% figure class="center" src="/img/even-preview/header.jpg" alt="header" title="header" %}}  
+{{% figure class="center" src="/img/0021-even-preview/header.jpg" alt="header" title="header" %}}  
 
 ``` markdown
 # H1
@@ -197,20 +197,20 @@ if (document.getElementById('my-player') !== null) {
 
 不带标题的图片，如下图：
 
-![Villeneuve-les-Avignon](/img/even-preview/Villeneuve-les-Avignon.jpg)
+![Villeneuve-les-Avignon](/img/0021-even-preview/Villeneuve-les-Avignon.jpg)
 
 带标题的图片，如下图：
 
-{{% figure class="center" src="/img/even-preview/Villeneuve-les-Avignon.jpg" alt="Villeneuve-les-Avignon" title="Villeneuve-les-Avignon" %}}
+{{% figure class="center" src="/img/0021-even-preview/Villeneuve-les-Avignon.jpg" alt="Villeneuve-les-Avignon" title="Villeneuve-les-Avignon" %}}
 
 ``` markdown
 不带标题的图片，如下图：
 
-![Villeneuve-les-Avignon](/img/even-preview/Villeneuve-les-Avignon.jpg)
+![Villeneuve-les-Avignon](/img/0021-even-preview/Villeneuve-les-Avignon.jpg)
 
 带标题的图片，如下图：
 
-`{{% figure class="center" src="/img/even-preview/Villeneuve-les-Avignon.jpg" alt="Villeneuve-les-Avignon" title="Villeneuve-les-Avignon" %}}`
+`{{% figure class="center" src="/img/0021-even-preview/Villeneuve-les-Avignon.jpg" alt="Villeneuve-les-Avignon" title="Villeneuve-les-Avignon" %}}`
 
 ```
 

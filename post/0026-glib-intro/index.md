@@ -137,7 +137,7 @@ include(CPack)
 >另另外，  
 >文中 GLib 会新开一个专题，专门记录关于 GLib 学习的内容。除了 GLib 文中提到的 scoop ，也需要写一篇博客。
 >感觉自己开了一万个新坑，上次 RT-thread 的内容才更新了一章。  
->{{% figure class="center" src="/img/glib-intro/smile.jpg" alt="smile" title="Smile" %}}  
+>{{% figure class="center" src="/img/0026-glib-intro/smile.jpg" alt="smile" title="Smile" %}}  
 
 # 参考资料
 

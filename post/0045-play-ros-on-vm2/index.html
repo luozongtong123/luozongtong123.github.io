@@ -147,7 +147,7 @@
 
     
     <div class="post-content">
-      <p><a href="/post/play-ros-on-vm/">在虚拟机上使用 ROS</a> 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。</p>
+      <p><a href="/post/0044-play-ros-on-vm/">在虚拟机上使用 ROS</a> 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。</p>
 
 <h1 id="检查是否已经开启了加速">检查是否已经开启了加速</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install nux-tools
@@ -155,7 +155,7 @@
 <p>如果如下图所示，Unity 3D supported 后面显示的是那个可爱的绿色 <font color="green">yes</font> ，那么恭喜你，可以关掉网页了。如果是讨厌的红色 <font color="red">no</font>，那么就继续往下看吧。😏</p>
 
 <figure class="center">
-    <img src="/img/play-ros-on-vm2/unity_support_test.png"
+    <img src="/img/0045-play-ros-on-vm22/unity_support_test.png"
          alt="unity_support_test"/> <figcaption>
             <h4>unity_support_test</h4>
         </figcaption>
@@ -168,14 +168,14 @@ sudo apt install build-essential module-assistant dkms
 sudo m-a prepare</code></pre></div>
 <h1 id="重新安装哈-virtualbox-的扩展功能">重新安装哈 VirtualBox 的扩展功能</h1>
 
-<p>挂载扩展功能的 ISO，具体可参见<a href="/post/play-ros-on-vm/">上篇文章</a>。重新安装下扩展功能。</p>
+<p>挂载扩展功能的 ISO，具体可参见<a href="/post/0045-play-ros-on-vm2/">上篇文章</a>。重新安装下扩展功能。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./autorun</code></pre></div>
 <h1 id="在-virtualbox-中开启-3d-加速">在 VirtualBox 中开启 3D 加速</h1>
 
 <p>首先将虚拟机关机。然后进行如下设置：</p>
 
 <figure class="center">
-    <img src="/img/play-ros-on-vm2/3d-acceleration.png"
+    <img src="/img/0045-play-ros-on-vm22/3d-acceleration.png"
          alt="3d-acceleration"/> <figcaption>
             <h4>3d-acceleration</h4>
         </figcaption>
@@ -184,7 +184,7 @@ sudo m-a prepare</code></pre></div>
 <h1 id="最后再进入系统测试下">最后再进入系统测试下</h1>
 
 <figure class="center">
-    <img src="/img/play-ros-on-vm2/unity_support_test.png"
+    <img src="/img/0045-play-ros-on-vm22/unity_support_test.png"
          alt="unity_support_test"/> <figcaption>
             <h4>unity_support_test</h4>
         </figcaption>
@@ -194,7 +194,7 @@ sudo m-a prepare</code></pre></div>
 <p>唉？怎么又是这张图?🤔</p>
 
 <figure class="center">
-    <img src="/img/play-ros-on-vm2/gazebo.png"
+    <img src="/img/0045-play-ros-on-vm22/gazebo.png"
          alt="gazebo"/> <figcaption>
             <h4>gazebo</h4>
         </figcaption>

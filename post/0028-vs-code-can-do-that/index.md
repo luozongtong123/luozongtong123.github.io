@@ -1,7 +1,7 @@
 在 YouTube 上看了个关于介绍 Visual Studio Code 的视频，这篇是笔记。
 <!--more-->
 
-{{% figure class="left" src="/img/vs-code-can-do-that/build_ppt.png" alt="build_ppt" title="Microsoft Build 2018 Keynote" %}}
+{{% figure class="left" src="/img/0028-vs-code-can-do-that/build_ppt.png" alt="build_ppt" title="Microsoft Build 2018 Keynote" %}}
 
 视频是 Microsoft Build 2018 的录像。
 
@@ -21,7 +21,7 @@ You may know or may not know, VS Code 的主题非常丰富。视频中首先说
 
 这是一个非常炫酷的功能。Font Ligatures (合字) 可以将几个符号显示时变成一个符号，其效果如下：
 
-{{% figure class="center" src="/img/vs-code-can-do-that/Fira-Code.png" alt="Fira Code" title="Fira Code" %}}
+{{% figure class="center" src="/img/0028-vs-code-can-do-that/Fira-Code.png" alt="Fira Code" title="Fira Code" %}}
 
 要实现这个功能首先需要到 GitHub 上下载安装 [Fira Code 字体](https://github.com/tonsky/FiraCode)。
 下载后将压缩包解压，Windows 上，打开 ttf 文件夹，全选字体 > 右键 > 安装。  

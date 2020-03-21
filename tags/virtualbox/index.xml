@@ -17,7 +17,7 @@
       <pubDate>Sat, 23 Nov 2019 21:30:44 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/post/0045-play-ros-on-vm2/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://blog.ztluo.dev/post/play-ros-on-vm/&#34;&gt;在虚拟机上使用 ROS&lt;/a&gt; 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://blog.ztluo.dev/post/0044-play-ros-on-vm/&#34;&gt;在虚拟机上使用 ROS&lt;/a&gt; 中记录了虚拟机上 ROS 的配置，文章最后简单试了下在 Gazebo 中仿真，可以在截图上看到仿真的帧率只有可怜的 1.58FPS。本篇文章尝试在上文的基础上开启 Unity 3D 的加速支持。&lt;/p&gt;</description>
     </item>
     
     <item>

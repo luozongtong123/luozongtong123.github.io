@@ -20,7 +20,7 @@ Pixhawk1（px4_v2） 飞控使用了两片单片机。Pixhawk 其实是 PX4FMU �
 
 这一步很简单，直接上图。
 
-{{% figure class="center" src="/img/build-environment-for-ardusub/enable-wsl.jpg" alt="enable WSL" title="enable WSL" %}}
+{{% figure class="center" src="/img/0020-build-environment-for-ArduSub/enable-wsl.jpg" alt="enable WSL" title="enable WSL" %}}
 
 ### 2、安装 Ubuntu 应用
 
@@ -36,7 +36,7 @@ Ubuntu 18.04 LTS 上自带的是版本号 6.3 的 gcc-arm-none-eabi ，编译环
 
 打开安装的 Ubuntu 应用，或者当系统中只安装了一个 WSL 应用时，可以直接输入 bash 启动那个唯一的 WSL。需要注意的是 *inux 系统输入密码时不会显示已输入的字符的数量。
 
-{{% figure class="center" src="/img/build-environment-for-ardusub/wsl-init.png" alt="WSL init" title="WSL init" %}}
+{{% figure class="center" src="/img/0020-build-environment-for-ArduSub/wsl-init.png" alt="WSL init" title="WSL init" %}}
 
 
 初始化完成后，为了提高安装软件包的速度，需要将 Ubuntu 的软件源替换成国内速度较快的软件源，这里推荐使用网易的源。
@@ -156,9 +156,9 @@ git submodule update --recursive
 
 下载程序需要使用 QGroundControl 或者 ArduSub Companion Web Interface。操作方法见如下两图。
 
-{{% figure class="center" src="/img/build-environment-for-ardusub/firmware-setup.png" alt="QGroundControl Firmware Setup" title="QGroundControl Firmware Setup" %}}
+{{% figure class="center" src="/img/0020-build-environment-for-ArduSub/firmware-setup.png" alt="QGroundControl Firmware Setup" title="QGroundControl Firmware Setup" %}}
 
-{{% figure class="center" src="/img/build-environment-for-ardusub/pixhawk-firmware-update.png" alt="ArduSub Companion Web Interface Pixhawk Firmware Update" title="ArduSub Companion Web Interface Pixhawk Firmware Update" %}}
+{{% figure class="center" src="/img/0020-build-environment-for-ArduSub/pixhawk-firmware-update.png" alt="ArduSub Companion Web Interface Pixhawk Firmware Update" title="ArduSub Companion Web Interface Pixhawk Firmware Update" %}}
 
 
 

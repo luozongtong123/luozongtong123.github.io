@@ -219,7 +219,7 @@ ALIGN(RT_ALIGN_SIZE) (<span style="color:#ae81ff">2</span>)
 <span style="color:#75715e">/* 定义线程栈 */</span>
 rt_uint8_t rt_flag1_thread_stack[<span style="color:#ae81ff">512</span>];
 rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];</code></pre></div>
-<p><code>rt_uint8_t</code>是在 <code>rtdef.h</code> 中定义的类型，其他会用到的数据类型详见<a href="/src/rt-thread-learning01/rtdef.h">这里</a>。</p>
+<p><code>rt_uint8_t</code>是在 <code>rtdef.h</code> 中定义的类型，其他会用到的数据类型详见<a href="/src/0022-rt-thread-learning-01/rtdef.h">这里</a>。</p>
 
 <h2 id="定义线程函数">定义线程函数</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 软件延时 */</span>
@@ -324,7 +324,7 @@ rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];</code>
 <p><code>rt_list_entry()</code> 调用了 <code>rt_container_of()</code> 宏，这个宏可以已知结构体中的成员找到结构体的首地址。上述代码中， <code>prt</code> 是指向结构体成员的地址， <code>type</code> 是结构体的类型， <code>member</code> 是结构体成员的名字。我们来看一下这个宏函数。</p>
 
 <figure class="center">
-    <img src="/img/rt-thread-learning01/rt_container_of.jpg"
+    <img src="/img/0022-rt-thread-learning-01/rt_container_of.jpg"
          alt="rt_container_of() 宏的实现"/> <figcaption>
             <h4>rt_container_of() 宏的实现</h4>
         </figcaption>
@@ -347,7 +347,7 @@ rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];</code>
 <p>由上面给出的节点的定义可知，由节点构成的链表可以表示成下图：</p>
 
 <figure class="center">
-    <img src="/img/rt-thread-learning01/list_of_rt_list_t.jpg"
+    <img src="/img/0022-rt-thread-learning-01/list_of_rt_list_t.jpg"
          alt="rt_list_t列表"/> <figcaption>
             <h4>rt_list_t列表</h4>
         </figcaption>
@@ -363,7 +363,7 @@ rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];</code>
     l<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> l<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> l;
 }</code></pre></div>
 <figure class="center">
-    <img src="/img/rt-thread-learning01/list_op_1.jpg"
+    <img src="/img/0022-rt-thread-learning-01/list_op_1.jpg"
          alt="初始化链表节点"/> <figcaption>
             <h4>初始化链表节点</h4>
         </figcaption>
@@ -391,7 +391,7 @@ rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt
     n<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> l;         <span style="color:#75715e">/* 第4步 */</span>
 }</code></pre></div>
 <figure class="center">
-    <img src="/img/rt-thread-learning01/list_op_2.jpg"
+    <img src="/img/0022-rt-thread-learning-01/list_op_2.jpg"
          alt="在双向链表表头后面插入一个节点"/> <figcaption>
             <h4>在双向链表表头后面插入一个节点</h4>
         </figcaption>
@@ -410,7 +410,7 @@ rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt
     n<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> l;         <span style="color:#75715e">/* 第4步 */</span>
 }</code></pre></div>
 <figure class="center">
-    <img src="/img/rt-thread-learning01/list_op_3.jpg"
+    <img src="/img/0022-rt-thread-learning-01/list_op_3.jpg"
          alt="在双向链表表头前面插入一个节点"/> <figcaption>
             <h4>在双向链表表头前面插入一个节点</h4>
         </figcaption>
@@ -428,7 +428,7 @@ rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt
     n<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> n<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> n;    <span style="color:#75715e">/* 第3步 */</span>
 }</code></pre></div>
 <figure class="center">
-    <img src="/img/rt-thread-learning01/list_op_4.jpg"
+    <img src="/img/0022-rt-thread-learning-01/list_op_4.jpg"
          alt="从双向链表删除一个节点"/> <figcaption>
             <h4>从双向链表删除一个节点</h4>
         </figcaption>
@@ -517,7 +517,7 @@ rt_uint8_t <span style="color:#f92672">*</span><span style="color:#a6e22e">rt_hw
 <p>接着来看栈初始化函数，得到栈顶地址后，首先进行了向下 8 字节对齐。8 字节对齐的目的是为了后续实现浮点数的运算支持。向下是指当不满足 8 字节对齐时向下移动栈顶指针使其满足对齐要求，例如如果对齐前栈顶地址是 33 ，则对齐后的栈顶地址为 32，即空出一个 33 地址的位置不用。</p>
 
 <figure class="center">
-    <img src="/img/rt-thread-learning01/stk-stack.jpg"
+    <img src="/img/0022-rt-thread-learning-01/stk-stack.jpg"
          alt="完成栈地址字节对齐后的栈空间"/> <figcaption>
             <h4>完成栈地址字节对齐后的栈空间</h4>
         </figcaption>
@@ -528,7 +528,7 @@ rt_uint8_t <span style="color:#f92672">*</span><span style="color:#a6e22e">rt_hw
 <code>stack_frame</code> 中，这个时候 <code>stack_frame</code> 在线程栈里面的指向具体见下图：</p>
 
 <figure class="center">
-    <img src="/img/rt-thread-learning01/stack_frame-stack.jpg"
+    <img src="/img/0022-rt-thread-learning-01/stack_frame-stack.jpg"
          alt="stack_frame 的栈空间"/> <figcaption>
             <h4>stack_frame 的栈空间</h4>
         </figcaption>
@@ -538,7 +538,7 @@ rt_uint8_t <span style="color:#f92672">*</span><span style="color:#a6e22e">rt_hw
 <p>接下来以 <code>stack_frame</code> 为起始地址，将栈空间里面的 <code>sizeof(struct stack_frame)</code> 个内存初始化为  <code>0xdeadbeef</code> 。将内存初始化为 <code>0xdeadbeef</code> 的原因是，这个数字是一个在嵌入式领域常用的魔力数，只是用来标识未使用的内存。接下来，设置线程初次运行时加载到 CPU 寄存器的环境参数。从栈顶开始，初始化的顺序固定，首先是异常发生时自动保存的 8 个寄存器，即 xPSR、R15、R14、R12、R3、R2、R1和 R0。其中 xPSR 寄存器的位 24 必须是 1，R15 PC 指针必须存的是线程的入口地址，R0 必须是线程形参，剩下的 R14、R12、R3、R2、 R1我们初始化为 0。完成初始化的栈空间如下图所示：</p>
 
 <figure class="center">
-    <img src="/img/rt-thread-learning01/inited-stack.jpg"
+    <img src="/img/0022-rt-thread-learning-01/inited-stack.jpg"
          alt="初始化完成后的栈空间"/> <figcaption>
             <h4>初始化完成后的栈空间</h4>
         </figcaption>
@@ -589,7 +589,7 @@ rt_uint8_t <span style="color:#f92672">*</span><span style="color:#a6e22e">rt_hw
 <p>就绪列表实际上就是一个 rt_list_t 类型的数组，数组的大小由决定最大线程优先级的宏 <code>RT_THREAD_PRIORITY_MAX</code> 决定 ，<code>RT_THREAD_PRIORITY_MAX</code> 在 rtconfig.h 中默认定义为 32。数组的下标对应了线程的优先级，同一优先级的线程统一插入到就绪列表的同一条链表中。一个空的就绪列表图下图：</p>
 
 <figure class="center">
-    <img src="/img/rt-thread-learning01/priority_table.jpg"
+    <img src="/img/0022-rt-thread-learning-01/priority_table.jpg"
          alt="一个空的就序列表"/> <figcaption>
             <h4>一个空的就序列表</h4>
         </figcaption>
@@ -619,7 +619,7 @@ rt_list_insert_before( <span style="color:#f92672">&amp;</span>(rt_thread_priori
 <p>就绪列表的下标就是线程的优先级，目前还没有实现优先级，有关优先级的内容后面会讲到。目前，只是将 flag1 的线程插入到下标为 0 的链表，将 falsg2 的线程插入到下标为 1 的链表。具体的示意图如下：</p>
 
 <figure class="center">
-    <img src="/img/rt-thread-learning01/priority_table_insert.jpg"
+    <img src="/img/0022-rt-thread-learning-01/priority_table_insert.jpg"
          alt="插入线程的就序列表"/> <figcaption>
             <h4>插入线程的就序列表</h4>
         </figcaption>

@@ -189,8 +189,7 @@ tags:
 
 示例：
 
-![我的头像](/img/how-to-write/avatar.jpg)
-
+![我的头像](/img/0004-how-to-write-with-luocman-theme/avatar.jpg)
 ### 10. 表格
 
 \| 表头表头表头表头 | 表头表头表头表头 | 表头表头表头表头 |

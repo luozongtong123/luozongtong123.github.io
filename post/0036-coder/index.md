@@ -14,7 +14,7 @@ code-server 最早在 GitHub 上的一次 Release 是 6 天前，目前基于的
 ## 登陆和注册  
 [注册地址在这](https://coder.com/signup)。官方提供了 Github 和 Google 的快速登陆，非常贴心。为了防止服务被滥用需要验证你的手机，一个手机号只能注册一个账号。由于注册登陆过程过于简单，具体操作就不说了。  
 
-{{% figure class="center" src="/img/coder/coder-welcome.png" alt="coder welcome" title="coder welcome" %}}
+{{% figure class="center" src="/img/0036-coder/coder-welcome.png" alt="coder welcome" title="coder welcome" %}}
 
 是这熟悉的画面。右下角可以看到 CPU 、内存和硬盘占用。~~正常模式下内存只有 1GB，在左边那栏的闪电可以开启急速模式，开启后内存变为 16GB，CPU 和网速也变得更强了，可能是现在是公开测试阶段，急速模式好像还没有时间限制~~ 急速模式的开关去掉了。硬盘提供了 3GB，硬盘空间有点小。
 

@@ -206,7 +206,7 @@ const AP_Param::GroupInfo GCS_MAVLINK::var_info[] = {
 
 在 Mission Planner 中的参数截图如下：
 
-{{% figure class="center" src="/img/ardupilot-handle-msg/GCS_MAVLINK_Param-Mission-Planner.png" alt="GCS_MAVLINK_Param" title="GCS_MAVLINK_Param" %}}
+{{% figure class="center" src="/img/0039-ardupilot-handle-msg/GCS_MAVLINK_Param-Mission-Planner.png" alt="GCS_MAVLINK_Param" title="GCS_MAVLINK_Param" %}}
 
 **如我我们需要修改某条现有的消息的发送频率只需要调整这条消息的分组或者调整消息分组的发送频率。**  
 

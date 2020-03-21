@@ -5,23 +5,23 @@
 
 注：ROV 的结构设计和密封舱的设计是一个复杂的问题，本文将直接略过这个问题的讨论，直接给出如下的 ROV。本文将着重与 ROV 舱内的电子元件的组装以及程序的设置等。
 
-<img src="/img/make-a-rov/轴测图.jpg" width="60%" height="60%">
+<img src="/img/0019-make-a-rov/轴测图.jpg" width="60%" height="60%">
 
-<img src="/img/make-a-rov/俯视图.jpg" width="60%" height="60%">
+<img src="/img/0019-make-a-rov/俯视图.jpg" width="60%" height="60%">
 
-<img src="/img/make-a-rov/主视图.jpg" width="60%" height="60%">
+<img src="/img/0019-make-a-rov/主视图.jpg" width="60%" height="60%">
 
 ## 1、推进器配置
 
 如上面给出的图所示，ROV 一共有 8 个推进器，其中 4 个推进器在水平面上呈对角布置，可以为 ROV 在水平面上的各种运动（包括，平移和原地转动）提供推力。这四个推进器标号为 1-4 。还有四个推进器布置在垂直方向，这四个推进器除了可以为 ROV 提供上浮和下潜的推力外还可以使 ROV 进行俯仰和横滚运动。这四个推进器标号 5-8 。应当注意到，为了防止 ROV 由于推进器的转动而产生的反向的转矩对 ROV 的姿态造成影响，推进器是正反浆对称布置的。其中绿色的为 CCW （逆时针）浆，蓝色的为 CW （顺时针）桨。
 
-<img src="/img/make-a-rov/frame-numberings.jpg" width="60%" height="60%">
+<img src="/img/0019-make-a-rov/frame-numberings.jpg" width="60%" height="60%">
 
 ## 2、控制系统
 
 控制系统采用开源项目 [ArduSub](https://www.ardusub.com/) 的方案。其控制核心是 Pixhawk ，配合树莓派完成控制数据和视频数据的传输。系统的硬件框图如下所示：
 
-![hardware-diagram](/img/make-a-rov/hardware-diagram.png)
+![hardware-diagram](/img/0019-make-a-rov/hardware-diagram.png)
 
 # 二、供电方案
 
@@ -48,7 +48,7 @@
 
 水密接插件使用 8 芯的[水密接插件](https://item.taobao.com/item.htm?spm=a1z09.2.0.0.49ab2e8dbytuPm&id=570101069120&_u=n1krgas16f03)，该接插件的单芯额定电流为5A，接插件的芯线定义（从母头方向看）如下图所示：
 
-<img src="/img/make-a-rov/waterproof_plug.jpg" width="30%" height="30%">
+<img src="/img/0019-make-a-rov/waterproof_plug.jpg" width="30%" height="30%">
 
 * 线号 1：1#电池充电，正极；
 * 线号 2：2#电池充电，正极；
@@ -110,7 +110,7 @@ ROV上安装的[电流计](https://item.taobao.com/item.htm?spm=a1z09.2.0.0.49ab
 
 飞控是整个系统的控制核心。其所有端口的 [Pinouts](https://docs.px4.io/en/flight_controller/pixhawk.html) 如下图所示：
 
-![pixhawk_connectors](/img/make-a-rov/pixhawk_connectors.png)
+![pixhawk_connectors](/img/0019-make-a-rov/pixhawk_connectors.png)
 
 
 ## 2、Main output 和 Auxiliary output 的连接
@@ -130,7 +130,7 @@ Main output（主通道） 的连接前文已经有所叙述，即编号为 1-8 
 
 GPS 端口的[线号](https://docs.px4.io/en/flight_controller/pixhawk.html)定义如下：
 
-<img src="/img/make-a-rov/GPS_port.jpg" width="80%" height="80%">
+<img src="/img/0019-make-a-rov/GPS_port.jpg" width="80%" height="80%">
 
 注：线的颜色是官方标注，实际的线的颜色可能会有不同。在使用时可以将飞控上印刷的文字摆正，从左到右依次为 1-6。
 
@@ -140,7 +140,7 @@ GPS 端口的[线号](https://docs.px4.io/en/flight_controller/pixhawk.html)定�
 
 树莓派的供电是通过 DC-DC 降压模块完成的，降压模块得到的 5V 电压直接和树莓派的 5V 供电相连。
 
-<img src="/img/make-a-rov/pi_pinouts.png" width="80%" height="80%">
+<img src="/img/0019-make-a-rov/pi_pinouts.png" width="80%" height="80%">
 
 飞控通过 USB 接口直接和树莓派相连；一个舱内摄像头和两个舱外摄像头连接到 USB 接口；电力线载波模块通过以太网线和树莓派相连。
 
@@ -148,7 +148,7 @@ GPS 端口的[线号](https://docs.px4.io/en/flight_controller/pixhawk.html)定�
 
 选用的[电力线载波通信模块](https://item.taobao.com/item.htm?spm=a1z10.5-c.w4002-17373907211.27.6fc422e6NUC6ET&id=538928813306)使用非常方便，不需要做复杂的初始化设置。两块电力线载波通信模块的接线方法如下图所示。
 
-<img src="/img/make-a-rov/PLC.jpg" width="80%" height="80%">
+<img src="/img/0019-make-a-rov/PLC.jpg" width="80%" height="80%">
 
 电力线载波通信模块的测试方法很简单，把两块模块当作一段网线，直接将这段网线接入路由器测试网络是否连通即可。
 
@@ -213,13 +213,13 @@ chmod u+x start_video_streaming.sh
 
 ## 1、加速度计校准
 
-![calibrate_accelermeter](/img/make-a-rov/calibrate_accelermeter.jpg)
+![calibrate_accelermeter](/img/0019-make-a-rov/calibrate_accelermeter.jpg)
 
 在如上图的界面中点击 Accelrmeter 并在 Autopilot Orientation 下拉选项中选择 None，确认后按照指示将飞控按照不同的方向摆放，直到校准完成。
 
 ##2、罗盘校准
 
-![calibrate_compass](/img/make-a-rov/calibrate_compass.jpg)
+![calibrate_compass](/img/0019-make-a-rov/calibrate_compass.jpg)
 
 在如上图的界面中点击 Accelrmeter 并在 Autopilot Orientation 下拉选项中选择 None，确认后按照指示将飞控随机地转动，直到校准完成。
 
@@ -232,7 +232,7 @@ chmod u+x start_video_streaming.sh
 
 ## 4、推进器及推进器布置设置
 
-![frame](/img/make-a-rov/frame.jpg)
+![frame](/img/0019-make-a-rov/frame.jpg)
 
 推进器框架选择 Vectored-6DOF。
 

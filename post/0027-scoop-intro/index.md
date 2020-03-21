@@ -242,7 +242,7 @@ scoop install <bucket>/<app>
 
 **注意：如果自定义仓库和自带的主仓库有重名的 app，Scoop 会默认安装主仓库的 app，若想安装自定义仓库的 app 则需要指明仓库的名字。**
 
->上面提到的两个 app 是在 [GLib 简介](/post/glib-intro/) 中提到的 glib2 库和该库自带测试框架的一个测试 app。
+>上面提到的两个 app 是在 [GLib 简介](/post/0026-glib-intro/) 中提到的 glib2 库和该库自带测试框架的一个测试 app。
 >可能过后会开一个新坑介绍以下这两个 `manifest` 的详细制作方法。
 
 # 参考
