@@ -57,7 +57,7 @@
 <meta itemprop="description" content="even theme preview">
 <meta itemprop="datePublished" content="2018-09-17T22:11:40&#43;08:00" />
 <meta itemprop="dateModified" content="2018-09-22T14:40:40&#43;08:00" />
-<meta itemprop="wordCount" content="2368">
+<meta itemprop="wordCount" content="2341">
 
 
 
@@ -135,7 +135,7 @@
               <a href="/categories/blog/"> Blog </a>
             
           </div>
-        <span class="more-meta"> 约 2368 字 </span>
+        <span class="more-meta"> 约 2341 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -179,7 +179,6 @@
 <li><a href="#13-对齐方式">13. 对齐方式</a>
 <ul>
 <li><a href="#center-right-left">center, right, left</a></li>
-<li><a href="#default">default</a></li>
 <li><a href="#figure-with-class">figure with class</a></li>
 </ul></li>
 <li><a href="#14-流程图">14. 流程图</a></li>
@@ -208,14 +207,6 @@
 </blockquote>
 
 <h2 id="1-标题">1.标题</h2>
-
-<figure class="center">
-    <img src="/img/0021-even-preview/header.jpg"
-         alt="header"/> <figcaption>
-            <h4>header</h4>
-        </figcaption>
-</figure>
-  
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># H1
 <span style="color:#75715e">## H2
 </span><span style="color:#75715e">### H3
@@ -619,31 +610,6 @@
 <span style="color:#75715e">## left
 </span><span style="color:#75715e"></span>![<span style="color:#f92672">img</span>](<span style="color:#a6e22e">/path/to/img.gif &#34;img&#34;</span>)
 {{% /left %}}</code></pre></div>
-<h3 id="default">default</h3>
-
-<p><img src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" alt="img" title="img" /></p>
-
-<div class='align-center'>
-  
-### center
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
-
-</div>
-
-<div class='align-right'>
-  
-### right
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
-
-</div>
-
-<div class='align-left'>
-  
-### left
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
-
-</div>
-
 <hr />
 
 <h3 id="figure-with-class">figure with class</h3>
@@ -651,34 +617,6 @@
 {{% figure class=&#34;center&#34; src=&#34;/path/to/img.gif&#34; title=&#34;center&#34; alt=&#34;img&#34; %}}
 {{% figure class=&#34;right&#34; src=&#34;/path/to/img.gif&#34; title=&#34;right&#34; alt=&#34;img&#34; %}}
 {{% figure class=&#34;left&#34; src=&#34;/path/to/img.gif&#34; title=&#34;left&#34; alt=&#34;img&#34; %}}</code></pre>
-<figure>
-    <img src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg"
-         alt="img"/> <figcaption>
-            <h4>default</h4>
-        </figcaption>
-</figure>
-
-<figure class="center">
-    <img src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg"
-         alt="img"/> <figcaption>
-            <h4>center</h4>
-        </figcaption>
-</figure>
-
-<figure class="right">
-    <img src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg"
-         alt="img"/> <figcaption>
-            <h4>right</h4>
-        </figcaption>
-</figure>
-
-<figure class="left">
-    <img src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg"
-         alt="img"/> <figcaption>
-            <h4>left</h4>
-        </figcaption>
-</figure>
-
 <hr />
 <pre><code>{{% center %}}
 
@@ -691,35 +629,6 @@
 {{% /left %}}
 
 {{% /center %}}</code></pre>
-<div class='align-center'>
-  
-## hybrid in center
-<figure>
-    <img src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg"
-         alt="img"/> <figcaption>
-            <h4>default</h4>
-        </figcaption>
-</figure>
-
-<figure class="right">
-    <img src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg"
-         alt="img"/> <figcaption>
-            <h4>right</h4>
-        </figcaption>
-</figure>
-
-<div class='align-left'>
-  <figure>
-    <img src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg"
-         alt="img"/> <figcaption>
-            <h4>default in left</h4>
-        </figcaption>
-</figure>
-
-</div>
-
-<p></div></p>
-
 <h2 id="14-流程图">14. 流程图</h2>
 <pre><code class="language-flowchart" data-lang="flowchart">st=&gt;start: Start|past:&gt;http://www.google.com[blank]
 e=&gt;end: End:&gt;http://www.google.com

@@ -6,8 +6,6 @@
 
 ## 1.标题
 
-{{% figure class="center" src="/img/0021-even-preview/header.jpg" alt="header" title="header" %}}  
-
 ``` markdown
 # H1
 ## H2
@@ -413,25 +411,6 @@ print("Hello, World!")
 {{%/* /left */%}}
 ```
 
-
-### default
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
-
-{{% center %}}
-### center
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
-{{% /center %}}
-
-{{% right %}}
-### right
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
-{{% /right %}}
-
-{{% left %}}
-### left
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
-{{% /left %}}
-
 ---
 
 ### figure with class 
@@ -442,11 +421,6 @@ print("Hello, World!")
 {{%/* figure class="right" src="/path/to/img.gif" title="right" alt="img" */%}}
 {{%/* figure class="left" src="/path/to/img.gif" title="left" alt="img" */%}}
 ```
-
-{{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default" alt="img" %}}
-{{% figure class="center" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="center" alt="img" %}}
-{{% figure class="right" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="right" alt="img" %}}
-{{% figure class="left" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="left" alt="img" %}}
 
 ---
 
@@ -463,15 +437,6 @@ print("Hello, World!")
 
 {{%/* /center */%}}
 ```
-
-{{% center %}}
-## hybrid in center
-{{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default" alt="img" %}}
-{{% figure class="right" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="right" alt="img" %}}
-{{% left %}}
-{{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default in left" alt="img" %}}
-{{% /left %}}
-{{% /center %}}
 
 ## 14. 流程图
 
