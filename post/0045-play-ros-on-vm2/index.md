@@ -10,7 +10,7 @@ sudo apt install nux-tools
 
 如果如下图所示，Unity 3D supported 后面显示的是那个可爱的绿色 <font color="green">yes</font> ，那么恭喜你，可以关掉网页了。如果是讨厌的红色 <font color="red">no</font>，那么就继续往下看吧。😏
 
-{{% figure class="center" src="/img/0045-play-ros-on-vm22/unity_support_test.png" alt="unity_support_test" title="unity_support_test" %}}  
+{{% figure class="center" src="/img/0045-play-ros-on-vm2/unity_support_test.png" alt="unity_support_test" title="unity_support_test" %}}  
 
 # 准备哈系统  
 
@@ -32,15 +32,15 @@ sudo m-a prepare
 
 首先将虚拟机关机。然后进行如下设置：
 
-{{% figure class="center" src="/img/0045-play-ros-on-vm22/3d-acceleration.png" alt="3d-acceleration" title="3d-acceleration" %}}
+{{% figure class="center" src="/img/0045-play-ros-on-vm2/3d-acceleration.png" alt="3d-acceleration" title="3d-acceleration" %}}
 
 # 最后再进入系统测试下  
 
-{{% figure class="center" src="/img/0045-play-ros-on-vm22/unity_support_test.png" alt="unity_support_test" title="unity_support_test" %}}  
+{{% figure class="center" src="/img/0045-play-ros-on-vm2/unity_support_test.png" alt="unity_support_test" title="unity_support_test" %}}  
 
 唉？怎么又是这张图?🤔  
 
-{{% figure class="center" src="/img/0045-play-ros-on-vm22/gazebo.png" alt="gazebo" title="gazebo" %}}  
+{{% figure class="center" src="/img/0045-play-ros-on-vm2/gazebo.png" alt="gazebo" title="gazebo" %}}  
 
 虽然帧率仍然并不是很高而且帧率波动还比较大但是总的来说勉强够用。  
 
