@@ -105,7 +105,7 @@ set(src_list
 # add_executable(${CMAKE_PROJECT_NAME} WIN32 ${sources})
 add_executable(${CMAKE_PROJECT_NAME} ${src_list} ${ui_list} ${moc_list} ${qrc_list})
 ```
-> CMakeLists.txt 来自 [SubControl](https://github.com/zt-luo/SubControl/blob/master/CMakeLists.txt) 项目。  
+> CMakeLists.txt 来自 [SubControl](https://github.com/zt-luo/SubControl/blob/master/src/CMakeLists.txt) 项目。  
 
 `set(CMAKE_AUTOMOC ON)` `set(CMAKE_AUTOUIC ON)` `set (CMAKE_AUTORCC ON)` 可以打开相应预处理的自动处理开关。不过，自动处理的前提是这些文件需要和源文件在同一个目录下。如果不在一个目录下的话只能通过 `qt5_wrap_ui` `qt5_wrap_cpp` `qt5_add_resources` 来完成预处理的配置。  
 
