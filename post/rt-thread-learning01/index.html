@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.64.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/rt-thread-learning01/" />
@@ -229,7 +229,7 @@ rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];</code>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 软件延时 */</span>
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delay</span> (uint32_t count)
 {
-    <span style="color:#66d9ef">for</span>(; count<span style="color:#f92672">!</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; count<span style="color:#f92672">-</span><span style="color:#f92672">-</span>);
+    <span style="color:#66d9ef">for</span>(; count<span style="color:#f92672">!=</span><span style="color:#ae81ff">0</span>; count<span style="color:#f92672">--</span>);
 }
 
 <span style="color:#75715e">/* 线程1 */</span>
@@ -288,18 +288,18 @@ rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];</code>
 </span><span style="color:#75715e"></span>                        <span style="color:#66d9ef">void</span>             <span style="color:#f92672">*</span>stack_start,   <span style="color:#75715e">// 线程栈起始地址
 </span><span style="color:#75715e"></span>                        rt_uint32_t       stack_size)    <span style="color:#75715e">// 线程栈大小
 </span><span style="color:#75715e"></span>{
-    rt_list_init(<span style="color:#f92672">&amp;</span>(<span style="color:#66d9ef">thread</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>tlist));                      <span style="color:#75715e">// (1)
+    rt_list_init(<span style="color:#f92672">&amp;</span>(<span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>tlist));                      <span style="color:#75715e">// (1)
 </span><span style="color:#75715e"></span>  
-    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>entry <span style="color:#f92672">=</span> (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)entry;    <span style="color:#75715e">// 将线程入口保存到线程控制块的 entry成员中
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>parameter <span style="color:#f92672">=</span> parameter;    <span style="color:#75715e">// 将线程入口形参保存到线程控制块的 parameter 成员中
+    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>entry <span style="color:#f92672">=</span> (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)entry;    <span style="color:#75715e">// 将线程入口保存到线程控制块的 entry成员中
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>parameter <span style="color:#f92672">=</span> parameter;    <span style="color:#75715e">// 将线程入口形参保存到线程控制块的 parameter 成员中
 </span><span style="color:#75715e"></span>
-    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>stack_addr <span style="color:#f92672">=</span> stack_start; <span style="color:#75715e">// 将线程栈起始地址保存到线程控制块的 stack_start 成员中
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>stack_size <span style="color:#f92672">=</span> stack_size;  <span style="color:#75715e">// 将线程栈起大小保存到线程控制块的 stack_size成员中
+    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>stack_addr <span style="color:#f92672">=</span> stack_start; <span style="color:#75715e">// 将线程栈起始地址保存到线程控制块的 stack_start 成员中
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>stack_size <span style="color:#f92672">=</span> stack_size;  <span style="color:#75715e">// 将线程栈起大小保存到线程控制块的 stack_size成员中
 </span><span style="color:#75715e"></span>  
     <span style="color:#75715e">/* 初始化线程栈，并返回线程栈指针 */</span>
-    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>sp <span style="color:#f92672">=</span> (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)rt_hw_stack_init( <span style="color:#66d9ef">thread</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>entry, 
-                                           <span style="color:#66d9ef">thread</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>parameter,
-                                           (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#66d9ef">thread</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>stack_addr <span style="color:#f92672">+</span> <span style="color:#66d9ef">thread</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>stack_size <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span>) );
+    <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>sp <span style="color:#f92672">=</span> (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)rt_hw_stack_init( <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>entry, 
+                                           <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>parameter,
+                                           (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>stack_addr <span style="color:#f92672">+</span> <span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>stack_size <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span>) );
   
     <span style="color:#66d9ef">return</span> RT_EOK;
 }</code></pre></div>
@@ -320,10 +320,10 @@ rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];</code>
 
 <p>关于这个节点的作用书中在此处没有说明，他的作用是在后面讲的，我们把这部分拿到前面来。前面讲到我们可以把 <code>tlist</code> 这个线程控制块的成员插入到不同的链表中，例如就绪列表等。线程调度器再根据列表中的节点切换不同的线程，那么问题来了，我们如何利用这个节点找到线程控制块呢？ RT-Thread 中有一个宏可以通过 <code>tlist</code> 来找到线程控制块的起始地址，这个宏是 <code>rt_list_entry()</code> ，其定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 已知一个结构体里面的成员的地址，反推出该结构体的首地址 */</span>
-<span style="color:#75715e">#</span><span style="color:#75715e">define rt_container_of(ptr, type, member)</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>    ((type <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)(ptr) <span style="color:#f92672">-</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)(<span style="color:#f92672">&amp;</span>((type <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0</span>)<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>member)))
+<span style="color:#75715e">#define rt_container_of(ptr, type, member)
+</span><span style="color:#75715e"></span>    ((type <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)(ptr) <span style="color:#f92672">-</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)(<span style="color:#f92672">&amp;</span>((type <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0</span>)<span style="color:#f92672">-&gt;</span>member)))
 
-<span style="color:#75715e">#</span><span style="color:#75715e">define rt_list_entry(node, type, member)</span><span style="color:#75715e">
+<span style="color:#75715e">#define rt_list_entry(node, type, member)
 </span><span style="color:#75715e"></span>    rt_container_of(node, type, member)</code></pre></div>
 <p><code>rt_list_entry()</code> 调用了 <code>rt_container_of()</code> 宏，这个宏可以已知结构体中的成员找到结构体的首地址。上述代码中， <code>prt</code> 是指向结构体成员的地址， <code>type</code> 是结构体的类型， <code>member</code> 是结构体成员的名字。我们来看一下这个宏函数。</p>
 
@@ -364,7 +364,7 @@ rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];</code>
 <p>rt_list_t 类型的节点的初始化，就是将节点里面的 next 和 prev 这两个节点指针指向节点本身。代码实现如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_list_init</span>(rt_list_t <span style="color:#f92672">*</span>l)
 {
-    l<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> l<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev <span style="color:#f92672">=</span> l;
+    l<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> l<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> l;
 }</code></pre></div>
 <figure class="center">
     <img src="/img/rt-thread-learning01/list_op_1.jpg"
@@ -388,11 +388,11 @@ rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];</code>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* 在双向链表头部插入一个节点 */</span>
 rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_list_insert_after</span>(rt_list_t <span style="color:#f92672">*</span>l, rt_list_t <span style="color:#f92672">*</span>n)
 {
-    l<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev <span style="color:#f92672">=</span> n;   <span style="color:#75715e">/* 第1步 */</span>
-    n<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> l<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;   <span style="color:#75715e">/* 第2步 */</span>
+    l<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> n;   <span style="color:#75715e">/* 第1步 */</span>
+    n<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> l<span style="color:#f92672">-&gt;</span>next;   <span style="color:#75715e">/* 第2步 */</span>
   
-    l<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> n;         <span style="color:#75715e">/* 第3步 */</span>
-    n<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev <span style="color:#f92672">=</span> l;         <span style="color:#75715e">/* 第4步 */</span>
+    l<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> n;         <span style="color:#75715e">/* 第3步 */</span>
+    n<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> l;         <span style="color:#75715e">/* 第4步 */</span>
 }</code></pre></div>
 <figure class="center">
     <img src="/img/rt-thread-learning01/list_op_2.jpg"
@@ -407,11 +407,11 @@ rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt
 <p>不难理解只需要将后插操作代码中的的 <code>prev</code> 和 <code>next</code> 调换一下就可以完成前插操作。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_list_insert_before</span>(rt_list_t <span style="color:#f92672">*</span>l, rt_list_t <span style="color:#f92672">*</span>n)
 {
-    l<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> n;   <span style="color:#75715e">/* 第1步 */</span>
-    n<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev <span style="color:#f92672">=</span> l<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev;   <span style="color:#75715e">/* 第2步 */</span>
+    l<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> n;   <span style="color:#75715e">/* 第1步 */</span>
+    n<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> l<span style="color:#f92672">-&gt;</span>prev;   <span style="color:#75715e">/* 第2步 */</span>
   
-    l<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev <span style="color:#f92672">=</span> n;         <span style="color:#75715e">/* 第3步 */</span>
-    n<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> l;         <span style="color:#75715e">/* 第4步 */</span>
+    l<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> n;         <span style="color:#75715e">/* 第3步 */</span>
+    n<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> l;         <span style="color:#75715e">/* 第4步 */</span>
 }</code></pre></div>
 <figure class="center">
     <img src="/img/rt-thread-learning01/list_op_3.jpg"
@@ -426,10 +426,10 @@ rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt
 <p>删除操作较插入操作要简单一些，只需要注意第三步在前两步之后即可。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">rt_inline <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rt_list_remove</span>(rt_list_t <span style="color:#f92672">*</span>n)
 {
-    n<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev <span style="color:#f92672">=</span> n<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev;  <span style="color:#75715e">/* 第1步 */</span>
-    n<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> n<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next;  <span style="color:#75715e">/* 第2步 */</span>
+    n<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> n<span style="color:#f92672">-&gt;</span>prev;  <span style="color:#75715e">/* 第1步 */</span>
+    n<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> n<span style="color:#f92672">-&gt;</span>next;  <span style="color:#75715e">/* 第2步 */</span>
   
-    n<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>next <span style="color:#f92672">=</span> n<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>prev <span style="color:#f92672">=</span> n;    <span style="color:#75715e">/* 第3步 */</span>
+    n<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> n<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> n;    <span style="color:#75715e">/* 第3步 */</span>
 }</code></pre></div>
 <figure class="center">
     <img src="/img/rt-thread-learning01/list_op_4.jpg"
@@ -460,26 +460,26 @@ rt_uint8_t <span style="color:#f92672">*</span><span style="color:#a6e22e">rt_hw
     stk  <span style="color:#f92672">=</span> (rt_uint8_t <span style="color:#f92672">*</span>)RT_ALIGN_DOWN((rt_uint32_t)stk, <span style="color:#ae81ff">8</span>);
   
     <span style="color:#75715e">/* stk指针继续向下移动sizeof(struct stack_frame)个偏移 */</span>
-    stk <span style="color:#f92672">-</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> stack_frame);
+    stk <span style="color:#f92672">-=</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> stack_frame);
   
     <span style="color:#75715e">/* 将stk指针强制转化为stack_frame类型后存到stack_frame */</span>
     stack_frame <span style="color:#f92672">=</span> (<span style="color:#66d9ef">struct</span> stack_frame <span style="color:#f92672">*</span>)stk;
   
     <span style="color:#75715e">/* 以stack_frame为起始地址，将栈空间里面的 sizeof(struct stack_frame) 个内存初始化为0xdeadbeef */</span>
-    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> stack_frame) <span style="color:#f92672">/</span> <span style="color:#66d9ef">sizeof</span>(rt_uint32_t); i <span style="color:#f92672">+</span><span style="color:#f92672">+</span>)
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> stack_frame) <span style="color:#f92672">/</span> <span style="color:#66d9ef">sizeof</span>(rt_uint32_t); i <span style="color:#f92672">++</span>)
     {
             ((rt_uint32_t <span style="color:#f92672">*</span>)stack_frame)[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xdeadbeef</span>;
     }
   
     <span style="color:#75715e">/* 初始化异常发生时自动保存的寄存器 */</span>
-    stack_frame<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>exception_stack_frame.r0  <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)parameter; <span style="color:#75715e">/* r0 : argument */</span>
-    stack_frame<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>exception_stack_frame.r1  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r1 */</span>
-    stack_frame<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>exception_stack_frame.r2  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r2 */</span>
-    stack_frame<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>exception_stack_frame.r3  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r3 */</span>
-    stack_frame<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>exception_stack_frame.r12 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r12 */</span>
-    stack_frame<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>exception_stack_frame.lr  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* lr */</span>
-    stack_frame<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>exception_stack_frame.pc  <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)tentry;    <span style="color:#75715e">/* entry point, pc */</span>
-    stack_frame<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>exception_stack_frame.psr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01000000L</span>;              <span style="color:#75715e">/* PSR */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.r0  <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)parameter; <span style="color:#75715e">/* r0 : argument */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.r1  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r1 */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.r2  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r2 */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.r3  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r3 */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.r12 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* r12 */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.lr  <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;                        <span style="color:#75715e">/* lr */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.pc  <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)tentry;    <span style="color:#75715e">/* entry point, pc */</span>
+    stack_frame<span style="color:#f92672">-&gt;</span>exception_stack_frame.psr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x01000000L</span>;              <span style="color:#75715e">/* PSR */</span>
   
     <span style="color:#75715e">/* 返回线程栈指针 */</span>
     <span style="color:#66d9ef">return</span> stk;
@@ -551,17 +551,17 @@ rt_uint8_t <span style="color:#f92672">*</span><span style="color:#a6e22e">rt_hw
 
 <p>最后栈初始化函数返回线程栈顶指针 <code>stk</code> ，线程初始化函数返回线程创建成功的错误码。关于错误码，其定义如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">/* RT-Thread 错误码重定义 */</span>
-<span style="color:#75715e">#</span><span style="color:#75715e">define RT_EOK                          0               </span><span style="color:#75715e">/**&lt; There is no error */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define RT_ERROR                        1               </span><span style="color:#75715e">/**&lt; A generic error happens */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define RT_ETIMEOUT                     2               </span><span style="color:#75715e">/**&lt; Timed out */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define RT_EFULL                        3               </span><span style="color:#75715e">/**&lt; The resource is full */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define RT_EEMPTY                       4               </span><span style="color:#75715e">/**&lt; The resource is empty */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define RT_ENOMEM                       5               </span><span style="color:#75715e">/**&lt; No memory */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define RT_ENOSYS                       6               </span><span style="color:#75715e">/**&lt; No system */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define RT_EBUSY                        7               </span><span style="color:#75715e">/**&lt; Busy */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define RT_EIO                          8               </span><span style="color:#75715e">/**&lt; IO error */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define RT_EINTR                        9               </span><span style="color:#75715e">/**&lt; Interrupted system call */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define RT_EINVAL                       10              </span><span style="color:#75715e">/**&lt; Invalid argument */</span></code></pre></div>
+<span style="color:#75715e">#define RT_EOK                          0               </span><span style="color:#75715e">/**&lt; There is no error */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_ERROR                        1               </span><span style="color:#75715e">/**&lt; A generic error happens */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_ETIMEOUT                     2               </span><span style="color:#75715e">/**&lt; Timed out */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EFULL                        3               </span><span style="color:#75715e">/**&lt; The resource is full */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EEMPTY                       4               </span><span style="color:#75715e">/**&lt; The resource is empty */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_ENOMEM                       5               </span><span style="color:#75715e">/**&lt; No memory */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_ENOSYS                       6               </span><span style="color:#75715e">/**&lt; No system */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EBUSY                        7               </span><span style="color:#75715e">/**&lt; Busy */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EIO                          8               </span><span style="color:#75715e">/**&lt; IO error */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EINTR                        9               </span><span style="color:#75715e">/**&lt; Interrupted system call */</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define RT_EINVAL                       10              </span><span style="color:#75715e">/**&lt; Invalid argument */</span></code></pre></div>
 <p>最后，回顾一下主函数中，调用线程初始化函数进行线程初始化的代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
 {
@@ -643,7 +643,7 @@ rt_list_insert_before( <span style="color:#f92672">&amp;</span>(rt_thread_priori
     <span style="color:#66d9ef">register</span> rt_base_t offset;      <span style="color:#75715e">// register 修饰变量，防止被编译器优化
 </span><span style="color:#75715e"></span>  
     <span style="color:#75715e">/* 线程就绪列表初始化 */</span>
-    <span style="color:#66d9ef">for</span> (offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; offset <span style="color:#f92672">&lt;</span> RT_THREAD_PRIORITY_MAX; offset <span style="color:#f92672">+</span><span style="color:#f92672">+</span>)
+    <span style="color:#66d9ef">for</span> (offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; offset <span style="color:#f92672">&lt;</span> RT_THREAD_PRIORITY_MAX; offset <span style="color:#f92672">++</span>)
     {
             rt_list_init(<span style="color:#f92672">&amp;</span>rt_thread_priority_table[offset]);
     }
@@ -674,7 +674,7 @@ rt_list_insert_before( <span style="color:#f92672">&amp;</span>(rt_thread_priori
     <span style="color:#75715e">/* 切换到第一个线程，该函数在context_rvds.S中实现，在rthw.h声明，
 </span><span style="color:#75715e">       用于实现第一次任务切换。当一个汇编函数在C文件中调用的时候，
 </span><span style="color:#75715e">       如果有形参，则执行的时候会将形参传人到CPU寄存器r0。*/</span>
-    rt_hw_context_switch_to((rt_uint32_t)<span style="color:#f92672">&amp;</span>to_thread<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>sp);
+    rt_hw_context_switch_to((rt_uint32_t)<span style="color:#f92672">&amp;</span>to_thread<span style="color:#f92672">-&gt;</span>sp);
 }</code></pre></div>
 <p><code>rt_list_entry()</code> 宏前面提到过，作用就是找出线程控制块的起始地址。</p>
 
@@ -722,7 +722,7 @@ NVIC_PENDSVSET  EQU     0x10000000     ; 触发PendSV exception的值
 ;/*
 ; *-----------------------------------------------------------------------
 ; * 函数原型：void rt_hw_context_switch_to(rt_uint32 to);
-; * r0 --> to
+; * r0 --&gt; to
 ; * 该函数用于开启第一次线程切换
 ; *-----------------------------------------------------------------------
 ; */
@@ -736,7 +736,7 @@ rt_hw_context_switch_to    PROC
 
     ; 设置 rt_interrupt_to_thread 指针指向的值
     ; 此时 r0 中存储的是从 C 语言中调用子程序时的第一个参数，即第一次线程切换的目标线程
-    ; rt_hw_context_switch_to((rt_uint32_t)&to_thread->sp)
+    ; rt_hw_context_switch_to((rt_uint32_t)&amp;to_thread-&gt;sp)
     LDR     r1, =rt_interrupt_to_thread           ;将 rt_interrupt_to_thread 加载到r1
     STR     r0, [r1]                              ;将r0的值存储到 rt_interrupt_to_thread 指向的地址
 
@@ -774,8 +774,8 @@ rt_hw_context_switch_to    PROC
 <pre><code class="language-arm" data-lang="arm">;/*
 ; *-----------------------------------------------------------------------
 ; * void PendSV_Handler(void);
-; * r0 --> switch from thread stack
-; * r1 --> switch to thread stack
+; * r0 --&gt; switch from thread stack
+; * r1 --&gt; switch to thread stack
 ; * psr, pc, lr, r12, r3, r2, r1, r0 are pushed into [from] stack
 ; *-----------------------------------------------------------------------
 ; */
@@ -851,7 +851,7 @@ pendsv_exit
   
   
     <span style="color:#75715e">/* 两个线程轮流切换 */</span>
-    <span style="color:#66d9ef">if</span>( rt_current_thread <span style="color:#f92672">=</span><span style="color:#f92672">=</span> rt_list_entry( rt_thread_priority_table[<span style="color:#ae81ff">0</span>].next,
+    <span style="color:#66d9ef">if</span>( rt_current_thread <span style="color:#f92672">==</span> rt_list_entry( rt_thread_priority_table[<span style="color:#ae81ff">0</span>].next,
                                                                    <span style="color:#66d9ef">struct</span> rt_thread,
                                                                    tlist) )
     {
@@ -872,7 +872,7 @@ pendsv_exit
     }
 
     <span style="color:#75715e">/* 产生上下文切换 */</span>
-    rt_hw_context_switch((rt_uint32_t)<span style="color:#f92672">&amp;</span>from_thread<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>sp,(rt_uint32_t)<span style="color:#f92672">&amp;</span>to_thread<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>sp);    
+    rt_hw_context_switch((rt_uint32_t)<span style="color:#f92672">&amp;</span>from_thread<span style="color:#f92672">-&gt;</span>sp,(rt_uint32_t)<span style="color:#f92672">&amp;</span>to_thread<span style="color:#f92672">-&gt;</span>sp);    
 
 }</code></pre></div>
 <p><strong>rt_hw_contex_switch()函数</strong><br />
@@ -880,8 +880,8 @@ rt_hw_contex_switch()函数用于产生上下文切换。</p>
 <pre><code class="language-arm" data-lang="arm">;/*
 ; *-----------------------------------------------------------------------
 ; * void rt_hw_context_switch(rt_uint32 from, rt_uint32 to);
-; * r0 --> from
-; * r1 --> to
+; * r0 --&gt; from
+; * r1 --&gt; to
 ; *-----------------------------------------------------------------------
 ; */
 ;rt_hw_context_switch_interrupt
@@ -943,8 +943,8 @@ _reswitch
 </span><span style="color:#75715e">*************************************************************************
 </span><span style="color:#75715e">*/</span>
 
-<span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;rtthread.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&#34;ARMCM3.h&#34;</span><span style="color:#75715e">
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;rtthread.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ARMCM3.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 
 <span style="color:#75715e">/*
@@ -1031,7 +1031,7 @@ rt_uint8_t rt_flag2_thread_stack[<span style="color:#ae81ff">512</span>];
 <span style="color:#75715e">/* 软件延时 */</span>
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delay</span> (uint32_t count)
 {
-    <span style="color:#66d9ef">for</span>(; count<span style="color:#f92672">!</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; count<span style="color:#f92672">-</span><span style="color:#f92672">-</span>);
+    <span style="color:#66d9ef">for</span>(; count<span style="color:#f92672">!=</span><span style="color:#ae81ff">0</span>; count<span style="color:#f92672">--</span>);
 }
 
 <span style="color:#75715e">/* 线程1 */</span>

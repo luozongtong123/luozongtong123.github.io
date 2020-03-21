@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.64.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/glib-intro/" />
@@ -204,8 +204,8 @@ GLib 由基础类型、核心应用支持、实用功能、数据类型和对象
 </span><span style="color:#75715e"> *  
 </span><span style="color:#75715e"> */</span>
 
-<span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&#34;glib.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&#34;glib/gprintf.h&#34;</span><span style="color:#75715e">
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;glib.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;glib/gprintf.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">/**
 </span><span style="color:#75715e"> * @brief  
@@ -217,25 +217,25 @@ GLib 由基础类型、核心应用支持、实用功能、数据类型和对象
 <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
 {
     gchar ch[<span style="color:#ae81ff">128</span>];
-    g_sprintf(ch, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello world</span><span style="color:#e6db74">&#34;</span>);
+    g_sprintf(ch, <span style="color:#e6db74">&#34;hello world&#34;</span>);
     g_printf(g_strup(ch));
-    g_print(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    g_print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
     g_printf(g_strdown(ch));
-    g_print(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    g_print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 
     gint i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     gchar chch[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0x00</span>};
     chch[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> ch[i];
 
-    <span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">0x00</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> chch[<span style="color:#ae81ff">0</span>])
+    <span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">0x00</span> <span style="color:#f92672">!=</span> chch[<span style="color:#ae81ff">0</span>])
     {
         g_printf(chch);
-        i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>;
+        i<span style="color:#f92672">++</span>;
         chch[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> ch[i];
     }
 
-    g_print(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-    g_print(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    g_print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    g_print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }</code></pre></div>
@@ -249,16 +249,16 @@ GLib 由基础类型、核心应用支持、实用功能、数据类型和对象
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmake" data-lang="cmake"><span style="color:#75715e"># CMakeLists.txt
 </span><span style="color:#75715e"></span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.0.0</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>project(<span style="color:#e6db74">hello_world</span> <span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">0.1.0</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>include_directories(<span style="color:#e6db74">&#34;glib/include/glib-2.0&#34;</span> <span style="color:#e6db74">&#34;glib/lib/glib-2.0/include&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>link_directories(<span style="color:#e6db74">&#34;glib/bin&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>link_libraries(<span style="color:#e6db74">&#34;libglib-2.0-0.dll&#34;</span> <span style="color:#e6db74">&#34;libgio-2.0-0.dll&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 用来关闭 gcc 编译器的 DEPRECATION_WARNINGS
 </span><span style="color:#75715e"></span>add_compile_options(<span style="color:#e6db74">-DGLIB_DISABLE_DEPRECATION_WARNINGS</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>add_executable(<span style="color:#e6db74">hello_world</span>  <span style="color:#e6db74">hello_world.c</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CPACK_PROJECT_NAME</span> <span style="color:#f92672">${</span>PROJECT_NAME<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CPACK_PROJECT_VERSION</span> <span style="color:#f92672">${</span>PROJECT_VERSION<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>include(<span style="color:#e6db74">CPack</span>)</code></pre></div>

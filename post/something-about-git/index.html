@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.64.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/something-about-git/" />
@@ -59,7 +59,7 @@
 <meta itemprop="description" content="在使用 Hexo 作为博客程序的过程中使用了 Git 这个分布式版本控制系统。现在已经初步入门了。之前一直都没有深入去研究，但是今天上午突然想要把所有的东西都同步到某网盘上以免本地数据出现差错导致博客从头再来。">
 <meta itemprop="datePublished" content="2015-02-13T22:31:00&#43;08:00" />
 <meta itemprop="dateModified" content="2018-09-22T11:15:36&#43;08:00" />
-<meta itemprop="wordCount" content="2355">
+<meta itemprop="wordCount" content="2423">
 
 
 
@@ -141,7 +141,7 @@
               <a href="/categories/blog/"> Blog </a>
             
           </div>
-        <span class="more-meta"> 约 2355 字 </span>
+        <span class="more-meta"> 约 2423 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -213,15 +213,15 @@
 
 <p>如果提示：No such file or directory 说明你是第一次使用 Git 。
 * 生成新的 SSH Key</p>
-<pre><code>ssh-keygen -t rsa -C "邮件地址@youremail.com"</code></pre>
+<pre><code>ssh-keygen -t rsa -C &#34;邮件地址@youremail.com&#34;</code></pre>
 <p>注意 : 此处的邮箱地址，你可以输入自己的邮箱地址；此处的「-C」的是大写的「C」。
 提示：</p>
 <pre><code>Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):</code></pre>
 <p>回车就可以。
 然后系统会要你输入密码：</p>
-<pre><code>Enter passphrase (empty for no passphrase):<输入加密串>
-Enter same passphrase again:<再次输入加密串></code></pre>
+<pre><code>Enter passphrase (empty for no passphrase):&lt;输入加密串&gt;
+Enter same passphrase again:&lt;再次输入加密串&gt;</code></pre>
 <p>在回车中会提示你输入一个密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。
 这个设置是防止别人往你的项目里提交内容。</p>
 
@@ -240,19 +240,19 @@ Enter same passphrase again:<再次输入加密串></code></pre>
 <h3 id="测试-git-是否成功链接-github">测试 Git 是否成功链接 GitHub</h3>
 <pre><code>ssh -T git@github.com</code></pre>
 <p>如果是下面的反馈：</p>
-<pre><code>The authenticity of host 'github.com (207.97.227.239)' can't be established.
+<pre><code>The authenticity of host &#39;github.com (207.97.227.239)&#39; can&#39;t be established.
 RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
 Are you sure you want to continue connecting (yes/no)?</code></pre>
 <p>不要紧张，输入 yes 就好，然后会看到：</p>
-<pre><code>Hi cnfeat! You've successfully authenticated, but GitHub does not provide shell access.</code></pre>
+<pre><code>Hi cnfeat! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code></pre>
 <h3 id="设置用户信息">设置用户信息</h3>
 
 <p>现在你已经可以通过 SSH 链接到 GitHub 了，还有一些个人信息需要完善的。
 Git 会根据用户的名字和邮箱来记录提交。 GitHub 也是用这些信息来做权限的处理，
 输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的，名字必须是你的真名，而不是 GitHub 的昵称。
 （此处的姓名是作为记录提交信息的，是为了方便识别提交代码的人的）</p>
-<pre><code>git config --global user.name "yourame"//用户名
-git config --global user.email  "yourame@gmail.com"//填写自己的邮箱</code></pre>
+<pre><code>git config --global user.name &#34;yourame&#34;//用户名
+git config --global user.email  &#34;yourame@gmail.com&#34;//填写自己的邮箱</code></pre>
 <h2 id="克隆一个远程代码库或者是生成一个空的库">克隆一个远程代码库或者是生成一个空的库</h2>
 
 <h3 id="克隆远程库">克隆远程库</h3>

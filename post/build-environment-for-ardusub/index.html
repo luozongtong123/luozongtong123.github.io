@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.64.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/build-environment-for-ardusub/" />
@@ -293,7 +293,7 @@ wget https://github.com/martine/ninja/releases/download/v1.8.2/ninja-linux.zip
 <span style="color:#75715e"># 最新版本是 v1.8.2，</span>
 unzip ninja-linux.zip
 rm ninja-linux.zip
-exportline<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">export PATH=</span>$HOME<span style="color:#e6db74">/ninja:\$PATH</span><span style="color:#e6db74">&#34;</span>
+exportline<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;export PATH=</span>$HOME<span style="color:#e6db74">/ninja:\$PATH&#34;</span>
 <span style="color:#66d9ef">if</span> grep -Fxq <span style="color:#e6db74">&#34;</span>$exportline<span style="color:#e6db74">&#34;</span> ~/.profile; <span style="color:#66d9ef">then</span> echo nothing to <span style="color:#66d9ef">do</span> ; <span style="color:#66d9ef">else</span> echo $exportline &gt;&gt; ~/.profile; <span style="color:#66d9ef">fi</span>
 . ~/.profile</code></pre></div>
 <h3 id="6-进行编译">6、进行编译</h3>

@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.64.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/qmlglsink-in-qquickwidget/" />
@@ -169,7 +169,7 @@
 <h1 id="安装环境">安装环境</h1>
 
 <p>Qt 的安装就不多说了，GStreamer 的话注意要安装好 gst-plugins-good。如果运行软件时有如下提示则说明环境没有配置好。</p>
-<pre><code>module "org.freedesktop.gstreamer.GLVideoItem" is not installed</code></pre>
+<pre><code>module &#34;org.freedesktop.gstreamer.GLVideoItem&#34; is not installed</code></pre>
 <p>依次做以下检查：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gst-inspect-1.0 qmlglsink</code></pre></div>
 <p>不显示 <code>No such element or plugin 'qmlglsink'</code> 或 <code>没有那样的组件或插件‘qmlglsink’</code> 则表明正常，
@@ -207,33 +207,33 @@ gst-inspect-1.0</code></pre></div>
 gst_init (<span style="color:#f92672">&amp;</span>argc, <span style="color:#f92672">&amp;</span>argv);
 ...
 GstElement <span style="color:#f92672">*</span>pipeline <span style="color:#f92672">=</span> gst_pipeline_new (<span style="color:#66d9ef">nullptr</span>);
-GstElement <span style="color:#f92672">*</span>src <span style="color:#f92672">=</span> gst_element_factory_make (<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">videotestsrc</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">nullptr</span>);
-GstElement <span style="color:#f92672">*</span>glupload <span style="color:#f92672">=</span> gst_element_factory_make (<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">glupload</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">nullptr</span>);
+GstElement <span style="color:#f92672">*</span>src <span style="color:#f92672">=</span> gst_element_factory_make (<span style="color:#e6db74">&#34;videotestsrc&#34;</span>, <span style="color:#66d9ef">nullptr</span>);
+GstElement <span style="color:#f92672">*</span>glupload <span style="color:#f92672">=</span> gst_element_factory_make (<span style="color:#e6db74">&#34;glupload&#34;</span>, <span style="color:#66d9ef">nullptr</span>);
 <span style="color:#75715e">/* the plugin must be loaded before loading the qml file to register the
 </span><span style="color:#75715e"> * GstGLVideoItem qml item */</span>
-GstElement <span style="color:#f92672">*</span>sink <span style="color:#f92672">=</span> gst_element_factory_make (<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">qmlglsink</span><span style="color:#e6db74">&#34;</span>, <span style="color:#66d9ef">nullptr</span>);
+GstElement <span style="color:#f92672">*</span>sink <span style="color:#f92672">=</span> gst_element_factory_make (<span style="color:#e6db74">&#34;qmlglsink&#34;</span>, <span style="color:#66d9ef">nullptr</span>);
 ...
 gst_bin_add_many (GST_BIN (pipeline), src, glupload, sink, <span style="color:#66d9ef">nullptr</span>);
 gst_element_link_many (src, glupload, sink, <span style="color:#66d9ef">nullptr</span>);
 ...
 QQmlApplicationEngine engine;
-engine.load(QUrl(QStringLiteral(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">qrc:/main.qml</span><span style="color:#e6db74">&#34;</span>)));
+engine.load(QUrl(QStringLiteral(<span style="color:#e6db74">&#34;qrc:/main.qml&#34;</span>)));
 
 QQuickItem <span style="color:#f92672">*</span>videoItem;
 QQuickWindow <span style="color:#f92672">*</span>rootObject;
 
 <span style="color:#75715e">/* find and set the videoItem on the sink */</span>
-rootObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>QQuickWindow <span style="color:#f92672">*</span><span style="color:#f92672">&gt;</span> (engine.rootObjects().first());
-videoItem <span style="color:#f92672">=</span> rootObject<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>findChild<span style="color:#f92672">&lt;</span>QQuickItem <span style="color:#f92672">*</span><span style="color:#f92672">&gt;</span> (<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">videoItem</span><span style="color:#e6db74">&#34;</span>);
+rootObject <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>QQuickWindow <span style="color:#f92672">*&gt;</span> (engine.rootObjects().first());
+videoItem <span style="color:#f92672">=</span> rootObject<span style="color:#f92672">-&gt;</span>findChild<span style="color:#f92672">&lt;</span>QQuickItem <span style="color:#f92672">*&gt;</span> (<span style="color:#e6db74">&#34;videoItem&#34;</span>);
 g_assert (videoItem);
-g_object_set(sink, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">widget</span><span style="color:#e6db74">&#34;</span>, videoItem, <span style="color:#66d9ef">nullptr</span>);
+g_object_set(sink, <span style="color:#e6db74">&#34;widget&#34;</span>, videoItem, <span style="color:#66d9ef">nullptr</span>);
 
-rootObject<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>scheduleRenderJob (<span style="color:#66d9ef">new</span> SetPlaying (pipeline),
-    QQuickWindow<span style="color:#f92672">:</span><span style="color:#f92672">:</span>BeforeSynchronizingStage);
+rootObject<span style="color:#f92672">-&gt;</span>scheduleRenderJob (<span style="color:#66d9ef">new</span> SetPlaying (pipeline),
+    QQuickWindow<span style="color:#f92672">::</span>BeforeSynchronizingStage);
 ...
 
 ...
-<span style="color:#66d9ef">void</span> SetPlaying<span style="color:#f92672">:</span><span style="color:#f92672">:</span>run()
+<span style="color:#66d9ef">void</span> SetPlaying<span style="color:#f92672">::</span>run()
 ...
 gst_element_set_state(m_pipeline, GST_STATE_PLAYING);
 ...
@@ -243,13 +243,13 @@ import QtQuick.Controls 1.0
 import org.freedesktop.gstreamer.GLVideoItem 1.0
 
 Rectangle {
-    objectName:"Rectangle"
+    objectName:&#34;Rectangle&#34;
     Item {
         anchors.fill: parent
 
         GstGLVideoItem {
             id: video
-            objectName: "videoItem"
+            objectName: &#34;videoItem&#34;
             anchors.centerIn: parent
             width: parent.width
             height: parent.height
@@ -276,15 +276,15 @@ Rectangle {
 QQuickWindow <span style="color:#f92672">*</span>qQuickWindows;
 
 <span style="color:#75715e">/* find and set the videoItem on the sink */</span>
-videoItem <span style="color:#f92672">=</span> ui<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>quickWidget<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rootObject();
-ideoItem <span style="color:#f92672">=</span> videoItem<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>findChild<span style="color:#f92672">&lt;</span>QQuickItem <span style="color:#f92672">*</span><span style="color:#f92672">&gt;</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">videoItem</span><span style="color:#e6db74">&#34;</span>);
+videoItem <span style="color:#f92672">=</span> ui<span style="color:#f92672">-&gt;</span>quickWidget<span style="color:#f92672">-&gt;</span>rootObject();
+ideoItem <span style="color:#f92672">=</span> videoItem<span style="color:#f92672">-&gt;</span>findChild<span style="color:#f92672">&lt;</span>QQuickItem <span style="color:#f92672">*&gt;</span>(<span style="color:#e6db74">&#34;videoItem&#34;</span>);
 assert(videoItem);
-g_object_set(sink, <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">widget</span><span style="color:#e6db74">&#34;</span>, videoItem, <span style="color:#66d9ef">nullptr</span>);
+g_object_set(sink, <span style="color:#e6db74">&#34;widget&#34;</span>, videoItem, <span style="color:#66d9ef">nullptr</span>);
 
-qQuickWindows <span style="color:#f92672">=</span> videoItem<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>window();
+qQuickWindows <span style="color:#f92672">=</span> videoItem<span style="color:#f92672">-&gt;</span>window();
 assert(qQuickWindows);
-qQuickWindows<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>scheduleRenderJob(<span style="color:#66d9ef">new</span> SetPlaying(pipeline),
-                                     QQuickWindow<span style="color:#f92672">:</span><span style="color:#f92672">:</span>BeforeSynchronizingStage);
+qQuickWindows<span style="color:#f92672">-&gt;</span>scheduleRenderJob(<span style="color:#66d9ef">new</span> SetPlaying(pipeline),
+                                     QQuickWindow<span style="color:#f92672">::</span>BeforeSynchronizingStage);
 </code></pre></div>
 <p>最后，完整的 Demo 见 GitHub <a href="https://github.com/zt-luo/QuickWidgetPlayer">链接</a>。</p>
     </div>

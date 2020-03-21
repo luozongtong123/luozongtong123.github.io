@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.64.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/caddy-my-blog/" />
@@ -222,7 +222,7 @@ sudo chown -R www-data:www-data /var/www/blog</code></pre></div>
   root /var/www/blog
   git {
     repo https://github.com/zt-luo/zt-luo.github.io.git
-    hook /webhook "Secret"
+    hook /webhook &#34;Secret&#34;
   }
   log /var/log/caddy.log
 }</code></pre>

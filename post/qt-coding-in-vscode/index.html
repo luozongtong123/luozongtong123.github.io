@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.64.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/qt-coding-in-vscode/" />
@@ -177,10 +177,10 @@
 
 <p>一个简单的 CMake 例子如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmake" data-lang="cmake">cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.10</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># your project name
 </span><span style="color:#75715e"></span>project(<span style="color:#e6db74">&#34;SubControl&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>add_compile_options(<span style="color:#e6db74">-g</span> <span style="color:#e6db74">-O0</span> 
                     <span style="color:#75715e"># -Wno-unused-parameter
 </span><span style="color:#75715e"></span>                    <span style="color:#e6db74">-static</span>)<span style="color:#960050;background-color:#1e0010">
@@ -189,11 +189,11 @@
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># find includes in the corresponding build directories
 </span><span style="color:#75715e"></span>set(<span style="color:#e6db74">CMAKE_INCLUDE_CURRENT_DIR</span> <span style="color:#e6db74">ON</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># run moc automatically
-</span><span style="color:#75715e"></span><span style="color:#75715e"># set(CMAKE_AUTOMOC ON)
-</span><span style="color:#75715e"></span><span style="color:#75715e"># run uic automatically
-</span><span style="color:#75715e"></span><span style="color:#75715e"># set(CMAKE_AUTOUIC ON)
-</span><span style="color:#75715e"></span><span style="color:#75715e"># run rcc automatically
-</span><span style="color:#75715e"></span><span style="color:#75715e"># set (CMAKE_AUTORCC ON)
+</span><span style="color:#75715e"># set(CMAKE_AUTOMOC ON)
+</span><span style="color:#75715e"># run uic automatically
+</span><span style="color:#75715e"># set(CMAKE_AUTOUIC ON)
+</span><span style="color:#75715e"># run rcc automatically
+</span><span style="color:#75715e"># set (CMAKE_AUTORCC ON)
 </span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>message(<span style="color:#e6db74">&#34;Looking for Qt...&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Qt modules (https://doc.qt.io/qt-5/qtmodules.html) you&#39;re using in your application
@@ -203,7 +203,7 @@
 </span><span style="color:#960050;background-color:#1e0010"></span>else()<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    message(<span style="color:#e6db74">&#34;Couldn&#39;t find Qt&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>endif()<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>link_libraries(
     <span style="color:#e6db74">Qt5::Core</span>
     <span style="color:#e6db74">Qt5::Widgets</span>
@@ -211,39 +211,39 @@
     <span style="color:#e6db74">Qt5::Charts</span>
     <span style="color:#e6db74">Qt5::Gamepad</span>
     )<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>qt5_wrap_ui(<span style="color:#e6db74">ui_list</span> 
     <span style="color:#e6db74">&#34;ui/mainwindow.ui&#34;</span>
     <span style="color:#e6db74">&#34;ui/videowindow.ui&#34;</span>
     )<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>qt5_wrap_cpp(<span style="color:#e6db74">moc_list</span>
     <span style="color:#e6db74">&#34;inc/chart.h&#34;</span>
     <span style="color:#e6db74">&#34;inc/mainwindow.h&#34;</span>
     <span style="color:#e6db74">&#34;inc/qFlightInstruments.h&#34;</span>
     <span style="color:#e6db74">&#34;inc/videowindow.h&#34;</span>
 )<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>qt5_add_resources(<span style="color:#e6db74">qrc_list</span> 
     <span style="color:#e6db74">&#34;assets.qrc&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># check and search moudles
 </span><span style="color:#75715e"></span>find_package(<span style="color:#e6db74">PkgConfig</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>pkg_search_module(<span style="color:#e6db74">GLIB</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">glib-2.0</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>pkg_search_module(<span style="color:#e6db74">LIBSERIALPORT</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">libserialport</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>pkg_search_module(<span style="color:#e6db74">LIBVLC_CORE</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">libVLCQtCore</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>pkg_search_module(<span style="color:#e6db74">LIBVLC_WIDGETS</span> <span style="color:#e6db74">REQUIRED</span> <span style="color:#e6db74">libVLCQtWidgets</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>include_directories(
     <span style="color:#f92672">${</span>GLIB_INCLUDE_DIRS<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>LIBSERIALPORT_INCLUDE_DIRS<span style="color:#f92672">}</span> 
     <span style="color:#f92672">${</span>LIBVL_CCORE_INCLUDE_DIRS<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>LIBVLC_WIDGETS_INCLUDE_DIRS<span style="color:#f92672">}</span> 
     )<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>link_libraries(
     <span style="color:#f92672">${</span>GLIB_LDFLAGS<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>LIBSERIALPORT_LDFLAGS<span style="color:#f92672">}</span> 
     <span style="color:#f92672">${</span>LIBVLC_CORE_LDFLAGS<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>LIBVLC_WIDGETS_LDFLAGS<span style="color:#f92672">}</span> 
     )<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>ADD_SUBDIRECTORY(<span style="color:#e6db74">ardusub_api</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>link_libraries(<span style="color:#e6db74">ardusub_static</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># link_libraries(ardusub_shared)
@@ -251,7 +251,7 @@
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># add include dir
 </span><span style="color:#75715e"></span>include_directories(<span style="color:#e6db74">&#34;ardusub_api/mavlink_c_library_v2&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>include_directories(<span style="color:#e6db74">&#34;inc&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># your source files
 </span><span style="color:#75715e"></span>set(<span style="color:#e6db74">src_list</span>
     <span style="color:#e6db74">&#34;src/chart.cpp&#34;</span>
@@ -264,9 +264,9 @@
     <span style="color:#e6db74">&#34;src/video.cpp&#34;</span>
     <span style="color:#e6db74">&#34;src/videowindow.cpp&#34;</span>
 )<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># name of the .exe file, window flag and the list of things to compile
-</span><span style="color:#75715e"></span><span style="color:#75715e"># add_executable(${CMAKE_PROJECT_NAME} WIN32 ${sources})
+</span><span style="color:#75715e"># add_executable(${CMAKE_PROJECT_NAME} WIN32 ${sources})
 </span><span style="color:#75715e"></span>add_executable(<span style="color:#f92672">${</span>CMAKE_PROJECT_NAME<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>src_list<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>ui_list<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>moc_list<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>qrc_list<span style="color:#f92672">}</span>)</code></pre></div>
 <blockquote>
 <p>CMakeLists.txt 来自 <a href="https://github.com/zt-luo/SubControl/blob/master/CMakeLists.txt">SubControl</a> 项目。</p>

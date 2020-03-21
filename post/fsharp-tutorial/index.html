@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.64.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/fsharp-tutorial/" />
@@ -59,7 +59,7 @@
 <meta itemprop="description" content="This is a F# Tutorial.">
 <meta itemprop="datePublished" content="2018-10-26T23:57:57&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-26T23:57:57&#43;08:00" />
-<meta itemprop="wordCount" content="1964">
+<meta itemprop="wordCount" content="1967">
 
 
 
@@ -137,7 +137,7 @@
       <div class="post-meta">
         <span class="post-time"> 2018-10-26 </span>
         
-        <span class="more-meta"> 约 1964 字 </span>
+        <span class="more-meta"> 约 1967 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -164,25 +164,25 @@
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">open</span> System.Drawing
 
 <span style="color:#66d9ef">let</span> hello() <span style="color:#f92672">=</span>                      <span style="color:#75715e">// let 用来绑定函数名或者参数名
-</span><span style="color:#75715e"></span>  printf <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Enter your name: </span><span style="color:#e6db74">&#34;</span>     <span style="color:#75715e">// printf 不启用新行的打印函数
+</span><span style="color:#75715e"></span>  printf <span style="color:#e6db74">&#34;Enter your name: &#34;</span>     <span style="color:#75715e">// printf 不启用新行的打印函数
 </span><span style="color:#75715e"></span>    
   <span style="color:#66d9ef">let</span> name <span style="color:#f92672">=</span> Console.ReadLine()  <span style="color:#75715e">// 读取一行并将读取到的值和 name 绑定
 </span><span style="color:#75715e"></span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Hello %s!</span><span style="color:#e6db74">&#34;</span> name       <span style="color:#75715e">// 启用新行的打印 % 引用参数
+  printfn <span style="color:#e6db74">&#34;Hello %s!&#34;</span> name       <span style="color:#75715e">// 启用新行的打印 % 引用参数
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// %s %i %f %b %A %O           
 </span><span style="color:#75715e"></span>
 hello()
 
 <span style="color:#66d9ef">let</span> hello1() <span style="color:#f92672">=</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">PI: %f</span><span style="color:#e6db74">&#34;</span> 3<span style="color:#f92672">.</span>14159265358979323846264338327       <span style="color:#75715e">// 浮点数只有6位小数
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">PI: %.4f</span><span style="color:#e6db74">&#34;</span> 3<span style="color:#f92672">.</span>14159265358979323846264338327     <span style="color:#75715e">// 可以调整显示的小数的位数
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Big PI: %M</span><span style="color:#e6db74">&#34;</span> 3<span style="color:#f92672">.</span>14159265358979323846264338327M  <span style="color:#75715e">// 最高可以到达27位小数
+  printfn <span style="color:#e6db74">&#34;PI: %f&#34;</span> 3<span style="color:#f92672">.</span>14159265358979323846264338327       <span style="color:#75715e">// 浮点数只有6位小数
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;PI: %.4f&#34;</span> 3<span style="color:#f92672">.</span>14159265358979323846264338327     <span style="color:#75715e">// 可以调整显示的小数的位数
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;Big PI: %M&#34;</span> 3<span style="color:#f92672">.</span>14159265358979323846264338327M  <span style="color:#75715e">// 最高可以到达27位小数
 </span><span style="color:#75715e"></span>
 hello1()
 
 <span style="color:#66d9ef">let</span> hello2() <span style="color:#f92672">=</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%-5s %5s</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">a</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span>             <span style="color:#75715e">// 添加空格
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%*s</span><span style="color:#e6db74">&#34;</span> 10 <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Hi</span><span style="color:#e6db74">&#34;</span>                  <span style="color:#75715e">// 动态空格
+  printfn <span style="color:#e6db74">&#34;%-5s %5s&#34;</span> <span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#e6db74">&#34;b&#34;</span>             <span style="color:#75715e">// 添加空格
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;%*s&#34;</span> 10 <span style="color:#e6db74">&#34;Hi&#34;</span>                  <span style="color:#75715e">// 动态空格
 </span><span style="color:#75715e"></span>    
 hello2()
 
@@ -190,26 +190,26 @@ hello2()
   <span style="color:#66d9ef">let</span> mutable weight <span style="color:#f92672">=</span> 175         <span style="color:#75715e">// 可以改变的参数 (mutable)
 </span><span style="color:#75715e"></span>  weight <span style="color:#f92672">&lt;-</span> 170                    <span style="color:#75715e">// 使用 &lt;- 赋值
 </span><span style="color:#75715e"></span>  
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Weight: %i</span><span style="color:#e6db74">&#34;</span> weight
+  printfn <span style="color:#e6db74">&#34;Weight: %i&#34;</span> weight
 
   <span style="color:#66d9ef">let</span> changeMe <span style="color:#f92672">=</span> ref 10            <span style="color:#75715e">// 奇怪的语法，先不管这了
 </span><span style="color:#75715e"></span>  changeMe <span style="color:#f92672">:=</span> 50
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Change: %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">!</span> changeMe
+  printfn <span style="color:#e6db74">&#34;Change: %i&#34;</span> <span style="color:#f92672">!</span> changeMe
 
 bindStuff()
 
 <span style="color:#66d9ef">let</span> doFuns() <span style="color:#f92672">=</span>
   <span style="color:#66d9ef">let</span> getSum<span style="color:#f92672">(</span>x <span style="color:#f92672">:</span> int<span style="color:#f92672">,</span> y <span style="color:#f92672">:</span> int<span style="color:#f92672">)</span> <span style="color:#f92672">:</span>int <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">5 + 7 = %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>getSum<span style="color:#f92672">(</span>5<span style="color:#f92672">,</span>7<span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;5 + 7 = %i&#34;</span> <span style="color:#f92672">(</span>getSum<span style="color:#f92672">(</span>5<span style="color:#f92672">,</span>7<span style="color:#f92672">))</span>
 
   <span style="color:#75715e">// 递归函数
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> rec factorial x <span style="color:#f92672">=</span>
     <span style="color:#66d9ef">if</span> x <span style="color:#f92672">&lt;</span> 1 <span style="color:#66d9ef">then</span> 1
     <span style="color:#66d9ef">else</span> x <span style="color:#f92672">*</span> factorial <span style="color:#f92672">(</span>x <span style="color:#f92672">-</span> 1<span style="color:#f92672">)</span>
   
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Factorial 4 : %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>factorial 4<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;Factorial 4 : %i&#34;</span> <span style="color:#f92672">(</span>factorial 4<span style="color:#f92672">)</span>
   <span style="color:#75715e">// 1st : result = 4 * factoral(3) = 4 * 6 = 24
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// 2st : result = 3 * factoral(2) = 3 * 2 = 6
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// 1st : result = 2 * factoral(1) = 2 * 1 = 2
@@ -220,122 +220,122 @@ bindStuff()
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// 第一个参数是 lambda 表达式 (anonymous function, 匿名函数)
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// 第二个参数是被操作的数组
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> randList2 <span style="color:#f92672">=</span>  List.map <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">*</span> 2<span style="color:#f92672">)</span> randList
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Double List : %A</span><span style="color:#e6db74">&#34;</span> randList2
+  printfn <span style="color:#e6db74">&#34;Double List : %A&#34;</span> randList2
 
   <span style="color:#75715e">// 管道可以很方便地进行多步计算
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// 管道：将值输入(|&gt;)到函数中
 </span><span style="color:#75715e"></span>  <span style="color:#f92672">[</span>5<span style="color:#f92672">;</span> 6<span style="color:#f92672">;</span> 7<span style="color:#f92672">;</span> 8<span style="color:#f92672">]</span>
-  <span style="color:#f92672">|</span><span style="color:#f92672">&gt;</span> List.filter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> v <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">(</span>v <span style="color:#f92672">%</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
-  <span style="color:#f92672">|</span><span style="color:#f92672">&gt;</span> List.map <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">*</span> 2<span style="color:#f92672">)</span>
-  <span style="color:#f92672">|</span><span style="color:#f92672">&gt;</span> printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Even Doubles %A</span><span style="color:#e6db74">&#34;</span> 
+  <span style="color:#f92672">|&gt;</span> List.filter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> v <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">(</span>v <span style="color:#f92672">%</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
+  <span style="color:#f92672">|&gt;</span> List.map <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">*</span> 2<span style="color:#f92672">)</span>
+  <span style="color:#f92672">|&gt;</span> printfn <span style="color:#e6db74">&#34;Even Doubles %A&#34;</span> 
 
   <span style="color:#75715e">// &gt;&gt; 和 &lt;&lt; 可以将两个函数合二为一
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> multNum x <span style="color:#f92672">=</span> x <span style="color:#f92672">*</span> 3
   <span style="color:#66d9ef">let</span> addNum y <span style="color:#f92672">=</span> y <span style="color:#f92672">+</span> 5
 
-  <span style="color:#66d9ef">let</span> multAdd <span style="color:#f92672">=</span> multNum <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> addNum
-  <span style="color:#66d9ef">let</span> addMult <span style="color:#f92672">=</span> multNum <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> addNum
+  <span style="color:#66d9ef">let</span> multAdd <span style="color:#f92672">=</span> multNum <span style="color:#f92672">&gt;&gt;</span> addNum
+  <span style="color:#66d9ef">let</span> addMult <span style="color:#f92672">=</span> multNum <span style="color:#f92672">&lt;&lt;</span> addNum
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">multAdd : %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>multAdd 10<span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">addMult : %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>addMult 10<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;multAdd : %i&#34;</span> <span style="color:#f92672">(</span>multAdd 10<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;addMult : %i&#34;</span> <span style="color:#f92672">(</span>addMult 10<span style="color:#f92672">)</span>
 
 doFuns()
 
 <span style="color:#75715e">// 一些数学函数
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> doMath() <span style="color:#f92672">=</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">5 + 4 = %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">+</span> 4<span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">5 - 4 = %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">-</span> 4<span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">5 * 4 = %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">*</span> 4<span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">5 / 4 = %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">/</span> 4<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;5 + 4 = %i&#34;</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">+</span> 4<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;5 - 4 = %i&#34;</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">-</span> 4<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;5 * 4 = %i&#34;</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">*</span> 4<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;5 / 4 = %i&#34;</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">/</span> 4<span style="color:#f92672">)</span>
   <span style="color:#75715e">// &#34;&#34; 里面用 % 要用 %%
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">5 %% 4 = %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">%</span> 4<span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;5 %% 4 = %i&#34;</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">%</span> 4<span style="color:#f92672">)</span>
   <span style="color:#75715e">// 5^2
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">5 ** 2 = %f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>5<span style="color:#f92672">.</span>0 <span style="color:#f92672">*</span><span style="color:#f92672">*</span> 2<span style="color:#f92672">.</span>0<span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;5 ** 2 = %f&#34;</span> <span style="color:#f92672">(</span>5<span style="color:#f92672">.</span>0 <span style="color:#f92672">**</span> 2<span style="color:#f92672">.</span>0<span style="color:#f92672">)</span>
 
   <span style="color:#66d9ef">let</span> number <span style="color:#f92672">=</span> 2
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Type: %A</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>number<span style="color:#f92672">.</span>GetType()<span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">A Float: %.2f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> number<span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">An Int: %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>int 3<span style="color:#f92672">.</span>14<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;Type: %A&#34;</span> <span style="color:#f92672">(</span>number<span style="color:#f92672">.</span>GetType()<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;A Float: %.2f&#34;</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> number<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;An Int: %i&#34;</span> <span style="color:#f92672">(</span>int 3<span style="color:#f92672">.</span>14<span style="color:#f92672">)</span>
 
   <span style="color:#75715e">// 其他数学函数
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// 绝对值
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">abs 4.5 : %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>abs <span style="color:#f92672">-</span>1<span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;abs 4.5 : %i&#34;</span> <span style="color:#f92672">(</span>abs <span style="color:#f92672">-</span>1<span style="color:#f92672">)</span>
   <span style="color:#75715e">// 向上取整
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">ceil 4.5 : %f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>ceil 4<span style="color:#f92672">.</span>5<span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;ceil 4.5 : %f&#34;</span> <span style="color:#f92672">(</span>ceil 4<span style="color:#f92672">.</span>5<span style="color:#f92672">)</span>
   <span style="color:#75715e">// 向下取整
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">floor 4.5 : %f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>floor 4<span style="color:#f92672">.</span>5<span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;floor 4.5 : %f&#34;</span> <span style="color:#f92672">(</span>floor 4<span style="color:#f92672">.</span>5<span style="color:#f92672">)</span>
   <span style="color:#75715e">// ln
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">log 2.71828 : %f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>log 2<span style="color:#f92672">.</span>71828<span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;log 2.71828 : %f&#34;</span> <span style="color:#f92672">(</span>log 2<span style="color:#f92672">.</span>71828<span style="color:#f92672">)</span>
   <span style="color:#75715e">// lg
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">log10 1000 : %F</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>log10 1000<span style="color:#f92672">.</span>0<span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;log10 1000 : %F&#34;</span> <span style="color:#f92672">(</span>log10 1000<span style="color:#f92672">.</span>0<span style="color:#f92672">)</span>
   <span style="color:#75715e">// 求平方根
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">sqrt 25 : %f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>sqrt 25<span style="color:#f92672">.</span>0<span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;sqrt 25 : %f&#34;</span> <span style="color:#f92672">(</span>sqrt 25<span style="color:#f92672">.</span>0<span style="color:#f92672">)</span>
 
 
 doMath()
 
 <span style="color:#66d9ef">let</span> stringStuff() <span style="color:#f92672">=</span>
-  <span style="color:#66d9ef">let</span> str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">This is a random string</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#66d9ef">let</span> str1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;This is a random string</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span>
   <span style="color:#75715e">// @ 加到字符串之前可以将 \ 加入到字符串之中
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> str2 <span style="color:#f92672">=</span> <span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">I ignore backslashes\\\\</span><span style="color:#e6db74">&#34;</span>
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> str2 <span style="color:#f92672">=</span> <span style="color:#e6db74">@&#34;I ignore backslashes\\\\&#34;</span>
   <span style="color:#75715e">// 三个双引号可将引号添加到字符串
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> str3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">I ignore qutes and backslashes</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> str3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34; &#34;I ignore qutes and backslashes&#34; &#34;&#34;&#34;</span>
   <span style="color:#75715e">// 字符串相连
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> str4 <span style="color:#f92672">=</span> str1 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> str2
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> str4 <span style="color:#f92672">=</span> str1 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> str2
   <span style="color:#75715e">// length 获取字符串的长度
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Length : %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>String.length str4<span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;Length : %i&#34;</span> <span style="color:#f92672">(</span>String.length str4<span style="color:#f92672">)</span>
   <span style="color:#75715e">// 和 C 相似的字符访问
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%c</span><span style="color:#e6db74">&#34;</span> str1<span style="color:#f92672">.</span><span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;%c&#34;</span> str1<span style="color:#f92672">.[</span>1<span style="color:#f92672">]</span>
   <span style="color:#75715e">// 和 Python 相似的字符串切片操作
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">First word : %s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>str1<span style="color:#f92672">.</span><span style="color:#f92672">[</span><span style="color:#f92672">..</span>3<span style="color:#f92672">]</span><span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Second word : %s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>str1<span style="color:#f92672">.</span><span style="color:#f92672">[</span>5<span style="color:#f92672">..</span>6<span style="color:#f92672">]</span><span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">The rest word : %s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>str1<span style="color:#f92672">.</span><span style="color:#f92672">[</span>8<span style="color:#f92672">..</span><span style="color:#f92672">]</span><span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;First word : %s&#34;</span> <span style="color:#f92672">(</span>str1<span style="color:#f92672">.[..</span>3<span style="color:#f92672">])</span>
+  printfn <span style="color:#e6db74">&#34;Second word : %s&#34;</span> <span style="color:#f92672">(</span>str1<span style="color:#f92672">.[</span>5<span style="color:#f92672">..</span>6<span style="color:#f92672">])</span>
+  printfn <span style="color:#e6db74">&#34;The rest word : %s&#34;</span> <span style="color:#f92672">(</span>str1<span style="color:#f92672">.[</span>8<span style="color:#f92672">..])</span>
 
   <span style="color:#75715e">// 
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> upperStr <span style="color:#f92672">=</span> String.collect <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> c <span style="color:#f92672">-&gt;</span> sprintf <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%c, </span><span style="color:#e6db74">&#34;</span> c<span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">commas</span><span style="color:#e6db74">&#34;</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Commas : %s</span><span style="color:#e6db74">&#34;</span> upperStr
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> upperStr <span style="color:#f92672">=</span> String.collect <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> c <span style="color:#f92672">-&gt;</span> sprintf <span style="color:#e6db74">&#34;%c, &#34;</span> c<span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;commas&#34;</span>
+  printfn <span style="color:#e6db74">&#34;Commas : %s&#34;</span> upperStr
 
   <span style="color:#75715e">// 测试字符串中是否有字符满足条件
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Any upper: %b</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>String.exists <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> c <span style="color:#f92672">-&gt;</span> Char.IsUpper c<span style="color:#f92672">)</span> str1<span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;Any upper: %b&#34;</span> <span style="color:#f92672">(</span>String.exists <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> c <span style="color:#f92672">-&gt;</span> Char.IsUpper c<span style="color:#f92672">)</span> str1<span style="color:#f92672">)</span>
 
   <span style="color:#75715e">// 测试字符串中所有的字符满足条件
-</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Number : %b</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>String.forall <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> c <span style="color:#f92672">-&gt;</span> Char.IsDigit c<span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">1234</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
+</span><span style="color:#75715e"></span>  printfn <span style="color:#e6db74">&#34;Number : %b&#34;</span> <span style="color:#f92672">(</span>String.forall <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> c <span style="color:#f92672">-&gt;</span> Char.IsDigit c<span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;1234&#34;</span><span style="color:#f92672">)</span>
 
   <span style="color:#75715e">// 初始化字符串
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> string1 <span style="color:#f92672">=</span> String.init 10 <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> i <span style="color:#f92672">-&gt;</span> i<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Numbers : %s</span><span style="color:#e6db74">&#34;</span> string1
+  printfn <span style="color:#e6db74">&#34;Numbers : %s&#34;</span> string1
 
   <span style="color:#75715e">// 对字符串中的每个字符进行操作
-</span><span style="color:#75715e"></span>  String.iter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> c <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%c</span><span style="color:#e6db74">&#34;</span> c<span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Print Me!</span><span style="color:#e6db74">&#34;</span>
+</span><span style="color:#75715e"></span>  String.iter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> c <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;%c&#34;</span> c<span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;Print Me!&#34;</span>
 
 stringStuff()
 
 <span style="color:#66d9ef">let</span> loopStuffWhile() <span style="color:#f92672">=</span>
-  <span style="color:#66d9ef">let</span> magic_num <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">7</span><span style="color:#e6db74">&#34;</span>
-  <span style="color:#66d9ef">let</span> mutable guess <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#66d9ef">let</span> magic_num <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;7&#34;</span>
+  <span style="color:#66d9ef">let</span> mutable guess <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
 
-  <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> <span style="color:#f92672">(</span>magic_num<span style="color:#f92672">.</span>Equals<span style="color:#f92672">(</span>guess<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">do</span>
-    printf <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Guess the Number :</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> <span style="color:#f92672">(</span>magic_num<span style="color:#f92672">.</span>Equals<span style="color:#f92672">(</span>guess<span style="color:#f92672">))</span> <span style="color:#66d9ef">do</span>
+    printf <span style="color:#e6db74">&#34;Guess the Number :&#34;</span>
     guess <span style="color:#f92672">&lt;-</span> Console.ReadLine()
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">You Guessed the Number!</span><span style="color:#e6db74">&#34;</span>
+  printfn <span style="color:#e6db74">&#34;You Guessed the Number!&#34;</span>
 
 loopStuffWhile()
 
 <span style="color:#66d9ef">let</span> loopStuffFor() <span style="color:#f92672">=</span> 
   <span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> 1 <span style="color:#66d9ef">to</span> 10 <span style="color:#66d9ef">do</span> 
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%i</span><span style="color:#e6db74">&#34;</span> i
+    printfn <span style="color:#e6db74">&#34;%i&#34;</span> i
 
   <span style="color:#66d9ef">for</span> i <span style="color:#f92672">=</span> 10 <span style="color:#66d9ef">downto</span> 1 <span style="color:#66d9ef">do</span>
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%i</span><span style="color:#e6db74">&#34;</span> i
+    printfn <span style="color:#e6db74">&#34;%i&#34;</span> i
 
   <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#f92672">[</span>1<span style="color:#f92672">..</span>10<span style="color:#f92672">]</span> <span style="color:#66d9ef">do</span>
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%i</span><span style="color:#e6db74">&#34;</span> i
+    printfn <span style="color:#e6db74">&#34;%i&#34;</span> i
 
-  <span style="color:#f92672">[</span>1<span style="color:#f92672">..</span>10<span style="color:#f92672">]</span> <span style="color:#f92672">|</span><span style="color:#f92672">&gt;</span> List.iter <span style="color:#f92672">(</span>printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Num : %i</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
+  <span style="color:#f92672">[</span>1<span style="color:#f92672">..</span>10<span style="color:#f92672">]</span> <span style="color:#f92672">|&gt;</span> List.iter <span style="color:#f92672">(</span>printfn <span style="color:#e6db74">&#34;Num : %i&#34;</span><span style="color:#f92672">)</span>
 
-  <span style="color:#66d9ef">let</span> sum <span style="color:#f92672">=</span> List.reduce <span style="color:#f92672">(</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> <span style="color:#f92672">[</span>1<span style="color:#f92672">..</span>10<span style="color:#f92672">]</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Sum : %i</span><span style="color:#e6db74">&#34;</span> sum
+  <span style="color:#66d9ef">let</span> sum <span style="color:#f92672">=</span> List.reduce <span style="color:#f92672">(+)</span> <span style="color:#f92672">[</span>1<span style="color:#f92672">..</span>10<span style="color:#f92672">]</span>
+  printfn <span style="color:#e6db74">&#34;Sum : %i&#34;</span> sum
 
 loopStuffFor()
 
@@ -343,73 +343,73 @@ loopStuffFor()
   <span style="color:#66d9ef">let</span> age <span style="color:#f92672">=</span> 8
 
   <span style="color:#66d9ef">if</span> age <span style="color:#f92672">&lt;</span> 5 <span style="color:#66d9ef">then</span>
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Preschool</span><span style="color:#e6db74">&#34;</span>
+    printfn <span style="color:#e6db74">&#34;Preschool&#34;</span>
   <span style="color:#66d9ef">elif</span> age <span style="color:#f92672">=</span> 5 <span style="color:#66d9ef">then</span>
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Kindergarten</span><span style="color:#e6db74">&#34;</span>
-  <span style="color:#66d9ef">elif</span> <span style="color:#f92672">(</span>age <span style="color:#f92672">&gt;</span> 5<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">(</span>age <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> 18<span style="color:#f92672">)</span> <span style="color:#66d9ef">then</span>
+    printfn <span style="color:#e6db74">&#34;Kindergarten&#34;</span>
+  <span style="color:#66d9ef">elif</span> <span style="color:#f92672">(</span>age <span style="color:#f92672">&gt;</span> 5<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">(</span>age <span style="color:#f92672">&lt;=</span> 18<span style="color:#f92672">)</span> <span style="color:#66d9ef">then</span>
     <span style="color:#66d9ef">let</span> grade <span style="color:#f92672">=</span> age <span style="color:#f92672">-</span> 5
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Go to grade %i</span><span style="color:#e6db74">&#34;</span> grade
+    printfn <span style="color:#e6db74">&#34;Go to grade %i&#34;</span> grade
   <span style="color:#66d9ef">else</span>
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Go to College</span><span style="color:#e6db74">&#34;</span>
+    printfn <span style="color:#e6db74">&#34;Go to College&#34;</span>
 
   <span style="color:#66d9ef">let</span> gpa <span style="color:#f92672">=</span> 3<span style="color:#f92672">.</span>9
   <span style="color:#66d9ef">let</span> income <span style="color:#f92672">=</span> 15000
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">College Grant: %b</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span><span style="color:#f92672">(</span>gpa <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> 3<span style="color:#f92672">.</span>8<span style="color:#f92672">)</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> <span style="color:#f92672">(</span>income <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> 12000<span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;College Grant: %b&#34;</span> <span style="color:#f92672">((</span>gpa <span style="color:#f92672">&gt;=</span> 3<span style="color:#f92672">.</span>8<span style="color:#f92672">)</span> <span style="color:#f92672">||</span> <span style="color:#f92672">(</span>income <span style="color:#f92672">&lt;=</span> 12000<span style="color:#f92672">))</span>
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Not True: %b</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span><span style="color:#f92672">not</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;Not True: %b&#34;</span> <span style="color:#f92672">(</span><span style="color:#f92672">not</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span>
 
   <span style="color:#66d9ef">let</span> grade2<span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">=</span>
     <span style="color:#66d9ef">match</span> age <span style="color:#66d9ef">with</span>
-    <span style="color:#f92672">|</span> age <span style="color:#66d9ef">when</span> age <span style="color:#f92672">&lt;</span> 5 <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Preschool</span><span style="color:#e6db74">&#34;</span>
-    <span style="color:#f92672">|</span> 5 <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Kindergaten</span><span style="color:#e6db74">&#34;</span>
-    <span style="color:#f92672">|</span> age <span style="color:#66d9ef">when</span> <span style="color:#f92672">(</span><span style="color:#f92672">(</span>age <span style="color:#f92672">&gt;</span> 5<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">(</span>age <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> 18<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">(</span>age <span style="color:#f92672">-</span> 5<span style="color:#f92672">)</span><span style="color:#f92672">.</span>ToString()
-    <span style="color:#f92672">|</span> <span style="color:#f92672">_</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Collage</span><span style="color:#e6db74">&#34;</span>
+    <span style="color:#f92672">|</span> age <span style="color:#66d9ef">when</span> age <span style="color:#f92672">&lt;</span> 5 <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Preschool&#34;</span>
+    <span style="color:#f92672">|</span> 5 <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Kindergaten&#34;</span>
+    <span style="color:#f92672">|</span> age <span style="color:#66d9ef">when</span> <span style="color:#f92672">((</span>age <span style="color:#f92672">&gt;</span> 5<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">(</span>age <span style="color:#f92672">&lt;=</span> 18<span style="color:#f92672">))</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">(</span>age <span style="color:#f92672">-</span> 5<span style="color:#f92672">).</span>ToString()
+    <span style="color:#f92672">|</span> <span style="color:#f92672">_</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Collage&#34;</span>
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Grade2 : %s</span><span style="color:#e6db74">&#34;</span> grade2
+  printfn <span style="color:#e6db74">&#34;Grade2 : %s&#34;</span> grade2
 
 cond_stuff()
 
 <span style="color:#66d9ef">let</span> list_stuff() <span style="color:#f92672">=</span>
 
   <span style="color:#66d9ef">let</span> list1 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>1<span style="color:#f92672">;</span> 2<span style="color:#f92672">;</span> 3<span style="color:#f92672">;</span> 4<span style="color:#f92672">]</span>
-  list1 <span style="color:#f92672">|</span><span style="color:#f92672">&gt;</span> List.iter <span style="color:#f92672">(</span>printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Num : %i</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">list1 : %A</span><span style="color:#e6db74">&#34;</span> list1
+  list1 <span style="color:#f92672">|&gt;</span> List.iter <span style="color:#f92672">(</span>printfn <span style="color:#e6db74">&#34;Num : %i&#34;</span><span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;list1 : %A&#34;</span> list1
 
   <span style="color:#66d9ef">let</span> list2 <span style="color:#f92672">=</span> 5<span style="color:#f92672">::</span>6<span style="color:#f92672">::</span>7<span style="color:#f92672">::</span>[]
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">list2 : %A</span><span style="color:#e6db74">&#34;</span> list2 
+  printfn <span style="color:#e6db74">&#34;list2 : %A&#34;</span> list2 
 
   <span style="color:#66d9ef">let</span> list3 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>1<span style="color:#f92672">..</span>5<span style="color:#f92672">]</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">list : %A</span><span style="color:#e6db74">&#34;</span> list3
+  printfn <span style="color:#e6db74">&#34;list : %A&#34;</span> list3
 
   <span style="color:#66d9ef">let</span> list4 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">..</span><span style="color:#e6db74">&#39;g&#39;</span><span style="color:#f92672">]</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">list4 : %A</span><span style="color:#e6db74">&#34;</span> list4
+  printfn <span style="color:#e6db74">&#34;list4 : %A&#34;</span> list4
 
   <span style="color:#66d9ef">let</span> list5 <span style="color:#f92672">=</span> List.init 5 <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> i <span style="color:#f92672">-&gt;</span> i <span style="color:#f92672">*</span> 2<span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">list5 : %A</span><span style="color:#e6db74">&#34;</span> list5
+  printfn <span style="color:#e6db74">&#34;list5 : %A&#34;</span> list5
 
-  <span style="color:#66d9ef">let</span> list6 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">for</span> a <span style="color:#66d9ef">in</span> 1<span style="color:#f92672">..</span>5 <span style="color:#66d9ef">do</span> <span style="color:#66d9ef">yield</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">*</span> a<span style="color:#f92672">)</span><span style="color:#f92672">]</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">list6 : %A</span><span style="color:#e6db74">&#34;</span> list6
+  <span style="color:#66d9ef">let</span> list6 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">for</span> a <span style="color:#66d9ef">in</span> 1<span style="color:#f92672">..</span>5 <span style="color:#66d9ef">do</span> <span style="color:#66d9ef">yield</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">*</span> a<span style="color:#f92672">)]</span>
+  printfn <span style="color:#e6db74">&#34;list6 : %A&#34;</span> list6
 
   <span style="color:#66d9ef">let</span> list7 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">for</span> a <span style="color:#66d9ef">in</span> 1<span style="color:#f92672">..</span>20 <span style="color:#66d9ef">do</span> <span style="color:#66d9ef">if</span> a <span style="color:#f92672">%</span> 2 <span style="color:#f92672">=</span> 0 <span style="color:#66d9ef">then</span> <span style="color:#66d9ef">yield</span> a<span style="color:#f92672">]</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">list7 : %A</span><span style="color:#e6db74">&#34;</span> list7
+  printfn <span style="color:#e6db74">&#34;list7 : %A&#34;</span> list7
 
-  <span style="color:#66d9ef">let</span> list8 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">for</span> a <span style="color:#66d9ef">in</span> 1<span style="color:#f92672">..</span>3 <span style="color:#66d9ef">do</span> <span style="color:#66d9ef">yield</span><span style="color:#f92672">!</span> <span style="color:#f92672">[</span>a<span style="color:#f92672">..</span>a <span style="color:#f92672">+</span> 2<span style="color:#f92672">]</span><span style="color:#f92672">]</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">list8 : %A</span><span style="color:#e6db74">&#34;</span> list8
+  <span style="color:#66d9ef">let</span> list8 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">for</span> a <span style="color:#66d9ef">in</span> 1<span style="color:#f92672">..</span>3 <span style="color:#66d9ef">do</span> <span style="color:#66d9ef">yield</span><span style="color:#f92672">!</span> <span style="color:#f92672">[</span>a<span style="color:#f92672">..</span>a <span style="color:#f92672">+</span> 2<span style="color:#f92672">]]</span>
+  printfn <span style="color:#e6db74">&#34;list8 : %A&#34;</span> list8
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Length : %i</span><span style="color:#e6db74">&#34;</span> list8<span style="color:#f92672">.</span>Length
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Empty : %b</span><span style="color:#e6db74">&#34;</span> list8<span style="color:#f92672">.</span>IsEmpty
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Index 2 : %c</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>list4<span style="color:#f92672">.</span>Item<span style="color:#f92672">(</span>2<span style="color:#f92672">)</span><span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Head : %c</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>list4<span style="color:#f92672">.</span>Head<span style="color:#f92672">)</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Tail : %A</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>list4<span style="color:#f92672">.</span>Tail<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;Length : %i&#34;</span> list8<span style="color:#f92672">.</span>Length
+  printfn <span style="color:#e6db74">&#34;Empty : %b&#34;</span> list8<span style="color:#f92672">.</span>IsEmpty
+  printfn <span style="color:#e6db74">&#34;Index 2 : %c&#34;</span> <span style="color:#f92672">(</span>list4<span style="color:#f92672">.</span>Item<span style="color:#f92672">(</span>2<span style="color:#f92672">))</span>
+  printfn <span style="color:#e6db74">&#34;Head : %c&#34;</span> <span style="color:#f92672">(</span>list4<span style="color:#f92672">.</span>Head<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;Tail : %A&#34;</span> <span style="color:#f92672">(</span>list4<span style="color:#f92672">.</span>Tail<span style="color:#f92672">)</span>
 
-  <span style="color:#66d9ef">let</span> list9 <span style="color:#f92672">=</span> list3 <span style="color:#f92672">|</span><span style="color:#f92672">&gt;</span> List.filter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">let</span> list9 <span style="color:#f92672">=</span> list3 <span style="color:#f92672">|&gt;</span> List.filter <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
 
-  <span style="color:#66d9ef">let</span> list10 <span style="color:#f92672">=</span> list9 <span style="color:#f92672">|</span><span style="color:#f92672">&gt;</span> List.map <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> x <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">*</span> x<span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">let</span> list10 <span style="color:#f92672">=</span> list9 <span style="color:#f92672">|&gt;</span> List.map <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> x <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">*</span> x<span style="color:#f92672">))</span>
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Sorted : %A</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>List.sort <span style="color:#f92672">[</span>5<span style="color:#f92672">;</span> 4<span style="color:#f92672">;</span> 3<span style="color:#f92672">]</span><span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;Sorted : %A&#34;</span> <span style="color:#f92672">(</span>List.sort <span style="color:#f92672">[</span>5<span style="color:#f92672">;</span> 4<span style="color:#f92672">;</span> 3<span style="color:#f92672">])</span>
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Sum : %i</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>List.fold <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> sum elem <span style="color:#f92672">-&gt;</span> sum <span style="color:#f92672">+</span> elem<span style="color:#f92672">)</span> 0 <span style="color:#f92672">[</span>1<span style="color:#f92672">;</span> 2<span style="color:#f92672">;</span> 3<span style="color:#f92672">]</span><span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;Sum : %i&#34;</span> <span style="color:#f92672">(</span>List.fold <span style="color:#f92672">(</span><span style="color:#66d9ef">fun</span> sum elem <span style="color:#f92672">-&gt;</span> sum <span style="color:#f92672">+</span> elem<span style="color:#f92672">)</span> 0 <span style="color:#f92672">[</span>1<span style="color:#f92672">;</span> 2<span style="color:#f92672">;</span> 3<span style="color:#f92672">])</span>
 
 list_stuff()
 
@@ -422,9 +422,9 @@ list_stuff()
   <span style="color:#66d9ef">let</span> myFeeling <span style="color:#f92672">=</span> emotion<span style="color:#f92672">.</span>joy
 
   <span style="color:#66d9ef">match</span> myFeeling <span style="color:#66d9ef">with</span>
-  <span style="color:#f92672">|</span> joy <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">I&#39;m joyful</span><span style="color:#e6db74">&#34;</span>
-  <span style="color:#f92672">|</span> fear <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">I&#39;m fearful</span><span style="color:#e6db74">&#34;</span>
-  <span style="color:#f92672">|</span> anger <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">I&#39;m angry</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#f92672">|</span> joy <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;I&#39;m joyful&#34;</span>
+  <span style="color:#f92672">|</span> fear <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;I&#39;m fearful&#34;</span>
+  <span style="color:#f92672">|</span> anger <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;I&#39;m angry&#34;</span>
 
 enum_stuff()
 
@@ -434,12 +434,12 @@ enum_stuff()
     <span style="color:#f92672">|</span> 0 <span style="color:#f92672">-&gt;</span> None
     <span style="color:#f92672">|</span> <span style="color:#f92672">_</span> <span style="color:#f92672">-&gt;</span> Some<span style="color:#f92672">(</span>x <span style="color:#f92672">/</span> y<span style="color:#f92672">)</span>
 
-  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>divide 5 0<span style="color:#f92672">)</span><span style="color:#f92672">.</span>IsSome <span style="color:#66d9ef">then</span>
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">5/0 = %A</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span><span style="color:#f92672">(</span>divide 5 0<span style="color:#f92672">)</span><span style="color:#f92672">.</span>Value<span style="color:#f92672">)</span>
-  <span style="color:#66d9ef">elif</span> <span style="color:#f92672">(</span>divide 5 0<span style="color:#f92672">)</span><span style="color:#f92672">.</span>IsNone <span style="color:#66d9ef">then</span>
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Can&#39;t Divide by Zero</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>divide 5 0<span style="color:#f92672">).</span>IsSome <span style="color:#66d9ef">then</span>
+    printfn <span style="color:#e6db74">&#34;5/0 = %A&#34;</span> <span style="color:#f92672">((</span>divide 5 0<span style="color:#f92672">).</span>Value<span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">elif</span> <span style="color:#f92672">(</span>divide 5 0<span style="color:#f92672">).</span>IsNone <span style="color:#66d9ef">then</span>
+    printfn <span style="color:#e6db74">&#34;Can&#39;t Divide by Zero&#34;</span>
   <span style="color:#66d9ef">else</span>
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Something happenend</span><span style="color:#e6db74">&#34;</span>
+    printfn <span style="color:#e6db74">&#34;Something happenend&#34;</span>
 
 optionStuff()
 
@@ -448,13 +448,13 @@ optionStuff()
     <span style="color:#66d9ef">let</span> sum <span style="color:#f92672">=</span> w <span style="color:#f92672">+</span> x <span style="color:#f92672">+</span> y <span style="color:#f92672">+</span> z
     sum <span style="color:#f92672">/</span> 4<span style="color:#f92672">.</span>0
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Avg : %f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>avg <span style="color:#f92672">(</span>1<span style="color:#f92672">.</span>0<span style="color:#f92672">,</span> 2<span style="color:#f92672">.</span>0<span style="color:#f92672">,</span> 3<span style="color:#f92672">.</span>0<span style="color:#f92672">,</span> 4<span style="color:#f92672">.</span>0<span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;Avg : %f&#34;</span> <span style="color:#f92672">(</span>avg <span style="color:#f92672">(</span>1<span style="color:#f92672">.</span>0<span style="color:#f92672">,</span> 2<span style="color:#f92672">.</span>0<span style="color:#f92672">,</span> 3<span style="color:#f92672">.</span>0<span style="color:#f92672">,</span> 4<span style="color:#f92672">.</span>0<span style="color:#f92672">))</span>
 
-  <span style="color:#66d9ef">let</span> my_data <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">luo</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">,</span> 22<span style="color:#f92672">,</span> 6<span style="color:#f92672">.</span>25<span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">let</span> my_data <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#e6db74">&#34;luo&#34;</span><span style="color:#f92672">,</span> 22<span style="color:#f92672">,</span> 6<span style="color:#f92672">.</span>25<span style="color:#f92672">)</span>
 
-  <span style="color:#66d9ef">let</span> <span style="color:#f92672">(</span>name<span style="color:#f92672">,</span> age<span style="color:#f92672">,</span> <span style="color:#f92672">_</span><span style="color:#f92672">)</span> <span style="color:#f92672">=</span> my_data
+  <span style="color:#66d9ef">let</span> <span style="color:#f92672">(</span>name<span style="color:#f92672">,</span> age<span style="color:#f92672">,</span> <span style="color:#f92672">_)</span> <span style="color:#f92672">=</span> my_data
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Name : %s, age : %i</span><span style="color:#e6db74">&#34;</span> name age
+  printfn <span style="color:#e6db74">&#34;Name : %s, age : %i&#34;</span> name age
 
 tupleStuff()
 
@@ -463,8 +463,8 @@ tupleStuff()
    Blance <span style="color:#f92672">:</span> <span style="color:#66d9ef">float</span><span style="color:#f92672">}</span>
 
 <span style="color:#66d9ef">let</span> recordStuff() <span style="color:#f92672">=</span> 
-  <span style="color:#66d9ef">let</span> bob <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>Name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bob Smith</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">;</span> Blance <span style="color:#f92672">=</span> 101<span style="color:#f92672">.</span>5012<span style="color:#f92672">}</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s owes us %.2f</span><span style="color:#e6db74">&#34;</span> bob<span style="color:#f92672">.</span>Name bob<span style="color:#f92672">.</span>Blance
+  <span style="color:#66d9ef">let</span> bob <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>Name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bob Smith&#34;</span><span style="color:#f92672">;</span> Blance <span style="color:#f92672">=</span> 101<span style="color:#f92672">.</span>5012<span style="color:#f92672">}</span>
+  printfn <span style="color:#e6db74">&#34;%s owes us %.2f&#34;</span> bob<span style="color:#f92672">.</span>Name bob<span style="color:#f92672">.</span>Blance
 
 recordStuff()
 
@@ -473,51 +473,51 @@ recordStuff()
   <span style="color:#66d9ef">let</span> seq2 <span style="color:#f92672">=</span> seq <span style="color:#f92672">{</span>0<span style="color:#f92672">..</span>2<span style="color:#f92672">..</span>50<span style="color:#f92672">}</span>
   <span style="color:#66d9ef">let</span> seq3 <span style="color:#f92672">=</span> seq <span style="color:#f92672">{</span>50<span style="color:#f92672">..</span>1<span style="color:#f92672">}</span>
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%A</span><span style="color:#e6db74">&#34;</span> seq2
+  printfn <span style="color:#e6db74">&#34;%A&#34;</span> seq2
 
-  Seq.toList seq2 <span style="color:#f92672">|</span><span style="color:#f92672">&gt;</span> List.iter <span style="color:#f92672">(</span>printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Num : %i</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
+  Seq.toList seq2 <span style="color:#f92672">|&gt;</span> List.iter <span style="color:#f92672">(</span>printfn <span style="color:#e6db74">&#34;Num : %i&#34;</span><span style="color:#f92672">)</span>
 
   <span style="color:#66d9ef">let</span> isPrime n <span style="color:#f92672">=</span>
     <span style="color:#66d9ef">let</span> rec check i <span style="color:#f92672">=</span>
-      i <span style="color:#f92672">&gt;</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">/</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">|</span><span style="color:#f92672">|</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">%</span> i <span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">&amp;&amp;</span> check <span style="color:#f92672">(</span>i <span style="color:#f92672">+</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+      i <span style="color:#f92672">&gt;</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">/</span> 2<span style="color:#f92672">)</span> <span style="color:#f92672">||</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">%</span> i <span style="color:#f92672">&lt;&gt;</span> 0 <span style="color:#f92672">&amp;&amp;</span> check <span style="color:#f92672">(</span>i <span style="color:#f92672">+</span> 1<span style="color:#f92672">))</span>
     check 2
 
   <span style="color:#66d9ef">let</span> prime_seq <span style="color:#f92672">=</span> seq <span style="color:#f92672">{</span><span style="color:#66d9ef">for</span> n <span style="color:#66d9ef">in</span> 1<span style="color:#f92672">..</span>500 <span style="color:#66d9ef">do</span> <span style="color:#66d9ef">if</span> isPrime n <span style="color:#66d9ef">then</span> <span style="color:#66d9ef">yield</span> n<span style="color:#f92672">}</span>
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%A</span><span style="color:#e6db74">&#34;</span> prime_seq
+  printfn <span style="color:#e6db74">&#34;%A&#34;</span> prime_seq
 
-  Seq.toList prime_seq <span style="color:#f92672">|</span><span style="color:#f92672">&gt;</span> List.iter <span style="color:#f92672">(</span>printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Prime : %i</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
+  Seq.toList prime_seq <span style="color:#f92672">|&gt;</span> List.iter <span style="color:#f92672">(</span>printfn <span style="color:#e6db74">&#34;Prime : %i&#34;</span><span style="color:#f92672">)</span>
   
 seqStuff()
 
 <span style="color:#66d9ef">let</span> mapStuff() <span style="color:#f92672">=</span>
   <span style="color:#66d9ef">let</span> customers <span style="color:#f92672">=</span>
     Map.empty<span style="color:#f92672">.</span>
-      Add<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bob Smith</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">,</span> 100<span style="color:#f92672">.</span>50<span style="color:#f92672">)</span><span style="color:#f92672">.</span>
-      Add<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Sally Marks</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">,</span> 50<span style="color:#f92672">.</span>25<span style="color:#f92672">)</span>
+      Add<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Bob Smith&#34;</span><span style="color:#f92672">,</span> 100<span style="color:#f92672">.</span>50<span style="color:#f92672">).</span>
+      Add<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Sally Marks&#34;</span><span style="color:#f92672">,</span> 50<span style="color:#f92672">.</span>25<span style="color:#f92672">)</span>
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74"># of Customers %i</span><span style="color:#e6db74">&#34;</span> customers<span style="color:#f92672">.</span>Count
+  printfn <span style="color:#e6db74">&#34;# of Customers %i&#34;</span> customers<span style="color:#f92672">.</span>Count
 
-  <span style="color:#66d9ef">let</span> cust <span style="color:#f92672">=</span> customers<span style="color:#f92672">.</span>TryFind <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bob Smith</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#66d9ef">let</span> cust <span style="color:#f92672">=</span> customers<span style="color:#f92672">.</span>TryFind <span style="color:#e6db74">&#34;Bob Smith&#34;</span>
   <span style="color:#66d9ef">match</span> cust <span style="color:#66d9ef">with</span>
-  <span style="color:#f92672">|</span> Some x <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Balace : %.2f</span><span style="color:#e6db74">&#34;</span> x
-  <span style="color:#f92672">|</span> None <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Not Found</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#f92672">|</span> Some x <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;Balace : %.2f&#34;</span> x
+  <span style="color:#f92672">|</span> None <span style="color:#f92672">-&gt;</span> printfn <span style="color:#e6db74">&#34;Not Found&#34;</span>
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Customer : %A</span><span style="color:#e6db74">&#34;</span> customers
+  printfn <span style="color:#e6db74">&#34;Customer : %A&#34;</span> customers
 
-  <span style="color:#66d9ef">if</span> customers<span style="color:#f92672">.</span>ContainsKey <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bob Smith</span><span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">then</span>
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bob Smith was found</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#66d9ef">if</span> customers<span style="color:#f92672">.</span>ContainsKey <span style="color:#e6db74">&#34;Bob Smith&#34;</span> <span style="color:#66d9ef">then</span>
+    printfn <span style="color:#e6db74">&#34;Bob Smith was found&#34;</span>
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bobs Blance : %.2f</span><span style="color:#e6db74">&#34;</span> customers<span style="color:#f92672">.</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bob Smith</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">]</span>
+  printfn <span style="color:#e6db74">&#34;Bobs Blance : %.2f&#34;</span> customers<span style="color:#f92672">.[</span><span style="color:#e6db74">&#34;Bob Smith&#34;</span><span style="color:#f92672">]</span>
 
-  <span style="color:#66d9ef">let</span> custs2 <span style="color:#f92672">=</span> Map.remove <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Sally Marks</span><span style="color:#e6db74">&#34;</span> customers
+  <span style="color:#66d9ef">let</span> custs2 <span style="color:#f92672">=</span> Map.remove <span style="color:#e6db74">&#34;Sally Marks&#34;</span> customers
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74"># of Customers %i</span><span style="color:#e6db74">&#34;</span> custs2<span style="color:#f92672">.</span>Count
+  printfn <span style="color:#e6db74">&#34;# of Customers %i&#34;</span> custs2<span style="color:#f92672">.</span>Count
 
 mapStuff()
 
 <span style="color:#66d9ef">let</span> addStuff<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">&#39;</span>T<span style="color:#f92672">&gt;</span> x y <span style="color:#f92672">=</span>
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%A</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">+</span> y<span style="color:#f92672">)</span>
+  printfn <span style="color:#e6db74">&#34;%A&#34;</span> <span style="color:#f92672">(</span>x <span style="color:#f92672">+</span> y<span style="color:#f92672">)</span>
 
 <span style="color:#66d9ef">let</span> genericStuff() <span style="color:#f92672">=</span>
   addStuff<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span><span style="color:#f92672">&gt;</span> 5<span style="color:#f92672">.</span>5 2<span style="color:#f92672">.</span>4
@@ -528,28 +528,28 @@ genericStuff()
 <span style="color:#66d9ef">let</span> expStuff() <span style="color:#f92672">=</span>
   <span style="color:#66d9ef">let</span> divideFloat x y <span style="color:#f92672">=</span>
     <span style="color:#66d9ef">try</span> 
-      printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%.2f / %.2f = %.2f</span><span style="color:#e6db74">&#34;</span> x y <span style="color:#f92672">(</span>x <span style="color:#f92672">/</span> y<span style="color:#f92672">)</span>
+      printfn <span style="color:#e6db74">&#34;%.2f / %.2f = %.2f&#34;</span> x y <span style="color:#f92672">(</span>x <span style="color:#f92672">/</span> y<span style="color:#f92672">)</span>
     <span style="color:#66d9ef">with</span> 
-      <span style="color:#f92672">|</span> <span style="color:#f92672">:</span><span style="color:#f92672">?</span> System.DivideByZeroException <span style="color:#66d9ef">as</span> ex <span style="color:#f92672">-&gt;</span>
-        printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Can&#39;t Divide by Zero</span><span style="color:#e6db74">&#34;</span>
+      <span style="color:#f92672">|</span> <span style="color:#f92672">:?</span> System.DivideByZeroException <span style="color:#66d9ef">as</span> ex <span style="color:#f92672">-&gt;</span>
+        printfn <span style="color:#e6db74">&#34;Can&#39;t Divide by Zero&#34;</span>
   divideFloat 5<span style="color:#f92672">.</span>0 0<span style="color:#f92672">.</span>0
 
   <span style="color:#66d9ef">let</span> divideInt x y <span style="color:#f92672">=</span>
     <span style="color:#66d9ef">try</span> 
-      printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%i / %i = %i</span><span style="color:#e6db74">&#34;</span> x y <span style="color:#f92672">(</span>x <span style="color:#f92672">/</span> y<span style="color:#f92672">)</span>
+      printfn <span style="color:#e6db74">&#34;%i / %i = %i&#34;</span> x y <span style="color:#f92672">(</span>x <span style="color:#f92672">/</span> y<span style="color:#f92672">)</span>
     <span style="color:#66d9ef">with</span> 
-      <span style="color:#f92672">|</span> <span style="color:#f92672">:</span><span style="color:#f92672">?</span> System.DivideByZeroException <span style="color:#66d9ef">as</span> ex <span style="color:#f92672">-&gt;</span>
-        printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Can&#39;t Divide by Zero</span><span style="color:#e6db74">&#34;</span>
+      <span style="color:#f92672">|</span> <span style="color:#f92672">:?</span> System.DivideByZeroException <span style="color:#66d9ef">as</span> ex <span style="color:#f92672">-&gt;</span>
+        printfn <span style="color:#e6db74">&#34;Can&#39;t Divide by Zero&#34;</span>
   divideInt 5 0
 
   <span style="color:#66d9ef">let</span> divideIntR x y <span style="color:#f92672">=</span>
     <span style="color:#66d9ef">try</span> 
-      <span style="color:#66d9ef">if</span> y <span style="color:#f92672">=</span> 0 <span style="color:#66d9ef">then</span> raise<span style="color:#f92672">(</span>DivideByZeroException <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Can&#39;t Divide by 0</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
+      <span style="color:#66d9ef">if</span> y <span style="color:#f92672">=</span> 0 <span style="color:#66d9ef">then</span> raise<span style="color:#f92672">(</span>DivideByZeroException <span style="color:#e6db74">&#34;Can&#39;t Divide by 0&#34;</span><span style="color:#f92672">)</span>
       <span style="color:#66d9ef">else</span>
-        printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%i / %i = %i</span><span style="color:#e6db74">&#34;</span> x y <span style="color:#f92672">(</span>x <span style="color:#f92672">/</span> y<span style="color:#f92672">)</span>
+        printfn <span style="color:#e6db74">&#34;%i / %i = %i&#34;</span> x y <span style="color:#f92672">(</span>x <span style="color:#f92672">/</span> y<span style="color:#f92672">)</span>
     <span style="color:#66d9ef">with</span> 
-      <span style="color:#f92672">|</span> <span style="color:#f92672">:</span><span style="color:#f92672">?</span> System.DivideByZeroException <span style="color:#66d9ef">as</span> ex <span style="color:#f92672">-&gt;</span>
-        printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Can&#39;t Divide by Zero</span><span style="color:#e6db74">&#34;</span>
+      <span style="color:#f92672">|</span> <span style="color:#f92672">:?</span> System.DivideByZeroException <span style="color:#66d9ef">as</span> ex <span style="color:#f92672">-&gt;</span>
+        printfn <span style="color:#e6db74">&#34;Can&#39;t Divide by Zero&#34;</span>
   divideIntR 5 0
 
 expStuff()
@@ -558,7 +558,7 @@ expStuff()
   <span style="color:#66d9ef">val</span> Length <span style="color:#f92672">:</span> <span style="color:#66d9ef">float</span>
   <span style="color:#66d9ef">val</span> Width <span style="color:#f92672">:</span> <span style="color:#66d9ef">float</span>
   <span style="color:#66d9ef">new</span> <span style="color:#f92672">(</span>length<span style="color:#f92672">,</span> width<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
-    <span style="color:#f92672">{</span>Length <span style="color:#f92672">=</span> length<span style="color:#f92672">;</span> Width <span style="color:#f92672">=</span> width<span style="color:#f92672">;</span><span style="color:#f92672">}</span>
+    <span style="color:#f92672">{</span>Length <span style="color:#f92672">=</span> length<span style="color:#f92672">;</span> Width <span style="color:#f92672">=</span> width<span style="color:#f92672">;}</span>
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#66d9ef">let</span> structStuff() <span style="color:#f92672">=</span>
@@ -569,7 +569,7 @@ expStuff()
 
   <span style="color:#66d9ef">let</span> rect_area <span style="color:#f92672">=</span> area rect
 
-  printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Area : %.2f</span><span style="color:#e6db74">&#34;</span> rect_area
+  printfn <span style="color:#e6db74">&#34;Area : %.2f&#34;</span> rect_area
 
 structStuff()
 
@@ -579,29 +579,29 @@ structStuff()
   <span style="color:#66d9ef">val</span> Weight <span style="color:#f92672">:</span> <span style="color:#66d9ef">float</span>
 
   <span style="color:#66d9ef">new</span> <span style="color:#f92672">(</span>name<span style="color:#f92672">,</span> height<span style="color:#f92672">,</span> weight<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
-    <span style="color:#f92672">{</span>Name <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span> Height <span style="color:#f92672">=</span> height<span style="color:#f92672">;</span> Weight <span style="color:#f92672">=</span> weight<span style="color:#f92672">;</span><span style="color:#f92672">}</span>
+    <span style="color:#f92672">{</span>Name <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span> Height <span style="color:#f92672">=</span> height<span style="color:#f92672">;</span> Weight <span style="color:#f92672">=</span> weight<span style="color:#f92672">;}</span>
 
   <span style="color:#66d9ef">member</span> x.<span style="color:#a6e22e">Run</span> <span style="color:#f92672">=</span>
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s Runs</span><span style="color:#e6db74">&#34;</span> x<span style="color:#f92672">.</span>Name
+    printfn <span style="color:#e6db74">&#34;%s Runs&#34;</span> x<span style="color:#f92672">.</span>Name
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Dog</span><span style="color:#f92672">(</span>name<span style="color:#f92672">,</span> height<span style="color:#f92672">,</span> weight<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>
   <span style="color:#66d9ef">inherit</span> Animal<span style="color:#f92672">(</span>name<span style="color:#f92672">,</span> height<span style="color:#f92672">,</span> weight<span style="color:#f92672">)</span>
 
   <span style="color:#66d9ef">member</span> x.<span style="color:#a6e22e">Bark</span> <span style="color:#f92672">=</span> 
-    printfn <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s Barks</span><span style="color:#e6db74">&#34;</span> x<span style="color:#f92672">.</span>Name
+    printfn <span style="color:#e6db74">&#34;%s Barks&#34;</span> x<span style="color:#f92672">.</span>Name
 
 <span style="color:#66d9ef">let</span> classStuff() <span style="color:#f92672">=</span>
-  <span style="color:#66d9ef">let</span> spot <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Animal<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Spot</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">,</span> 20<span style="color:#f92672">.</span>5<span style="color:#f92672">,</span> 40<span style="color:#f92672">.</span>5<span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">let</span> spot <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Animal<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Spot&#34;</span><span style="color:#f92672">,</span> 20<span style="color:#f92672">.</span>5<span style="color:#f92672">,</span> 40<span style="color:#f92672">.</span>5<span style="color:#f92672">)</span>
   spot<span style="color:#f92672">.</span>Run
 
-  <span style="color:#66d9ef">let</span> bowser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Dog<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Bowser</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">,</span> 20<span style="color:#f92672">.</span>5<span style="color:#f92672">,</span> 40<span style="color:#f92672">.</span>5<span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">let</span> bowser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Dog<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Bowser&#34;</span><span style="color:#f92672">,</span> 20<span style="color:#f92672">.</span>5<span style="color:#f92672">,</span> 40<span style="color:#f92672">.</span>5<span style="color:#f92672">)</span>
   bowser<span style="color:#f92672">.</span>Run
   bowser<span style="color:#f92672">.</span>Bark
 
 classStuff()
 
-Console.ReadKey() <span style="color:#f92672">|</span><span style="color:#f92672">&gt;</span> ignore        <span style="color:#f92672">//</span> 输入一个字符<span style="color:#960050;background-color:#1e0010">，</span>防止命令行一闪而过</code></pre></div>
+Console.ReadKey() <span style="color:#f92672">|&gt;</span> ignore        <span style="color:#f92672">//</span> 输入一个字符<span style="color:#960050;background-color:#1e0010">，</span>防止命令行一闪而过</code></pre></div>
 <p>Gist:</p>
 
 <script src="https://gist.github.com/zt-luo/d6cc2dc11eb5a1548ed84b5218215636.js"></script>

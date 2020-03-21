@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.64.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/raspberrypi-wifi/" />
@@ -163,14 +163,14 @@ wpa_conf /etc/wpa_supplicant/wpa_supplicant.conf</code></pre>
 <p>按照如下格式添加无线网络配置：
 <strong>最常用的配置。WPA-PSK 加密方式。</strong></p>
 <pre><code>network={
-ssid="WiFi-name1"
-psk="WiFi-password1"
+ssid=&#34;WiFi-name1&#34;
+psk=&#34;WiFi-password1&#34;
 priority=5
 }
  
 network={
-ssid="WiFi-name2"
-psk="WiFi-password2"
+ssid=&#34;WiFi-name2&#34;
+psk=&#34;WiFi-password2&#34;
 priority=4
 }</code></pre>
 <p>优先级数字越大优先级越高。</p>

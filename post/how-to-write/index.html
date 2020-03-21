@@ -27,7 +27,7 @@
 <meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
 
 
-<meta name="generator" content="Hugo 0.64.0" />
+<meta name="generator" content="Hugo 0.66.0" />
 
 
 <link rel="canonical" href="https://blog.ztluo.dev/post/how-to-write/" />
@@ -59,7 +59,7 @@
 <meta itemprop="description" content="将一些 Hexo luocman 主题的文章的书写规范和技巧总结一下。">
 <meta itemprop="datePublished" content="2015-02-28T13:51:42&#43;08:00" />
 <meta itemprop="dateModified" content="2018-09-22T11:08:26&#43;08:00" />
-<meta itemprop="wordCount" content="1372">
+<meta itemprop="wordCount" content="1373">
 
 
 
@@ -141,7 +141,7 @@
               <a href="/categories/blog/"> Blog </a>
             
           </div>
-        <span class="more-meta"> 约 1372 字 </span>
+        <span class="more-meta"> 约 1373 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -199,7 +199,7 @@
 <h2 id="new-命令">NEW 命令</h2>
 
 <p>创建一篇文章最简单的方法就是使用 new 命令。该命令的格式如下：</p>
-<pre><code>hexo new [layout] "title"</code></pre>
+<pre><code>hexo new [layout] &#34;title&#34;</code></pre>
 <p>您可以在命令中指定文章的布局（layout），默认为 post，可以通过修改 _config.yml 中的 default_layout 参数来指定默认布局。</p>
 
 <h2 id="front-matter">Front-matter</h2>
@@ -226,7 +226,7 @@
 <h2 id="草稿">草稿</h2>
 
 <p>刚刚提到了 Hexo 的一种特殊布局：draft，这种布局在建立时会被保存到 <code>source/_drafts</code> 文件夹，您可通过 publish 命令将草稿移动到 <code>source/_posts</code> 文件夹，该命令的使用方式与 new 十分类似，您也可在命令中指定 layout 来指定布局。</p>
-<pre><code>hexo publish [layout] <title></code></pre>
+<pre><code>hexo publish [layout] &lt;title&gt;</code></pre>
 <p>草稿默认不会显示在页面中，您可在执行时加上 - -draft 参数，或是把 render_drafts 参数设为 true 来预览草稿。</p>
 
 <h2 id="模板">模板</h2>
