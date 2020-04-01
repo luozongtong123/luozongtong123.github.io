@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>服务器安全加固 - luo Space - Coding and thinking.</title>
+  <title>给文章编号 - luo Space - Coding and thinking.</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="luo" />
-  <meta name="description" content="前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。
+  <meta name="description" content="博客目前使用 hugo 静态博客生成软件。当文章数目变多之后会有一个苦恼——不方便查找之前的文章。
 " />
 
   <meta name="keywords" content="coding, thinking" />
@@ -30,7 +30,7 @@
 <meta name="generator" content="Hugo 0.68.0" />
 
 
-<link rel="canonical" href="https://blog.ztluo.dev/post/0049-server-security-hardening/" />
+<link rel="canonical" href="https://blog.ztluo.dev/post/0052-number-post/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -49,23 +49,23 @@
 
 
 
-<meta property="og:title" content="服务器安全加固" />
-<meta property="og:description" content="前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。" />
+<meta property="og:title" content="给文章编号" />
+<meta property="og:description" content="博客目前使用 hugo 静态博客生成软件。当文章数目变多之后会有一个苦恼——不方便查找之前的文章。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.ztluo.dev/post/0049-server-security-hardening/" />
-<meta property="article:published_time" content="2020-02-16T09:45:26+08:00" />
-<meta property="article:modified_time" content="2020-02-16T09:45:26+08:00" />
-<meta itemprop="name" content="服务器安全加固">
-<meta itemprop="description" content="前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。">
-<meta itemprop="datePublished" content="2020-02-16T09:45:26&#43;08:00" />
-<meta itemprop="dateModified" content="2020-02-16T09:45:26&#43;08:00" />
-<meta itemprop="wordCount" content="759">
+<meta property="og:url" content="https://blog.ztluo.dev/post/0052-number-post/" />
+<meta property="article:published_time" content="2020-04-01T21:32:33+08:00" />
+<meta property="article:modified_time" content="2020-04-01T21:32:33+08:00" />
+<meta itemprop="name" content="给文章编号">
+<meta itemprop="description" content="博客目前使用 hugo 静态博客生成软件。当文章数目变多之后会有一个苦恼——不方便查找之前的文章。">
+<meta itemprop="datePublished" content="2020-04-01T21:32:33&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-01T21:32:33&#43;08:00" />
+<meta itemprop="wordCount" content="700">
 
 
 
-<meta itemprop="keywords" content="server," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="服务器安全加固"/>
-<meta name="twitter:description" content="前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="给文章编号"/>
+<meta name="twitter:description" content="博客目前使用 hugo 静态博客生成软件。当文章数目变多之后会有一个苦恼——不方便查找之前的文章。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -128,12 +128,12 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">服务器安全加固</h1>
+      <h1 class="post-title">给文章编号</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-02-16 </span>
+        <span class="post-time"> 2020-04-01 </span>
         
-        <span class="more-meta"> 约 759 字 </span>
+        <span class="more-meta"> 约 700 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -149,11 +149,10 @@
 <ul>
 <li>
 <ul>
-<li><a href="#创建非-root-用户">创建非 root 用户</a></li>
-<li><a href="#防止密码被爆破">防止密码被爆破</a></li>
-<li><a href="#远程登录加固">远程登录加固</a></li>
-<li><a href="#创建服务账户">创建服务账户</a></li>
-<li><a href="#配置防火墙">配置防火墙</a></li>
+<li><a href="#起因">起因</a></li>
+<li><a href="#自动化编号过程">自动化编号过程</a></li>
+<li><a href="#重定向迁移">重定向迁移</a></li>
+<li><a href="#结语">结语</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -165,90 +164,53 @@
 
     
     <div class="post-content">
-      <p>前几天把博客迁移到了服务器上，这相当于把服务器完全暴露在了公开的互联网上了，为了保证服务器的安全，一些安全加固的措施是非常有必要的。</p>
+      <p>博客目前使用 hugo 静态博客生成软件。当文章数目变多之后会有一个苦恼——不方便查找之前的文章。</p>
 
-<h2 id="创建非-root-用户">创建非 root 用户</h2>
+<h2 id="起因">起因</h2>
 
-<p>首先第一件事就是要创建非 root 用户，使用 root 用户进行日常的操作是非常危险的。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo useradd -m -r -s /bin/bash user
-sudo passwd user
+<p>博客文章变多后在 VSCode 中就变成了下图的样子，要找到一篇文章要费一会功夫。</p>
 
-<span style="color:#75715e"># 为用户添加 sudo 权限</span>
-sudo usermod -aG sudo user 
-<span style="color:#75715e"># 或</span>
-sudo usermod -aG wheel user 
-<span style="color:#75715e"># 或</span>
-sudo tee /etc/sudoers.d/user <span style="color:#f92672">&lt;&lt;&lt;</span> <span style="color:#e6db74">&#39;user ALL=(ALL) ALL&#39;</span>
-sudo chmod <span style="color:#ae81ff">440</span> /etc/sudoers.d/user
+<figure class="center">
+    <img src="/img/0052-number-post/before.png"
+         alt="编号之前的样子"/> <figcaption>
+            <h4>编号之前的样子</h4>
+        </figcaption>
+</figure>
 
-<span style="color:#75715e"># 切换到 user</span>
-su -l user</code></pre></div>
-<h2 id="防止密码被爆破">防止密码被爆破</h2>
+<p>本着能偷懒就偷懒的原则，为了快速查找文章，就想到了给每篇博客编号。编号之后就变成了下面的样子：</p>
 
-<p>为了防止密码被爆破限制登录密码错误 3 次后锁定账户。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo nano /etc/pam.d/login
-sudo nano /etc/pam.d/remote
-sudo nano /etc/pam.d/sshd
-<span style="color:#75715e"># 在 #%PAM-1.0 下添加下面一行</span>
-auth required pam_tally2.so deny<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> unlock_time<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span> even_deny_root root_unlock_time<span style="color:#f92672">=</span><span style="color:#ae81ff">600</span></code></pre></div>
-<h2 id="远程登录加固">远程登录加固</h2>
+<figure class="center">
+    <img src="/img/0052-number-post/after.png"
+         alt="编号之后的样子"/> <figcaption>
+            <h4>编号之后的样子</h4>
+        </figcaption>
+</figure>
 
-<p>使用 <code>sudo nano /etc/ssh/sshd_config</code> 编辑 sshd 配置文件。</p>
+<h2 id="自动化编号过程">自动化编号过程</h2>
 
-<p>使用私钥远程登录服务器：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 生成私钥</span>
-ssh_keygen
-<span style="color:#75715e"># 添加公钥</span>  
-echo &lt;主机 id_rsa.pub&gt; &gt;&gt; .ssh/authorized_keys
-<span style="color:#75715e"># 修改权限</span>  
-chmod <span style="color:#ae81ff">600</span> .ssh/authorized_keys</code></pre></div>
-<ol>
-<li>修改默认端口号：默认端口号 22，默认的端口号会导致过多登录尝试，将其改为不常用的端口，选项名称为 <code>Port</code>；</li>
-<li>禁止空口令登录：<code>PermitEmptyPasswords no</code>；</li>
-<li>禁用密码登录：<code>PasswordAuthentication no</code>，要注意一定要在确认可以通过私钥登录后才修改此项配置，否则会导致无法远程登录。</li>
-</ol>
+<p>花了半个小时的时间把四十多博客的编号搞定之后，我就在想：总不能每次创建新博客都自己编号吧？那就用脚本自动化编号吧。</p>
 
-<h2 id="创建服务账户">创建服务账户</h2>
+<p>用脚本自动编号的关键点是如何得到目前的最新博客的编号是多少。最容易想到的是创建一个文件用于保存当前的编号，每次新建博客时读取这个编号，新建完博客后更新这个值。但是这么做就需要有一个辅助的文件，感觉不是很优雅。接到想到能不能通过计算 <code>ls</code> 命令返回的文件数来进行编号呢。查了一下，果然可以。</p>
 
-<p>每个服务使用单独自己的账户，这样就不会因为某个服务遭到攻破而导致 root 权限被拿到。</p>
+<p>下面这一行命令就可以实现计算 <code>content/post/</code> 文件夹下的文件数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls -l content/post/ | grep <span style="color:#e6db74">&#34;^-&#34;</span> | wc -l</code></pre></div>
+<p>其中 <code>ls -l content/post/</code> 按行输出目录中的文件和文件夹，<code>grep &quot;^-&quot;</code> 筛选出开头是 - 的文件，<code>wc -l</code> 计算行数。</p>
 
-<p>创建带有 home 目录的 acme 帐号：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo useradd -m -r -s /bin/bash acme
-sudo su -l acme</code></pre></div>
-<p>创建不带有 home 目录的 acme 帐号：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo useradd -r -s /bin/bash acme
-sudo su -l acme</code></pre></div>
-<h2 id="配置防火墙">配置防火墙</h2>
+<p>在使用 <code>bash</code> 脚本编程进行数学运算时需要用 <code>$(())</code> 将表达式包裹起来。</p>
 
-<p>本文以 ufw 为例配置防火墙，ufw 是一个很好用的防火墙配置命令，可以简化操作，减少错误的发生。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 安装</span>
-<span style="color:#75715e"># Ubuntu</span>
-sudo apt install ufw
-<span style="color:#75715e"># CentOS</span>
-sudo yum install epel-release
-sudo yum install ufw</code></pre></div>
-<p>执行如下命令即可成功配置防火墙。注意，如果 ssh 端口不是 22 那么第一行需要调整（将 ssh 改为端口号）。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 关闭防火墙</span>
-sudo ufw disable
-<span style="color:#75715e"># 防火墙默认阻止</span>
-sudo ufw default deny
-<span style="color:#75715e"># 创建 允许某些服务/端口 的规则</span>
-sudo ufw allow ssh
-sudo ufw allow https
-sudo ufw allow http
-sudo ufw allow <span style="color:#ae81ff">8888</span>
-<span style="color:#75715e"># 创建 组织某些服务/端口 的规则</span>
-sudo ufw deny http
-sudo ufw deny <span style="color:#ae81ff">8888</span>
-<span style="color:#75715e"># 启动防火墙</span>
-sudo ufw enable
-<span style="color:#75715e"># 查看防火墙状态</span>
-sudo ufw status
-sudo ufw status verbose
-<span style="color:#75715e"># 删除某个防火墙规则</span>
-sudo ufw delete allow http
-<span style="color:#75715e"># 开启 log</span>
-sudo ufw logging low</code></pre></div>
+<h2 id="重定向迁移">重定向迁移</h2>
+
+<p>编号完成之后显然之前博客的地址会发生变化，为了不影响 Google 搜索引擎的索引也方便保存博客书签的人可以正常访问到博客内容，我的打算是不删除之前的博客链接，等到足够长的时间后再手动删除过时的博客链接。</p>
+
+<p>就这样过了一周之后，在 Google Search Console 中查看，发现 Google 并不会自动使用新的地址替换旧的地址，就算更新了博客的 sitemap 也不行。仔细想一下也是，谷歌没办法知道两个链接之间的关系。一番探索之后，在谷歌的<a href="https://support.google.com/webmasters/answer/139066">整合重复网址</a>文档中找到了解决方案。那就是使用 <code>301</code> 永久重定向。</p>
+
+<p>在 Caddy 中可以使用如下的语法重定向链接：</p>
+<pre><code>  redir 301 {
+    from-url to-url
+  }</code></pre>
+<h2 id="结语">结语</h2>
+
+<p>现在舒服了~</p>
     </div>
 
     
@@ -259,7 +221,7 @@ sudo ufw logging low</code></pre></div>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2020-02-16</span>
+    <span class="item-content">2020-04-01</span>
   </p>
   
   <p class="copyright-item">
@@ -285,23 +247,14 @@ sudo ufw logging low</code></pre></div>
 </div>
 
     <footer class="post-footer">
-      <div class="post-tags">
-          
-          <a href="/tags/server/">server</a>
-          
-        </div>
+      
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/0052-number-post/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">给文章编号</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/0048-acmesh-certificates-automation/">
-            <span class="next-text nav-default">使用 acme.sh 进行 ssl 证书自动化管理</span>
+          <a class="next" href="/post/0049-server-security-hardening/">
+            <span class="next-text nav-default">服务器安全加固</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -317,8 +270,8 @@ sudo ufw logging low</code></pre></div>
     <script src="/lib/gitalk/gitalk.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
-    id: '2020-02-16 09:45:26 \x2b0800 CST',
-    title: '服务器安全加固',
+    id: '2020-04-01 21:32:33 \x2b0800 CST',
+    title: '给文章编号',
     clientID: '773448aaf0a387786d40',
     clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
     repo: 'zt-luo.github.io',

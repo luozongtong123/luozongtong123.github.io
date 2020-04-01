@@ -10,7 +10,14 @@
   
   <url>
     <loc>https://blog.ztluo.dev/post/</loc>
-    <lastmod>2020-02-16T09:45:26+08:00</lastmod>
+    <lastmod>2020-04-01T21:32:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/post/0052-number-post/</loc>
+    <lastmod>2020-04-01T21:32:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
