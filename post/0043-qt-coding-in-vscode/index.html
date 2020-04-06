@@ -147,10 +147,13 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
+<li>
+<ul>
 <li><a href="#qmake">Qmake</a></li>
 <li><a href="#cmake">CMake</a></li>
 <li><a href="#visual-studio-code">Visual Studio Code</a></li>
 <li><a href="#参考">参考</a></li>
+</ul></li>
 </ul>
 </nav>
   </div>
@@ -163,13 +166,13 @@
     <div class="post-content">
       <p>对 Qt Creator 的界面是在是不能忍受，所以萌生了改用 Visual Studio Code 的想法，探索一番，成功实现 Qt 代码在 VSCode 中的代码提示和调试的功能。</p>
 
-<h1 id="qmake">Qmake</h1>
+<h2 id="qmake">Qmake</h2>
 
 <p>Qt Creator，准确的说应该是 Qmake，使用 <code>.pro</code> 来进行项目的管理，包括设定头文件包含目录、链接库、<code>.ui</code> 文件、<code>.qrc</code> 文件、以及编译选项等等的管理。Qmake 自动替我们将<code>.ui</code> 文件预处理为 <code>ui_xx.h</code> 文件、<code>.qrc</code> 文件机文件中的资源预处理为 <code>qrc_xx.cpp</code>、将带有 <code>Q_OBJECT</code> 等 Qt 自带宏的头文件预处理为 <code>moc_xx.cpp</code>。这三个预处理过程分别由 <code>uic</code> 、<code>rcc</code>、<code>moc</code> 三个工具来完成。</p>
 
 <p>正常来说，只要在 VSCode 中编译任务中将 Qmake 命令写好就可以了，但是，由于 VSCode 中没有 Qmake 的插件，头文件的包含无法自动完成。于是考虑使用 CMake 来进行编译过程的管理。</p>
 
-<h1 id="cmake">CMake</h1>
+<h2 id="cmake">CMake</h2>
 
 <p>一个简单的 CMake 例子如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmake" data-lang="cmake">cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.10</span>)<span style="color:#960050;background-color:#1e0010">
@@ -281,13 +284,13 @@ Qt 模块的第一个字母需要大写。
 </p>
 </div>
 
-<h1 id="visual-studio-code">Visual Studio Code</h1>
+<h2 id="visual-studio-code">Visual Studio Code</h2>
 
 <p>其实到了这一步基本上已经完成了，开篇提到的任务，已经可以在 VSCode 上完成日常的代码编辑的调试工作了。只需要再安装一个 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools">CMake Tools</a> 扩展即可。</p>
 
 <p>最后，在 <code>.vscode/settings.json</code> 中，添加以下一行就可以让 CMake Tools 自动为 VSCode 提供代码提示公共必要的信息。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;C_Cpp.default.configurationProvider&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;vector-of-bool.cmake-tools&#34;</span></code></pre></div>
-<h1 id="参考">参考</h1>
+<h2 id="参考">参考</h2>
 
 <p><a href="https://retifrav.github.io/blog/2019/05/11/vscode-cmake-qt/">Visual Studio Code and CMake for Qt</a><br />
 <a href="https://blog.csdn.net/Bruce_0712/article/details/53574170">用 cmake 构建 Qt 工程 (对比 qmake 进行学习)</a><br />
