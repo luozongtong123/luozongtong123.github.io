@@ -6,10 +6,19 @@
     <description>Recent content in Posts on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Apr 2020 21:32:33 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 23:11:39 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.ztluo.dev/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MSYS2 教程</title>
+      <link>https://blog.ztluo.dev/post/0053-msys2-tutorial/</link>
+      <pubDate>Wed, 01 Apr 2020 23:11:39 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/0053-msys2-tutorial/</guid>
+      <description>&lt;p&gt;MSYS2 是一个 Windows 上的软件分发系统和编译平台，它提供了终端仿真器（Terminal Emulator） Minitty 和软件包管理系统（Package Management System） Pacman。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>给文章编号</title>

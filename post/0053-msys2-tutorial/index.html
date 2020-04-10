@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>MSYS2 教程 - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="MSYS2 是一个 Windows 上的软件分发系统和编译平台，它提供了终端仿真器（Terminal Emulator） Minitty 和软件包管理系统（Package Management System） Pacman。
+" />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+<meta name="baidu-site-verification" content="8SYIFLvIPQ" />
+<meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
+
+
+<meta name="generator" content="Hugo 0.68.0" />
+
+
+<link rel="canonical" href="https://blog.ztluo.dev/post/0053-msys2-tutorial/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="MSYS2 教程" />
+<meta property="og:description" content="MSYS2 是一个 Windows 上的软件分发系统和编译平台，它提供了终端仿真器（Terminal Emulator） Minitty 和软件包管理系统（Package Management System） Pacman。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ztluo.dev/post/0053-msys2-tutorial/" />
+<meta property="article:published_time" content="2020-04-01T23:11:39+08:00" />
+<meta property="article:modified_time" content="2020-04-01T23:11:39+08:00" />
+<meta itemprop="name" content="MSYS2 教程">
+<meta itemprop="description" content="MSYS2 是一个 Windows 上的软件分发系统和编译平台，它提供了终端仿真器（Terminal Emulator） Minitty 和软件包管理系统（Package Management System） Pacman。">
+<meta itemprop="datePublished" content="2020-04-01T23:11:39&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-01T23:11:39&#43;08:00" />
+<meta itemprop="wordCount" content="1472">
+
+
+
+<meta itemprop="keywords" content="MSYS2,VSCode," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MSYS2 教程"/>
+<meta name="twitter:description" content="MSYS2 是一个 Windows 上的软件分发系统和编译平台，它提供了终端仿真器（Terminal Emulator） Minitty 和软件包管理系统（Package Management System） Pacman。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">MSYS2 教程</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-04-01 </span>
+        
+        <span class="more-meta"> 约 1472 字 </span>
+        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#相关的工具">相关的工具</a>
+<ul>
+<li><a href="#cygwin">Cygwin</a></li>
+<li><a href="#mingw">MinGW</a></li>
+<li><a href="#wsl">WSL</a></li>
+<li><a href="#scoop">Scoop</a></li>
+<li><a href="#原因">原因</a></li>
+</ul></li>
+<li><a href="#安装">安装</a></li>
+<li><a href="#更新">更新</a></li>
+<li><a href="#zsh">zsh</a></li>
+<li><a href="#与-vscode-集成">与 VSCode 集成</a></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>MSYS2 是一个 Windows 上的软件分发系统和编译平台，它提供了终端仿真器（Terminal Emulator） Minitty 和软件包管理系统（Package Management System） Pacman。</p>
+
+<p>其实关于 MSYS2 我已经在博客之前的文章中<sup>[<a href="#ref01">1</a>, <a href="#ref02">2</a>]</sup>有提到过。关于 Windows 下的编译系统我也用过不少，在介绍 MSYS2 前，还是先说一下我使用过的各种编译系统吧。</p>
+
+<h2 id="相关的工具">相关的工具</h2>
+
+<h3 id="cygwin">Cygwin</h3>
+
+<p>Cygwin 通过 <code>cygwin1.dll</code> 动态链接库提供一个 UNIX 兼容层，为 Linux 平台编写的软件经过重新编译之后就可以运行在 Windows 上。Cygwin 的优点是完全兼容 Linux 的系统调用，缺点是有一定的性能损失。除此以外，Cygwin 不提供终端模拟器，所以也没有命令行的包管理工具，只能在一个管理界面中勾选需要的软件包。</p>
+
+<h3 id="mingw">MinGW</h3>
+
+<p>MinGW（Minimalist GNU for Windows），又称 mingw32，是将 GCC 编译器和 GNU Binutils 移植到 Win32 平台下的产物，包括一系列头文件（Win32API）、 库和可执行文件。<sup>[<a href="#ref03">3</a>]</sup></p>
+
+<p>MinGW 只能编译产生 32 位的可执行文件，为了能够编译产生 64 位的可执行文件，一些开发人员从 MinGW 创建了支持 64 位的 MinGW-w64 分支项目。MinGW-w64 可以同时支持 32 位和 64 位。</p>
+
+<p>MinGW 和 MinGW-w64 不包含 UNIX 的兼容层，其编译产生的可执行文件是 native 的，所以不需要 <code>cygwin1.dll</code> 动态链接库，执行效率也比 Cygwin 要高。MinGW 和 MinGW-w64 同样也不提供终端模拟器和软件包管理系统。</p>
+
+<h3 id="wsl">WSL</h3>
+
+<p>WSL 是 Windows Subsystem for Linux 的简称，是微软在 Windows 10 中提供的功能。WSL 提供的功能类似于虚拟机，但是由于其实现方式其性能和易用性要好于虚拟机。WSL 和 对应的 Linux 发行版是二进制兼容的。</p>
+
+<h3 id="scoop">Scoop</h3>
+
+<p>Scoop 是一个基于 PowerShell 的类似于包管理工具的软件安装工具，可以用来管理 Windows 中的软件。Scoop 可以灵活的选择软件安装位置，同时也不会像 Chocolatey 那样有 UAC 提权弹窗。<sup>[<a href="#ref04">4</a>]</sup></p>
+
+<h3 id="原因">原因</h3>
+
+<p>MSYS2 其实是将 Cygwin 和 MinGW-w64 组合到了一起，外加提供了终端模拟器和包管理系统。MSYS2 的存在其实可以和 WSL 对比，类似一个 Linux 发行版，这个发行版还可以编译原生的 Windows 可执行文件。MSYS2 中 Cygwin 的性能要比 WSL 差一些，但是 MSYS2 可以提供原生软件的编译功能，所以最后还是选择使用 MSYS2。</p>
+
+<h2 id="安装">安装</h2>
+
+<p>安装非常简单，在<a href="https://www.msys2.org/">官网</a>上直接下载安装包，然后安装就好了。安装完成后在安装目录可以看到 3 个终端模拟器的启动文件，分别是 <code>msys2.exe</code>、<code>mingw64.exe</code>、<code>mingw32.exe</code>，<code>msys2.exe</code> 使用的是 Cygwin 环境，<code>mingw64.exe</code> 使用的 64 位的环境，<code>mingw32.exe</code> 使用的是 32 位的环境。</p>
+
+<h2 id="更新">更新</h2>
+
+<p>MSYS2 使用 Pacman 软件管理系统。由于 MSYS2 的软件源在国外，速度较慢，所以更换为国内的软件源镜像。</p>
+
+<p>依次替换软件源配置文件中的软件源：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># /etc/pacman.d/mirrorlist.mingw32</span>
+Server <span style="color:#f92672">=</span> https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686
+<span style="color:#75715e"># /etc/pacman.d/mirrorlist.mingw64</span>
+Server <span style="color:#f92672">=</span> https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64
+<span style="color:#75715e"># /etc/pacman.d/mirrorlist.msys</span>
+Server <span style="color:#f92672">=</span> https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch</code></pre></div>
+<p>替换完成后打开终端模拟器，输入 <code>pacman -Syu</code> ，进行更新。等到终端提示关闭终端模拟器时，直接关掉终端管理器窗口，然后重新打开终端模拟器，再次输入 <code>pacman -Syu</code> 并运行。</p>
+
+<h2 id="zsh">zsh</h2>
+
+<p>MSYS2 的默认 shell 是 bash，如果你喜欢使用 zsh，也可以切换到 zsh。使用 <code>pacman -S zsh</code> 安装 zsh。</p>
+
+<p>与 3 个终端模拟器相对应的有三个终端模拟器的配置文件，<code>msys2.ini</code>、<code>mingw64.ini</code>、<code>mingw32.ini</code>。在着三个配置文件中添加如下一行可以将相应终端模拟器的默认 shell 修改为 zsh。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">SHELL<span style="color:#f92672">=</span>/usr/bin/zsh</code></pre></div>
+<p>为了更加愉快的使用 zsh，同样可以运行如下指令安装 oh-my-zsh。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span></code></pre></div>
+<h2 id="与-vscode-集成">与 VSCode 集成</h2>
+
+<p>MSYS2 与 VSCode 的继承通过 <a href="https://marketplace.visualstudio.com/items?itemName=Tyriar.shell-launcher">Shell launcher</a> 来实现。安装好 Shell launcher 之后在 VSCode 设置文件 <code>settings.json</code> 中添加如下内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">    <span style="color:#e6db74">&#34;shellLauncher.shells.windows&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
+        {
+            <span style="color:#f92672">&#34;shell&#34;</span>: <span style="color:#e6db74">&#34;C:\\msys64\\usr\\bin\\zsh.exe&#34;</span>,
+            <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;MSYS2 MINGW64&#34;</span>,
+            <span style="color:#f92672">&#34;args&#34;</span>: [<span style="color:#e6db74">&#34;--login&#34;</span>, <span style="color:#e6db74">&#34;-i&#34;</span>],
+            <span style="color:#f92672">&#34;env&#34;</span>: {
+                <span style="color:#f92672">&#34;MSYSTEM&#34;</span>: <span style="color:#e6db74">&#34;MINGW64&#34;</span>,
+                <span style="color:#f92672">&#34;CHERE_INVOKING&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>,
+                <span style="color:#f92672">&#34;MSYS2_PATH_TYPE&#34;</span>: <span style="color:#e6db74">&#34;inherit&#34;</span>
+            }
+        },
+        {
+            <span style="color:#f92672">&#34;shell&#34;</span>: <span style="color:#e6db74">&#34;C:\\msys64\\usr\\bin\\zsh.exe&#34;</span>,
+            <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;MSYS2 Cygwin&#34;</span>,
+            <span style="color:#f92672">&#34;args&#34;</span>: [<span style="color:#e6db74">&#34;--login&#34;</span>, <span style="color:#e6db74">&#34;-i&#34;</span>],
+            <span style="color:#f92672">&#34;env&#34;</span>: {
+                <span style="color:#f92672">&#34;MSYSTEM&#34;</span>: <span style="color:#e6db74">&#34;MSYS2&#34;</span>,
+                <span style="color:#f92672">&#34;CHERE_INVOKING&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>,
+                <span style="color:#f92672">&#34;MSYS2_PATH_TYPE&#34;</span>: <span style="color:#e6db74">&#34;inherit&#34;</span>
+            }
+        },
+        {
+            <span style="color:#f92672">&#34;shell&#34;</span>: <span style="color:#e6db74">&#34;C:\\Windows\\System32\\cmd.exe&#34;</span>,
+            <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;cmd&#34;</span>
+        },
+        {
+            <span style="color:#f92672">&#34;shell&#34;</span>: <span style="color:#e6db74">&#34;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe&#34;</span>,
+            <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;PowerShell&#34;</span>
+        },
+        {
+            <span style="color:#f92672">&#34;shell&#34;</span>: <span style="color:#e6db74">&#34;C:\\Windows\\System32\\bash.exe&#34;</span>,
+            <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;WSL Bash&#34;</span>
+        },
+        {
+            <span style="color:#f92672">&#34;shell&#34;</span>: <span style="color:#e6db74">&#34;C:\\Program Files\\Git\\bin\\bash.exe&#34;</span>,
+            <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;Git bash&#34;</span>
+        }
+    ]<span style="color:#960050;background-color:#1e0010">,</span></code></pre></div>
+<p>需要使用 MSYS2 终端的时候使用 <bkd>Ctrl</kbd> + <bkd>Shift</kbd> + <bkd>P</kbd> 快捷键启动 VSCode 命令输入窗口，并输入 <code>Shell launcher: Launch</code> ，然后选择需要使用的终端即可。</p>
+
+<h2 id="参考">参考</h2>
+
+<p>[1]. <a id="ref01"><a href="https://blog.ztluo.dev/post/0020-build-environment-for-ardusub/#%E4%B8%80-%E5%89%8D%E8%A8%80">搭建 Pixhawk 飞控固件编译环境</a></a><br />
+[2]. <a id="ref02"><a href="https://blog.ztluo.dev/post/0026-glib-intro/#%E5%AE%89%E8%A3%85">GLib 简介</a></a><br />
+[3]. <a id="ref03"><a href="https://zh.wikipedia.org/wiki/MinGW">MinGW</a></a><br />
+[4]. <a id="ref04"><a href="https://blog.ztluo.dev/post/0027-scoop-intro/">Scoop 助力 PowerShell</a></a></p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2020-04-01</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">CC 4.0 保持署名 - 非商用 - 非衍生</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/wechat_reward_qr-code.png">
+        <span>微信长按/扫码打赏</span>
+      </label>
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/msys2/">MSYS2</a>
+          
+          <a href="/tags/vscode/">VSCode</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/0052-number-post/">
+            <span class="next-text nav-default">给文章编号</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2020-04-01 23:11:39 \x2b0800 CST',
+    title: 'MSYS2 教程',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'zt-luo.github.io',
+    owner: 'zt-luo',
+    admin: ['zt-luo'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:me@ztluo.dev" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zt-luo" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.ztluo.dev/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/zt-luo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?3e7571b3a1c0f5c99ed01cf3b15b4b46";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

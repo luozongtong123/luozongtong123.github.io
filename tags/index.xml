@@ -6,10 +6,28 @@
     <description>Recent content in Tags on luo Space - Coding and thinking.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 16 Feb 2020 09:45:26 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 23:11:39 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.ztluo.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>msys2</title>
+      <link>https://blog.ztluo.dev/tags/msys2/</link>
+      <pubDate>Wed, 01 Apr 2020 23:11:39 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/tags/msys2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VSCode</title>
+      <link>https://blog.ztluo.dev/tags/vscode/</link>
+      <pubDate>Wed, 01 Apr 2020 23:11:39 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/tags/vscode/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>server</title>
@@ -287,15 +305,6 @@
       <pubDate>Thu, 18 Oct 2018 15:35:15 +0800</pubDate>
       
       <guid>https://blog.ztluo.dev/tags/scoop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>msys2</title>
-      <link>https://blog.ztluo.dev/tags/msys2/</link>
-      <pubDate>Wed, 17 Oct 2018 22:06:31 +0800</pubDate>
-      
-      <guid>https://blog.ztluo.dev/tags/msys2/</guid>
       <description></description>
     </item>
     
