@@ -54,12 +54,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.ztluo.dev/post/0039-ardupilot-handle-msg/" />
 <meta property="article:published_time" content="2019-03-15T20:00:37+08:00" />
-<meta property="article:modified_time" content="2019-03-21T16:28:37+08:00" />
+<meta property="article:modified_time" content="2020-04-11T09:33:37+08:00" />
 <meta itemprop="name" content="Ardupilot 如何处理 MAVLink 消息">
 <meta itemprop="description" content="由于目前需要实现自定义的功能，这要求可以对 Ardupilot 中的通信进行干预，包括接收处理消息和发送消息。为了达成这个目的，阅读了通信相关的代码，看一下 Ardupilot 是怎样处理 Mavlink 消息的。">
 <meta itemprop="datePublished" content="2019-03-15T20:00:37&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-21T16:28:37&#43;08:00" />
-<meta itemprop="wordCount" content="1809">
+<meta itemprop="dateModified" content="2020-04-11T09:33:37&#43;08:00" />
+<meta itemprop="wordCount" content="1998">
 
 
 
@@ -137,7 +137,7 @@
               <a href="/categories/ardupilot/"> Ardupilot </a>
             
           </div>
-        <span class="more-meta"> 约 1809 字 </span>
+        <span class="more-meta"> 约 1998 字 </span>
         
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -157,7 +157,7 @@
 <li><a href="#接收消息任务">接收消息任务</a></li>
 <li><a href="#发送消息任务">发送消息任务</a></li>
 </ul></li>
-<li><a href="#添加自定义消息"><del>添加自定义消息</del></a></li>
+<li><a href="#添加自定义消息">添加自定义消息</a></li>
 </ul>
 </nav>
   </div>
@@ -175,7 +175,7 @@
         Note
     </p>
     <p>
-`GCS_Sub->GCS` 是指 `GCS_Sub` 的基类是 `GCS`。
+GCS_Sub->GCS 是指 GCS_Sub 的基类是 GCS。
 </p>
 </div>
 
@@ -370,22 +370,13 @@ SCHED_TASK_CLASS(GCS, (GCS<span style="color:#f92672">*</span>)<span style="colo
 
 <p>如果只是需要发送一条消息的话可以直接调用 <code>mavlink_ms_*_send()</code> 这一系列函数。</p>
 
-<h1 id="添加自定义消息"><del>添加自定义消息</del></h1>
+<h1 id="添加自定义消息">添加自定义消息</h1>
 
-<p>添加自定义消息需要修改 <code>modules/mavlink/message_definitions/v1.0/common.xml</code> 文件，而这个文件位于 <code>mavlink</code> 子模块，这就意味着如果要修改这个子模块中的文件就要再另外维护一个子模块仓库，所以暂时不考虑做这一操作。</p>
+<p>添加自定义消息需要修改 <code>modules/mavlink/message_definitions/v1.0/ardupilotmega.xml</code> 文件，而这个文件位于 <code>mavlink</code> 子模块。添加消息需要遵守MAVLink的语法要求，一个基本的示例如代码 4 2所示，第一行是注释，接下来是一个message标签，标签中需要定义消息id和name，消息id和name要求与现有的消息不冲突，可选的嵌套description标签用于对消息进行简单的描述。在message标签内部定义field标签来添加字段，标签需要指令type和name属性，name属性要求在message内部不重复，field标签中的内容用来表述字段的作用和取值。</p>
 
-<p>为了达成相似的功能，使用 <a href="https://mavlink.io/en/messages/common.html#NAMED_VALUE_FLOAT">NAMED_VALUE_FLOAT (#251)</a>  和 <a href="https://mavlink.io/en/messages/common.html#NAMED_VALUE_INT">NAMED_VALUE_INT (#252)</a> 两个消息可以完成单个数据的传递的功能。<a href="https://mavlink.io/en/messages/common.html#RC_CHANNELS_OVERRIDE">RC_CHANNELS_OVERRIDE (#70)</a> 可以一次完成多个数据的传递。</p>
+<p>当然，如果确实不想添加自定义的消息，为了达成相似的功能，可以使用 <a href="https://mavlink.io/en/messages/common.html#NAMED_VALUE_FLOAT">NAMED_VALUE_FLOAT (#251)</a>  和 <a href="https://mavlink.io/en/messages/common.html#NAMED_VALUE_INT">NAMED_VALUE_INT (#252)</a> 两个消息可以完成单个数据的传递的功能。<a href="https://mavlink.io/en/messages/common.html#RC_CHANNELS_OVERRIDE">RC_CHANNELS_OVERRIDE (#70)</a> 可以一次完成多个数据的传递。</p>
 
-<div class="admonition-note">
-    <p class="admonition-note-title">
-        Note
-    </p>
-    <p>
-
-通过阅读这部分代码，发现可以通过类的继承添加自己的代码到现有的代码中，这样组织代码会比较合理。打算添加 `GCS_Sub_lab->GCS_Sub` 和  `GCS_MAVLINK_Sub_lab->GCS_MAVLINK_Sub` 这两个子类来添加通信相关的代码。相关实现见这个 [commit](https://github.com/zt-luo/ardupilot/commit/e00726b691ce8a1ab2217c3961391d39f7dcb7ca) 。
-
-</p>
-</div>
+<p>通过阅读这部分代码，发现可以通过类的继承添加自己的代码到现有的代码中，这样组织代码会比较合理。打算添加 GCS_Sub_lab-&gt;GCS_Sub 和  CS_MAVLINK_Sub_lab-&gt;GCS_MAVLINK_Sub 这两个子类来添加通信相关的代码。相关实现见这个 <a href="https://github.com/zt-luo/ardupilot/commit/e00726b691ce8a1ab2217c3961391d39f7dcb7ca">commit</a> 。</p>
     </div>
 
     
@@ -396,7 +387,7 @@ SCHED_TASK_CLASS(GCS, (GCS<span style="color:#f92672">*</span>)<span style="colo
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-03-21</span>
+    <span class="item-content">2020-04-11</span>
   </p>
   
   <p class="copyright-item">

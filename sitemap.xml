@@ -24,14 +24,14 @@
   
   <url>
     <loc>https://blog.ztluo.dev/post/</loc>
-    <lastmod>2020-04-10T14:46:39+08:00</lastmod>
+    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/tags/</loc>
-    <lastmod>2020-04-10T14:46:39+08:00</lastmod>
+    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -94,7 +94,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/categories/</loc>
-    <lastmod>2020-02-12T23:05:35+08:00</lastmod>
+    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -227,7 +227,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/categories/ardupilot/</loc>
-    <lastmod>2019-04-20T10:01:46+08:00</lastmod>
+    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -241,7 +241,7 @@
   
   <url>
     <loc>https://blog.ztluo.dev/tags/mavlink/</loc>
-    <lastmod>2019-04-20T10:01:46+08:00</lastmod>
+    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -255,35 +255,35 @@
   
   <url>
     <loc>https://blog.ztluo.dev/post/0039-ardupilot-handle-msg/</loc>
-    <lastmod>2019-03-21T16:28:37+08:00</lastmod>
+    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/tags/ardusub/</loc>
-    <lastmod>2019-03-21T16:28:37+08:00</lastmod>
+    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/tags/c&#43;&#43;/</loc>
-    <lastmod>2019-03-21T16:28:37+08:00</lastmod>
+    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/tags/gcs/</loc>
-    <lastmod>2019-03-21T16:28:37+08:00</lastmod>
+    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/tags/pixhawk/</loc>
-    <lastmod>2019-03-21T16:28:37+08:00</lastmod>
+    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
