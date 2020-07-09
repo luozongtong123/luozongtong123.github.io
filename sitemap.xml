@@ -24,14 +24,14 @@
   
   <url>
     <loc>https://blog.ztluo.dev/post/</loc>
-    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
+    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/tags/</loc>
-    <lastmod>2020-04-11T09:33:37+08:00</lastmod>
+    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -107,6 +107,41 @@
   </url>
   
   <url>
+    <loc>https://blog.ztluo.dev/tags/cmake/</loc>
+    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/gstreamer/</loc>
+    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/qmlgl/</loc>
+    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/qt/</loc>
+    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/post/0050-build-qmlgl-on-windows/</loc>
+    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.ztluo.dev/tags/ubuntu/</loc>
     <lastmod>2019-11-24T16:03:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -163,20 +198,6 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/tags/cmake/</loc>
-    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/tags/qt/</loc>
-    <lastmod>2019-11-11T17:30:25+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.ztluo.dev/tags/visual-studio-code/</loc>
     <lastmod>2019-11-11T17:30:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -186,13 +207,6 @@
   <url>
     <loc>https://blog.ztluo.dev/post/0043-qt-coding-in-vscode/</loc>
     <lastmod>2019-11-11T17:30:25+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/tags/gstreamer/</loc>
-    <lastmod>2019-11-09T21:25:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

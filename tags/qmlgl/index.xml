@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>qmlgl on luo Space - Coding and thinking.</title>
+    <link>https://blog.ztluo.dev/tags/qmlgl/</link>
+    <description>Recent content in qmlgl on luo Space - Coding and thinking.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 27 Jan 2020 17:37:13 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.ztluo.dev/tags/qmlgl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在 Windows 上编译 qmlgl</title>
+      <link>https://blog.ztluo.dev/post/0050-build-qmlgl-on-windows/</link>
+      <pubDate>Mon, 27 Jan 2020 17:37:13 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/0050-build-qmlgl-on-windows/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://gstreamer.freedesktop.org/documentation/qmlgl/index.html?gi-language=c&#34;&gt;qmlgl&lt;/a&gt; 是 &lt;a href=&#34;https://gstreamer.freedesktop.org/&#34;&gt;GStreamer&lt;/a&gt; 中与 Qt 绑定的插件。Linux 平台上大多有现成的软件包（Manjaro：gst-plugin-qmlgl，Ubuntu：gstreamer1.0-qt5）。现在有一个在 Windows 平台上使用该软件的需求，然而 qmlgl 没有官方编译好的版本。这篇文章将介绍如何在 Windows 平台上编译 qmlgl 插件。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
