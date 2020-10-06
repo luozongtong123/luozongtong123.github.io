@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>在 UUV Simulator 中创建新的模型描述包 - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="模型描述 (xxx_description) 中包含了用于 Gazebo 仿真的显示模型及运动学、动力学模型、推进器和舵模型、传感器等。
+" />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+<meta name="baidu-site-verification" content="8SYIFLvIPQ" />
+<meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
+
+
+<meta name="generator" content="Hugo 0.68.0" />
+
+
+<link rel="canonical" href="https://blog.ztluo.dev/post/0054-create-new-vehicle-for-uuv-simulator/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="在 UUV Simulator 中创建新的模型描述包" />
+<meta property="og:description" content="模型描述 (xxx_description) 中包含了用于 Gazebo 仿真的显示模型及运动学、动力学模型、推进器和舵模型、传感器等。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ztluo.dev/post/0054-create-new-vehicle-for-uuv-simulator/" />
+<meta property="article:published_time" content="2020-04-27T10:46:03+08:00" />
+<meta property="article:modified_time" content="2020-04-27T10:46:03+08:00" />
+<meta itemprop="name" content="在 UUV Simulator 中创建新的模型描述包">
+<meta itemprop="description" content="模型描述 (xxx_description) 中包含了用于 Gazebo 仿真的显示模型及运动学、动力学模型、推进器和舵模型、传感器等。">
+<meta itemprop="datePublished" content="2020-04-27T10:46:03&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-27T10:46:03&#43;08:00" />
+<meta itemprop="wordCount" content="1480">
+
+
+
+<meta itemprop="keywords" content="UUV Simulator," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在 UUV Simulator 中创建新的模型描述包"/>
+<meta name="twitter:description" content="模型描述 (xxx_description) 中包含了用于 Gazebo 仿真的显示模型及运动学、动力学模型、推进器和舵模型、传感器等。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">在 UUV Simulator 中创建新的模型描述包</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-04-27 </span>
+        
+        <span class="more-meta"> 约 1480 字 </span>
+        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#概述">概述</a></li>
+<li><a href="#导出显示模型">导出显示模型</a>
+<ul>
+<li><a href="#从-solidworks-中导出-wrl-文件">从 SolidWorks 中导出 wrl 文件</a></li>
+<li><a href="#将-wrl-导入-3d-max-然后导出-dae-文件">将 wrl 导入 3D Max，然后导出 dae 文件</a></li>
+<li><a href="#导入-blender-并检查模型尺寸是否正确">导入 Blender 并检查模型尺寸是否正确</a></li>
+</ul></li>
+<li><a href="#配置显示模型">配置显示模型</a></li>
+<li><a href="#模型质量属性">模型质量属性</a></li>
+<li><a href="#模型水动力参数">模型水动力参数</a></li>
+<li><a href="#推进器特性模型">推进器特性模型</a></li>
+<li><a href="#舵特性模型">舵特性模型</a></li>
+<li><a href="#传感器配置">传感器配置</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>模型描述 (xxx_description) 中包含了用于 Gazebo 仿真的显示模型及运动学、动力学模型、推进器和舵模型、传感器等。</p>
+
+<h2 id="概述">概述</h2>
+
+<p>以<a href="https://github.com/zt-luo/ARMsROV/tree/master/armsrov_description">armsrov_description</a>为例说明一下模型描述的结构，模型的文档结构如下图所示：</p>
+
+<figure class="center">
+    <img src="/img/0054-create-new-vehicle-for-uuv-simulator/files.png"
+         alt="files"/> <figcaption>
+            <h4>files</h4>
+        </figcaption>
+</figure>
+  
+
+<p><code>robots</code> 文件夹中包含 <code>default.xacro</code> 宏脚本文件，该脚本文件将会创建<code>armsrov</code>水下机器人对象，同时会指定流体密度等<code>uuv_plugin</code>所需一些基本的参数。<code>meshes</code> 文件夹中包含一些用于显示和碰撞检测的三维模型网格文件。<code>urdf</code> 文件夹中包含多个 <code>xacro</code> 宏脚本文件，这些脚本文件描述了水下机器人的三维模型在 Gazebo 中的显示方式、水下机器人的重心浮心位置、质量矩阵、水动力参数等。<code>launch</code> 文件夹中的 <code>xacro</code> 宏脚本文件包含了水下机器人模型启动时的初始姿态和位置。<code>package.xml</code> 记录软件包信息。<code>CMakeLists.txt</code> 描述了软件包的编译构建信息。</p>
+
+<p>在第一次创建模型描述的时候可以使用如下一行命令生成一个模型描述模板，然后基于这个模板进行添加和修改内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rosrun uuv_assistants create_new_robot_model --robot_name &lt;ROBOT_NAME&gt;</code></pre></div>
+<h2 id="导出显示模型">导出显示模型</h2>
+
+<p>显示模型用于 Gazebo 仿真中显示被仿真的物体。Gazebo 支持 stl 和 dae 两种格式的 mesh 文件，stl 相对来说是一个比较常见的三维交换格式，大多数三维建模软件都可以直接导出和导入。dae 文件是 COLLADA 的模型文件，是一个基于XML的三维图形交换格式，大多数三维工程制图软件无法直接导出，例如 SolidWorks 就无法直接导出 dae 文件。dae 文件相对于 stl 文件的优点是可以携带颜色信息，可视化的效果较好。</p>
+
+<p>为了导出 dae 文件需要借助一些三维动画制作软件。大概的流程是：</p>
+
+<ul>
+<li>从 SolidWorks 中导出携带颜色信息的 wrl 格式的文件；<br /></li>
+<li>将携带颜色的 wrl 文件导入到 3D Max 中，在 3D Max 中确认好坐标轴的方向，导出为 dae 文件；<br /></li>
+<li>将 3D Max 中导出的 dae 文件导入到 Blender 中,在 Blender 中删除不必要的重复部分，确认好模型尺寸和轴的方向，再次导出 dae 文件；<br /></li>
+</ul>
+
+<h3 id="从-solidworks-中导出-wrl-文件">从 SolidWorks 中导出 wrl 文件</h3>
+
+<p>导出前如果是装配体则需要先保存为零件。另存为时选择 <code>VRML(*.wrl)</code>。保存时最好先点击下方选项按钮，检查一下导出的版本是否是 <code>1.0</code> ，单位是否是<code>米</code>。</p>
+
+<figure class="center">
+    <img src="/img/0054-create-new-vehicle-for-uuv-simulator/wrl.png"
+         alt="wrl"/> <figcaption>
+            <h4>wrl</h4>
+        </figcaption>
+</figure>
+
+<figure class="center">
+    <img src="/img/0054-create-new-vehicle-for-uuv-simulator/wrl2.png"
+         alt="wrl2"/> <figcaption>
+            <h4>wrl2</h4>
+        </figcaption>
+</figure>
+
+<h3 id="将-wrl-导入-3d-max-然后导出-dae-文件">将 wrl 导入 3D Max，然后导出 dae 文件</h3>
+
+<p>首先将 wrl 模型导入 3D Max。</p>
+
+<figure class="center">
+    <img src="/img/0054-create-new-vehicle-for-uuv-simulator/3dmax1.png"
+         alt="3dmax1"/> <figcaption>
+            <h4>3dmax1</h4>
+        </figcaption>
+</figure>
+
+<p>接着观察坐标轴的方向是否满足需求 (Gazebo 中 z 轴表示上下)。可以看到导入的模型坐标轴方向于 Gazebo 的要求不一致，需要对坐标轴做出修改满足 Gazebo 的要求。坐标轴的更改可以在 SolidWorks 中完成，也可以在 3D Max 中完成。</p>
+
+<figure class="center">
+    <img src="/img/0054-create-new-vehicle-for-uuv-simulator/3dmax2.png"
+         alt="3dmax2"/> <figcaption>
+            <h4>3dmax2</h4>
+        </figcaption>
+</figure>
+
+<p>选中需要变换坐标轴的物体，右键后选择旋转，填入需要的旋转的值即可完成坐标轴转换。</p>
+
+<p>导出时选择 AutoDesk Collada (*.DAE)。填写好导出文件名称后会弹出保存选项。在保存选项中需要确认单位是否是 <code>米</code>，轴转化中选择的轴的方向是否是 z 轴向上。</p>
+
+<figure class="center">
+    <img src="/img/0054-create-new-vehicle-for-uuv-simulator/3dmax3.png"
+         alt="3dmax3"/> <figcaption>
+            <h4>3dmax3</h4>
+        </figcaption>
+</figure>
+
+<h3 id="导入-blender-并检查模型尺寸是否正确">导入 Blender 并检查模型尺寸是否正确</h3>
+
+<p>通过 <code>文件-&gt;导入</code> 选项导入 dae 文件。</p>
+
+<figure class="center">
+    <img src="/img/0054-create-new-vehicle-for-uuv-simulator/blender1.png"
+         alt="blender1"/> <figcaption>
+            <h4>blender1</h4>
+        </figcaption>
+</figure>
+
+<p>接着检查导入的模型的尺寸和轴的方向是否满足要求。然后可以根据需求，将水下机器人本体、舵板、推进器分别导出为 dae 文件。</p>
+
+<h2 id="配置显示模型">配置显示模型</h2>
+
+<p>水下机器人本体的模型配置在 <code>urdf/base.xacro</code> 文件中：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;xacro:property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;visual_mesh_file&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;file://$(find auv_description)/meshes/body.dae&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;xacro:property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;collision_mesh_file&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;file://$(find auv_description)/meshes/body.stl&#34;</span><span style="color:#f92672">/&gt;</span></code></pre></div>
+<p><code>visual_mesh_file</code> 表示在 Gazebo 中看到的模型，<code>collision_mesh_file</code> 表示 Gazebo 进行碰撞检测时用到的模型。为了减小 Gazebo 进行碰撞检测时的运算量可以使用简化的模型，而显示模型为了美观性则可以使用复杂的模型。</p>
+
+<p>推进器和舵的模型配置在 <code>urdf/actuators.xacro</code> 文件中。</p>
+
+<p>推进器的配置方式如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;xacro:thruster_macro</span> <span style="color:#a6e22e">robot_namespace=</span><span style="color:#e6db74">&#34;${namespace}&#34;</span> <span style="color:#a6e22e">thruster_id=</span><span style="color:#e6db74">&#34;0&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;origin</span> <span style="color:#a6e22e">xyz=</span><span style="color:#e6db74">&#34;0 0 0&#34;</span> <span style="color:#a6e22e">rpy=</span><span style="color:#e6db74">&#34;0 0 0&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/xacro:thruster_macro&gt;</span></code></pre></div>
+<p>每个推进器必须配置一个独有的 <code>thruster_id</code>。<code>xyz</code> 表示推进器的位置，<code>rpy</code> 表示推进器绕三个轴的角度(roll, pitch, yaw)。</p>
+
+<p>推进器的模型文件在 <code>urdf/snippets.xacro</code> 文件中配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;xacro:property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;prop_mesh_file&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;file://$(find auv_description)/meshes/propeller.dae&#34;</span><span style="color:#f92672">/&gt;</span></code></pre></div>
+<p>舵的配置方式如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;xacro:fin_macro</span> <span style="color:#a6e22e">namespace=</span><span style="color:#e6db74">&#34;${namespace}&#34;</span> <span style="color:#a6e22e">fin_id=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">mesh_filename=</span><span style="color:#e6db74">&#34;${fin_mesh_file}&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;origin</span> <span style="color:#a6e22e">xyz=</span><span style="color:#e6db74">&#34;0 0 0&#34;</span> <span style="color:#a6e22e">rpy=</span><span style="color:#e6db74">&#34;0 0 0&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/xacro:fin_macro&gt;</span></code></pre></div>
+<p>和推进器的配置一样 <code>xyz</code> 和 <code>rpy</code> 分别表示舵的位置和角度。</p>
+
+<p>舵的模型文件同样在 <code>urdf/snippets.xacro</code> 文件中配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;xacro:property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;fin_mesh_file&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;file://$(find lauv_description)/meshes/fin.dae&#34;</span><span style="color:#f92672">/&gt;</span></code></pre></div>
+<p>todo&hellip;</p>
+
+<h2 id="模型质量属性">模型质量属性</h2>
+
+<h2 id="模型水动力参数">模型水动力参数</h2>
+
+<h2 id="推进器特性模型">推进器特性模型</h2>
+
+<h2 id="舵特性模型">舵特性模型</h2>
+
+<h2 id="传感器配置">传感器配置</h2>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2020-04-27</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">CC 4.0 保持署名 - 非商用 - 非衍生</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/wechat_reward_qr-code.png">
+        <span>微信长按/扫码打赏</span>
+      </label>
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/uuv-simulator/">UUV Simulator</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/0055-jupyter-note/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Jupyter Note</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/0053-msys2-tutorial/">
+            <span class="next-text nav-default">MSYS2 教程</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2020-04-27 10:46:03 \x2b0800 CST',
+    title: '在 UUV Simulator 中创建新的模型描述包',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'zt-luo.github.io',
+    owner: 'zt-luo',
+    admin: ['zt-luo'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:me@ztluo.dev" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zt-luo" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.ztluo.dev/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/zt-luo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?3e7571b3a1c0f5c99ed01cf3b15b4b46";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

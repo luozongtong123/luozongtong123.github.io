@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>Jupyter Note</title>
+      <link>https://blog.ztluo.dev/post/0055-jupyter-note/</link>
+      <pubDate>Tue, 06 Oct 2020 20:31:58 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/0055-jupyter-note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>在 UUV Simulator 中创建新的模型描述包</title>
+      <link>https://blog.ztluo.dev/post/0054-create-new-vehicle-for-uuv-simulator/</link>
+      <pubDate>Mon, 27 Apr 2020 10:46:03 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/0054-create-new-vehicle-for-uuv-simulator/</guid>
+      <description>&lt;p&gt;模型描述 (xxx_description) 中包含了用于 Gazebo 仿真的显示模型及运动学、动力学模型、推进器和舵模型、传感器等。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>MSYS2 教程</title>
       <link>https://blog.ztluo.dev/post/0053-msys2-tutorial/</link>
       <pubDate>Wed, 01 Apr 2020 23:11:39 +0800</pubDate>

@@ -9,6 +9,41 @@
   </url>
   
   <url>
+    <loc>https://blog.ztluo.dev/post/0055-jupyter-note/</loc>
+    <lastmod>2020-10-06T20:31:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/post/</loc>
+    <lastmod>2020-10-06T20:31:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/</loc>
+    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/uuv-simulator/</loc>
+    <lastmod>2020-04-27T10:46:03+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/post/0054-create-new-vehicle-for-uuv-simulator/</loc>
+    <lastmod>2020-04-27T10:46:03+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.ztluo.dev/tags/msys2/</loc>
     <lastmod>2020-04-10T14:46:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -18,20 +53,6 @@
   <url>
     <loc>https://blog.ztluo.dev/post/0053-msys2-tutorial/</loc>
     <lastmod>2020-04-10T14:46:39+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/post/</loc>
-    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/tags/</loc>
-    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
