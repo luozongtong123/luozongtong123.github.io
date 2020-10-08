@@ -14292,7 +14292,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">elftools.elf.elffile</span> <span class="kn">import</span> <span class="n">ELFFile</span>
@@ -14312,7 +14312,7 @@ a.anchor-link {
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">SymbolTableSection</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">section</span><span class="o">.</span><span class="n">iter_symbols</span><span class="p">():</span>
                 <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;__data_init_start&#39;</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">[</span><span class="s1">&#39;st_value&#39;</span><span class="p">])</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%#x</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">symbol</span>[&#39;st_value&#39;])
 </pre></div>
 
      </div>
@@ -14343,6 +14343,7 @@ a.anchor-link {
 .debug_line SHT_PROGBITS
 .debug_frame SHT_PROGBITS
 .debug_str SHT_PROGBITS
+.debug_loc SHT_PROGBITS
 .ARM.attributes SHT_ARM_ATTRIBUTES
 .debug_ranges SHT_PROGBITS
 .debug_macro SHT_PROGBITS
@@ -14350,10 +14351,10 @@ a.anchor-link {
 .symtab SHT_SYMTAB
 .strtab SHT_STRTAB
 .shstrtab SHT_STRTAB
-Container({&amp;#39;p_type&amp;#39;: &amp;#39;PT_LOAD&amp;#39;, &amp;#39;p_offset&amp;#39;: 65536, &amp;#39;p_vaddr&amp;#39;: 134217728, &amp;#39;p_paddr&amp;#39;: 134217728, &amp;#39;p_filesz&amp;#39;: 1060, &amp;#39;p_memsz&amp;#39;: 1060, &amp;#39;p_flags&amp;#39;: 5, &amp;#39;p_align&amp;#39;: 65536})
-Container({&amp;#39;p_type&amp;#39;: &amp;#39;PT_LOAD&amp;#39;, &amp;#39;p_offset&amp;#39;: 131072, &amp;#39;p_vaddr&amp;#39;: 536870912, &amp;#39;p_paddr&amp;#39;: 134218788, &amp;#39;p_filesz&amp;#39;: 68, &amp;#39;p_memsz&amp;#39;: 68, &amp;#39;p_flags&amp;#39;: 6, &amp;#39;p_align&amp;#39;: 65536})
-Container({&amp;#39;p_type&amp;#39;: &amp;#39;PT_LOAD&amp;#39;, &amp;#39;p_offset&amp;#39;: 68, &amp;#39;p_vaddr&amp;#39;: 536870980, &amp;#39;p_paddr&amp;#39;: 536870980, &amp;#39;p_filesz&amp;#39;: 0, &amp;#39;p_memsz&amp;#39;: 1028, &amp;#39;p_flags&amp;#39;: 6, &amp;#39;p_align&amp;#39;: 65536})
-__data_init_start 134218788
+Container({&#39;p_type&#39;: &#39;PT_LOAD&#39;, &#39;p_offset&#39;: 65536, &#39;p_vaddr&#39;: 134217728, &#39;p_paddr&#39;: 134217728, &#39;p_filesz&#39;: 752, &#39;p_memsz&#39;: 752, &#39;p_flags&#39;: 5, &#39;p_align&#39;: 65536})
+Container({&#39;p_type&#39;: &#39;PT_LOAD&#39;, &#39;p_offset&#39;: 131072, &#39;p_vaddr&#39;: 536870912, &#39;p_paddr&#39;: 134218480, &#39;p_filesz&#39;: 68, &#39;p_memsz&#39;: 68, &#39;p_flags&#39;: 6, &#39;p_align&#39;: 65536})
+Container({&#39;p_type&#39;: &#39;PT_LOAD&#39;, &#39;p_offset&#39;: 68, &#39;p_vaddr&#39;: 536870980, &#39;p_paddr&#39;: 536870980, &#39;p_filesz&#39;: 0, &#39;p_memsz&#39;: 1028, &#39;p_flags&#39;: 6, &#39;p_align&#39;: 65536})
+__data_init_start 134218480
 </pre>
 </div>
 </div>
@@ -14385,16 +14386,25 @@ __data_init_start 134218788
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>只要是 VMA 不等于 LMA 就可以任务是需要 load 的，可以通过 ld 脚本中的符号来确定是否需要压缩。先不考虑一个 segment 中含有多个 sections 的情况，这种情况下可以统一 load，但是存在的问题是，由于包含的内容不同，所以其对于不同压缩算法的适应性是不同的，为了更好的压缩效果是需要将多个 sections 分开的。</p>
+<p>只要是 VMA 不等于 LMA 就可以认为是需要 load 的，可以通过 ld 脚本中的符号来确定是否需要压缩。先不考虑一个 segment 中含有多个 sections 的情况，这种情况下可以统一 load，但是存在的问题是，由于包含的内容不同，所以其对于不同压缩算法的适应性是不同的，为了更好的压缩效果是需要将多个 sections 分开的。一般在开启MMU后，代码和相关的数组会放在一起，所以会有两个sections的相连？</p>
+<p>readelf -s 可以获取elf的符号表
+符号表中的符号会被优化掉吗，</p>
+<p>arm-none-eabi-objdump -x --syms 可以进行memory dump</p>
+<p>arm-none-eabi-objdump -S 可以将源码和汇编显示到一起</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;stm32.bin&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">binfile</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">binfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">binfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
 </pre></div>
 
      </div>
@@ -14402,6 +14412,33 @@ __data_init_start 134218788
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>&amp;lt;class &amp;#39;bytes&amp;#39;&amp;gt;
+10
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
 </div>
 </body>
 
