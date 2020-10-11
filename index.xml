@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>微软 np, VSCode 天下第一</title>
+      <link>https://blog.ztluo.dev/post/0056-wsl-vscode-dot/</link>
+      <pubDate>Sun, 11 Oct 2020 20:22:11 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/0056-wsl-vscode-dot/</guid>
+      <description>&lt;p&gt;今天发现一个 WSL 和 VSCode 的一个非常 np 的小细节。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Jupyter Note</title>
       <link>https://blog.ztluo.dev/post/0055-jupyter-note/</link>
       <pubDate>Tue, 06 Oct 2020 20:31:58 +0800</pubDate>

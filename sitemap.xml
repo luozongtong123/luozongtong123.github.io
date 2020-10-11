@@ -9,22 +9,43 @@
   </url>
   
   <url>
-    <loc>https://blog.ztluo.dev/post/0055-jupyter-note/</loc>
-    <lastmod>2020-10-06T20:31:58+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.ztluo.dev/post/</loc>
-    <lastmod>2020-10-06T20:31:58+08:00</lastmod>
+    <lastmod>2020-10-11T20:22:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/tags/</loc>
-    <lastmod>2020-07-09T10:28:13+08:00</lastmod>
+    <lastmod>2020-10-11T20:22:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/vscode/</loc>
+    <lastmod>2020-10-11T20:22:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/wsl/</loc>
+    <lastmod>2020-10-11T20:22:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/post/0056-wsl-vscode-dot/</loc>
+    <lastmod>2020-10-11T20:22:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/post/0055-jupyter-note/</loc>
+    <lastmod>2020-10-06T20:31:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -52,13 +73,6 @@
   
   <url>
     <loc>https://blog.ztluo.dev/post/0053-msys2-tutorial/</loc>
-    <lastmod>2020-04-10T14:46:39+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/tags/vscode/</loc>
     <lastmod>2020-04-10T14:46:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -571,13 +585,6 @@
   <url>
     <loc>https://blog.ztluo.dev/post/0021-even-theme-preview/</loc>
     <lastmod>2018-09-22T14:40:40+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.ztluo.dev/tags/wsl/</loc>
-    <lastmod>2018-12-19T20:53:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
