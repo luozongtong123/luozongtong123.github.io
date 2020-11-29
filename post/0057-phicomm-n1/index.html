@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Phicomm N1 安装 Armbian - luo Space - Coding and thinking.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="luo" />
+  <meta name="description" content="闲置了好久的一台斐讯 N1 终于被我刷成了 Armbian。早在一年多之前，趁着 N1 还没有涨价到很高，凑巧拼多多有券就一连买了两个 N1。一个到手就被我刷成了电视盒子，现在连着电视，偶尔投屏看看电视和电影。另一台到手后盒子都没拆就一直闲置到现在。之前想的是可以刷成 Armbian，当一台小的家庭服务器来用。这个两个周末正好有空，就拿出来搞了一下，过程还挺曲折的。
+" />
+
+  <meta name="keywords" content="coding, thinking" />
+
+
+<meta name="baidu-site-verification" content="8SYIFLvIPQ" />
+<meta name="google-site-verification" content="JKxMRbe6Hs6F5AO9glOmU9p8_e5yw5QZqyIaZyq2otc" />
+
+
+<meta name="generator" content="Hugo 0.68.0" />
+
+
+<link rel="canonical" href="https://blog.ztluo.dev/post/0057-phicomm-n1/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Phicomm N1 安装 Armbian" />
+<meta property="og:description" content="闲置了好久的一台斐讯 N1 终于被我刷成了 Armbian。早在一年多之前，趁着 N1 还没有涨价到很高，凑巧拼多多有券就一连买了两个 N1。一个到手就被我刷成了电视盒子，现在连着电视，偶尔投屏看看电视和电影。另一台到手后盒子都没拆就一直闲置到现在。之前想的是可以刷成 Armbian，当一台小的家庭服务器来用。这个两个周末正好有空，就拿出来搞了一下，过程还挺曲折的。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ztluo.dev/post/0057-phicomm-n1/" />
+<meta property="article:published_time" content="2020-11-29T11:55:46+08:00" />
+<meta property="article:modified_time" content="2020-11-29T11:55:46+08:00" />
+<meta itemprop="name" content="Phicomm N1 安装 Armbian">
+<meta itemprop="description" content="闲置了好久的一台斐讯 N1 终于被我刷成了 Armbian。早在一年多之前，趁着 N1 还没有涨价到很高，凑巧拼多多有券就一连买了两个 N1。一个到手就被我刷成了电视盒子，现在连着电视，偶尔投屏看看电视和电影。另一台到手后盒子都没拆就一直闲置到现在。之前想的是可以刷成 Armbian，当一台小的家庭服务器来用。这个两个周末正好有空，就拿出来搞了一下，过程还挺曲折的。">
+<meta itemprop="datePublished" content="2020-11-29T11:55:46&#43;08:00" />
+<meta itemprop="dateModified" content="2020-11-29T11:55:46&#43;08:00" />
+<meta itemprop="wordCount" content="2036">
+
+
+
+<meta itemprop="keywords" content="Phicomm N1,Armbian," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Phicomm N1 安装 Armbian"/>
+<meta name="twitter:description" content="闲置了好久的一台斐讯 N1 终于被我刷成了 Armbian。早在一年多之前，趁着 N1 还没有涨价到很高，凑巧拼多多有券就一连买了两个 N1。一个到手就被我刷成了电视盒子，现在连着电视，偶尔投屏看看电视和电影。另一台到手后盒子都没拆就一直闲置到现在。之前想的是可以刷成 Armbian，当一台小的家庭服务器来用。这个两个周末正好有空，就拿出来搞了一下，过程还挺曲折的。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">luo Space</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">luo Space</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Phicomm N1 安装 Armbian</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-11-29 </span>
+        
+        <span class="more-meta"> 约 2036 字 </span>
+        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#刷写-linux-loader-固件">刷写 Linux loader 固件</a></li>
+<li><a href="#制作启动-u-盘">制作启动 U 盘</a></li>
+<li><a href="#从-u-盘中启动">从 U 盘中启动</a></li>
+<li><a href="#刷写固件到-emmc">刷写固件到 emmc</a></li>
+<li><a href="#修改-dtb-解决高负载">修改 dtb 解决高负载</a></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>闲置了好久的一台斐讯 N1 终于被我刷成了 Armbian。早在一年多之前，趁着 N1 还没有涨价到很高，凑巧拼多多有券就一连买了两个 N1。一个到手就被我刷成了电视盒子，现在连着电视，偶尔投屏看看电视和电影。另一台到手后盒子都没拆就一直闲置到现在。之前想的是可以刷成 Armbian，当一台小的家庭服务器来用。这个两个周末正好有空，就拿出来搞了一下，过程还挺曲折的。</p>
+
+<p>一开始我是使用 ADB 连接到 N1，通过 <code>adb connect &lt;ip&gt; &amp;&amp; adb reboot update</code> 的方式进行启动到 U 盘中系统的方式，但是这样会有让 U 盘中刷好的镜像被盒子安卓系统破坏的风险，我上周末就是用这种方式搞得，结果启动到 U 盘后，有各种各样奇怪的问题，所以我这边提供了另外其他的方案，流程可能要多一步。</p>
+
+<h2 id="刷写-linux-loader-固件">刷写 Linux loader 固件</h2>
+
+<p>刷写的方式和刷写普通安卓盒子固件的方式一样，具体步骤不做过多的介绍了，具体步骤可以参考网络上其他的文章。Linux loader 固件会在开机的时候自动执行 reboot update，自动重启到 U 盘，不会对 U 盘中的固件造成影响。</p>
+
+<h2 id="制作启动-u-盘">制作启动 U 盘</h2>
+
+<p>启动盘制作可以使用 Win32DiskImager，启动镜像从 150balbes 大神的网盘中下载，由于大神发布的镜像现在都统一到了一个文件中，所以只下载 <code>RK_AML_AW</code> 文件夹下面的镜像即可，这边面包含了 rockchip、amlogic、allwinner 三个厂商芯片的系统镜像。</p>
+
+<p>镜像 U 盘制作好了之后就需要对 boot 分区中进行一点设置，这块就遇到了一个坑点，目前从网上搜得到教程大多是比较久之前的了，而现在最新的 Armbian 镜像的 boot 分区的结构发生了变化，所以修改方法也跟着变了。</p>
+
+<ul>
+<li>修改 <code>u-boot-s905x-s912</code> 的文件名为，<code>U-boot.ext</code><br /></li>
+<li>修改 <code>extlinux/extlinux.conf</code> 中的 dtb 文件<br /></li>
+</ul>
+
+<p>我这边提供一个修改好的配置，可以直接替换原有 <code>extlinux.conf</code> 文件。</p>
+<pre><code>LABEL Armbian
+LINUX /zImage
+INITRD /uInitrd
+
+FDT /dtb/amlogic/meson-gxl-s905d-phicomm-n1.dtb
+APPEND root=LABEL=ROOTFS rootflags=data=writeback rw console=ttyAML0,115200n8 console=tty0 no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0</code></pre>
+<p>在这里面还遇到了另外一个坑点，就是我下载最新的 11 月份的镜像，结果发现里面没有 s905 的三个 uboot ，所以我是下载的 10月份的镜像。发现不存在 uboot 的看屯昌尝试下其他月份的镜像。</p>
+
+<h2 id="从-u-盘中启动">从 U 盘中启动</h2>
+
+<p>这一步比较简单，插好 U 盘，接着插入电源，N1 会自动重启到 U 盘，脸上显示器的话可以看到 uboot 的界面，5秒之后就开始加载 Linux 了，如果一切正常就会进入到 Armbian 中，首先需要设置root密码，添加普通用户等等，其他的就不过多说明了。</p>
+
+<p>我在这一步也遇到了不少坑点。首先是我的 U 盘无法启动到被识别，加载了 Linux 之后要过很长时间才能进入到添加 root 密码的界面，我换了另外一个 U 盘就可以了，但是就是速度太慢了。另外一个坑点就是我的高斯双模键盘无法被识别，所以我上周没搞定，这周买了把10块的键盘才搞定了的，，，</p>
+
+<h2 id="刷写固件到-emmc">刷写固件到 emmc</h2>
+
+<div class="admonition-attention">
+    <p class="admonition-attention-title">
+        Caution
+    </p>
+    <p>
+
+刷写固件到 emmc 有变砖的风险，一定要想清楚再操作。
+
+</p>
+</div>
+
+<p>为了不占用一个启动 U 盘，另外也可以提高系统启动速度，决定将系统刷写到 emmc 中。这个过程中也遇到了不少的坑。首先是刷写的脚本变了，之前可以通过 <code>nand–sata-install</code> 命令刷写，现在没了。启动进入系统后，在 root 账户的根目录下面会有一堆可以刷写固件的脚本，我一开始是用的 <code>install-aml-s905x.sh</code> 结果发现刷写后无法从 U 盘启动，之后搜了一下发现不能用这个脚本应该用 <code>install-aml.sh</code>。</p>
+
+<h2 id="修改-dtb-解决高负载">修改 dtb 解决高负载</h2>
+
+<p>N1 armbian 镜像的高负载问题一直都有，解决办法无非就是替换 dtb，直接替换别人提供的 dtb 的话需要注意内核的版本。由于我的内核比较新，没人提供线程的 dtb，所以我选择反编译 dtb 文件，修改后再便宜得到 dtb 文件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 反编译固件自带的 dtb 文件，得到 dts 文件</span>
+dtc -I dtb -O dts -o n1.dts /boot/dtb/amlogic/meson-gxl-s905d-phicomm-n1.dtb</code></pre></div>
+<p>找到 <code>interrupt-controller@9880</code> 这一行，将下面的 <code>phandle = &lt; 0x21 &gt;;</code> 注释掉。</p>
+
+<div class="admonition-attention">
+    <p class="admonition-attention-title">
+        Caution
+    </p>
+    <p>
+
+修改的 dts 文件的位置一定是 interrupt-controller@9880 而不是其他。
+
+</p>
+</div>
+<pre><code>    bus@c1100000 {
+      compatible = &#34;simple-bus&#34;;
+      reg = &lt; 0x00 0xc1100000 0x00 0x100000 &gt;;
+      #address-cells = &lt; 0x02 &gt;;
+      #size-cells = &lt; 0x02 &gt;;
+      ranges = &lt; 0x00 0x00 0x00 0xc1100000 0x00 0x100000 &gt;;
+
+      interrupt-controller@9880 {
+        compatible = &#34;amlogic,meson-gpio-intc\0amlogic,meson-gxl-gpio-intc&#34;;
+        reg = &lt; 0x00 0x9880 0x00 0x10 &gt;;
+        interrupt-controller;
+        #interrupt-cells = &lt; 0x02 &gt;;
+        amlogic,channel-interrupts = &lt; 0x40 0x41 0x42 0x43 0x44 0x45 0x46 0x47 &gt;;
+        status = &#34;okay&#34;;
+        &lt;!-- 要注释掉的是下面这一行，千万别搞错了 --&gt;
+        #phandle = &lt; 0x21 &gt;;
+      };</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 编译 dts 文件到 dtb 文件</span>
+dtc -I dts -O dtb -o n1.dtb n1.dts
+<span style="color:#75715e"># 备份原有 dtb 文件</span>
+sudo cp /boot/dtb/amlogic/meson-gxl-s905d-phicomm-n1.dtb /boot/dtb/amlogic/meson-gxl-s905d-phicomm-n1.dtb.bak
+<span style="color:#75715e"># 覆盖原有 dtb 文件</span>
+sudo cp n1.dtb /boot/dtb/amlogic/meson-gxl-s905d-phicomm-n1.dtb
+<span style="color:#75715e"># 重启</span>
+sudo reboot</code></pre></div>
+<p>沃拉，负载降下来了。</p>
+
+<p>当然我折腾的时候过程没有这么顺利。。。</p>
+
+<p>修改 dtb 文件的时候找错行了，导致 Linux 无法启动。再修改 dtb 文件之前已经对系统进行了更新和一些配置了，另外我的可以启动的 U 盘速度实在是太慢了，烧录一次要半个小时，所以不太想再重新走一遍刷机的流程。所以想看看能不能救回来。折腾了一下发现可以在 uboot 启动到 Linux 之前，打断自动加载 Linux 的过程，只需要在倒计时5 秒之前按任何键盘的按键即可。进入到 uboot 的界面后就去探索一番，发现有 <code>usb_boot</code> 这个环境变量，通过这个环境变量我们就可以重新从 U 盘启动系统了，只要能够通过 U 盘进入系统就一切还好说。</p>
+
+<ul>
+<li>运行 <code>run usb_boot</code> 启动进入到 U 盘中的系统<br /></li>
+<li>在 U 盘的系统中挂载 emmc 系统 root 分区 <code>/dev/mmcblk1p1</code><br /></li>
+<li>将 dtb 修改回原来的备份的 dtb<br /></li>
+</ul>
+
+<p>这里面有趣的是，可以通过 uboot 里面自带的环境变量启动到 U 盘，另外 boot 分区的设备名不要搞错了。一顿折腾终于把系统就回来了。</p>
+
+<p>这大概就是整个折腾的过程，总的来说还是蛮折腾的。</p>
+
+<p>最后放一张 htop 的图吧：</p>
+
+<figure class="center">
+    <img src="/img/0057-phicomm-n1/htop.png"
+         alt="htop"/> <figcaption>
+            <h4>htop</h4>
+        </figcaption>
+</figure>
+
+<h2 id="参考">参考</h2>
+
+<ol>
+<li><a href="https://www.right.com.cn/forum/thread-322991-1-1.html">应广大人民群众要求，搞个 N1 通过 U 盘跑 LINUX (armbian) 的教程</a><br /></li>
+<li><a href="https://www.right.com.cn/forum/thread-335609-1-1.html">给 N1/T1 装上原生 Armbian_4.18 内核</a><br /></li>
+<li><a href="https://p3terx.com/archives/n1-armbian-dtb.html">斐讯 N1 Armbian 低负载 dtb 编译</a><br /></li>
+<li><a href="https://post.smzdm.com/p/alpwnxmp/">N1 盒子刷 Armbian，看这一篇就够了 ——Armbian 全方位安装指导书</a><br /></li>
+<li><a href="https://yadi.sk/d/_rQgn_FosYuW0g">镜像网盘地址 &ndash; Y-disk</a><br /></li>
+<li><a href="https://mega.nz/#F!j9QSDQSQ!6WpasOlbZYIInfw6yo4phQ">镜像网盘地址 &ndash; MEGA</a><br /></li>
+<li><a href="https://users.armbian.com/balbes150/">官方镜像地址</a><br /></li>
+</ol>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2020-11-29</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">CC 4.0 保持署名 - 非商用 - 非衍生</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/wechat_reward_qr-code.png">
+        <span>微信长按/扫码打赏</span>
+      </label>
+    
+  </div>
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/phicomm-n1/">Phicomm N1</a>
+          
+          <a href="/tags/armbian/">Armbian</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/0056-wsl-vscode-dot/">
+            <span class="next-text nav-default">微软 np, VSCode 天下第一</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
+    <script src="/lib/gitalk/gitalk.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2020-11-29 11:55:46 \x2b0800 CST',
+    title: 'Phicomm N1 安装 Armbian',
+    clientID: '773448aaf0a387786d40',
+    clientSecret: 'fe42e33233fcdc37a7bcf12d8ef6c5868943e0ea',
+    repo: 'zt-luo.github.io',
+    owner: 'zt-luo',
+    admin: ['zt-luo'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:me@ztluo.dev" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zt-luo" class="iconfont icon-github" title="github"></a>
+  <a href="https://blog.ztluo.dev/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/zt-luo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author"><a href="/about/" style="color:#2980B9;">luo</a></span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?3e7571b3a1c0f5c99ed01cf3b15b4b46";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

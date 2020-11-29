@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Phicomm N1 安装 Armbian</title>
+      <link>https://blog.ztluo.dev/post/0057-phicomm-n1/</link>
+      <pubDate>Sun, 29 Nov 2020 11:55:46 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/0057-phicomm-n1/</guid>
+      <description>&lt;p&gt;闲置了好久的一台斐讯 N1 终于被我刷成了 Armbian。早在一年多之前，趁着 N1 还没有涨价到很高，凑巧拼多多有券就一连买了两个 N1。一个到手就被我刷成了电视盒子，现在连着电视，偶尔投屏看看电视和电影。另一台到手后盒子都没拆就一直闲置到现在。之前想的是可以刷成 Armbian，当一台小的家庭服务器来用。这个两个周末正好有空，就拿出来搞了一下，过程还挺曲折的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>微软 np, VSCode 天下第一</title>
       <link>https://blog.ztluo.dev/post/0056-wsl-vscode-dot/</link>
       <pubDate>Sun, 11 Oct 2020 20:22:11 +0800</pubDate>

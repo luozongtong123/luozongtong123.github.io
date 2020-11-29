@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phicomm N1 on luo Space - Coding and thinking.</title>
+    <link>https://blog.ztluo.dev/tags/phicomm-n1/</link>
+    <description>Recent content in Phicomm N1 on luo Space - Coding and thinking.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 29 Nov 2020 11:55:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.ztluo.dev/tags/phicomm-n1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Phicomm N1 安装 Armbian</title>
+      <link>https://blog.ztluo.dev/post/0057-phicomm-n1/</link>
+      <pubDate>Sun, 29 Nov 2020 11:55:46 +0800</pubDate>
+      
+      <guid>https://blog.ztluo.dev/post/0057-phicomm-n1/</guid>
+      <description>&lt;p&gt;闲置了好久的一台斐讯 N1 终于被我刷成了 Armbian。早在一年多之前，趁着 N1 还没有涨价到很高，凑巧拼多多有券就一连买了两个 N1。一个到手就被我刷成了电视盒子，现在连着电视，偶尔投屏看看电视和电影。另一台到手后盒子都没拆就一直闲置到现在。之前想的是可以刷成 Armbian，当一台小的家庭服务器来用。这个两个周末正好有空，就拿出来搞了一下，过程还挺曲折的。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

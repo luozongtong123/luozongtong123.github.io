@@ -9,15 +9,36 @@
   </url>
   
   <url>
+    <loc>https://blog.ztluo.dev/tags/armbian/</loc>
+    <lastmod>2020-11-29T11:55:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/tags/phicomm-n1/</loc>
+    <lastmod>2020-11-29T11:55:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.ztluo.dev/post/0057-phicomm-n1/</loc>
+    <lastmod>2020-11-29T11:55:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.ztluo.dev/post/</loc>
-    <lastmod>2020-10-11T20:22:11+08:00</lastmod>
+    <lastmod>2020-11-29T11:55:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.ztluo.dev/tags/</loc>
-    <lastmod>2020-10-11T20:22:11+08:00</lastmod>
+    <lastmod>2020-11-29T11:55:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
